@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不要无计划地走进那个周末</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .emoji-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .border-notebook {
+            border-image: repeating-linear-gradient(to bottom, #e2e8f0, #e2e8f0 1px, transparent 1px, transparent 20px) 1;
+            border-left: 2px solid #e2e8f0;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- 主题切换按钮 -->
+        <div class="flex justify-end mb-6">
+            <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+        
+        <!-- 标题卡片 -->
+        <div class="card bg-gradient-to-r from-primary-100 to-primary-50 dark:from-primary-900 dark:to-primary-800 rounded-3xl p-8 mb-8 shadow-lg border-notebook">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-primary-800 dark:text-primary-100">不要无计划地走进那个周末</h1>
+            <p class="text-lg text-primary-700 dark:text-primary-200">让宝贵的周末时光真正属于你自己！</p>
+            <div class="mt-4 flex justify-end">
+                <span class="emoji-float text-4xl">😌</span>
+            </div>
+        </div>
+        
+        <!-- 问题描述卡片 -->
+        <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-secondary-600 dark:text-secondary-400 flex items-center">
+                <i class="fas fa-exclamation-circle mr-2"></i> 典型的无计划周末
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <span class="text-secondary-500 mr-2">⏰</span>
+                    <p>周六早上八点半醒来，躺在床上刷手机，等意识到时已经十点半了</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-secondary-500 mr-2">📱</span>
+                    <p>吃完早餐倚到沙发上，开始无目的地刷视频，从插花看到奶牛猫</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-secondary-500 mr-2">🎬</span>
+                    <p>想看电影却不断切换，从喜剧到悬疑再到惊悚，最后看起了电影解说</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-secondary-500 mr-2">😱</span>
+                    <p>下午四点突然惊醒：宝贵的周六已经接近尾声，而我却什么都没做</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="italic text-gray-600 dark:text-gray-400">"我不是在过周末，而是周末从我身上'碾'了过去"</p>
+            </div>
+            <div class="mt-4 flex justify-end">
+                <span class="text-4xl">😵</span>
+            </div>
+        </div>
+        
+        <!-- 问题分析卡片 -->
+        <div class="card bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-6 mb-8 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-gray-700 dark:text-gray-300 flex items-center">
+                <i class="fas fa-search mr-2"></i> 为什么会这样？
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm">
+                    <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">缺乏明确选择</h3>
+                    <p class="text-sm">周末完全由自己掌控，但做选择很耗费心力，容易陷入信息洪流</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm">
+                    <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">半迷失状态</h3>
+                    <p class="text-sm">刷手机看似休息，但缺乏主体意识参与，事后感到空虚</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm">
+                    <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">准备不足</h3>
+                    <p class="text-sm">临时决定做什么，常因准备不足而放弃，转向低质量娱乐</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm">
+                    <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">缺乏正反馈</h3>
+                    <p class="text-sm">没有完成感，无法形成对生活的掌控感，导致恶性循环</p>
+                </div>
+            </div>
+            <div class="mt-4 flex justify-center">
+                <span class="text-4xl emoji-float">🤔</span>
+            </div>
+        </div>
+        
+        <!-- 解决方案卡片 -->
+        <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-secondary-600 dark:text-secondary-400 flex items-center">
+                <i class="fas fa-lightbulb mr-2"></i> 解决方案：周末计划
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-start bg-primary-50 dark:bg-primary-900 p-4 rounded-lg">
+                    <span class="text-primary-600 dark:text-primary-300 font-bold mr-2">1.</span>
+                    <div>
+                        <h3 class="font-semibold text-primary-700 dark:text-primary-300">提前做好计划</h3>
+                        <p class="text-sm mt-1">周末前想好要做什么，并为之做好准备：选好电影、约好朋友、买好食材</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-primary-50 dark:bg-primary-900 p-4 rounded-lg">
+                    <span class="text-primary-600 dark:text-primary-300 font-bold mr-2">2.</span>
+                    <div>
+                        <h3 class="font-semibold text-primary-700 dark:text-primary-300">把计划写下来</h3>
+                        <p class="text-sm mt-1">将想法转化为文字是一种思维处理，让计划更清晰、更可能实现</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-primary-50 dark:bg-primary-900 p-4 rounded-lg">
+                    <span class="text-primary-600 dark:text-primary-300 font-bold mr-2">3.</span>
+                    <div>
+                        <h3 class="font-semibold text-primary-700 dark:text-primary-300">允许灵活调整</h3>
+                        <p class="text-sm mt-1">计划不是铁律，特殊情况可以调整，重要的是有方向而非漫无目的</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-primary-50 dark:bg-primary-900 p-4 rounded-lg">
+                    <span class="text-primary-600 dark:text-primary-300 font-bold mr-2">4.</span>
+                    <div>
+                        <h3 class="font-semibold text-primary-700 dark:text-primary-300">主动选择休息</h3>
+                        <p class="text-sm mt-1">如果决定什么都不做，这也是主动选择，不会带来事后懊恼</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-l-4 border-yellow-400">
+                <h3 class="font-semibold text-yellow-700 dark:text-yellow-300 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> 重要区别
+                </h3>
+                <p class="text-sm mt-1">周末计划 ≠ 工作日程！它是帮你把时间留给真正想做的事，减少决策疲劳</p>
+            </div>
+            <div class="mt-4 flex justify-end">
+                <span class="text-4xl">✨</span>
+            </div>
+        </div>
+        
+        <!-- 好处卡片 -->
+        <div class="card bg-gradient-to-r from-secondary-100 to-secondary-50 dark:from-secondary-900 dark:to-secondary-800 rounded-3xl p-6 mb-8 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-secondary-700 dark:text-secondary-200 flex items-center">
+                <i class="fas fa-gift mr-2"></i> 周末计划的好处
+            </h2>
+            <div class="grid gap-4 md:grid-cols-2">
+                <div class="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl backdrop-blur-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center mr-2">
+                            <i class="fas fa-check text-secondary-600 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-semibold">排除干扰因素</h3>
+                    </div>
+                    <p class="text-sm">减少"接下来做什么"的决策时刻，避免被低质信息吸引</p>
+                </div>
+                <div class="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl backdrop-blur-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center mr-2">
+                            <i class="fas fa-check text-secondary-600 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-semibold">增强掌控感</h3>
+                    </div>
+                    <p class="text-sm">完成计划形成正反馈，让你对自己的生活更有掌控力</p>
+                </div>
+                <div class="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl backdrop-blur-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center mr-2">
+                            <i class="fas fa-check text-secondary-600 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-semibold">可预期的快乐</h3>
+                    </div>
+                    <p class="text-sm">周末有期待的事，工作日也会更有动力</p>
+                </div>
+                <div class="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl backdrop-blur-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center mr-2">
+                            <i class="fas fa-check text-secondary-600 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-semibold">减少心理内耗</h3>
+                    </div>
+                    <p class="text-sm">主动选择带来满足感，避免"我怎么什么都没做"的懊恼</p>
+                </div>
+            </div>
+            <div class="mt-4 flex justify-center">
+                <span class="text-4xl emoji-float">🥳</span>
+            </div>
+        </div>
+        
+        <!-- 行动计划卡片 -->
+        <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400 flex items-center">
+                <i class="fas fa-rocket mr-2"></i> 马上行动！
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3 mt-1">
+                        <span class="text-primary-600 dark:text-primary-300 font-bold">1</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">列出周末想做的事</h3>
+                        <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">看电影、见朋友、做顿饭、逛公园...什么都可以！</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3 mt-1">
+                        <span class="text-primary-600 dark:text-primary-300 font-bold">2</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">提前做好准备</h3>
+                        <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">选好电影、约好朋友、买好食材、查好路线</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3 mt-1">
+                        <span class="text-primary-600 dark:text-primary-300 font-bold">3</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">写在显眼的地方</h3>
+                        <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">便签纸、手机备忘录、日历提醒...任何你常看到的地方</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3 mt-1">
+                        <span class="text-primary-600 dark:text-primary-300 font-bold">4</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">享受完成后的满足感</h3>
+                        <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">完成后打勾或记录感受，积累正反馈</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                <h3 class="font-semibold text-blue-700 dark:text-blue-300 flex items-center">
+                    <i class="fas fa-star mr-2"></i> 小贴士
+                </h3>
+                <p class="text-sm mt-1">不必追求完美执行！计划是工具而非束缚，重要的是让周末过得开心满意</p>
+            </div>
+            <div class="mt-4 flex justify-end">
+                <span class="text-4xl">🚀</span>
+            </div>
+        </div>
+        
+        <!-- 祝福卡片 -->
+        <div class="card bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900 dark:to-purple-900 rounded-3xl p-6 mb-8 shadow-md text-center fade-in">
+            <h2 class="text-2xl font-bold mb-4 text-pink-700 dark:text-pink-200">祝大家周末快乐！</h2>
+            <p class="mb-4">愿每个周末都充满你期待的快乐时光</p>
+            <div class="text-5xl emoji-float">🎉</div>
+        </div>
+        
+        <!-- 作者信息 -->
+        <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md fade-in">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:mr-6 mb-4 md:mb-0">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-r from-amber-200 to-amber-400 dark:from-amber-600 dark:to-amber-800 flex items-center justify-center text-3xl">
+                        ☀️
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold mb-2 text-gray-700 dark:text-gray-300">关于作者</h2>
+                    <p class="text-sm mb-3 text-gray-600 dark:text-gray-400">"希望我的作品像冬天的太阳一样让人温暖"</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-user mr-2 text-gray-500"></i>
+                            <span class="text-sm">冬日可爱know</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-link mr-2 text-gray-500"></i>
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-sm text-primary-600 dark:text-primary-400 hover:underline" target="_blank">微信公众号</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github mr-2 text-gray-500"></i>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-sm text-primary-600 dark:text-primary-400 hover:underline" target="_blank">GitHub</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-bilibili mr-2 text-gray-500"></i>
+                            <a href="https://space.bilibili.com/1943358001" class="text-sm text-primary-600 dark:text-primary-400 hover:underline" target="_blank">哔哩哔哩</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400">
+                <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                <p class="mt-1">原文作者: @杏子心</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储或系统偏好
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', function() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // 悬停效果
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

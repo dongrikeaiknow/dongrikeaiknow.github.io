@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时光絮语 | 中文之美</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        .time-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .dark .time-bg {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        }
+        
+        .quote-mark {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.1;
+            position: absolute;
+        }
+        
+        .quote-start {
+            top: -1rem;
+            left: 0;
+        }
+        
+        .quote-end {
+            bottom: -3rem;
+            right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- 主题切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="themeToggle" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-md hover:shadow-lg transition-all">
+            <i class="fas fa-moon dark:hidden text-yellow-500"></i>
+            <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+        </button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 gradient-text">时光絮语</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-primary-600 dark:text-primary-400 font-medium">首页</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition">古典诗词</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition">现代美文</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition">关于我们</a>
+                </div>
+                <button class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="time-bg py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">时光如水，岁月如歌</h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">探寻那些描述光阴的绝美词句</p>
+            <div class="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-lg inline-block max-w-2xl">
+                <p class="text-lg italic text-gray-700 dark:text-gray-300">"时间不会给你答案，但答案都在时间里。"</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- 分类标题 -->
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-3xl font-bold mb-4">如何把时间流逝写得绝美</h2>
+            <div class="w-24 h-1 bg-primary-500 mx-auto"></div>
+        </div>
+        
+        <!-- 古典描述部分 -->
+        <section class="mb-20 fade-in">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-scroll text-primary-600 dark:text-primary-300 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold">古典的描述</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">岁月骛过，山陵浸远。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《后汉书》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">窗外日光弹指过，席间花影坐前移。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《水浒传》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">桃李春风一杯酒，江湖夜雨十年灯。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《寄黄几复》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">人世光阴花上露。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《青玉案》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+                
+                <!-- 卡片5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">燕子经年梦，梧桐昨暮非。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《雨》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+                
+                <!-- 卡片6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover relative overflow-hidden">
+                    <span class="quote-mark quote-start">"</span>
+                    <p class="text-lg italic mb-4 relative z-10">流光容易把人抛，红了樱桃，绿了芭蕉。</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《一剪梅》</p>
+                    <span class="quote-mark quote-end">"</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 戳心描述部分 -->
+        <section class="mb-20 fade-in">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-heart text-red-600 dark:text-red-300 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold">戳心的描述</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"等你发现时间是贼了，它早已偷光你的选择。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——《给自己的歌》</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm">#现实</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"我们命中碰到的一切美好的东西，都是以秒计算的。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——高尔基</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm">#珍惜</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover md:col-span-2">
+                    <p class="text-lg mb-4">"时光太瘦，指缝太宽，不经意的一瞥就已隔经年。"</p>
+                    <div class="flex items-center justify-end mt-4">
+                        <img src="https://img.icons8.com/ios/50/000000/hourglass-sand-bottom.png" class="h-6 w-6 mr-2 opacity-70" alt="时光">
+                        <span class="inline-block px-3 py-1 rounded-full bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm">#流逝</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 洒脱描述部分 -->
+        <section class="mb-20 fade-in">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-wind text-green-600 dark:text-green-300 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold">洒脱的描述</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"日子推着往前走，能怀一热梦，就赶紧付诸行动，不要迟缓；能唱一首歌，就赶紧吼叫出来，不要犹豫。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm">#行动派</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"刻意去找的东西，往往找不到的，你只管做自己，天下万物的来和去，都有它的时间。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm">#顺其自然</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover md:col-span-2">
+                    <p class="text-lg mb-4">"年复一年，改变了很多，也淡化很多。偶尔回头看，是轻舟已过万重山？大概不是，岁月的尽头也无风雨也无晴。"</p>
+                    <div class="flex items-center justify-end mt-4">
+                        <i class="fas fa-ship text-gray-500 dark:text-gray-400 mr-2"></i>
+                        <span class="inline-block px-3 py-1 rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm">#豁达</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 唯美描述部分 -->
+        <section class="mb-20 fade-in">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-star text-purple-600 dark:text-purple-300 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold">唯美的描述</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"岁月极美，在于它的必然流逝。春花、秋月、夏日、冬雪。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——三毛</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm">#四季</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"每一种事物都在它的时间里拥有自己的时间。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——佩索阿</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm">#哲理</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"一生或许只是几页，不断在修改和誊抄着的诗稿，从青丝到白发，有人还在灯下。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——席慕容</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm">#人生</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"去的尽管去了，来的尽管来着，去来的中间，又怎样地匆匆呢？过去的日子如轻烟，被微风吹散了。"</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-right">——朱自清</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm">#匆匆</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 治愈描述部分 -->
+        <section class="fade-in">
+            <div class="flex items-center mb-8">
+                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                    <i class="fas fa-heartbeat text-blue-600 dark:text-blue-300 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold">治愈的描述</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"时光不声不响，你且不慌不忙。相信缓慢、平和、细水长流的力量，从容平和地以慢慢对抗漫漫。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm">#从容</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"我们习惯了被动卷入时空，逐时间之流，不觉间将欢喜和忧伤的权利部分让渡给了外物。殊不知，站在浩荡的时间面前，每个人都可以拥有更多'赋予'的主动，把心随境转，调换为境由心生。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm">#主动</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"时光匆匆，常常觉得，虽然告别旧事物意味着一种新的开始，但一部分的自己好像也永远停留在了那段时光，帮我们守护着记忆中的人与事，供多年后的我们慢慢回忆。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm">#回忆</span>
+                    </div>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-md card-hover">
+                    <p class="text-lg mb-4">"你所付出的一切都是真的，一切都不会只是白白流逝，它终将以另一种方式呈现在你身上，哪怕时间会比预想的久。"</p>
+                    <div class="mt-4 flex justify-end">
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm">#希望</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">关于作者</h3>
+                    <div class="flex items-center mb-4">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" class="h-10 w-10 mr-3" alt="作者头像">
+                        <div>
+                            <p class="font-medium">冬日可爱know</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">希望我的作品像冬天的太阳一样让人温暖</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition">
+                            <i class="fab fa-weixin text-xl"></i>
+                        </a>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://space.bilibili.com/1943358001" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition">
+                            <i class="fab fa-bilibili text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">© 2023 时光絮语 | 中文之美</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-500">所有内容仅供学习交流使用</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">"岁月老了，听故事的人，成了讲故事的人；讲故事的人，成了故事里的人。"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                html.classList.toggle('dark', e.matches);
+            }
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        // 初始加载时执行一次
+        window.addEventListener('load', fadeInOnScroll);
+        // 滚动时执行
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>

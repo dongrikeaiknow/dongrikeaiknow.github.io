@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情绪稳定的艺术 - 可视化指南</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        }
+        
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 头部区域 -->
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">情绪稳定的艺术</h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                不是没有情绪，而是有能力与情绪共处，让理性与感性和谐共存
+            </p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- 引言卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 rounded-3xl p-8 shadow-lg card-hover">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4">关于情绪稳定的真相</h2>
+                        <p class="text-lg mb-4">
+                            情绪稳定不是没有情绪，搞定情绪也不是靠忍。我理解的"情绪稳定"，不是逆来顺受地说"好的"，不是佯装平静地说"我没事"，也不是忍着火气说"我都说了我没事"。
+                        </p>
+                        <p class="text-lg">
+                            而是在遇到麻烦、受到打击、沟通不了、心里不爽的时候，能够调动积极的情绪去对抗糟糕的情绪，不随便抓狂，不轻易发飙，不自我拉扯。
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <span class="text-8xl emoji-float">🧘</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 误解与真相对比 -->
+        <section class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center">情绪稳定的误解 vs 真相</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 误解 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover border-l-4 border-red-400">
+                    <h3 class="text-xl font-bold mb-4 text-red-500 flex items-center">
+                        <i class="fas fa-times-circle mr-2"></i> 常见误解
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-red-400 mr-2">✖</span>
+                            <span>从来不发脾气，从来不会崩溃</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-400 mr-2">✖</span>
+                            <span>在所有事情面前都很冷静</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-400 mr-2">✖</span>
+                            <span>所有心酸委屈都能憋在心里</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-400 mr-2">✖</span>
+                            <span>铁石心肠，没心没肺</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 真相 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover border-l-4 border-green-400">
+                    <h3 class="text-xl font-bold mb-4 text-green-500 flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i> 真实含义
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-green-400 mr-2">✔</span>
+                            <span>内核很稳，安全感很足，心里很有底气</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-400 mr-2">✔</span>
+                            <span>合理地发泄，平静地表达</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-400 mr-2">✔</span>
+                            <span>懂得包容别人的不同或不认同</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-400 mr-2">✔</span>
+                            <span>遇到问题时脑子灵活，陷入麻烦时保持乐观</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 情绪稳定的本质 -->
+        <section class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center">情绪稳定的八大本质</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">一</div>
+                    <h3 class="text-xl font-bold mb-3">输得起</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        大部分选择都是基于"我喜欢"和"我愿意"，所以能欣然接受最坏的结果。但在尘埃落定之前，你动力十足，你很有耐心，你兴致盎然。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">💪</div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">二</div>
+                    <h3 class="text-xl font-bold mb-3">救自己</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        任何时候都会对自己负责，不带怒气出门，不带怨气工作，不枕着烦恼入睡。就是把简单的食物做得美味，把朴素的服饰穿得舒服。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">🌱</div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">三</div>
+                    <h3 class="text-xl font-bold mb-3">挺自己</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        不把自己归类为纤尘不染的宝玉，也不纵容自己变成扶不上墙的烂泥，而是假设自己是一颗有灵魂的种子。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">🌻</div>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">四</div>
+                    <h3 class="text-xl font-bold mb-3">信自己</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        永远相信自己"我还行""我能行"，竭尽全力之后坦然地承认"我不行"，面对讨厌的人能够大大方方地说"我不想"。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">✨</div>
+                </div>
+                
+                <!-- 卡片5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">五</div>
+                    <h3 class="text-xl font-bold mb-3">想得开</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        总对自己说"我很好""我值得""我超配"，而不是反复念叨"我不好""我不配""我不值得"。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">🌈</div>
+                </div>
+                
+                <!-- 卡片6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="text-primary-500 text-4xl mb-4">六</div>
+                    <h3 class="text-xl font-bold mb-3">不缠斗</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        遇到了粗鲁的家伙，你知道何时该退让，而不是没完没了地纠缠。在仅有一次的生命和已经很幸福的生活面前，所有的退让都无比光荣。
+                    </p>
+                    <div class="mt-4 text-right text-3xl">🕊️</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 实践指南 -->
+        <section class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center">情绪稳定实践指南</h2>
+            <div class="bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900 dark:to-secondary-900 rounded-3xl p-8 shadow-lg card-hover">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span>
+                            简单的事不随便争吵
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">2</span>
+                            复杂的事不一直烦恼
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">3</span>
+                            发火时不乱讲话
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">4</span>
+                            生气时不乱做决定
+                        </h3>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">5</span>
+                            面对风凉话时，不理
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">6</span>
+                            面对恭维时，不信
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">7</span>
+                            面对不理解时，不急
+                        </h3>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="bg-primary-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">8</span>
+                            面对嘲讽时，不气
+                        </h3>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <span class="text-6xl emoji-float">🧭</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 高级技巧 -->
+        <section class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center">情绪稳定高级技巧</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 技巧1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-primary-100 dark:bg-primary-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-brain text-primary-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">不内耗</h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                知道自己该做什么，而不是一直陷在"完了完了""惨了惨了"的情绪里内耗。就是知道自己该舍弃什么，而不是一直停在"为什么""凭什么"的坏逻辑里打转。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 技巧2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-secondary-100 dark:bg-secondary-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-eye text-secondary-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">看得透</h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                不为一句无心的话乱发脾气，不为没有发生的事情提前操心。就是容得下别人的风光，也按得住自己的嚣张。能保持敏感，却会因为思想通透而显得格外豁达。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 技巧3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-primary-100 dark:bg-primary-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-bullseye text-primary-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">有主线</h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                面对挑衅或者不公时，也能继续做自认为要紧的事。因为你明白，他人的诋毁只能代表他人的想法和判断，并不是事实本身。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 技巧4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-secondary-100 dark:bg-secondary-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-gamepad text-secondary-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">玩家心态</h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                抱着玩家心态，专注于自己的主线任务，因为你很清楚，既然是游戏，那最重要的事情是游戏愉快。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 结语 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-r from-primary-200 to-secondary-200 dark:from-primary-800 dark:to-secondary-800 rounded-3xl p-8 shadow-lg card-hover text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6">最后的祝福</h2>
+                <p class="text-xl mb-6">
+                    祝你的人，自由自在；<br>
+                    祝你的忙，不慌不忙；<br>
+                    祝你的海，有帆有岸。
+                </p>
+                <div class="text-6xl">🌟</div>
+            </div>
+        </section>
+        
+        <!-- 作者信息 -->
+        <footer class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg mt-12 fade-in">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                    <div class="bg-gradient-to-r from-primary-300 to-secondary-300 dark:from-primary-700 dark:to-secondary-700 rounded-full w-32 h-32 flex items-center justify-center text-5xl">
+                        ☀️
+                    </div>
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2">冬日可爱know</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">希望我的作品像冬天的太阳一样让人温暖</p>
+                    
+                    <div class="flex justify-center md:justify-start space-x-4 mb-4">
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-3 transition-colors">
+                            <i class="fab fa-weixin text-green-500"></i>
+                        </a>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-3 transition-colors">
+                            <i class="fab fa-github text-gray-800 dark:text-gray-200"></i>
+                        </a>
+                        <a href="https://space.bilibili.com/1943358001" class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-3 transition-colors">
+                            <i class="fab fa-bilibili text-pink-500"></i>
+                        </a>
+                    </div>
+                    
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        &copy; 2023 冬日可爱know. 保留所有权利。
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        // 初始加载时触发一次
+        fadeInOnScroll();
+        
+        // 滚动时触发
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.card-hover');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

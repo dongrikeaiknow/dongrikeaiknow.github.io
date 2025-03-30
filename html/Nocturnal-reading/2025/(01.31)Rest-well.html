@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好好休息的艺术 - 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        warm: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif'],
+                    },
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .quote-mark {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.1;
+            position: absolute;
+        }
+        
+        .quote-start {
+            top: 0;
+            left: 0;
+        }
+        
+        .quote-end {
+            bottom: 0;
+            right: 0;
+        }
+        
+        .rest-option {
+            transition: all 0.3s;
+        }
+        
+        .rest-option:hover {
+            transform: scale(1.05);
+            background-color: rgba(251, 146, 60, 0.1);
+        }
+        
+        .rest-option.selected {
+            background-color: rgba(251, 146, 60, 0.2);
+            border-color: #fb923c;
+        }
+        
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-warm-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+    <!-- 导航栏 -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm py-4 sticky top-0 z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-primary-600 dark:text-primary-400">冬日可爱know</div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 标题区 -->
+        <section class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-warm-700 dark:text-warm-300 mb-4">好好休息的艺术</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">在忙碌的世界里，学会休息是一种珍贵的能力！</p>
+            <div class="mt-8 flex justify-center">
+                <div class="w-16 h-1 bg-primary-500 rounded-full"></div>
+            </div>
+        </section>
+        
+        <!-- 引言卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-br from-warm-100 to-warm-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-md relative overflow-hidden">
+                <div class="absolute top-4 right-4 text-8xl text-warm-200 dark:text-gray-600">🌞</div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold text-warm-800 dark:text-warm-200 mb-4">大年初三，那就祝我们：好好休息！</h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        在这个快节奏的时代，我们常常忘记了休息的真正意义。休息不是懒惰，不是浪费时间，而是为了走更远的路所做的必要准备。让我们一起探索好好休息的艺术吧！
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第一部分：认可休息 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md relative overflow-hidden">
+                <div class="absolute -bottom-4 -right-4 text-9xl text-warm-100 dark:text-gray-700">😌</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                            <span class="text-primary-600 dark:text-primary-400 text-xl font-bold">1</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">你的"停不下来"可能并不是一种有效努力</h2>
+                    </div>
+                    
+                    <div class="pl-16">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            想要好好休息，最首要的一点是——<span class="font-bold text-warm-600 dark:text-warm-400">要认可休息</span>。你有没有一种感觉，一停下来，就觉得心里很不安？好像无所事事是一件很浪费时间，甚至有些羞耻的事。
+                        </p>
+                        
+                        <div class="bg-warm-50 dark:bg-gray-700 rounded-xl p-6 my-6 border-l-4 border-warm-400">
+                            <p class="text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                                "记忆里，爷爷在田地里忙活一上午之后，在晌午的阳光下，悠然坐在田埂上，抽一袋土烟，就着微风，一边看天，一边看云。那是与挥汗如雨的劳作截然相反的悠然时刻，是'休息'两个字最真切的意义。"
+                            </p>
+                        </div>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            在一些人的概念里，忙碌意味着"有价值"，是一个人努力生活的证明。相比之下，休息则显得没那么"有意义"。充实带来满足，休息则代表空虚。
+                        </p>
+                        
+                        <div class="relative bg-primary-50 dark:bg-gray-700 rounded-xl p-6 my-6">
+                            <span class="quote-mark quote-start">"</span>
+                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed relative z-10">
+                                <span class="font-bold">休息不是懒惰。</span>在夏天的某一天里，有时躺在树下的草地上，听水流的潺潺声，或看云飘过蓝天，这绝不是在浪费时间。
+                            </p>
+                            <span class="quote-mark quote-end">"</span>
+                            <p class="text-right text-gray-500 dark:text-gray-400 mt-2">——约翰·拉伯克《生命的用途》</p>
+                        </div>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            近年来的神经科学和心理学研究也表明，休息是一种"能力"，它应该是主动的，正向的。<span class="font-bold text-primary-600 dark:text-primary-400">休息从不是勤奋的敌人，它是努力的一体两面。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第二部分：认清休息 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md relative overflow-hidden">
+                <div class="absolute -bottom-4 -left-4 text-9xl text-warm-100 dark:text-gray-700">🤔</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                            <span class="text-primary-600 dark:text-primary-400 text-xl font-bold">2</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">你以为的休息可能会让你更累</h2>
+                    </div>
+                    
+                    <div class="pl-16">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            好好休息的第二要素，是<span class="font-bold text-warm-600 dark:text-warm-400">认清休息的"真面目"</span>。也许有人觉得，既然是休息，那是不是躺在床上疯狂补觉就可以了呢？倒也并非如此。
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-8 mb-4">你休息的时候都做什么？</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                            <div class="rest-option p-4 border-2 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-3">
+                                        <span class="text-warm-600 dark:text-warm-400">A</span>
+                                    </div>
+                                    <span class="text-gray-700 dark:text-gray-300">刷手机、玩游戏</span>
+                                </div>
+                            </div>
+                            <div class="rest-option p-4 border-2 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-3">
+                                        <span class="text-warm-600 dark:text-warm-400">B</span>
+                                    </div>
+                                    <span class="text-gray-700 dark:text-gray-300">睡懒觉到中午</span>
+                                </div>
+                            </div>
+                            <div class="rest-option p-4 border-2 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-3">
+                                        <span class="text-warm-600 dark:text-warm-400">C</span>
+                                    </div>
+                                    <span class="text-gray-700 dark:text-gray-300">躺着发呆</span>
+                                </div>
+                            </div>
+                            <div class="rest-option p-4 border-2 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-3">
+                                        <span class="text-warm-600 dark:text-warm-400">D</span>
+                                    </div>
+                                    <span class="text-gray-700 dark:text-gray-300">其他方式</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            你可能想不到，这其中的某几项，其实并不是真正意义上的"休息"，做这些事，不但无法让你得到想要的放松，反而会让你越"休"越累。
+                        </p>
+                        
+                        <div class="bg-secondary-50 dark:bg-gray-700 rounded-xl p-6 my-6">
+                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                我们的大脑是一个缜密的系统，其中有一组隐藏的"能量条"。当我们工作、学习时，能量条中正向的部分就会慢慢降低，一旦超过临界点，我们就会感到精力不济，需要通过休息来补能。
+                            </p>
+                        </div>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            但你可能不知道，当你打游戏、玩手机的时候，看似在娱乐，大脑却一刻不停地处理着各种信息，不可能得到休息；而当你以为自己"什么也没做"，只是无所事事地躺着时，大脑其实依然在后台耗电。
+                            <span class="font-bold text-secondary-600 dark:text-secondary-400">反刍和内耗往往也会在此时发生，人很容易emo，变得"越闲越不快乐"。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第三部分：正确休息方法 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md relative overflow-hidden">
+                <div class="absolute -bottom-4 -right-4 text-9xl text-warm-100 dark:text-gray-700">🏃</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                            <span class="text-primary-600 dark:text-primary-400 text-xl font-bold">3</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">"走不动的时候，就跑起来吧"</h2>
+                    </div>
+                    
+                    <div class="pl-16">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            好好休息的第三点，是<span class="font-bold text-warm-600 dark:text-warm-400">找到适合自己的、正确的休息方法</span>。虽然发呆和睡觉可以缓解身体上的疲惫，但大脑想要得到更大的快乐，还需要你去"主动做些什么"。
+                        </p>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed italic">
+                            有一句话说得很好，"当你走不动的时候，不妨跑起来。"当你觉得即便休息也喘不过气，日常被慢性疲劳填满时，不如试试这些事——
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <!-- 方法1 -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-xl p-6">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-200 dark:bg-blue-700 flex items-center justify-center mr-3">
+                                        <span class="text-blue-600 dark:text-blue-300 text-xl">📚</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">沉浸式体验</h3>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                    读一本书，看一部电影，把自己从当下的生活中短暂抽离，也把注意力从日常压力中解放出来，投入镜头之下的世界里。
+                                </p>
+                            </div>
+                            
+                            <!-- 方法2 -->
+                            <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 rounded-xl p-6">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-200 dark:bg-green-700 flex items-center justify-center mr-3">
+                                        <span class="text-green-600 dark:text-green-300 text-xl">🌳</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">自然疗愈</h3>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                    找一个阳光明媚的日子，出去走一走。找一个有陌生感的地方，最好把自己放置于自然中，看看天，看看树，暂且把脑海中的想法放下。
+                                </p>
+                            </div>
+                            
+                            <!-- 方法3 -->
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 rounded-xl p-6">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-200 dark:bg-purple-700 flex items-center justify-center mr-3">
+                                        <span class="text-purple-600 dark:text-purple-300 text-xl">🎨</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">创造性活动</h3>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                    去做一件值得投入的，跟你日常工作和生活有距离感的事情。如果你是脑力劳动者，可以试着去画一幅画，做一个蛋糕，去陶艺工作室亲手烧一个盘子。
+                                </p>
+                            </div>
+                            
+                            <!-- 方法4 -->
+                            <div class="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900 dark:to-red-800 rounded-xl p-6">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-red-200 dark:bg-red-700 flex items-center justify-center mr-3">
+                                        <span class="text-red-600 dark:text-red-300 text-xl">🏃</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">运动释放</h3>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                    去跑步、去健身、去打拳、去跳舞，去做一些挥汗如雨的事情。虽然看似很累，但如果你试着去做就会发现，随着肌肉的拉伸，你的疲惫一扫而空。
+                                </p>
+                            </div>
+                            
+                            <!-- 方法5 -->
+                            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900 dark:to-yellow-800 rounded-xl p-6 md:col-span-2">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-yellow-200 dark:bg-yellow-700 flex items-center justify-center mr-3">
+                                        <span class="text-yellow-600 dark:text-yellow-300 text-xl">❤️</span>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">情感连接</h3>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                    跟爱你和你爱的人在一起，去做任何事。找一个不会同你彼此消耗的人，聊天也好，逛街也好，一起吃饭也好，就算什么都不做只是对坐发呆也是好的。来自他人的关心和注视是天然的能量补充剂，这种温暖的感觉会让你无比确认：我很好，我是安全的，我就在这里。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-warm-50 dark:bg-gray-700 rounded-xl p-6 mt-8 border-l-4 border-warm-400">
+                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                春节是新年的伊始。此时此刻，最适合放下前一年的担子，整理自己的心情，开始新一年的计划，鼓起面对新挑战的勇气。而这一切，要从好的休息开始，<span class="font-bold text-warm-600 dark:text-warm-400">只有休息好了，第二天才能有向着朝阳奔跑的动力。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 总结卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 rounded-3xl p-8 shadow-md relative overflow-hidden">
+                <div class="absolute -bottom-4 -right-4 text-9xl text-primary-100 dark:text-primary-700 opacity-50">✨</div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold text-primary-800 dark:text-primary-200 mb-4">休息的艺术总结</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 rounded-xl p-4">
+                            <div class="text-primary-600 dark:text-primary-400 text-2xl mb-2">1</div>
+                            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">认可休息的价值</h3>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm">休息不是懒惰，而是努力的一体两面</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 rounded-xl p-4">
+                            <div class="text-primary-600 dark:text-primary-400 text-2xl mb-2">2</div>
+                            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">认清休息的本质</h3>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm">不是所有"放松"都能真正恢复能量</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 rounded-xl p-4">
+                            <div class="text-primary-600 dark:text-primary-400 text-2xl mb-2">3</div>
+                            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">找到适合的方法</h3>
+                            <p class="text-gray-700 dark:text-gray-300 text-sm">主动的、正向的休息才能带来真正的恢复</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 作者信息 -->
+    <footer class="bg-white dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-warm-50 dark:bg-gray-700 rounded-3xl p-8 shadow-md">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-warm-200 to-warm-300 dark:from-warm-700 dark:to-warm-800 flex items-center justify-center text-5xl">
+                            ☀️
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-2xl font-bold text-warm-700 dark:text-warm-300 mb-4">关于作者</h2>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            <span class="font-semibold">冬日可爱know</span> - 希望我的作品像冬天的太阳一样让人温暖
+                        </p>
+                        <div class="mb-4">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">原文链接：</p>
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-primary-600 dark:text-primary-400 hover:underline break-all" target="_blank">https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g</a>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400" target="_blank">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400" target="_blank">
+                                <i class="fab fa-bilibili text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600 text-center text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2023 冬日可爱know. 保留所有权利。
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary-500 text-white shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 初始化主题
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 休息选项点击效果
+        const restOptions = document.querySelectorAll('.rest-option');
+        restOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                restOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = 0;
+            fadeInObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

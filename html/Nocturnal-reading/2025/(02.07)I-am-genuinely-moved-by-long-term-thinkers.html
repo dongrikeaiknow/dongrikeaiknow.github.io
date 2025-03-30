@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国产文娱三幻神：长期主义的力量</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        accent: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+                        'serif': ['"Noto Serif SC"', 'Georgia', 'serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .quote-card {
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .quote-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #ef4444 100%);
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 2.5rem;
+            height: calc(100% - 2rem);
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        
+        .dark .timeline-item:not(:last-child):after {
+            background-color: #334155;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0ea5e9;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- 主题切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="relative inline-block w-16 mr-2 align-middle select-none">
+            <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-all duration-200 ease-in-out" />
+            <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-200 ease-in-out"></label>
+        </div>
+        <span class="text-sm font-medium">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+        </span>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm fixed w-full z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">文娱三幻神</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#intro" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition">简介</a>
+                    <a href="#principles" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition">原则</a>
+                    <a href="#quotes" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition">金句</a>
+                    <a href="#timeline" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition">历程</a>
+                    <a href="#author" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition">关于</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 px-4 pb-4 shadow-lg">
+            <div class="pt-2 space-y-2">
+                <a href="#intro" class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">简介</a>
+                <a href="#principles" class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">原则</a>
+                <a href="#quotes" class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">金句</a>
+                <a href="#timeline" class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">历程</a>
+                <a href="#author" class="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="hero-gradient text-white pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 fade-in">国产文娱"三幻神"</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in">长期主义的胜利：梦想与坚持的力量</p>
+            <div class="flex justify-center space-x-4 fade-in">
+                <a href="#intro" class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-full font-medium transition shadow-md">探索故事</a>
+                <a href="#quotes" class="bg-white/20 hover:bg-white/30 px-6 py-3 rounded-full font-medium transition shadow-md">查看金句</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- 简介部分 -->
+        <section id="intro" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">三位80后创作者的故事</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">他们用长期主义的坚持，为中国文娱产业树立了新标杆</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 饺子卡片 -->
+                <div class="card bg-white dark:bg-gray-800 shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-accent-500 to-accent-700 flex items-center justify-center">
+                        <i class="fas fa-film text-white text-6xl opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">饺子</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">《哪吒之魔童降世》导演</p>
+                        <p class="text-gray-700 dark:text-gray-300">"天下之事都不新鲜，所有难做的事都是人做出来的。" 饺子用5年时间打磨一部动画电影，创造了中国动画电影的新高度。</p>
+                    </div>
+                </div>
+                
+                <!-- 郭帆卡片 -->
+                <div class="card bg-white dark:bg-gray-800 shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-700 flex items-center justify-center">
+                        <i class="fas fa-rocket text-white text-6xl opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">郭帆</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">《流浪地球》系列导演</p>
+                        <p class="text-gray-700 dark:text-gray-300">"我希望通过电影工业化为中国电影铺路，这是一条很长的路，但每一步都很重要。" 他用工业化标准推动中国科幻电影发展。</p>
+                    </div>
+                </div>
+                
+                <!-- 冯骥卡片 -->
+                <div class="card bg-white dark:bg-gray-800 shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-secondary-500 to-secondary-700 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-white text-6xl opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">冯骥</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">《黑神话：悟空》制作人</p>
+                        <p class="text-gray-700 dark:text-gray-300">"踏上取经路，比抵达灵山更重要。" 他带领团队用数年时间扫描中国古建筑，只为打造最具中国文化特色的游戏。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 长期主义原则部分 -->
+        <section id="principles" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">长期主义的三大原则</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">从三位创作者身上学到的成功法则</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 原则1 -->
+                <div class="card bg-gradient-to-br from-white/90 to-gray-50 dark:from-gray-800/90 dark:to-gray-900 p-6 shadow-md">
+                    <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mb-6">
+                        <span class="text-primary-600 dark:text-primary-400 text-2xl">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">把喜欢的事情做到极致</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">倾尽所有，不留一丝退路，全身心投入到每一个作品中。对于喜欢的事，要么不做，要做就全力以赴。</p>
+                    <div class="bg-primary-50 dark:bg-primary-900/30 p-4 rounded-lg">
+                        <p class="text-primary-700 dark:text-primary-300 italic">"饺子坚持一定要做观众没看过的、能造成强烈视觉冲击的东西——这样才有价值。"</p>
+                    </div>
+                </div>
+                
+                <!-- 原则2 -->
+                <div class="card bg-gradient-to-br from-white/90 to-gray-50 dark:from-gray-800/90 dark:to-gray-900 p-6 shadow-md">
+                    <div class="w-16 h-16 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mb-6">
+                        <span class="text-secondary-600 dark:text-secondary-400 text-2xl">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">逼出自己都不知道的潜力</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">很多潜力都是被逼出来的，走出第一步后，你总会找到方法去解决问题。勇敢走出舒适区，才能看见更多可能。</p>
+                    <div class="bg-secondary-50 dark:bg-secondary-900/30 p-4 rounded-lg">
+                        <p class="text-secondary-700 dark:text-secondary-300 italic">"饺子坦言，以往所仰望的那些大山，其实也是'死磕'、一步一步走出来的。"</p>
+                    </div>
+                </div>
+                
+                <!-- 原则3 -->
+                <div class="card bg-gradient-to-br from-white/90 to-gray-50 dark:from-gray-800/90 dark:to-gray-900 p-6 shadow-md">
+                    <div class="w-16 h-16 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center mb-6">
+                        <span class="text-accent-600 dark:text-accent-400 text-2xl">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">想做就去做，绝不内耗</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">把怀疑自己有无能力做好，担心失败的战战兢兢的时间，都让给具体的行动。很多事情都要趁早。</p>
+                    <div class="bg-accent-50 dark:bg-accent-900/30 p-4 rounded-lg">
+                        <p class="text-accent-700 dark:text-accent-300 italic">"郭帆：'我们既然能够寻找到那个目标和热爱的东西，如果这个东西又值得的话，那就冲向它'"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 金句部分 -->
+        <section id="quotes" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">创作者金句</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">激励人心的智慧箴言</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 冯骥金句 -->
+                <div class="quote-card border-l-4 border-primary-500 bg-white dark:bg-gray-800 p-6 shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mr-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                                <i class="fas fa-quote-left text-primary-500 dark:text-primary-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
+                                "踏上取经路，比抵达灵山更重要。"
+                            </blockquote>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <p class="font-medium">冯骥</p>
+                                <p>《黑神话：悟空》制作人</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 郭帆金句 -->
+                <div class="quote-card border-l-4 border-secondary-500 bg-white dark:bg-gray-800 p-6 shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mr-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center">
+                                <i class="fas fa-quote-left text-secondary-500 dark:text-secondary-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
+                                "我希望通过电影工业化为中国电影铺路，这是一条很长的路，但每一步都很重要。"
+                            </blockquote>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <p class="font-medium">郭帆</p>
+                                <p>《流浪地球》导演</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 饺子金句1 -->
+                <div class="quote-card border-l-4 border-accent-500 bg-white dark:bg-gray-800 p-6 shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mr-4">
+                            <div class="w-12 h-12 rounded-full bg-accent-100 dark:bg-accent-900 flex items-center justify-center">
+                                <i class="fas fa-quote-left text-accent-500 dark:text-accent-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
+                                "天下之事都不新鲜，所有难做的事都是人做出来的。"
+                            </blockquote>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <p class="font-medium">饺子</p>
+                                <p>《哪吒》导演</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 饺子金句2 -->
+                <div class="quote-card border-l-4 border-primary-500 bg-white dark:bg-gray-800 p-6 shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mr-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center">
+                                <i class="fas fa-quote-left text-primary-500 dark:text-primary-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
+                                "我没想过退休，因为如果不干这事儿，生命就会衰败得很快。我希望能一直做动画，哪怕到生命最后的那一刻。"
+                            </blockquote>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <p class="font-medium">饺子</p>
+                                <p>《哪吒》导演</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 时间线部分 -->
+        <section id="timeline" class="mb-20 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">创作历程</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">长期主义的实践之路</p>
+            </div>
+            
+            <div class="relative max-w-3xl mx-auto">
+                <!-- 冯骥时间线 -->
+                <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-secondary-500 flex items-center justify-center z-10">
+                        <i class="fas fa-gamepad text-white"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-2">冯骥与《黑神话：悟空》</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">2017-2024</p>
+                        <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                            <li>自建扫描团队，跑遍全国100多个地方扫描古建筑</li>
+                            <li>用三四年时间为游戏赋予极强的文化色彩</li>
+                            <li>打造超逼真的中国地貌和建筑场景</li>
+                            <li>坚持"踏上取经路比抵达灵山更重要"的理念</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 郭帆时间线 -->
+                <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center z-10">
+                        <i class="fas fa-rocket text-white"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-2">郭帆与《流浪地球》</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">2015-2023</p>
+                        <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                            <li>分镜绘制9989张图文</li>
+                            <li>动态预演832个镜头</li>
+                            <li>虚拟拍摄2114个镜头</li>
+                            <li>坚持"为中国电影工业化铺路"的信念</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 饺子时间线 -->
+                <div class="timeline-item relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center z-10">
+                        <i class="fas fa-film text-white"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-2">饺子与《哪吒之魔童降世》</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">2014-2019</p>
+                        <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                            <li>5年时间打磨一部动画电影</li>
+                            <li>坚持做观众没看过的、能造成强烈视觉冲击的内容</li>
+                            <li>相信"所有难做的事都是人做出来的"</li>
+                            <li>创造了中国动画电影票房新纪录</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 总结部分 -->
+        <section class="mb-20">
+            <div class="bg-gradient-to-r from-primary-500 to-secondary-600 rounded-2xl p-8 text-white">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">长期主义的胜利</h2>
+                    <p class="text-lg mb-6">努力很简单，但也很难。简单在它纯粹，难在坚持不易。这也是我们为什么永远为长期主义者而感动，他们跋涉的耐力、克难的毅力、无畏的战力，都是摘得硕果的前置条件。</p>
+                    <p class="text-lg font-medium">深耕自己，不惧长路，才是变强大的根本。勇敢向前走，你迈出的每一步，都有它的来路和意义。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 作者信息 -->
+    <footer id="author" class="bg-white dark:bg-gray-800 py-12 scroll-mt-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">关于作者</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400">希望我的作品像冬天的太阳一样让人温暖</p>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 max-w-3xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center shadow-md">
+                            <i class="fas fa-sun text-4xl text-orange-500"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold mb-2">冬日可爱know</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">专注于创作有温度、有深度的内容，分享长期主义的生活哲学。</p>
+                        
+                        <div class="flex space-x-4 justify-center md:justify-start">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition" title="微信公众号">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500 transition" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900 hover:text-pink-600 dark:hover:text-pink-400 transition" title="哔哩哔哩">
+                                <i class="fab fa-bilibili"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 text-gray-500 dark:text-gray-400 text-sm">
+                <p>© 2023 冬日可爱know. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换
+        const toggle = document.getElementById('toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+            toggle.checked = true;
+        } else {
+            document.documentElement.classList.remove('dark');
+            toggle.checked = false;
+        }
+        
+        // 切换主题
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // 如果是移动端菜单，点击后隐藏菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>

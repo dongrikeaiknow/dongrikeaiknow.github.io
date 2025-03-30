@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提问的艺术与思考 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        
+        .quote-mark {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.2;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .notebook-border {
+            border-left: 4px solid #f43f5e;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
+    <!-- 主题切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="themeToggle" class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all">
+            <i id="themeIcon" class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+        </button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-600 dark:text-primary-400">提问的艺术与思考</h1>
+            <div class="flex space-x-4">
+                <a href="#problem" class="hover:text-primary-600 dark:hover:text-primary-400 transition">问题现象</a>
+                <a href="#reason" class="hover:text-primary-600 dark:hover:text-primary-400 transition">原因分析</a>
+                <a href="#solution" class="hover:text-primary-600 dark:hover:text-primary-400 transition">解决建议</a>
+                <a href="#author" class="hover:text-primary-600 dark:hover:text-primary-400 transition">关于作者</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 封面卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="gradient-bg dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-lg card-hover notebook-border">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">你是个会提问的人吗？</h1>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+                    探索提问的困境与突破之道，重新发现思考的力量！
+                </p>
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-question text-3xl text-primary-600 dark:text-primary-400"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">"真正的提问其实不需要'正确'，它更像是深夜便利店里的热咖啡，握在手心的温度比里面的液体更加重要。"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 问题现象部分 -->
+        <section id="problem" class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center text-primary-700 dark:text-primary-300">🤔 我们为什么不会提问？</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-secret text-xl text-red-600 dark:text-red-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">"我想直接消失"</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        "无论是讲座还是听小组汇报，我都无法做那个听完后有所感悟、想要反驳或更深入理解的人。每次老师问有没有人想要提问，我都想直接消失。"
+                    </p>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
+                        <p class="italic text-gray-700 dark:text-gray-300">—— 网友@罗密欧与忽必烈</p>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">海绵式思维</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        生活里"观点感不强"的人像一块海绵，默默吸收着世界的雨水，却从不抖落雨滴。很多东西听完后，会觉得挺有道理的，但仅此而已，听听就过了，好像既不认同，也不反对。
+                    </p>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-meh text-xl text-yellow-600 dark:text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">中立态度</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        "对于一切灌输到我脑海里的事情和观念，我好像都觉得'嗯有道理'或者'没什么有趣的地方'，虽然不有趣，但也不是错误的观点，所以我也不会不支持或去反驳。"
+                    </p>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-xl text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">普遍现象</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        评论区里不少其他网友也有同感，生活里"观点感不强"的人好像真的还挺多的。他们缺乏批判性思考，对听到的内容既不认同也不反对。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 原因分析部分 -->
+        <section id="reason" class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center text-primary-700 dark:text-primary-300">🔍 为什么会这样？</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="relative">
+                        <span class="quote-mark">"</span>
+                        <div class="pl-8">
+                            <h3 class="text-xl font-semibold mb-4">知识积累不足</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                我们没有积累关于这个方向的系统性的知识，因为不了解，所以不知道该问什么，不知道思维可以往哪些角度去延伸。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="relative">
+                        <span class="quote-mark">"</span>
+                        <div class="pl-8">
+                            <h3 class="text-xl font-semibold mb-4">提问羞耻感</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                "我这个问题是不是很蠢？别人会不会觉得我怎么连这个都不知道？其他人会不会笑话我？"在这种自尊的驱使下，很多人就渐渐不提问了。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="relative">
+                        <span class="quote-mark">"</span>
+                        <div class="pl-8">
+                            <h3 class="text-xl font-semibold mb-4">AI时代的挑战</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                当AI越来越强大，当它可以为我们提供很多答案时，你如何提问、你提问的质量就显得尤为重要了，它决定着你能否得到你想要的回答。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="relative">
+                        <span class="quote-mark">"</span>
+                        <div class="pl-8">
+                            <h3 class="text-xl font-semibold mb-4">主动的倾听者</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                那些"不提问"的人，也许不是害羞，也不是没有立场，而是他们选择做一个倾听者，这也是一种温柔。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 解决建议部分 -->
+        <section id="solution" class="mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-8 text-center text-primary-700 dark:text-primary-300">💡 如何培养提问能力？</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-4">
+                            <i class="fas fa-child text-2xl text-purple-600 dark:text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">1. 保持对世界的好奇</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+                            所有好问题，归根结底都是对世界的温柔触碰和永恒好奇。为什么小孩子的问题特别多？最重要的就是他们对一切都感到新鲜和好奇。
+                        </p>
+                        <div class="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4">
+                            <p class="text-purple-700 dark:text-purple-300 font-medium">
+                                "你是不是真的关心花如何开叶为何落？你是不是真的关心这个世界的运转方式？"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mb-4">
+                            <i class="fas fa-comment-dots text-2xl text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">2. "虽然...但是..."练习</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+                            尝试在"认同"前加一个"虽然"，尝试在"不认同"后做一次"我的陈述"。这都是在为观点开一扇新的窗。
+                        </p>
+                        <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-4">
+                            <p class="text-indigo-700 dark:text-indigo-300 font-medium">
+                                "当大脑逐渐习惯这种认知的碰撞和摩擦，提问会转化为思维跃迁的跳板！"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="w-16 h-16 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mb-4">
+                            <i class="fas fa-lightbulb text-2xl text-pink-600 dark:text-pink-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">3. 提出荒诞问题</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+                            练习提出一些"看似荒诞的问题"。比如："如果李白有5G，他还会'举杯邀明月，对影成三人'吗？他会不会选择开个直播？"
+                        </p>
+                        <div class="bg-pink-50 dark:bg-pink-900/30 rounded-lg p-4">
+                            <p class="text-pink-700 dark:text-pink-300 font-medium">
+                                "这些看似可笑的问题，会慢慢撬开你的思维！"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 总结部分 -->
+        <section class="mb-12 fade-in">
+            <div class="gradient-bg dark:bg-gray-800 rounded-2xl p-8 shadow-lg card-hover">
+                <div class="text-center max-w-3xl mx-auto">
+                    <i class="fas fa-quote-left text-4xl text-primary-600 dark:text-primary-400 opacity-20 mb-4"></i>
+                    <blockquote class="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-6">
+                        勇敢去发出你的疑问吧，世界是一面写满答案的墙。
+                    </blockquote>
+                    <div class="w-20 h-1 bg-primary-600 dark:bg-primary-400 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        提问不需要完美，重要的是保持思考的习惯和对世界的好奇心。随着知识的积累和练习的增加，提问的能力自然会提高。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 作者信息 -->
+    <footer id="author" class="bg-white dark:bg-gray-800 py-12 fade-in">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-inner">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center shadow-lg">
+                            <i class="fas fa-sun text-5xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-2xl font-bold mb-4 text-center md:text-left">冬日可爱know</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-center md:text-left">
+                            "希望我的作品像冬天的太阳一样让人温暖"
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" target="_blank" class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition flex items-center">
+                                <i class="fab fa-weixin mr-2"></i> 微信公众号
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" target="_blank" class="px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition flex items-center">
+                                <i class="fab fa-github mr-2"></i> GitHub
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" target="_blank" class="px-4 py-2 bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 rounded-full hover:bg-pink-200 dark:hover:bg-pink-800 transition flex items-center">
+                                <i class="fab fa-bilibili mr-2"></i> Bilibili
+                            </a>
+                        </div>
+                        <div class="text-center md:text-left text-sm text-gray-500 dark:text-gray-400">
+                            &copy; 2023 冬日可爱know. 保留所有权利。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // 初始加载时触发一次
+        window.addEventListener('load', fadeInOnScroll);
+        // 滚动时触发
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>

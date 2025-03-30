@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>糖果的温暖力量 | 办公室里的甜蜜连接</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        candyPink: '#FFB6C1',
+                        softPeach: '#FFDAB9',
+                        mintGreen: '#98FF98',
+                        lavender: '#E6E6FA',
+                        skyBlue: '#87CEFA',
+                        warmYellow: '#FFDEAD',
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFF5F5 0%, #F0FFF0 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .candy-card {
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .dark .candy-card {
+            background: rgba(30, 30, 46, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- 导航栏 -->
+    <nav class="sticky-nav bg-white/80 dark:bg-gray-900/80 shadow-sm py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-candy-cane text-2xl text-candyPink"></i>
+                <h1 class="text-xl font-bold">糖果的温暖力量</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- 标题部分 -->
+        <section class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-candyPink">糖果融化职场坚冰</h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                一个小小的糖盒如何成为办公室里的暖心连接？🍬
+            </p>
+        </section>
+        
+        <!-- 引言卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(255, 214, 214, 0.3);">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                        <h2 class="text-3xl font-bold mb-4 text-rose-800 dark:text-rose-200">甜蜜的破冰时刻 ❤️</h2>
+                        <p class="text-lg mb-4">
+                            在办公桌上放了一个糖盒后，43岁的kenny发现了一个温暖世界的秘密...
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            "曾经想过，可能有些事，有些人，会是长久的，却终究都抵不过时间和距离的摧残。所以身边总是会带着糖，各种各样的糖，但只会自己偷偷地吃。"
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="w-48 h-48 rounded-full bg-gradient-to-br from-candyPink to-softPeach flex items-center justify-center shadow-lg">
+                            <i class="fas fa-candy-cane text-6xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 故事转折点 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(216, 252, 216, 0.3);">
+                <h2 class="text-3xl font-bold mb-6 text-emerald-800 dark:text-emerald-200">"你要吃糖吗？" 🍭</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="mb-4 text-lg">
+                            "直到半年前，和一个同事因为流程的事几乎要吵起来。不知道为什么，我突然就问她，你要吃糖吗？"
+                        </p>
+                        <p class="mb-4">
+                            "她可能以为自己听错了，睁大了眼睛问我：'你说什么？？'"
+                        </p>
+                        <p class="mb-4 font-bold text-emerald-700 dark:text-emerald-300">
+                            这个简单的提问，成为了kenny与同事关系转变的奇妙转折点！
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="relative w-64 h-64">
+                            <div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-candyPink opacity-70 animate-bounce"></div>
+                            <div class="absolute top-8 right-8 w-20 h-20 rounded-full bg-softPeach opacity-70 animate-bounce" style="animation-delay: 0.2s;"></div>
+                            <div class="absolute bottom-0 left-12 w-24 h-24 rounded-full bg-mintGreen opacity-70 animate-bounce" style="animation-delay: 0.4s;"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-question text-6xl text-rose-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 转变过程 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(214, 234, 252, 0.3);">
+                <h2 class="text-3xl font-bold mb-6 text-sky-800 dark:text-sky-200">从私藏到分享的甜蜜转变 🍫</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="text-4xl mb-4 text-candyPink">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">私藏阶段</h3>
+                        <p class="text-sm">"只会自己偷偷地吃"</p>
+                    </div>
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="text-4xl mb-4 text-softPeach">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">首次分享</h3>
+                        <p class="text-sm">"这是我第一次看到她没有防备的样子"</p>
+                    </div>
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="text-4xl mb-4 text-mintGreen">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">开放分享</h3>
+                        <p class="text-sm">"把糖盒大方地放在桌上，给各种人送糖"</p>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <p class="text-lg font-bold text-center text-sky-700 dark:text-sky-300">
+                        "我记住了如此多被糖果融化后松弛温柔的表情"
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 影响范围 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(255, 236, 214, 0.3);">
+                <h2 class="text-3xl font-bold mb-6 text-amber-800 dark:text-amber-200">甜蜜涟漪效应 🍬</h2>
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <div class="relative h-64">
+                            <div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-amber-200 flex items-center justify-center shadow-md">
+                                <i class="fas fa-user-tie text-xl"></i>
+                            </div>
+                            <div class="absolute top-12 right-4 w-20 h-20 rounded-full bg-amber-300 flex items-center justify-center shadow-md">
+                                <i class="fas fa-user-graduate text-xl"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-8 w-24 h-24 rounded-full bg-amber-400 flex items-center justify-center shadow-md">
+                                <i class="fas fa-user-nurse text-2xl"></i>
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center shadow-md">
+                                <i class="fas fa-user text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="inline-block w-8 h-8 rounded-full bg-amber-200 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-amber-700"></i>
+                                </span>
+                                <span>帮助我的人</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-8 h-8 rounded-full bg-amber-300 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-amber-700"></i>
+                                </span>
+                                <span>看不上我的人</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-amber-700"></i>
+                                </span>
+                                <span>年轻的新人</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-amber-700"></i>
+                                </span>
+                                <span>多年的老同事</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-amber-100"></i>
+                                </span>
+                                <span>清洁阿姨</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 网友评论 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(230, 214, 252, 0.3);">
+                <h2 class="text-3xl font-bold mb-6 text-purple-800 dark:text-purple-200">甜蜜共鸣 💬</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                <i class="fas fa-user text-purple-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">网友A</h4>
+                                <p class="text-xs text-gray-500">豆瓣网友</p>
+                            </div>
+                        </div>
+                        <p class="italic text-gray-700 dark:text-gray-300">
+                            "谢谢作者，我好像也尝到了你的糖果。"
+                        </p>
+                    </div>
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-300 flex items-center justify-center mr-3">
+                                <i class="fas fa-user text-purple-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">网友B</h4>
+                                <p class="text-xs text-gray-500">豆瓣网友</p>
+                            </div>
+                        </div>
+                        <p class="italic text-gray-700 dark:text-gray-300">
+                            "之前工作中，我认为同事只是同事，直到去年夏天，有一个女孩子调过来和我对接，她常常投喂我..."
+                        </p>
+                    </div>
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-400 flex items-center justify-center mr-3">
+                                <i class="fas fa-user text-purple-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">妤姬姬酱</h4>
+                                <p class="text-xs text-gray-500">社区工作者</p>
+                            </div>
+                        </div>
+                        <p class="italic text-gray-700 dark:text-gray-300">
+                            "我在社区上班，工位上长期放着各类零食...吃完了聊完了，感觉又有对抗世界的勇气了。"
+                        </p>
+                    </div>
+                    <div class="bg-white/80 dark:bg-gray-800/80 p-6 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center mr-3">
+                                <i class="fas fa-user text-purple-100"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">DeepSeek AI</h4>
+                                <p class="text-xs text-gray-500">人工智能</p>
+                            </div>
+                        </div>
+                        <p class="italic text-gray-700 dark:text-gray-300">
+                            "分享行为本身就是一种友好的信号，能够减少社交焦虑，增加互动机会。"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 核心启示 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover" style="background-color: rgba(255, 214, 214, 0.3);">
+                <h2 class="text-3xl font-bold mb-6 text-rose-800 dark:text-rose-200">甜蜜启示录 ✨</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="mb-6 p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl">
+                            <h3 class="font-bold mb-2 text-lg flex items-center">
+                                <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                                关于内向者的分享
+                            </h3>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                "其实对于内向者而言，主动分享不在于行为本身的'难'，而在于你是否允许关系流动。"
+                            </p>
+                        </div>
+                        <div class="p-4 bg-white/80 dark:bg-gray-800/80 rounded-xl">
+                            <h3 class="font-bold mb-2 text-lg flex items-center">
+                                <i class="fas fa-heart mr-2 text-red-500"></i>
+                                关于爱的力量
+                            </h3>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                "爱，是化解一切疏离与困难的方法。生活很辛苦，疲惫的时候，记得给自己一个喘息的机会..."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="relative w-64 h-64">
+                            <div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-candyPink flex items-center justify-center animate-pulse">
+                                <i class="fas fa-heart text-white"></i>
+                            </div>
+                            <div class="absolute top-8 right-8 w-20 h-20 rounded-full bg-softPeach flex items-center justify-center animate-pulse" style="animation-delay: 0.2s;">
+                                <i class="fas fa-smile text-white"></i>
+                            </div>
+                            <div class="absolute bottom-0 left-12 w-24 h-24 rounded-full bg-mintGreen flex items-center justify-center animate-pulse" style="animation-delay: 0.4s;">
+                                <i class="fas fa-hands-helping text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-xl font-bold text-rose-700 dark:text-rose-300">
+                        "因为这些温柔的联结，所以人间很有意思。"
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 行动号召 -->
+        <section class="mb-12 fade-in">
+            <div class="candy-card p-8 card-hover text-center" style="background-color: rgba(214, 252, 239, 0.3);">
+                <h2 class="text-3xl font-bold mb-4 text-teal-800 dark:text-teal-200">你准备好分享甜蜜了吗？ 🍯</h2>
+                <p class="text-xl mb-6 max-w-2xl mx-auto">
+                    一个小小的糖果，可以融化多少人际关系的坚冰？
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <button class="px-6 py-3 bg-candyPink hover:bg-rose-400 text-white rounded-full font-bold transition transform hover:scale-105">
+                        <i class="fas fa-candy-cane mr-2"></i>开始分享甜蜜
+                    </button>
+                    <button class="px-6 py-3 bg-mintGreen hover:bg-green-400 text-white rounded-full font-bold transition transform hover:scale-105">
+                        <i class="fas fa-heart mr-2"></i>传递温暖
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="bg-white/80 dark:bg-gray-900/80 py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4 flex items-center justify-center">
+                    <i class="fas fa-sun mr-2 text-amber-500"></i>
+                    冬日可爱know
+                    <i class="fas fa-snowflake ml-2 text-blue-400"></i>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    希望我的作品像冬天的太阳一样让人温暖
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-weixin text-green-500"></i>
+                    </a>
+                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-bilibili text-blue-500"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                <p class="mt-2">故事来源：豆瓣网友kenny的分享</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        // 初始加载时触发一次
+        window.addEventListener('load', fadeInOnScroll);
+        // 滚动时触发
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>

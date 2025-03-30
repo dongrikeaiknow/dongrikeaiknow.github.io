@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《哪吒之魔童闹海》经典台词赏析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'Georgia', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .quote-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .theme-toggle {
+            transition: transform 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-dark-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="min-h-screen">
+        <!-- 导航栏 -->
+        <nav class="bg-white dark:bg-dark-800 shadow-sm py-4 px-6 sticky top-0 z-10">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                    <i class="fas fa-dragon mr-2"></i>哪吒之魔童闹海
+                </h1>
+                <button id="themeToggle" class="theme-toggle p-2 rounded-full bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- 英雄区域 -->
+        <header class="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-16 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-pulse">经典台词赏析</h1>
+                <p class="text-xl mb-8">"我命由我不由天"的震撼续作！感受电影中那些打动我们的情感力量和精神力量！</p>
+                <div class="scroll-indicator text-2xl">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 主要内容 -->
+        <main class="max-w-6xl mx-auto py-12 px-6">
+            <!-- 引言 -->
+            <section class="mb-16 fade-in">
+                <div class="bg-white dark:bg-dark-800 rounded-3xl p-8 shadow-lg">
+                    <p class="text-lg leading-relaxed mb-6">
+                        五年前，"魔童"哪吒横空出世，一句"我命由我不由天"，彻底点燃了观众的热血！如今，续作《哪吒之魔童闹海》上映，依旧好评如潮，票房一路走高！
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        除了让人惊叹的视觉效果，电影中各个性格迥异的角色及其台词也被大家津津乐道。今天，让我们一起重温电影中那些打动我们的经典台词，感受其中的情感力量和精神力量！
+                    </p>
+                </div>
+            </section>
+            
+            <!-- 台词卡片 -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- 台词1 -->
+                <div class="quote-card bg-gradient-to-br from-primary-50 to-primary-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-primary-500 dark:text-primary-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        若前方无路，我便踏出一条路！若天理不容，我便扭转这乾坤！
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            导演饺子说，第一部里，哪吒与身份的偏见对抗；第二部里，哪吒走向更大的世界后发现规则的不公，摆脱束缚后涅槃觉醒，并试图去改变这一切。
+                            <span class="font-bold text-primary-600 dark:text-primary-400">这句台词既是哪吒对不公平规则的"愤怒"，也是他誓要打破这规则的"檄文"，更是我们每个人心中不甘平凡的"呐喊"。</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词2 -->
+                <div class="quote-card bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-secondary-500 dark:text-secondary-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        以前我一直在躲、在藏，直到无路可走，我才明白该如何面对这个世界。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            第一部里，哪吒因为"魔丸"的身份，被父母和师父禁锢在家里；第二部里，为了不暴露魔丸的身份，哪吒在开始也选择隐藏。
+                            <span class="font-bold text-secondary-600 dark:text-secondary-400">"我与我周旋久，宁做我"，唯有直面自己，直面世界，才有出路。</span>
+                            就像鲁迅所言："真的勇士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。"
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词3 -->
+                <div class="quote-card bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-yellow-500 dark:text-yellow-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        这些年我天天都用功，从没偷过懒哦。哥就是我的榜样！
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            申公豹这个第一部里偏"反派"的角色，却在第二部贡献了最多的泪点。他勤勉、上进、爱家人，
+                            <span class="font-bold text-yellow-600 dark:text-yellow-400">网友说他是"家乡的小骄傲"，是"很多积极向上、努力拼搏的普通人的写照"。</span>
+                            五年前申公豹说的"人心中的成见是一座大山"，在五年后我们误会申公豹的那一刻形成了完美的闭环。这，是角色带给我们的自省。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词4 -->
+                <div class="quote-card bg-gradient-to-br from-pink-50 to-pink-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-pink-500 dark:text-pink-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        你说我这形象，会不会给人第一印象不太好啊？
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            导演饺子说："<span class="font-bold text-pink-600 dark:text-pink-400">内心要强大到什么份上，才能完全不管别人的评价。</span>真实的人性是复杂的。别人说你错了，说多了，说一百遍，你就慢慢地会开始自我怀疑。"
+                            其实生活中很多时候也这样，安慰别人一套一套的，到自己身上就拿不定主意了。但没关系，那也是我们真实的一部分。何况，我们吒儿只有三岁，正是敏感的年纪呢，明明超可爱的好吧！
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词5 -->
+                <div class="quote-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-purple-500 dark:text-purple-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        太好了，还剩一点点！留得青山在，不怕没柴烧。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            石矶娘娘出场只有不到五分钟，但绝对是最有魅力的角色之一！她不内耗，打得过就打，打不过就跑；她很乐观，被打得七零八落后，第一反应不是"只剩下一点点了"，而是"太好了，还剩一点点"……
+                            <span class="font-bold text-purple-600 dark:text-purple-400">在如今大家外貌焦虑、精神内耗都比较普遍的情况下，这样的石矶娘娘难怪能收获这么多喜爱！</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词6 -->
+                <div class="quote-card bg-gradient-to-br from-red-50 to-red-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-red-500 dark:text-red-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        和你度过的每一天，娘都很开心，娘从没在乎过，你是仙是魔，娘只知道，你是娘的儿。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            第一部里，魔丸转世的哪吒被身边人避之不及，母亲殷夫人却拼了命也要将他保住；第二部里，
+                            <span class="font-bold text-red-600 dark:text-red-400">那个因为哪吒的傲娇而没能完成的拥抱，最后以一种无比戳心的方式还了回来。</span>
+                            母爱在这一刻如此具象——即使你浑身是刺，妈妈也会不顾一切去拥抱你。世人眼光各异，唯有娘的爱始终如一。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词7 -->
+                <div class="quote-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-blue-500 dark:text-blue-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        父王只是想用自己的经验，为你谋个幸福，但现在看来，父辈的经验毕竟是过往，未必全对，你的路还需你去闯。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            第一部的敖丙听从于父命，那句"你的成败，关乎全族命运"是责任，更是巨大的压力。而在第二部里，是父亲改变了，
+                            <span class="font-bold text-blue-600 dark:text-blue-400">他认识到只要是敖丙心中认定的事，他迟早会去做，也认识到自己给了敖丙太多压力。</span>
+                            一个会反思的父亲会给你最大的尊重和平等，爱是保护，更是放手。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词8 -->
+                <div class="quote-card bg-gradient-to-br from-green-50 to-green-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-green-500 dark:text-green-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        既然他们要我们的命，那我们就用这条命跟他们拼了。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            影片中，有一个非常震撼的万妖冲鼎的场面，即使身负枷锁，即使明知会死，妖兽们依然义无反顾、拼尽全力、奋力一搏。
+                            <span class="font-bold text-green-600 dark:text-green-400">生命有压迫，生命就会寻找出路。</span>
+                            导演说："哪怕最后努力是毫无意义的，但生命的意义在于过程，而不是结果。每一个人都是自己生命的主角，挣扎是不能停的。"
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词9 -->
+                <div class="quote-card bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-indigo-500 dark:text-indigo-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        "难道你还想改变这世界？" "我想试试。"
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            时间消磨了东海龙王对抗世界的勇气，却没能掐灭少年心中的火焰。少年并不是不知道自己要面对什么，但那又如何，"我想试试"！
+                            <span class="font-bold text-indigo-600 dark:text-indigo-400">真好啊，不试试怎么知道行不行呢，世界不是只有依附强者这一条路，总要有人打破枷锁。</span>
+                            就像导演说的："大家喜欢的就是哪吒和敖丙这种叛逆、执着、本真的少年气。"
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 台词10 -->
+                <div class="quote-card bg-gradient-to-br from-teal-50 to-teal-100 dark:from-dark-700 dark:to-dark-800 rounded-3xl p-8 shadow-md fade-in">
+                    <div class="text-5xl text-teal-500 dark:text-teal-400 mb-4">"</div>
+                    <blockquote class="text-xl font-serif font-medium mb-6">
+                        因为我们都太年轻，不知天高地厚。
+                    </blockquote>
+                    <div class="bg-white dark:bg-dark-600 rounded-xl p-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            这是整部电影里最喜欢的台词，出现在电影最后，当时哪吒的样子，正是这句台词最贴切的写照——
+                            <span class="font-bold text-teal-600 dark:text-teal-400">年轻气盛，不知天高地厚。</span>
+                            我们喜爱哪吒，喜爱的不就是这份不屈天命、无所畏惧的勇气吗？新年，年岁增长，阅历丰厚的路途上，愿你我仍然高举年轻的酒杯，拥有不知天高地厚的权利！
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 总结 -->
+            <section class="mb-16 fade-in">
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-3xl p-8 shadow-lg">
+                    <h2 class="text-3xl font-bold mb-6">为什么哪吒让我们如此热血沸腾？</h2>
+                    <p class="text-lg leading-relaxed mb-4">
+                        也许是因为，长大后的我们多少向世界做了些妥协，接受了一些也许不公但被视为理所当然的规则，也渐渐消磨了改变世界的锐气。
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        但哪吒，用他的叛逆、反抗、不服，再一次点燃了我们心中未曾消亡的少年气！这就是《哪吒之魔童闹海》带给我们最宝贵的精神礼物！
+                    </p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- 页脚 -->
+        <footer class="bg-white dark:bg-dark-800 py-12 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-gray-100 dark:bg-dark-700 rounded-3xl p-8 shadow-inner">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-6 md:mb-0 text-center">
+                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-400 to-secondary-400 flex items-center justify-center text-5xl text-white mb-4">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">冬日可爱know</h3>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h2 class="text-2xl font-bold mb-4">关于作者</h2>
+                            <p class="mb-4">
+                                <i class="fas fa-quote-left text-gray-400 mr-2"></i>
+                                希望我的作品像冬天的太阳一样让人温暖
+                            </p>
+                            <div class="mb-6">
+                                <h3 class="text-lg font-semibold mb-2">社交媒体</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="bg-gray-200 dark:bg-dark-600 hover:bg-gray-300 dark:hover:bg-dark-500 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                                        <i class="fab fa-weixin mr-2"></i>微信公众号
+                                    </a>
+                                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="bg-gray-200 dark:bg-dark-600 hover:bg-gray-300 dark:hover:bg-dark-500 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                                        <i class="fab fa-github mr-2"></i>GitHub
+                                    </a>
+                                    <a href="https://space.bilibili.com/1943358001" class="bg-gray-200 dark:bg-dark-600 hover:bg-gray-300 dark:hover:bg-dark-500 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                                        <i class="fab fa-bilibili mr-2"></i>哔哩哔哩
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                &copy; 2023 冬日可爱know. 保留所有权利。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function setTheme(isDark) {
+            document.documentElement.classList.toggle('dark', isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        
+        // 初始化主题
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme === 'dark');
+        } else {
+            setTheme(prefersDarkScheme.matches);
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+        
+        // 监听系统主题变化
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches);
+            }
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

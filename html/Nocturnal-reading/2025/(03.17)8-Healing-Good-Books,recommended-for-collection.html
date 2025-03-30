@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心灵治愈书单 | 让阅读为心灵注入能量</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spring: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        warm: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        },
+                        calm: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                        'serif': ['"Noto Serif SC"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-warm-50 text-calm-800 dark:bg-calm-900 dark:text-calm-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 头部区域 -->
+        <header class="text-center mb-12 fade-in">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-spring-600 to-warm-500">
+                    心灵治愈书单
+                </h1>
+                <button id="themeToggle" class="theme-toggle p-2 rounded-full bg-warm-100 dark:bg-calm-700 text-warm-600 dark:text-calm-200">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+            <p class="text-lg md:text-xl text-calm-600 dark:text-calm-300 max-w-3xl mx-auto">
+                春天来了，我们不仅要漂亮，也可以通过阅读，让心灵更有能量。治愈系书籍，码住慢慢看！
+            </p>
+            <div class="mt-6">
+                <span class="inline-block px-4 py-2 bg-spring-100 dark:bg-spring-900 text-spring-800 dark:text-spring-200 rounded-full text-sm font-medium">
+                    <i class="fas fa-book-open mr-2"></i>让文字温暖你的心灵
+                </span>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- 放松卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-spring-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-spring-100 dark:bg-spring-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-spa text-spring-600 dark:text-spring-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-spring-700 dark:text-spring-300">关于放松</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《偶尔向生活请个假》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">一本与春天适配度100%的治愈散文，封面更是满眼新绿，令人难掩心动。</p>
+                <div class="bg-spring-50 dark:bg-spring-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"跟随季老按下'暂停键'，从朝九晚五、东奔西走的生活中暂时抽离出来，在日升月落里，好好爱这热气腾腾的人间。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：季羡林</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-spring-100 dark:bg-spring-900 text-spring-700 dark:text-spring-300 rounded-full">散文集</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 倾诉卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-warm-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-comments text-warm-600 dark:text-warm-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-warm-700 dark:text-warm-300">关于倾诉</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《也许你该找个人聊聊》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">一位心理治疗师的回忆录，讲述了发生在诊室中"聆听与被聆听"的故事。</p>
+                <div class="bg-warm-50 dark:bg-warm-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"找个人聊聊吧，你会发现所有的困境都有出路。因为无论身份有多相异，大家面对的烦恼其实都相通。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：洛莉·戈特利布</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-warm-100 dark:bg-warm-900 text-warm-700 dark:text-warm-300 rounded-full">心理学</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 疗愈卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-spring-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-spring-100 dark:bg-spring-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-heart text-spring-600 dark:text-spring-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-spring-700 dark:text-spring-300">关于疗愈</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《不原谅也没关系》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">你习惯佯装坚强，像个大人一样默默消化情绪，试图以此忽略成长过程中的创伤。</p>
+                <div class="bg-spring-50 dark:bg-spring-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"这本书很像是在安慰你的内在小孩，提醒你现在已经拥有了成年人的身体，还有童年时不曾拥有的盟友、技能和资源。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：皮特·沃克</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-spring-100 dark:bg-spring-900 text-spring-700 dark:text-spring-300 rounded-full">心理疗愈</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 通透卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-warm-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-eye text-warm-600 dark:text-warm-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-warm-700 dark:text-warm-300">关于通透</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《苏东坡传》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">苏东坡的人生履历和穿插其间的人生智慧，每每读完，都感到"畅怀终日"。</p>
+                <div class="bg-warm-50 dark:bg-warm-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"我一生之至乐在执笔为文之时，心中错综复杂之情思，我笔皆可畅达之。我自谓人生之乐，未有过于此者也。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：林语堂</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-warm-100 dark:bg-warm-900 text-warm-700 dark:text-warm-300 rounded-full">传记</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幽默卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-spring-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-spring-100 dark:bg-spring-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-laugh-squint text-spring-600 dark:text-spring-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-spring-700 dark:text-spring-300">关于幽默</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《记一忘三二》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">读李娟的作品，最大感受是平静与放松。这本书延续了李娟文字的率性而作，平实诙谐。</p>
+                <div class="bg-spring-50 dark:bg-spring-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"其实无论'记'还是'忘'，都不过是人与时间相处的智慧，该记的记，该忘的忘。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：李娟</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-spring-100 dark:bg-spring-900 text-spring-700 dark:text-spring-300 rounded-full">散文随笔</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成长卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-warm-500 fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-seedling text-warm-600 dark:text-warm-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-warm-700 dark:text-warm-300">关于成长</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《认知觉醒》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">穿透时间的"个人成长方法论"。书中有20个成长关键词，很好地洞悉了一个人成长的内在规律。</p>
+                <div class="bg-warm-50 dark:bg-warm-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"只有当一个人主动开启第三视角，持续反观自己的思维和行为，才意味着他有了开启改变的可能。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：周岭</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-warm-100 dark:bg-warm-900 text-warm-700 dark:text-warm-300 rounded-full">个人成长</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 洞察卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-spring-500 fade-in md:col-span-2 lg:col-span-1">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-spring-100 dark:bg-spring-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-binoculars text-spring-600 dark:text-spring-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-spring-700 dark:text-spring-300">关于洞察</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《悉达多》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">跟着主人公进行了一次心灵奇幻之旅，更进行了一次深刻的自我探索。</p>
+                <div class="bg-spring-50 dark:bg-spring-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"有的人，极少数，如同天际之星，沿着固定的轨迹运行。没有风能动摇他，他内心自有律法和轨道。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：赫尔曼·黑塞</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-spring-100 dark:bg-spring-900 text-spring-700 dark:text-spring-300 rounded-full">哲学小说</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 温暖卡片 -->
+            <div class="card-hover bg-white dark:bg-calm-800 rounded-3xl p-6 shadow-md border-l-8 border-warm-500 fade-in md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-sun text-warm-600 dark:text-warm-300 text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-warm-700 dark:text-warm-300">关于温暖</h2>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">《听风八百遍，才知是人间》</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-4">我们生而破碎，用活着来修修补补。这本书里写着人世间最美好的东西：爱、友情、亲情、勇气和真诚。</p>
+                <div class="bg-warm-50 dark:bg-warm-900/30 rounded-xl p-4 mb-4">
+                    <p class="text-sm italic text-calm-600 dark:text-calm-300">"温暖、纯净的文字，可以一次次在千难万难中托举你。也许，当我们跨越生活的风暴，历尽千帆，才终于懂得，'人间'的真正含义是活着。"</p>
+                </div>
+                <div class="flex items-center text-sm text-calm-500 dark:text-calm-400">
+                    <i class="fas fa-user-edit mr-2"></i>
+                    <span>作者：史铁生 等</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-calm-100 dark:border-calm-700 flex justify-between items-center">
+                    <span class="text-xs px-3 py-1 bg-warm-100 dark:bg-warm-900 text-warm-700 dark:text-warm-300 rounded-full">散文合集</span>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 作者信息区域 -->
+        <footer class="bg-white dark:bg-calm-800 rounded-3xl p-8 shadow-md mt-12 fade-in">
+            <div class="text-center">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-spring-400 to-warm-400 flex items-center justify-center">
+                    <i class="fas fa-sun text-white text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-calm-800 dark:text-calm-100 mb-2">冬日可爱know</h3>
+                <p class="text-calm-600 dark:text-calm-300 mb-6 max-w-2xl mx-auto">
+                    希望我的作品像冬天的太阳一样让人温暖
+                </p>
+                
+                <div class="flex justify-center space-x-4 mb-6">
+                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 rounded-full bg-calm-100 dark:bg-calm-700 flex items-center justify-center text-calm-600 dark:text-calm-300 hover:bg-spring-100 hover:text-spring-600 dark:hover:bg-spring-900 dark:hover:text-spring-300 transition-colors">
+                        <i class="fab fa-weixin"></i>
+                    </a>
+                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 rounded-full bg-calm-100 dark:bg-calm-700 flex items-center justify-center text-calm-600 dark:text-calm-300 hover:bg-calm-200 hover:text-calm-800 dark:hover:bg-calm-600 dark:hover:text-calm-100 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 rounded-full bg-calm-100 dark:bg-calm-700 flex items-center justify-center text-calm-600 dark:text-calm-300 hover:bg-warm-100 hover:text-warm-600 dark:hover:bg-warm-900 dark:hover:text-warm-300 transition-colors">
+                        <i class="fab fa-bilibili"></i>
+                    </a>
+                </div>
+                
+                <div class="text-sm text-calm-400 dark:text-calm-500">
+                    <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                    <p class="mt-1">心灵治愈书单 - 让阅读温暖你的每一天</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储或系统偏好
+        function setTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add('dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+        
+        // 初始化主题
+        setTheme();
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+        
+        // 监听系统主题变化
+        prefersDarkScheme.addEventListener('change', setTheme);
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        }
+        
+        // 初始检查
+        checkScroll();
+        
+        // 滚动时检查
+        window.addEventListener('scroll', checkScroll);
+    </script>
+</body>
+</html>

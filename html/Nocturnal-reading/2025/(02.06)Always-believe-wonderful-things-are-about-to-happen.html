@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正念生活指南 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header Section -->
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary-700 dark:text-primary-300 mb-4">正念生活指南 🌟</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                让积极信念成为你生活的导航灯，在平凡中发现不平凡的力量！
+            </p>
+            <div class="flex justify-center mt-6">
+                <button id="themeToggle" class="btn-hover bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-full shadow-md flex items-center">
+                    <i class="fas fa-moon mr-2"></i> 切换主题
+                </button>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+            <!-- Card 1: Intro -->
+            <div class="card-hover bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg border-l-8 border-primary-500 fade-in">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-lightbulb text-primary-600 dark:text-primary-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">核心洞察 🔍</h2>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    你是否发现：<span class="font-bold text-primary-600 dark:text-primary-400">事情的成败往往不在于难度本身，而在于你的状态和信念！</span>保持良好状态和积极信念，开头再难也会越来越顺。
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed italic">
+                    "很多事情，你只要往好的方向想，它就会慢慢变好。" —— 网友智慧
+                </p>
+                <div class="flex justify-center">
+                    <div class="bg-gradient-to-r from-primary-200 to-secondary-200 dark:from-gray-600 dark:to-gray-700 rounded-full px-6 py-2 text-center">
+                        <span class="font-bold text-primary-700 dark:text-primary-300">✨ 为生活注入正念 ✨</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-center">
+                    <div class="emoji-float text-4xl">🌻</div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Tip 1 -->
+            <div class="card-hover bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg border-l-8 border-secondary-500 fade-in" style="animation-delay: 0.1s;">
+                <div class="flex items-center mb-6">
+                    <div class="bg-secondary-100 dark:bg-secondary-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-cloud-sun text-secondary-600 dark:text-secondary-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">01 走出负能量 ☁️→☀️</h2>
+                </div>
+                <blockquote class="border-l-4 border-gray-300 dark:border-gray-500 pl-4 mb-4 italic text-gray-600 dark:text-gray-300">
+                    "凡是负能量的东西，都尽量不要去回应。只要内心不接应负能量的事情，那些试图消磨你的，只能原路返回。"
+                </blockquote>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    越是接触、回应负能量，难受的体验越强烈，甚至影响你的判断与行动。
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed font-bold">
+                    保持正念生活态度，珍惜自己的能量：
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    "把时间分给睡眠，分给书籍，分给运动，分给花鸟树木和山川湖海，分给你对这个世界的热爱...当你开始做时间的主人，你会感受到平淡生活中喷涌而出的平静的力量。"
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <div class="emoji-float text-4xl">📚</div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Tip 2 -->
+            <div class="card-hover bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg border-l-8 border-yellow-500 fade-in" style="animation-delay: 0.2s;">
+                <div class="flex items-center mb-6">
+                    <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-water text-yellow-600 dark:text-yellow-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">02 允许万物流动 🌊</h2>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    <span class="font-bold text-yellow-600 dark:text-yellow-400">"以己为景"</span>：允许万事万物自由流过自己，观察它但不被它裹挟。
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    面对不愉快和痛苦，不要急于消除和控制，把挫折看作领悟生命的时机，与困境和平共处。
+                </p>
+                <div class="bg-yellow-50 dark:bg-gray-600 rounded-xl p-4 mb-4">
+                    <p class="text-gray-600 dark:text-gray-300 italic leading-relaxed">
+                        "当我开始真正爱自己，我不再渴求不同的人生，我知道任何发生在我身边的事情，都是对我成长的邀请。今天我明白了，这叫做'接纳'。"
+                    </p>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="emoji-float text-4xl">🧘‍♂️</div>
+                </div>
+            </div>
+            
+            <!-- Card 4: Tip 3 -->
+            <div class="card-hover bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg border-l-8 border-green-500 fade-in" style="animation-delay: 0.3s;">
+                <div class="flex items-center mb-6">
+                    <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-hands-helping text-green-600 dark:text-green-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">03 专注具体行动 ✨</h2>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    <span class="font-bold text-green-600 dark:text-green-400">高能量人士的特质</span>：看到事实骨架→面对解决→没有情绪裹挟→行云流水→其余时间体验生活美。
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    <span class="font-bold text-green-600 dark:text-green-400">低能量模式</span>：看不见事实→被情绪淹没→内耗严重→无力解决问题→能量回血慢。
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    做事忌讳没干多少就开始纠结！<span class="font-bold">既然选择了做就无条件相信自己</span>，全身心投入，在具体事情里养成自己的节奏和定力，哪怕慢一点也没关系！
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <div class="emoji-float text-4xl">🚀</div>
+                </div>
+            </div>
+            
+            <!-- Card 5: Tip 4 -->
+            <div class="card-hover bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg border-l-8 border-pink-500 fade-in md:col-span-2" style="animation-delay: 0.4s;">
+                <div class="flex items-center mb-6">
+                    <div class="bg-pink-100 dark:bg-pink-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-star text-pink-600 dark:text-pink-300 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">04 相信美好即将发生 🌈</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-pink-50 dark:bg-gray-600 rounded-xl p-6">
+                        <h3 class="font-bold text-lg text-pink-700 dark:text-pink-300 mb-3">信念感宣言：</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+                            <li>"我允许自己在每一个人生课题中栽跟头。"</li>
+                            <li>"我相信我永远有反思、学习和站起来的勇气。"</li>
+                            <li>"不管坏掉多少次，我都会修好我自己。"</li>
+                            <li>"我是无数个我中，唯一幸存的我。"</li>
+                            <li>"我完全有资格获得世界上一切美好的事物！"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                            磨砺都是暂时的！就像小时候觉得忘带作业是天大的事，高中时觉得考不上大学是天大的事...但现在回头看，那些难以跨过的山，其实都已经跨过了！
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            生活充满了选择，遗憾不过是常态。<span class="font-bold text-pink-600 dark:text-pink-400">赶路的你，只管向前走，给好运一点时间！</span>走过漫长夜路，晨星会向你问好。🌟
+                        </p>
+                        <div class="mt-6 flex justify-center">
+                            <div class="emoji-float text-4xl">🌠</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Author Section -->
+        <footer class="bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-lg mt-8 fade-in" style="animation-delay: 0.5s;">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                    <div class="bg-gradient-to-r from-primary-300 to-secondary-300 dark:from-gray-600 dark:to-gray-700 rounded-full w-32 h-32 flex items-center justify-center shadow-lg">
+                        <i class="fas fa-sun text-white text-5xl"></i>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-8">
+                    <h2 class="text-2xl font-bold text-center md:text-left text-gray-800 dark:text-white mb-4">关于作者 | 冬日可爱know</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-center md:text-left">
+                        "希望我的作品像冬天的太阳一样让人温暖 ❄️☀️"
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="btn-hover bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center">
+                            <i class="fab fa-weixin mr-2"></i> 微信公众号
+                        </a>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="btn-hover bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-full flex items-center">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                        <a href="https://space.bilibili.com/1943358001" class="btn-hover bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full flex items-center">
+                            <i class="fab fa-bilibili mr-2"></i> 哔哩哔哩
+                        </a>
+                    </div>
+                    <div class="mt-6 text-center md:text-left">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            &copy; 2023 冬日可爱know. 保留所有权利。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i> 切换主题';
+        } else {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i> 切换主题';
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i> 切换主题';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i> 切换主题';
+            }
+        });
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    html.classList.add('dark');
+                    themeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i> 切换主题';
+                } else {
+                    html.classList.remove('dark');
+                    themeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i> 切换主题';
+                }
+            }
+        });
+        
+        // Add fade-in animation when scrolling
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        // Set initial opacity to 0 and then trigger fade in
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>

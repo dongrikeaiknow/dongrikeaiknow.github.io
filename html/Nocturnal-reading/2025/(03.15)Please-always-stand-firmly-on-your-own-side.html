@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请坚定地站在自己这边</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#FFD6E0',
+                            DEFAULT: '#FF8FAB',
+                            dark: '#FF5D8F',
+                        },
+                        secondary: {
+                            light: '#C8E7FF',
+                            DEFAULT: '#90D7FF',
+                            dark: '#5CB0FF',
+                        },
+                        accent: {
+                            light: '#E0F9FF',
+                            DEFAULT: '#A0E9FF',
+                            dark: '#5ED5FF',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .text-highlight {
+            background: linear-gradient(120deg, #FFD6E0 0%, #C8E7FF 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+        
+        .dark .text-highlight {
+            background: linear-gradient(120deg, #FF5D8F 0%, #5CB0FF 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+        
+        .quote-mark {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.2;
+            position: absolute;
+        }
+        
+        .quote-start {
+            top: -1rem;
+            left: -0.5rem;
+        }
+        
+        .quote-end {
+            bottom: -3rem;
+            right: -0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+    <!-- Dark/Light Mode Toggle -->
+    <button id="themeToggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary dark:bg-primary-dark shadow-lg flex items-center justify-center text-white hover:scale-110 transition-transform">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header Section -->
+        <header class="text-center mb-16 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-primary dark:text-primary-dark">请坚定地站在自己这边</h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300">在这个世界上，有一个人永远与你同在，那就是你自己</p>
+        </header>
+
+        <!-- Intro Card -->
+        <div class="card bg-white dark:bg-gray-800 p-8 mb-12 shadow-md fade-in">
+            <div class="relative">
+                <span class="quote-mark quote-start">"</span>
+                <p class="text-lg md:text-xl leading-relaxed mb-6">很多时候，我们却成了自己最大的"敌人"。也许是因为害怕冲突，也许是为了避免尴尬，有人面对问题时，会选择站在别人的视角进行"自我攻击"。</p>
+                <p class="text-lg md:text-xl leading-relaxed mb-6">藏在内心的这种倾向具有天然"优势"，让我们很难躲避，甚至有时候，我们还会把这种欺负自己的行为合理化为"自我反思"。</p>
+                <p class="text-lg md:text-xl leading-relaxed font-medium">这种行为会悄无声息地破坏我们的情绪，让人看不见问题，也看不清真相，就算委屈也无处哭诉。</p>
+                <span class="quote-mark quote-end">"</span>
+            </div>
+        </div>
+
+        <!-- Story Cards -->
+        <div class="grid gap-8 mb-12">
+            <!-- Story 1 -->
+            <div class="card bg-gradient-to-br from-primary-light to-accent-light dark:from-gray-700 dark:to-gray-800 p-8 fade-in">
+                <div class="flex items-start mb-4">
+                    <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-utensils text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">AA制饭局的困扰</h3>
+                        <p class="text-gray-700 dark:text-gray-300">和某个朋友出去吃饭，明明说好的费用 AA，结完账回家后对方却再没提及此事...</p>
+                    </div>
+                </div>
+                <div class="pl-16">
+                    <p class="mb-4">我虽然心里不舒服，却替他找了很多借口：</p>
+                    <ul class="list-disc pl-5 mb-6 space-y-2">
+                        <li>他肯定是忘了</li>
+                        <li>他就是大大咧咧的性格</li>
+                        <li>他下次会请我吃饭的</li>
+                        <li>他不是爱占小便宜的人</li>
+                    </ul>
+                    <p class="mb-4 bg-white dark:bg-gray-700 rounded-lg p-4 shadow-inner">替朋友找完借口，又开始审判自己：<span class="font-bold text-primary dark:text-primary-dark">"你怎么回事，一顿饭而已，这么小心眼至于吗？难道这份友情还不值得你请对方吃顿饭吗？"</span></p>
+                    <p class="font-medium">最后，我得出结论，是我太计较太敏感了。</p>
+                </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="card bg-gradient-to-br from-secondary-light to-accent-light dark:from-gray-700 dark:to-gray-800 p-8 fade-in">
+                <div class="flex items-start mb-4">
+                    <div class="bg-secondary dark:bg-secondary-dark text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">自我霸凌的循环</h3>
+                        <p class="text-gray-700 dark:text-gray-300">@爱思考的小王 的分享</p>
+                    </div>
+                </div>
+                <div class="pl-16">
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-inner mb-4">
+                        <p class="italic">"我好像经常在霸凌我自己。当我在做一件自认为对的事的时候，如果被人当头一棒，我便会立马将矛头指向自己。我还会下意识给别人找补，在很多本该感到委屈愤怒的时候，去猜想他们背后的原因，或者合理化成我能接受的理由，最后得出的结论是，'我不能生气''他们已经那么可怜了'。"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="card bg-gradient-to-br from-accent-light to-primary-light dark:from-gray-700 dark:to-gray-800 p-8 fade-in">
+                <div class="flex items-start mb-4">
+                    <div class="bg-accent dark:bg-accent-dark text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">职场中的自我否定</h3>
+                        <p class="text-gray-700 dark:text-gray-300">@有喵 的工作经历</p>
+                    </div>
+                </div>
+                <div class="pl-16">
+                    <p class="mb-4">刚工作的时候，第一次参加创意会，我鼓足勇气讲了自己的方案。不同于和别人有来有回地讨论，小组领导只是淡淡回了我一句："这个方案性价比不高。"</p>
+                    <p class="mb-4 bg-white dark:bg-gray-700 rounded-lg p-4 shadow-inner">我一下子感觉脸上滚烫，只想钻到桌子下面，内心里反复响起的声音是：<span class="font-bold text-primary dark:text-primary-dark">"你怎么连这个也没想到""你根本就是一个没有创意和想法的人"</span>...</p>
+                    <p class="mb-4">整场会议我听不进去别人的汇报，更无心思考新的方案。这件事还带来了"后遗症"：我脑海里不可自控地反复播放自己在会议上的"窘境"，甚至因此整夜失眠；我再也不敢表达自己的想法，尽管我已经做了周全的准备...</p>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-inner">
+                        <p class="italic">"几年过去了，我在职场步入正轨，但仍时常想起那个刚工作的自己，我想抱抱她，告诉她：工作中偶尔的不完美没什么大不了，你不必为此反复内耗，更不必怀疑自己。有问题，认真解决就是。"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="card bg-white dark:bg-gray-800 p-8 mb-12 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-center text-primary dark:text-primary-dark">为什么我们会自我攻击？</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                    <div class="text-4xl mb-4 text-secondary dark:text-secondary-dark">🤔</div>
+                    <h3 class="font-bold mb-3">习惯性自我批判</h3>
+                    <p>自我批判的源头并不是自己真的做错了什么，也不是对别人造成了多大伤害，而是习惯性地将别人的感受、需求放在了自己之前，并以此来"审判"自己。</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                    <div class="text-4xl mb-4 text-primary dark:text-primary-dark">😨</div>
+                    <h3 class="font-bold mb-3">寻求安全感</h3>
+                    <p>为了获得安全感或他人认可，我们逐渐习惯了那个自我批评的声音，纵容它一次次变得刺耳。</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                    <div class="text-4xl mb-4 text-accent dark:text-accent-dark">🌀</div>
+                    <h3 class="font-bold mb-3">负面情绪放大</h3>
+                    <p>自我欺负，如同一场无休止的内心战争，消耗着我们的能量，削弱了我们的抵抗力。每当内心刻薄的声音响起，就会形成一种破坏性的信念，让"1 分糟糕"的事件经由情绪发酵变成"100 分糟糕"。</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                    <div class="text-4xl mb-4 text-secondary dark:text-secondary-dark">🛡️</div>
+                    <h3 class="font-bold mb-3">防御机制薄弱</h3>
+                    <p>如果我们不能阻止自己对自己的攻击，想抵挡住外界的攻击就更加艰难。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solutions Section -->
+        <div class="card bg-gradient-to-br from-primary-light to-secondary-light dark:from-gray-800 dark:to-gray-700 p-8 mb-12 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-center text-white">如何停止自我攻击？</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-xl p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            1
+                        </div>
+                        <h3 class="font-bold">察觉与暂停</h3>
+                    </div>
+                    <p>当你察觉到自己的思绪开始滑向对自己的攻击，请立即停下来，深呼吸，让内心的声音"闭嘴"。</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-xl p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            2
+                        </div>
+                        <h3 class="font-bold">自我关怀</h3>
+                    </div>
+                    <p>尝试以对待挚友的温情来关怀自己，用那份给予朋友的关爱与耐心，给予自我足够的支持与关心。</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-xl p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            3
+                        </div>
+                        <h3 class="font-bold">积极记录</h3>
+                    </div>
+                    <p>在本子上写下自己的一些积极品质和成就，当下一次内心的自我批判声再响起时，就可以调用它们，对抗那些冷酷的声音。</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-xl p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            4
+                        </div>
+                        <h3 class="font-bold">语言转换</h3>
+                    </div>
+                    <p>把"我不行"换成"我先试试看"，把"做不好"换成"我又可以学到很多新东西"。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="card bg-white dark:bg-gray-800 p-8 mb-12 shadow-md fade-in">
+            <h2 class="text-2xl font-bold mb-6 text-center text-primary dark:text-primary-dark">网友分享的方法</h2>
+            <div class="space-y-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 relative">
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-secondary-dark text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">@筱筱</h3>
+                            <p class="italic">"当我发现自己又在自我贬低时，我会停下来问问：这是真的吗？有什么证据支持这个想法？有没有其他更积极的解释？渐渐就会发现，很多对自己的否定都是不成立的。"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 relative">
+                    <div class="flex items-start">
+                        <div class="bg-primary dark:bg-primary-dark text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">@三柒 21</h3>
+                            <p class="italic">"很长时间里，我常把'我不行''我什么都做不好'挂在嘴边，整个人越来越消沉。但现在，我选择毫无条件地相信自己，用鼓励性的话语给自己力量。"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 relative">
+                    <div class="flex items-start">
+                        <div class="bg-accent dark:bg-accent-dark text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">@小王儿</h3>
+                            <p class="italic">"无论发生什么，要相信自己的感受和直觉，你觉得不舒服，就拒绝它；如果你觉得不合理，就否定它。要记住，你的价值不在于如何回应别人的期待，而在于如何回应自己的内心。"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="card bg-gradient-to-r from-primary to-secondary dark:from-primary-dark dark:to-secondary-dark p-8 text-center text-white rounded-2xl shadow-xl mb-12 fade-in">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">时刻记住</h2>
+            <p class="text-xl md:text-2xl leading-relaxed mb-6">你是自己人生故事的主角，</p>
+            <p class="text-xl md:text-2xl leading-relaxed mb-6">别让任何人，包括你自己，</p>
+            <p class="text-xl md:text-2xl leading-relaxed font-bold text-white">否定这份独特与珍贵。</p>
+            <div class="text-4xl mt-6">💖</div>
+            <p class="text-2xl mt-6 font-bold">请一直坚定地站在自己这边！</p>
+        </div>
+
+        <!-- Author Info -->
+        <div class="card bg-white dark:bg-gray-800 p-8 shadow-md fade-in">
+            <div class="text-center">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-secondary dark:from-primary-dark dark:to-secondary-dark flex items-center justify-center text-white text-3xl">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">冬日可爱know</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">希望我的作品像冬天的太阳一样让人温暖</p>
+                <div class="flex justify-center space-x-4 mb-4">
+                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors" target="_blank">
+                        <i class="fab fa-weixin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors" target="_blank">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/1943358001" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors" target="_blank">
+                        <i class="fab fa-bilibili text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">© 2023 冬日可爱know. 保留所有权利。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark/Light mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Add fade-in animation when scrolling
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        // Set initial opacity to 0 and then fade in on scroll
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>

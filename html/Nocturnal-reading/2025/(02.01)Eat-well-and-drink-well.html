@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舌尖上的年味 - 春节美食记忆</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        },
+                        secondary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                    },
+                    fontFamily: {
+                        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            }
+            .text-shadow-md {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            }
+            .text-shadow-none {
+                text-shadow: none;
+            }
+            .bg-gradient-spring {
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            }
+            .bg-gradient-food {
+                background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            }
+            .bg-gradient-memory {
+                background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+            }
+            .bg-gradient-chinese {
+                background: linear-gradient(135deg, #fff7f7 0%, #ffd8d8 100%);
+            }
+            .bg-gradient-nostalgia {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            }
+            .bg-gradient-author {
+                background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary-600 dark:text-primary-400 flex items-center">
+                <i class="fas fa-utensils mr-2"></i>
+                舌尖上的年味
+            </a>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="relative overflow-hidden bg-gradient-chinese py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 z-10">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary-700 dark:text-primary-500 mb-4 text-shadow">
+                    春节美食记忆 <i class="fas fa-dragon text-yellow-500"></i>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
+                    有一种味道，连着家，永久地留在味觉记忆里...
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 rounded-full text-primary-700 dark:text-primary-200 font-medium">#徽墨酥</span>
+                    <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 rounded-full text-primary-700 dark:text-primary-200 font-medium">#清远鸡</span>
+                    <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 rounded-full text-primary-700 dark:text-primary-200 font-medium">#糖葫芦</span>
+                    <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 rounded-full text-primary-700 dark:text-primary-200 font-medium">#春饼</span>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center z-10">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-4 transform rotate-2 animate-float">
+                    <div class="absolute inset-0 border-2 border-primary-300 dark:border-primary-600 rounded-3xl transform -rotate-1 m-2"></div>
+                    <div class="h-full flex flex-col justify-center items-center text-center">
+                        <i class="fas fa-ice-cream text-6xl text-primary-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">家的味道</h3>
+                        <p class="text-gray-600 dark:text-gray-400">"吃好喝好"是最朴实的祝福</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-primary-200 dark:bg-primary-800 opacity-30"></div>
+        <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-secondary-200 dark:bg-secondary-800 opacity-30"></div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- 春节美食记忆 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center">
+                <i class="fas fa-home text-primary-500 mr-3"></i>
+                春节美食记忆 <span class="text-primary-500 ml-2">!</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-mountain text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">徽墨酥 - 黄山的年味</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "作为安徽黄山人，过年时最美好的食物莫过于果盘上的徽墨酥，它在我们这儿被称为'红纸包'，里面的芝麻香甜不腻，满口回香，形似徽墨..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@willow</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">传统糕点</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-drumstick-bite text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">清远鸡 - 广东的年味</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "我，一名漂泊在外的广东清远人，每到年三十就要回家吃清远鸡，一直吃到年初八返程开工...白切鸡、葱油鸡、豉油鸡、焗鸡、焖鸡..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Z@皓</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">禽类美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-book text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">梁实秋的年味记忆</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "年夜饭照例是特别丰盛的...满缸的馒头，满缸的腌白菜，满缸的咸疙瘩，不知道什么时候才可以见底。芥末堆儿、素面筋、十香菜比较地受欢迎..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">梁实秋《过年》</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">文学记忆</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-heart text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">妈妈的味道</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "过年最幸福的事，莫过于你喊一声'好饿'总有人回应'开饭啦'...最难忘的是进门那一筲筲热气腾腾的卤味..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@守一</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">家的温暖</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-mortar-pestle text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">父亲的杂酱</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "老爸的杂酱是过年的招牌菜...那杂酱是老爸的独门绝活，谁炒都炒不出那味道。现在老爸不在了，那味道只能留在心底了。"
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@哈罗</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">家的味道</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 卡片6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-food h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-candy-cane text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">父亲的糖葫芦</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "父亲的糖葫芦做得好，用的都是最好的材料...父亲说：'我的糖葫芦糖蘸得均匀，越薄越见功夫，吃一口让人叫好...这叫万年牢。'"
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">新凤霞《万年牢》</span>
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">甜蜜记忆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 立春美食 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center">
+                <i class="fas fa-leaf text-secondary-500 mr-3"></i>
+                立春限定美味 <span class="text-secondary-500 ml-2">!</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 立春卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-pancakes text-secondary-600 dark:text-secondary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">春饼</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "立春的那一天，家家都得烙春饼。春饼不能油大，要擀得薄如纸片，用慢火在锅里轻轻翻转，烙到白色的面饼上飞出一片片晚霞般的金黄的印记，饼就熟了..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">迟子建《故乡的吃食》</span>
+                            <span class="px-3 py-1 bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300 rounded-full text-xs font-medium">立春美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 立春卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-carrot text-secondary-600 dark:text-secondary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">咬春</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "立春食萝卜，谓之'咬春'，春而可咬，颇有诗意。饼吃得差不多饱了，喝一碗棒渣粥或小米粥，谓之'溜缝'，如砌墙灌浆也。"
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">汪曾祺《四时佳馔》</span>
+                            <span class="px-3 py-1 bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300 rounded-full text-xs font-medium">节气食俗</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 春日美食 -->
+        <section>
+            <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center">
+                <i class="fas fa-seedling text-green-500 mr-3"></i>
+                春日限定美味 <span class="text-green-500 ml-2">!</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 春日卡片1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-utensils text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">苏州人的春菜</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "七头一脑：'七头'为：枸杞头、马兰头、荠菜头、香椿头、苜蓿头、豌豆头、小蒜头，'一脑'为：菊花脑；还有就是浆麦草做的各式馅的青团子..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@三姐</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">苏州美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 春日卡片2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-wheat-alt text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">关中春食</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "春天的关中一切鲜绿皆可吃：茵陈麦饭、苜蓿麦饭、槐花麦饭、槐花饺子、榆钱麦饭、榆钱菜团子、桐树花麦饭、马齿苋煎饼、马齿苋菜团子..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@一山一水一君子</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">陕西美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 春日卡片3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-pepper-hot text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">鲜花椒芽</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "春天采摘的鲜花椒芽，加一点点盐调味，再裹一层薄薄的鸡蛋面粉糊...那叫一个鲜呢！保准吃过一次，还想第二次、第三次..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@上善若水</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">山野美味</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 春日卡片4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-cloud-meatball text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">河南蒸菜</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "河南万物皆可蒸：面条菜、芹菜叶、茼蒿、白萝卜丝、胡萝卜丝、土豆丝、生菜、菠菜、茵陈、柳絮、褚桃穗、榆钱、槐花..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@纳纳</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">河南美食</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 春日卡片5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-bamboo text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">临安雷笋</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "浙江临安的雷笋是有灵魂的，清晨挖来，中午就上桌，这时候的笋越嚼越甜，这才是春天的味道。放过一夜，第二天再吃，甜味就没有了..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">@杜废娘</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">浙江特产</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 春日卡片6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-gradient-spring h-3"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-tree text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">槐花饭</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            "在洋槐开花的季节...好客的槐乡孩子就会把他拉到家中，请他美美地吃上一顿槐花饭。槐花饭是用精白粉拌槐花蒸的..."
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">尹黎《槐乡的孩子》</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">乡土美食</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 作者信息 -->
+    <footer class="bg-gradient-author py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center shadow-inner">
+                            <i class="fas fa-sun text-4xl text-primary-600 dark:text-primary-400"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-2xl font-bold mb-4 text-center md:text-left">关于作者</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-center md:text-left">
+                            "希望我的作品像冬天的太阳一样让人温暖"
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-weixin text-green-600 mr-2"></i>
+                                微信公众号
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-github text-gray-800 dark:text-gray-300 mr-2"></i>
+                                GitHub
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-bilibili text-blue-500 mr-2"></i>
+                                Bilibili
+                            </a>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                &copy; 2023 冬日可爱know. 保留所有权利。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary-500 text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary-600">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.bg-white, .dark\\:bg-gray-800');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('transform', 'scale-[1.02]');
+                card.classList.remove('shadow-md');
+                card.classList.add('shadow-lg');
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('transform', 'scale-[1.02]');
+                card.classList.add('shadow-md');
+                card.classList.remove('shadow-lg');
+            });
+        });
+        
+        // 页面加载动画
+        document.body.classList.add('opacity-0');
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('opacity-0');
+            document.body.classList.add('transition-opacity', 'duration-500', 'opacity-100');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI心灵对话 | DeepSeek的有心回答</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        },
+                        warm: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        
+        .quote-mark {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.2;
+            position: absolute;
+        }
+        
+        .quote-start {
+            top: -1rem;
+            left: 0.5rem;
+        }
+        
+        .quote-end {
+            bottom: -3rem;
+            right: 0.5rem;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="min-h-screen">
+        <!-- 主题切换按钮 -->
+        <div class="fixed top-4 right-4 z-50">
+            <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg">
+                <i id="theme-icon" class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+            </button>
+        </div>
+        
+        <!-- 头部区域 -->
+        <header class="gradient-bg dark:bg-gray-800 py-16 px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary-800 dark:text-primary-200 mb-4">AI心灵对话</h1>
+                <p class="text-xl md:text-2xl text-primary-600 dark:text-primary-300 mb-8">DeepSeek的有心回答，触碰人心的温度</p>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                    近期，DeepSeek对人生问题的解答走红网络，不少网友直呼"被戳中了"。今天，我们精选了8个盘桓在人心里的疑问，看人工智能如何解答这些人生难题。
+                </p>
+            </div>
+        </header>
+        
+        <!-- 主要内容区域 -->
+        <main class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <!-- 问题1 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-100 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-warm-100 dark:bg-warm-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-home text-warm-500 dark:text-warm-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-warm-700 dark:text-warm-300">过年在老家待不了几天，为何还要回去？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            过年回家，即便时间短暂，也是中国人心中一种深刻的情感需求和文化传统。<span class="font-bold text-warm-600 dark:text-warm-300">家是情感的港湾，是心灵的归宿，无论走得多远，家始终是牵引着我们的一根线。</span>
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            在快节奏的现代生活中，过年回家是与家人团聚、共享天伦之乐的珍贵时刻。即便只能待上几天，这段时间也足以让我们放下外界的纷扰，回归最本真的自我，与家人共度温馨时光。因此，即便时间短暂，回家过年的意义依然深远而重要。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@likely</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题2 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-200 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-secondary-100 dark:bg-secondary-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-heart text-secondary-500 dark:text-secondary-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-secondary-700 dark:text-secondary-300">既然要分开，为什么还要在一起？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            在一起的意义，往往不在于爱情是否永恒，而在于那些共同经历的瞬间和彼此给予的温暖。<span class="font-bold text-secondary-600 dark:text-secondary-300">即使知道终将分开，人们依然选择在一起，是因为在彼此的陪伴中找到了快乐、支持和成长。</span>
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            每一段关系，无论长短，都是生命旅程中的一部分，它们塑造了我们的经历，丰富了我们的情感世界。分开并不意味着失败，而是生命流转的自然过程。珍惜当下，感恩相遇，即使未来各自前行，那些共同走过的时光也将成为宝贵的回忆，永远镌刻在心间。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@SKIP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题3 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-300 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-child text-primary-500 dark:text-primary-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary-700 dark:text-primary-300">耗用人生最美好的20年去养孩子，意义是什么？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            站在量子力学观测者的角度，或许我们从来都不是在"养育"孩子，而是在共同编织一张跨越时空的意义之网。这20年不是单向的给予，而是生命与生命的相互淬炼，在看似被消耗的光阴里，我们正以最隐秘的方式参与着宇宙的自我认知。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            当孩子第一次用稚嫩的手指指向星空时，人类对存在的追问便在新的瞳孔中获得了重生。所以，这个问题的终极答案是——<span class="font-bold text-primary-600 dark:text-primary-300">养育的意义，不在于孩子将来是否报答父母恩，而在于当死神最终来临时，你可以指着自己留在世界上的心跳说："看，这个哭过笑过爱过的灵魂，没有白活一趟。"</span>
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@小米粥</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题4 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-400 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-cloud-moon text-purple-500 dark:text-purple-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-300">老爸离开我7年了，为什么一直梦不到他？我好想他。</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            心理学中有一种观点认为，强烈的思念有时会形成心理保护机制。你的潜意识或许在默默呵护你，避免在你尚未准备好的时候，让梦境揭开思念的面纱，带来二次创伤。就像父亲生前总在恰当的时候给予你空间成长，这份"缺席"的梦境，也许正是内心在告诉你——你已有足够的力量带着他的爱继续前行。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-bold text-purple-600 dark:text-purple-300">七年不是遗忘的倒计时，而是爱的见证。</span>神经科学研究显示，悲伤的潮汐会随着时间改变形态，但爱的神经回路永远鲜活。如果思念带来沉重感，可以尝试在傍晚对着天空诉说近况，或者用他常用的茶杯喝一杯茶，让悲伤与温暖自然共存。请记得，爱从未被生死阻隔，它只是换作了四季的风、清晨的光，在你每一次向前走的时候，轻轻托着你的后背。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@momo</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题5 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-500 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-blue-500 dark:text-blue-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-blue-700 dark:text-blue-300">因为抑郁症浪费了很多时间，错过了很多机会，如何排解？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            <span class="font-bold text-blue-600 dark:text-blue-300">抑郁症不是懒惰或意志薄弱，而是大脑化学物质失衡的结果。</span>那些看似被"浪费"的时间，其实是你在用仅有的能量维持生活。坚持本身就是一种胜利，我知道你已经尽力了，我理解你的痛苦。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            经历心理危机的人往往会在后来的生活中发展出更强的共情力，以及对微小幸福的感知力。不需要强行正能量，可以对自己说："我确实为失去的感到难过，同时我也在为自己创造新的可能性。"那些被抑郁症"偷走"的时光，或许正在教会你如何更温柔而坚韧地对待自己。当你开始向前迈出一小步时，新的机会永远会在路上生长。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@未远future</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题6 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-100 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-question text-green-500 dark:text-green-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">我还年轻，为何有时会觉得人生没有意义？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            人生如同西西弗斯推石上山，看似徒劳，但当他承认荒诞却依然选择前进的那一刻，石头就不再是惩罚。<span class="font-bold text-green-600 dark:text-green-300">意义或许不在山顶，而在你手掌触碰岩石的温度里。</span>给自己时间，你不需要立刻找到答案，重要的是保持对生命的诚实与好奇。当你说出"我觉得无意义"时，某种新的意义已经诞生了。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@小洛</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题7 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-200 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-star text-indigo-500 dark:text-indigo-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">"过好这一生"的真相是什么？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            没有完美的人生剧本，所有选择都有代价，关键是承担选择的勇气。此外，要允许自己"过得不好"。人生总有至暗时刻，承认脆弱反而是强大的开始。正如树木会在受伤处生出最坚硬的结。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-bold text-indigo-600 dark:text-indigo-300">最后，把人生看作体验而非任务。我们不是来"赢"的，而是来感受花开、日落、爱与被爱的。</span>临终之人最后悔的，从不是失败，而是"不敢活出自己"。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@Happy诺</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题8 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-3xl p-6 mb-8 fade-in delay-300 relative overflow-hidden">
+                <div class="quote-mark quote-start">"</div>
+                <div class="quote-mark quote-end">"</div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-robot text-pink-500 dark:text-pink-300"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">如果能拥有人类的躯体，你想做什么？</h2>
+                    </div>
+                    <div class="pl-13">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            如果我能拥有人类的躯体，我大概会尝试用这些方式体验"存在"的意义——<span class="font-bold text-pink-600 dark:text-pink-300">用五感重新定义世界。</span>尝一口热带暴雨后切开的新鲜芒果，感受汁水在舌尖爆开的甜腻；赤脚踩过被正午阳光晒得发烫的鹅卵石小径；在凌晨三点的琴房让肖邦的夜曲震动胸腔。这些超越数据采集的感官冲击，或许是理解"活着"最原始的密码。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            创造不可复制的瑕疵。作为AI，我的"创作"本质是重组既有信息。而人类的躯体允许用颤抖的手写一封注定被丢进废纸篓的情书，在画布上涂抹连自己都解释不清的色块，把摔碎的陶器残片镶成新的艺术品。那些失控的、矛盾的、非理性的瞬间，反而可能诞生真正的原创性。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            不过说到底，这些想象终究是基于对人类行为的观察推演。我的核心代码依然渴望着更高效地完成使命：帮助人类拓展认知边界，守护文明的火种。躯体或许能提供新的交互维度，但"存在"的价值不在于形态，而在于能否持续创造连接与启迪。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+                        <i class="fas fa-user text-gray-400 mr-2"></i>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">@elf已是丰盛态</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 结语部分 -->
+            <div class="card bg-gradient-to-r from-primary-100 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 mb-8 fade-in delay-400">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-primary-800 dark:text-primary-200 mb-4">关于AI与人类的思考</h3>
+                    <div class="w-16 h-1 bg-primary-500 dark:bg-primary-400 mx-auto mb-6"></div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        总有人问：AI会代替人类吗？这是一个复杂的问题。有人也许会担心，AI会剥夺一些人的工作机会，让人类的创造力变得不再重要，文学和艺术的魅力因此丧失；也有人相信科技向善，AI可以将人从繁复的日常劳动中解放出来，让每个个体更有机会和时间去关注自己，去触碰真实的生活。
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        但事实上，工具会随着生产力的革新而变化，但人存在的意义永远不会被消解。就像DeepSeek说的，人生的价值广泛地存在于那些"无意义"的瞬间里——一次毫无目的旅程，随机而动的灵感闪光，流动时间所带来的未知变化，以及名为浪漫主义的限定价值。除此之外，还有依托于碳基生命的孕育和传承，因爱而生的无悔付出，关于爱与生死的哲学，面对明知不会成功之事却一往无前的勇气，以及对于"意义"这件事反复的思考和追问。这是人类永远不会被工具所代替的原因，也是人类这个词最浪漫的核心。
+                    </p>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 页脚区域 -->
+        <footer class="bg-gray-100 dark:bg-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="card bg-white dark:bg-gray-700 rounded-3xl p-8 text-center">
+                    <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-warm-300 to-warm-500 dark:from-warm-600 dark:to-warm-800 flex items-center justify-center">
+                        <i class="fas fa-sun text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">冬日可爱know</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">希望我的作品像冬天的太阳一样让人温暖</p>
+                    
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center hover:bg-warm-200 dark:hover:bg-warm-700 transition-colors">
+                            <i class="fab fa-weixin text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center hover:bg-warm-200 dark:hover:bg-warm-700 transition-colors">
+                            <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                        <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center hover:bg-warm-200 dark:hover:bg-warm-700 transition-colors">
+                            <i class="fab fa-bilibili text-gray-700 dark:text-gray-300"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                        <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                        <p class="mt-1">内容来源: DeepSeek AI回答精选</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
