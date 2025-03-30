@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于长大的六个故事 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+        
+        .notebook-border {
+            position: relative;
+            border-left: 4px solid #f43f5e;
+            padding-left: 1.5rem;
+        }
+        
+        .notebook-border::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 20px,
+                #f43f5e 20px,
+                #f43f5e 22px
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="min-h-screen pb-16 fade-in">
+        <!-- 导航栏 -->
+        <nav class="bg-white dark:bg-gray-800 shadow-sm py-4">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-primary-600 dark:text-primary-400">
+                    <span class="gradient-text">关于长大的故事</span>
+                </h1>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-moon text-gray-700 dark:hidden"></i>
+                    <i class="fas fa-sun text-yellow-300 hidden dark:inline"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- 主内容区 -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- 标题区 -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4 text-primary-700 dark:text-primary-400">长大是什么？</h2>
+                <p class="text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+                    当你不断成长，这个世界变得更加开阔，你开始觉察到自己的渺小，被冲击的同时也收获了不断拓宽的生活疆域和自由，得以在无尽的未知里信马由缰。
+                </p>
+            </div>
+            
+            <!-- 故事卡片区 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 故事1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover notebook-border">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">01</span>
+                        <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">长大就是可以接住爸妈的脆弱了</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-300">我一直都觉得爸妈挺健康年轻的，直到爸爸找我借钱的那一刻——那天晚上他突然给我打了个电话，先问我下班了吗、吃饭了吗，聊了两句家常后，他突然问："你手里还有闲钱吗？可以先给我打3000元吗？下个月就还你。"</p>
+                        <p class="text-gray-600 dark:text-gray-300">这三句话他是一口气说完的，中间几乎没有停顿，我愣了一下才反应过来。我说噢噢好，他很快说那先这样，就挂了电话，我仿佛看到了一个落荒而逃的老父亲背影。</p>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">记得小时候我第一次找他要零花钱，酝酿了一个晚上，排练了很多遍，最后涨红着脸快速地说："同学经常请我喝饮料，我觉得不好意思，要不以后也每周给我一点零花钱吧，保证不乱花，说不定还能存下来。"和那天他给我打电话的样子一模一样。</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">——美美</span>
+                        <span class="ml-2 text-xl">😊</span>
+                    </div>
+                </div>
+                
+                <!-- 故事2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover" style="background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">02</span>
+                        <h3 class="text-xl font-bold text-secondary-600 dark:text-secondary-400">长大就是一遍遍地推翻和重建自己</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-700">成长就是一遍一遍地怀疑自己以前深信不疑的东西，然后推翻上一个阶段的自己，长出新的智慧和性情，带着无数的迷惘与不确定，坚定地走向下一个阶段的自己。</p>
+                        <p class="text-gray-600 dark:text-gray-700">事实上，在成长的过程中，好事和坏事、好人和坏人你都会遇见。所以，偶尔看透但别失望，偶尔迷惘但不沉沦；承认长大有些扫兴，也要努力活得尽兴。所以，坚定地做你自己，同时允许别人看法不同；温柔地爱这个世界，但随时准备要与之交手！</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-600">——老杨的猫头鹰</span>
+                        <span class="ml-2 text-xl">🦉</span>
+                    </div>
+                </div>
+                
+                <!-- 故事3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">03</span>
+                        <h3 class="text-xl font-bold text-pink-600 dark:text-pink-400">长大就是重新把自己养一遍</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-300">那天，看到一位网友的分享，她说她小时候几乎没有穿过合脚的鞋，每次买鞋，妈妈都要确认能把两根手指头放进鞋里，才会同意。妈妈总是说，鞋要买大点，这样冬天穿厚袜子也合适，而且小孩的脚长得快，买大一点，明年就不用买新的了。直到她的脚不再长大，"还是一直穿39码的鞋，用一整年等待冬天。"</p>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">如今，她长大了，终于可以买刚刚合适的鞋，终于发现，原来穿合脚的鞋是这样的感觉。</p>
+                        <p class="text-gray-600 dark:text-gray-300">她说起小时候那辆很想要，但因为"你这样的人粗心大意、莽莽撞撞，骑自行车太危险了"而从没有得到的自行车，满是遗憾。</p>
+                        <p class="text-gray-600 dark:text-gray-300">如今，她长大了，升腾起了买一辆自行车的心，不是普通的自行车，而是一辆可以"从我身边飞过去"的公路车。钱不够，她就拼命写稿，零零碎碎地挣，终于攒够了买车的钱。她说，"骑着车回我的破出租屋时，突然感觉到一种释然的快意，我开始笑，可是风刮起来，我不知不觉地就流泪了。"</p>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">原来长大是有选择，是不必穿不合脚的鞋。</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">——故事来自@郫县企鹅</span>
+                        <span class="ml-2 text-xl">🐧</span>
+                    </div>
+                </div>
+                
+                <!-- 故事4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">04</span>
+                        <h3 class="text-xl font-bold text-emerald-600 dark:text-emerald-400">长大就是心平气和地接受其中的落差</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-700">复旦大学教授梁永安曾分享过这样一段话：</p>
+                        <p class="text-gray-600 dark:text-gray-700 italic">"复旦每年招来那么多学生，当然成绩都很好，但我在给本科生上课的时候，第一堂课一定要讲这件事：作为一个考来复旦的学生，你将来的人生道路是很'艰难'的，在未来的生活里，你们中起码有95%的人永远达不到你们在高考中取得的优越性，你再想在今后的生活里，干得(像你在高考中那样)比90%以上的人还要好，那是很难很难的。"</p>
+                        <p class="text-gray-600 dark:text-gray-700">我们今后毕生的任务就是做一个优秀的普通人，这个优秀的普通人，热爱世界，热爱万物，热爱众生，然后踏踏实实地去寻找到一个自己内心喜欢又有时代价值的事情。</p>
+                        <p class="text-gray-600 dark:text-gray-700 font-medium">长大，需要承担压力，也确实可能会消磨掉一些东西，但当很多瑰丽的想象日渐褪淡，当那些气冲霄汉的意气慢慢凝淀，当我们"势不可挡"地要成为一个普通人，如果你仍能仓廪实，知礼节，内心富足；如果你仍能有所爱，敢担当，通达乐观；如果你仍能有声有色，自知自明，不偏不倚……那么，我们即使普普通通，也闪闪发亮。</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-600">——《夜读》</span>
+                        <span class="ml-2 text-xl">📚</span>
+                    </div>
+                </div>
+                
+                <!-- 故事5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">05</span>
+                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">长大就是边走边调整</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-300">我上大学的时候，一位老师说了一句话，让我印象十分深刻："当一件事情有50%的可能性可以成功时，你就应该尝试一下。世界上没有100%可以成功的事情，有一半概率都不试试，你还是个年轻人吗？"</p>
+                        <p class="text-gray-600 dark:text-gray-300">接下来就有人问了："那要是失败了呢？"</p>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">失败就失败了呗，谁规定不能失败呢？大不了从头再来，大不了大器晚成啊。</p>
+                        <p class="text-gray-600 dark:text-gray-300">在这个不停变化的世界里，我们都得拥有一边飞速奔跑，一边寻找路径的能力。毕竟，世界在变，而你不变，仅仅指望着第一步，显然不够。</p>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">不变的事情总是容易的，而困难的事情，总是变化的。</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">——李尚龙</span>
+                        <span class="ml-2 text-xl">🏃‍♂️</span>
+                    </div>
+                </div>
+                
+                <!-- 故事6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 card-hover" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">06</span>
+                        <h3 class="text-xl font-bold text-green-600 dark:text-green-400">长大就是努力比昨天的自己更好一点</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-700">每一年，我都以为这是最好的年纪了，但当我又多长一岁，我才知道原来还可以更好。</p>
+                        <p class="text-gray-600 dark:text-gray-700 font-medium">年龄只不过是一个数字，而不是阻碍，越长大越自由，越长大越勇敢。</p>
+                        <p class="text-gray-600 dark:text-gray-700">今天永远比昨天活得更漂亮，今年永远比去年活得更通透。</p>
+                        <p class="text-gray-600 dark:text-gray-700">把时间分给睡眠，分给书籍，分给运动，分给花鸟树木和山川湖海，分给你对这个世界的热爱，而不是将自己浪费在无聊的人和事上。</p>
+                        <p class="text-gray-600 dark:text-gray-700">当我开始做时间的主人，我会感受到平淡生活中喷涌而出的平静的力量，至于那些焦虑与不安，自然烟消云散。</p>
+                        <p class="text-gray-600 dark:text-gray-700 font-medium">当我真正开始爱自己，我睡得越来越早，也越来越喜欢锻炼。我不再纠结和焦虑，变得自信满满，去追求有意义的人和事，并为之燃烧自己的热情。我发现，人生才真正开始。</p>
+                    </div>
+                    <div class="mt-6 flex justify-end items-center">
+                        <span class="text-sm text-gray-500 dark:text-gray-600">——佚名</span>
+                        <span class="ml-2 text-xl">🌟</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-lg font-bold text-primary-600 dark:text-primary-400 mb-2">冬日可爱know</h3>
+                    <p class="text-gray-600 dark:text-gray-300">希望我的作品像冬天的太阳一样让人温暖</p>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-link text-gray-500 dark:text-gray-400 mr-2"></i>
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-primary-600 dark:text-primary-400 hover:underline">微信公众号</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fab fa-github text-gray-500 dark:text-gray-400 mr-2"></i>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-primary-600 dark:text-primary-400 hover:underline">GitHub</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fab fa-bilibili text-gray-500 dark:text-gray-400 mr-2"></i>
+                        <a href="https://space.bilibili.com/1943358001" class="text-primary-600 dark:text-primary-400 hover:underline">哔哩哔哩</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>© 2023 冬日可爱know. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储或系统偏好
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', function() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // 监听系统主题变化
+        prefersDarkScheme.addEventListener('change', e => {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.classList.toggle('dark', newTheme === 'dark');
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
