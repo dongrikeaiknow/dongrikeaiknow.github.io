@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>糖代谢可视化图谱 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            light: '#FFF0F5',
+                            primary: '#FFB6C1',
+                            dark: '#DB7093'
+                        },
+                        purple: {
+                            light: '#F5F0FF',
+                            primary: '#D8BFD8',
+                            dark: '#9370DB'
+                        },
+                        green: {
+                            light: '#F0FFF4',
+                            primary: '#98FB98',
+                            dark: '#3CB371'
+                        },
+                        yellow: {
+                            light: '#FFF9F0',
+                            primary: '#FFDEAD',
+                            dark: '#DAA520'
+                        },
+                        blue: {
+                            light: '#F0F8FF',
+                            primary: '#ADD8E6',
+                            dark: '#4682B4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .pathway-card {
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reaction-step {
+            border-left: 4px solid;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .reaction-step:hover {
+            border-left-width: 6px;
+        }
+        
+        .enzyme-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-enzyme {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .chemical-structure {
+            font-family: monospace;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        .dark .chemical-structure {
+            background-color: rgba(26, 32, 44, 0.7);
+        }
+        
+        .energy-change {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #68D391;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #68D391;
+        }
+    </style>
+</head>
+<body class="bg-pink-light dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-purple-dark dark:text-purple-primary mb-4">糖代谢可视化图谱</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">探索生命能量的来源！从葡萄糖到ATP的奇妙旅程~</p>
+            
+            <!-- Dark mode toggle -->
+            <div class="flex justify-center mt-6">
+                <span class="mr-2 text-gray-700 dark:text-gray-300">浅色</span>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">深色</span>
+            </div>
+        </header>
+        
+        <!-- Introduction Card -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-green-primary">
+            <h2 class="text-2xl font-bold text-green-dark dark:text-green-primary mb-4">糖代谢概述 ✨</h2>
+            <p class="mb-4">糖代谢是生物体获取能量的主要途径！成人每天所需能量的55%-60%来自糖代谢！</p>
+            <p class="mb-4">糖在体内以<strong>糖原</strong>的形式贮存，以<strong>葡萄糖</strong>的形式在血液中运输。1g葡萄糖在体内氧化可产生16.7 kJ的能量！</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-green-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-green-dark dark:text-green-primary mb-2">糖的分解代谢</h3>
+                    <p>大分子糖降解成单糖后，进一步氧化成CO₂和H₂O，释放能量！包括：</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>糖酵解</li>
+                        <li>柠檬酸循环</li>
+                        <li>戊糖磷酸途径</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">糖的合成代谢</h3>
+                    <p>绿色植物利用日光、CO₂和水合成葡萄糖（光合作用）！动物则：</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>合成糖原</li>
+                        <li>糖异生作用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Glycolysis Pathway -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-pink-primary">
+            <h2 class="text-2xl font-bold text-pink-dark dark:text-pink-primary mb-4">1. 糖酵解途径 (Glycolysis) 🍬</h2>
+            <p class="mb-4">葡萄糖 → 丙酮酸的过程！在<strong>细胞质</strong>中进行，<strong>无氧条件</strong>下也能进行！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-pink-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-pink-dark dark:text-pink-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>10步酶促反应</li>
+                        <li>净生成2 ATP</li>
+                        <li>生成2 NADH</li>
+                    </ul>
+                </div>
+                <div class="bg-pink-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-pink-dark dark:text-pink-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-pink-primary text-white key-enzyme">己糖激酶</span>
+                        <span class="enzyme-badge bg-pink-primary text-white key-enzyme">果糖磷酸激酶</span>
+                        <span class="enzyme-badge bg-pink-primary text-white key-enzyme">丙酮酸激酶</span>
+                    </div>
+                </div>
+                <div class="bg-pink-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-pink-dark dark:text-pink-primary mb-2">能量变化</h3>
+                    <p>1 mol葡萄糖 → 2 mol丙酮酸</p>
+                    <p><strong>净生成：2 ATP</strong></p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 text-pink-dark dark:text-pink-primary">糖酵解详细步骤：</h3>
+            
+            <!-- Stage 1 -->
+            <div class="reaction-step border-pink-primary mb-8">
+                <h4 class="font-bold text-lg mb-3">第一阶段：己糖磷酸酯的生成</h4>
+                
+                <!-- Step 1 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">1. 葡萄糖 → 葡糖-6-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-primary text-white">己糖激酶</span> (关键酶!)</p>
+                    <p class="text-sm">ATP提供磷酸基团，消耗1 ATP</p>
+                    <div class="chemical-structure">
+                        <div>葡萄糖: HOCH₂(CHOH)₄CHO</div>
+                        <div>→ 葡糖-6-磷酸: HOCH₂(CHOH)₄CH₂OPO₃²⁻</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -16.7 kJ/mol</span>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">2. 葡糖-6-磷酸 → 果糖-6-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">己糖磷酸异构酶</span></p>
+                    <div class="chemical-structure">
+                        <div>葡糖-6-磷酸: HOCH₂(CHOH)₄CH₂OPO₃²⁻</div>
+                        <div>⇌ 果糖-6-磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +1.7 kJ/mol</span>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">3. 果糖-6-磷酸 → 果糖-1,6-二磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-primary text-white">果糖磷酸激酶</span> (关键酶!)</p>
+                    <p class="text-sm">消耗1 ATP</p>
+                    <div class="chemical-structure">
+                        <div>果糖-6-磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻</div>
+                        <div>→ 果糖-1,6-二磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻OPO₃²⁻</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -14.2 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Stage 2 -->
+            <div class="reaction-step border-pink-primary mb-8">
+                <h4 class="font-bold text-lg mb-3">第二阶段：丙糖磷酸的生成</h4>
+                
+                <!-- Step 4 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">4. 果糖-1,6-二磷酸 → 磷酸二羟丙酮 + 甘油醛-3-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">醛缩酶</span></p>
+                    <div class="chemical-structure">
+                        <div>果糖-1,6-二磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻OPO₃²⁻</div>
+                        <div>→ 磷酸二羟丙酮: CH₂OPO₃²⁻COCH₂OH</div>
+                        <div>+ 甘油醛-3-磷酸: CH₂OPO₃²⁻CHOHCHO</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +23.8 kJ/mol</span>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">5. 磷酸二羟丙酮 ⇌ 甘油醛-3-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">丙糖磷酸异构酶</span></p>
+                    <div class="chemical-structure">
+                        <div>磷酸二羟丙酮: CH₂OPO₃²⁻COCH₂OH</div>
+                        <div>⇌ 甘油醛-3-磷酸: CH₂OPO₃²⁻CHOHCHO</div>
+                    </div>
+                    <p class="text-sm">最终相当于1分子果糖-1,6-二磷酸生成2分子甘油醛-3-磷酸！</p>
+                </div>
+            </div>
+            
+            <!-- Stage 3 -->
+            <div class="reaction-step border-pink-primary mb-8">
+                <h4 class="font-bold text-lg mb-3">第三阶段：甘油醛-3-磷酸 → 丙酮酸</h4>
+                
+                <!-- Step 6 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">6. 甘油醛-3-磷酸 → 甘油酸-1,3-二磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">甘油醛-3-磷酸脱氢酶</span></p>
+                    <p class="text-sm">生成1 NADH</p>
+                    <div class="chemical-structure">
+                        <div>甘油醛-3-磷酸: CH₂OPO₃²⁻CHOHCHO</div>
+                        <div>→ 甘油酸-1,3-二磷酸: CH₂OPO₃²⁻CHOHCOOPO₃²⁻</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +6.3 kJ/mol</span>
+                </div>
+                
+                <!-- Step 7 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">7. 甘油酸-1,3-二磷酸 → 甘油酸-3-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">甘油酸磷酸激酶</span></p>
+                    <p class="text-sm">生成1 ATP (底物水平磷酸化)</p>
+                    <div class="chemical-structure">
+                        <div>甘油酸-1,3-二磷酸: CH₂OPO₃²⁻CHOHCOOPO₃²⁻</div>
+                        <div>→ 甘油酸-3-磷酸: CH₂OPO₃²⁻CHOHCOOH</div>
+                    </div>
+                    <span class="energy-change bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">ΔG°' = -18.5 kJ/mol</span>
+                </div>
+                
+                <!-- Step 8 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">8. 甘油酸-3-磷酸 → 甘油酸-2-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">甘油酸磷酸变位酶</span></p>
+                    <div class="chemical-structure">
+                        <div>甘油酸-3-磷酸: CH₂OPO₃²⁻CHOHCOOH</div>
+                        <div>→ 甘油酸-2-磷酸: CH₂OHCHOPO₃²⁻COOH</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +4.6 kJ/mol</span>
+                </div>
+                
+                <!-- Step 9 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">9. 甘油酸-2-磷酸 → 磷酸烯醇丙酮酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-200 text-pink-800">烯醇化酶</span></p>
+                    <div class="chemical-structure">
+                        <div>甘油酸-2-磷酸: CH₂OHCHOPO₃²⁻COOH</div>
+                        <div>→ 磷酸烯醇丙酮酸: CH₂=C(OPO₃²⁻)COOH</div>
+                    </div>
+                    <span class="energy-change bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">ΔG°' = -3.35 kJ/mol</span>
+                </div>
+                
+                <!-- Step 10 -->
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">10. 磷酸烯醇丙酮酸 → 丙酮酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-pink-primary text-white">丙酮酸激酶</span> (关键酶!)</p>
+                    <p class="text-sm">生成1 ATP (底物水平磷酸化)</p>
+                    <div class="chemical-structure">
+                        <div>磷酸烯醇丙酮酸: CH₂=C(OPO₃²⁻)COOH</div>
+                        <div>→ 丙酮酸: CH₃COCOOH</div>
+                    </div>
+                    <span class="energy-change bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">ΔG°' = -31.4 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-pink-dark dark:text-pink-primary">糖酵解总结 🎯</h4>
+                <p>1 葡萄糖 → 2 丙酮酸</p>
+                <p><strong>净生成: 2 ATP + 2 NADH</strong></p>
+                <p>无氧条件下：丙酮酸 → 乳酸 (动物) 或乙醇 (酵母)</p>
+                <p>有氧条件下：丙酮酸进入线粒体继续氧化！</p>
+            </div>
+        </div>
+        
+        <!-- Pyruvate to Acetyl-CoA -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-yellow-primary">
+            <h2 class="text-2xl font-bold text-yellow-dark dark:text-yellow-primary mb-4">2. 丙酮酸氧化脱羧生成乙酰CoA 🔥</h2>
+            <p class="mb-4">丙酮酸进入<strong>线粒体</strong>，在有氧条件下氧化脱羧生成乙酰CoA！这是连接糖酵解和三羧酸循环的关键步骤！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>在线粒体基质中进行</li>
+                        <li>不可逆反应</li>
+                        <li>生成1 NADH</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-yellow-primary text-white key-enzyme">丙酮酸脱氢酶系</span>
+                    </div>
+                </div>
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">能量变化</h3>
+                    <p>1 mol丙酮酸 → 1 mol乙酰CoA</p>
+                    <p><strong>生成: 1 NADH (≈2.5 ATP)</strong></p>
+                </div>
+            </div>
+            
+            <div class="reaction-step border-yellow-primary mb-4">
+                <h4 class="font-bold text-lg mb-3">反应过程</h4>
+                
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">丙酮酸 + CoA + NAD⁺ → 乙酰CoA + CO₂ + NADH + H⁺</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-yellow-primary text-white">丙酮酸脱氢酶系</span> (多酶复合体)</p>
+                    <p class="text-sm">辅酶: TPP, 硫辛酸, CoA, FAD, NAD⁺</p>
+                    <div class="chemical-structure">
+                        <div>丙酮酸: CH₃-CO-COOH</div>
+                        <div>→ 乙酰CoA: CH₃-CO~SCoA</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -33.4 kJ/mol</span>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-yellow-dark dark:text-yellow-primary">丙酮酸脱氢酶系组成 🧩</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <p class="font-semibold">E₁: 丙酮酸脱氢酶</p>
+                        <p class="text-sm">辅酶: TPP</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">E₂: 二氢硫辛酰转乙酰基酶</p>
+                        <p class="text-sm">辅酶: 硫辛酸</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">E₃: 二氢硫辛酰脱氢酶</p>
+                        <p class="text-sm">辅酶: FAD, NAD⁺</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TCA Cycle -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-green-primary">
+            <h2 class="text-2xl font-bold text-green-dark dark:text-green-primary mb-4">3. 柠檬酸循环 (三羧酸循环, TCA循环) 🍋</h2>
+            <p class="mb-4">乙酰CoA彻底氧化为CO₂和H₂O的过程！在<strong>线粒体基质</strong>中进行，是三大营养物质分解的共同途径！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-green-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-green-dark dark:text-green-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>8步反应循环</li>
+                        <li>生成3 NADH, 1 FADH₂, 1 GTP</li>
+                        <li>两次脱羧生成2 CO₂</li>
+                    </ul>
+                </div>
+                <div class="bg-green-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-green-dark dark:text-green-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-green-primary text-white key-enzyme">柠檬酸合酶</span>
+                        <span class="enzyme-badge bg-green-primary text-white key-enzyme">异柠檬酸脱氢酶</span>
+                        <span class="enzyme-badge bg-green-primary text-white key-enzyme">α-酮戊二酸脱氢酶系</span>
+                    </div>
+                </div>
+                <div class="bg-green-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-green-dark dark:text-green-primary mb-2">能量变化</h3>
+                    <p>1 mol乙酰CoA → 10 mol ATP</p>
+                    <p>1 mol葡萄糖 → 25 mol ATP</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 text-green-dark dark:text-green-primary">柠檬酸循环详细步骤：</h3>
+            
+            <!-- Step 1 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">1. 乙酰CoA + 草酰乙酸 → 柠檬酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-primary text-white">柠檬酸合酶</span> (关键酶!)</p>
+                    <div class="chemical-structure">
+                        <div>乙酰CoA: CH₃-CO~SCoA</div>
+                        <div>+ 草酰乙酸: -OOC-CH₂-CO-COO⁻</div>
+                        <div>→ 柠檬酸: HOOC-CH₂-C(OH)(COOH)-CH₂-COOH</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -32.2 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">2. 柠檬酸 ⇌ 顺乌头酸 ⇌ 异柠檬酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-200 text-green-800">顺乌头酸酶</span></p>
+                    <div class="chemical-structure">
+                        <div>柠檬酸: HOOC-CH₂-C(OH)(COOH)-CH₂-COOH</div>
+                        <div>⇌ 顺乌头酸: HOOC-CH=C(COOH)-CH₂-COOH</div>
+                        <div>⇌ 异柠檬酸: HOOC-CH₂-CH(COOH)-CH(OH)-COOH</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +13.3 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">3. 异柠檬酸 → α-酮戊二酸 + CO₂</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-primary text-white">异柠檬酸脱氢酶</span> (关键酶!)</p>
+                    <p class="text-sm">生成1 NADH</p>
+                    <div class="chemical-structure">
+                        <div>异柠檬酸: HOOC-CH₂-CH(COOH)-CH(OH)-COOH</div>
+                        <div>→ α-酮戊二酸: HOOC-CH₂-CH₂-CO-COOH + CO₂</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -20.9 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">4. α-酮戊二酸 → 琥珀酰CoA + CO₂</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-primary text-white">α-酮戊二酸脱氢酶系</span> (关键酶!)</p>
+                    <p class="text-sm">生成1 NADH</p>
+                    <div class="chemical-structure">
+                        <div>α-酮戊二酸: HOOC-CH₂-CH₂-CO-COOH</div>
+                        <div>→ 琥珀酰CoA: HOOC-CH₂-CH₂-CO~SCoA + CO₂</div>
+                    </div>
+                    <span class="energy-change bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">ΔG°' = -33.5 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 5 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">5. 琥珀酰CoA → 琥珀酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-200 text-green-800">琥珀酸硫激酶</span></p>
+                    <p class="text-sm">底物水平磷酸化，生成1 GTP (≈ATP)</p>
+                    <div class="chemical-structure">
+                        <div>琥珀酰CoA: HOOC-CH₂-CH₂-CO~SCoA</div>
+                        <div>→ 琥珀酸: HOOC-CH₂-CH₂-COOH</div>
+                    </div>
+                    <span class="energy-change bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">ΔG°' = -2.9 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 6 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">6. 琥珀酸 → 延胡索酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-200 text-green-800">琥珀酸脱氢酶</span></p>
+                    <p class="text-sm">生成1 FADH₂</p>
+                    <div class="chemical-structure">
+                        <div>琥珀酸: HOOC-CH₂-CH₂-COOH</div>
+                        <div>→ 延胡索酸: HOOC-CH=CH-COOH</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = 0 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 7 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">7. 延胡索酸 → 苹果酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-200 text-green-800">延胡索酸酶</span></p>
+                    <div class="chemical-structure">
+                        <div>延胡索酸: HOOC-CH=CH-COOH</div>
+                        <div>→ 苹果酸: HOOC-CH₂-CH(OH)-COOH</div>
+                    </div>
+                    <span class="energy-change bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">ΔG°' = -3.8 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Step 8 -->
+            <div class="reaction-step border-green-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">8. 苹果酸 → 草酰乙酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-green-200 text-green-800">苹果酸脱氢酶</span></p>
+                    <p class="text-sm">生成1 NADH</p>
+                    <div class="chemical-structure">
+                        <div>苹果酸: HOOC-CH₂-CH(OH)-COOH</div>
+                        <div>→ 草酰乙酸: HOOC-CH₂-CO-COOH</div>
+                    </div>
+                    <span class="energy-change bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">ΔG°' = +29.7 kJ/mol</span>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <div class="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-green-dark dark:text-green-primary">柠檬酸循环总结 🎯</h4>
+                <p>1 乙酰CoA → 2 CO₂ + 3 NADH + 1 FADH₂ + 1 GTP</p>
+                <p><strong>能量总计: 10 ATP/乙酰CoA</strong></p>
+                <p>1 葡萄糖 → 2 乙酰CoA → 25 ATP</p>
+                <p>加上糖酵解和丙酮酸脱氢生成的ATP，1葡萄糖彻底氧化<strong>净生成32 ATP</strong>！</p>
+            </div>
+        </div>
+        
+        <!-- Pentose Phosphate Pathway -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-blue-primary">
+            <h2 class="text-2xl font-bold text-blue-dark dark:text-blue-primary mb-4">4. 戊糖磷酸途径 (PPP) 🌟</h2>
+            <p class="mb-4">葡萄糖直接氧化脱羧的途径！主要生成<strong>NADPH</strong>和<strong>核糖-5-磷酸</strong>！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-dark dark:text-blue-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>在细胞质中进行</li>
+                        <li>生成NADPH</li>
+                        <li>提供核糖-5-磷酸</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-dark dark:text-blue-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-blue-primary text-white">葡糖-6-磷酸脱氢酶</span>
+                        <span class="enzyme-badge bg-blue-primary text-white">6-磷酸葡糖酸脱氢酶</span>
+                    </div>
+                </div>
+                <div class="bg-blue-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-dark dark:text-blue-primary mb-2">主要产物</h3>
+                    <p>NADPH (还原力)</p>
+                    <p>核糖-5-磷酸 (核酸合成)</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 text-blue-dark dark:text-blue-primary">氧化阶段 (葡糖-6-磷酸 → 核糖-5-磷酸)：</h3>
+            
+            <!-- Step 1 -->
+            <div class="reaction-step border-blue-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">1. 葡糖-6-磷酸 → 6-磷酸葡糖酸内酯</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-blue-primary text-white">葡糖-6-磷酸脱氢酶</span></p>
+                    <p class="text-sm">生成1 NADPH</p>
+                    <div class="chemical-structure">
+                        <div>葡糖-6-磷酸: HOCH₂(CHOH)₄CH₂OPO₃²⁻</div>
+                        <div>→ 6-磷酸葡糖酸内酯: O=CH(CHOH)₄CH₂OPO₃²⁻</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="reaction-step border-blue-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">2. 6-磷酸葡糖酸内酯 → 6-磷酸葡糖酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-blue-200 text-blue-800">内酯酶</span></p>
+                    <div class="chemical-structure">
+                        <div>6-磷酸葡糖酸内酯: O=CH(CHOH)₄CH₂OPO₃²⁻</div>
+                        <div>→ 6-磷酸葡糖酸: HOOC(CHOH)₄CH₂OPO₃²⁻</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="reaction-step border-blue-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">3. 6-磷酸葡糖酸 → 核酮糖-5-磷酸 + CO₂</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-blue-primary text-white">6-磷酸葡糖酸脱氢酶</span></p>
+                    <p class="text-sm">生成1 NADPH</p>
+                    <div class="chemical-structure">
+                        <div>6-磷酸葡糖酸: HOOC(CHOH)₄CH₂OPO₃²⁻</div>
+                        <div>→ 核酮糖-5-磷酸: CH₂OPO₃²⁻CO(CHOH)₂CH₂OH + CO₂</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="reaction-step border-blue-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">4. 核酮糖-5-磷酸 ⇌ 核糖-5-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-blue-200 text-blue-800">磷酸戊糖异构酶</span></p>
+                    <div class="chemical-structure">
+                        <div>核酮糖-5-磷酸: CH₂OPO₃²⁻CO(CHOH)₂CH₂OH</div>
+                        <div>⇌ 核糖-5-磷酸: CH₂OPO₃²⁻CHOH(CHOH)₃CHO</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-blue-dark dark:text-blue-primary">戊糖磷酸途径总结 🎯</h4>
+                <p>1 葡糖-6-磷酸 → 1 核糖-5-磷酸 + 2 NADPH + 1 CO₂</p>
+                <p><strong>生物学意义:</strong></p>
+                <ul class="list-disc pl-5">
+                    <li>提供NADPH (脂肪酸、固醇合成)</li>
+                    <li>提供核糖-5-磷酸 (核酸合成)</li>
+                    <li>使不同碳数的糖相互转化</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Glyoxylate Cycle -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-purple-primary">
+            <h2 class="text-2xl font-bold text-purple-dark dark:text-purple-primary mb-4">5. 乙醛酸循环 🌱</h2>
+            <p class="mb-4">三羧酸循环的支路！存在于<strong>植物和微生物</strong>中，可将<strong>乙酰CoA</strong>转化为<strong>四碳化合物</strong>！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-purple-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-purple-dark dark:text-purple-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>绕过TCA循环的脱羧步骤</li>
+                        <li>净合成四碳化合物</li>
+                        <li>油料种子萌发时重要</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-purple-dark dark:text-purple-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-purple-primary text-white">异柠檬酸裂解酶</span>
+                        <span class="enzyme-badge bg-purple-primary text-white">苹果酸合酶</span>
+                    </div>
+                </div>
+                <div class="bg-purple-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-purple-dark dark:text-purple-primary mb-2">生物学意义</h3>
+                    <p>脂肪 → 糖的转化</p>
+                    <p>乙酸作为唯一碳源</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 text-purple-dark dark:text-purple-primary">乙醛酸循环反应：</h3>
+            
+            <!-- Step 1 -->
+            <div class="reaction-step border-purple-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">1. 异柠檬酸 → 琥珀酸 + 乙醛酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-purple-primary text-white">异柠檬酸裂解酶</span></p>
+                    <div class="chemical-structure">
+                        <div>异柠檬酸: HOOC-CH₂-CH(COOH)-CH(OH)-COOH</div>
+                        <div>→ 琥珀酸: HOOC-CH₂-CH₂-COOH</div>
+                        <div>+ 乙醛酸: O=CH-COOH</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="reaction-step border-purple-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">2. 乙醛酸 + 乙酰CoA → 苹果酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-purple-primary text-white">苹果酸合酶</span></p>
+                    <div class="chemical-structure">
+                        <div>乙醛酸: O=CH-COOH</div>
+                        <div>+ 乙酰CoA: CH₃-CO~SCoA</div>
+                        <div>→ 苹果酸: HOOC-CH₂-CH(OH)-COOH</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <div class="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-purple-dark dark:text-purple-primary">乙醛酸循环总结 🎯</h4>
+                <p>2 乙酰CoA → 1 琥珀酸</p>
+                <p><strong>生物学意义:</strong></p>
+                <ul class="list-disc pl-5">
+                    <li>油料种子萌发时，脂肪转化为糖</li>
+                    <li>微生物利用乙酸作为唯一碳源</li>
+                    <li>补充TCA循环中间物</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Gluconeogenesis -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-yellow-primary">
+            <h2 class="text-2xl font-bold text-yellow-dark dark:text-yellow-primary mb-4">6. 糖异生作用 ⏪</h2>
+            <p class="mb-4">非糖物质（乳酸、甘油、氨基酸等）转变为葡萄糖或糖原的过程！主要在<strong>肝脏</strong>中进行！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">关键特点</h3>
+                    <ul class="list-disc pl-5">
+                        <li>基本上是糖酵解的逆过程</li>
+                        <li>消耗6高能磷酸键</li>
+                        <li>维持血糖恒定</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">关键酶</h3>
+                    <div class="flex flex-wrap">
+                        <span class="enzyme-badge bg-yellow-primary text-white">丙酮酸羧化酶</span>
+                        <span class="enzyme-badge bg-yellow-primary text-white">PEP羧化激酶</span>
+                        <span class="enzyme-badge bg-yellow-primary text-white">果糖-1,6-二磷酸酶</span>
+                        <span class="enzyme-badge bg-yellow-primary text-white">葡糖-6-磷酸酶</span>
+                    </div>
+                </div>
+                <div class="bg-yellow-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-dark dark:text-yellow-primary mb-2">前体物质</h3>
+                    <p>乳酸、甘油</p>
+                    <p>生糖氨基酸</p>
+                    <p>TCA循环中间物</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-4 text-yellow-dark dark:text-yellow-primary">糖异生关键反应：</h3>
+            
+            <!-- Step 1 -->
+            <div class="reaction-step border-yellow-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">1. 丙酮酸 → 草酰乙酸 → 磷酸烯醇丙酮酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-yellow-primary text-white">丙酮酸羧化酶</span>, <span class="enzyme-badge bg-yellow-primary text-white">PEP羧化激酶</span></p>
+                    <p class="text-sm">消耗1 ATP + 1 GTP</p>
+                    <div class="chemical-structure">
+                        <div>丙酮酸: CH₃-CO-COOH</div>
+                        <div>→ 草酰乙酸: -OOC-CH₂-CO-COO⁻</div>
+                        <div>→ 磷酸烯醇丙酮酸: CH₂=C(OPO₃²⁻)COOH</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="reaction-step border-yellow-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">2. 果糖-1,6-二磷酸 → 果糖-6-磷酸</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-yellow-primary text-white">果糖-1,6-二磷酸酶</span></p>
+                    <div class="chemical-structure">
+                        <div>果糖-1,6-二磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻OPO₃²⁻</div>
+                        <div>→ 果糖-6-磷酸: HOCH₂CO(CHOH)₃CH₂OPO₃²⁻</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="reaction-step border-yellow-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">3. 葡糖-6-磷酸 → 葡萄糖</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酶: <span class="enzyme-badge bg-yellow-primary text-white">葡糖-6-磷酸酶</span></p>
+                    <div class="chemical-structure">
+                        <div>葡糖-6-磷酸: HOCH₂(CHOH)₄CH₂OPO₃²⁻</div>
+                        <div>→ 葡萄糖: HOCH₂(CHOH)₄CHO</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cori Cycle -->
+            <div class="reaction-step border-yellow-primary mb-4">
+                <div class="mb-4 pl-4">
+                    <p class="font-semibold">乳酸循环 (Cori循环)</p>
+                    <p class="text-sm">肌肉中糖酵解产生乳酸 → 血液 → 肝脏中糖异生为葡萄糖 → 血液 → 肌肉</p>
+                    <div class="chemical-structure">2 乳酸 + 6 ATP → 1 葡萄糖</div>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <div class="bg-yellow-50 dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold text-lg mb-2 text-yellow-dark dark:text-yellow-primary">糖异生总结 🎯</h4>
+                <p>2 丙酮酸 → 1 葡萄糖</p>
+                <p><strong>消耗: 4 ATP + 2 GTP</strong></p>
+                <p><strong>生理意义:</strong></p>
+                <ul class="list-disc pl-5">
+                    <li>维持血糖恒定</li>
+                    <li>清除乳酸</li>
+                    <li>氨基酸代谢途径</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Summary Card -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-purple-primary">
+            <h2 class="text-2xl font-bold text-purple-dark dark:text-purple-primary mb-4">糖代谢全景图 🌈</h2>
+            <p class="mb-4">糖代谢各途径相互联系，构成复杂的代谢网络！以下是主要代谢途径的关系：</p>
+            
+            <div class="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg mb-4">
+                <h4 class="font-bold text-lg mb-2 text-purple-dark dark:text-purple-primary">糖代谢途径关系</h4>
+                <div class="text-center">
+                    <p class="font-semibold">多糖 → 单糖 → 糖酵解 → 丙酮酸</p>
+                    <p class="text-sm">↓ (无氧) ↓ (有氧)</p>
+                    <p class="font-semibold">乳酸/乙醇 乙酰CoA → TCA循环</p>
+                    <p class="text-sm">↑ (糖异生) ↖ (乙醛酸循环)</p>
+                    <p class="font-semibold">非糖物质 ← 戊糖磷酸途径</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-purple-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-bold text-lg mb-2 text-purple-dark dark:text-purple-primary">能量总结</h4>
+                    <ul class="list-disc pl-5">
+                        <li><strong>糖酵解:</strong> 1葡萄糖 → 2 ATP + 2 NADH</li>
+                        <li><strong>丙酮酸→乙酰CoA:</strong> 1 NADH</li>
+                        <li><strong>TCA循环:</strong> 1乙酰CoA → 10 ATP</li>
+                        <li><strong>总计:</strong> 1葡萄糖 → 32 ATP</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-light dark:bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-bold text-lg mb-2 text-purple-dark dark:text-purple-primary">代谢调控</h4>
+                    <ul class="list-disc pl-5">
+                        <li>ATP/AMP比值调节</li>
+                        <li>NADH/NAD⁺比值调节</li>
+                        <li>关键酶的共价修饰</li>
+                        <li>激素调节</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Author Info -->
+        <div class="pathway-card bg-white dark:bg-gray-800 p-6 mb-8 border-l-8 border-pink-primary">
+            <h2 class="text-2xl font-bold text-pink-dark dark:text-pink-primary mb-4">关于作者 ❤️</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/4 mb-4 md:mb-0 flex justify-center">
+                    <div class="w-32 h-32 rounded-full bg-pink-200 flex items-center justify-center text-5xl">☀️</div>
+                </div>
+                <div class="md:w-3/4 md:pl-8">
+                    <h3 class="text-xl font-bold mb-2">冬日可爱know</h3>
+                    <p class="mb-4">希望我的作品像冬天的太阳一样让人温暖~</p>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-bold mb-2">社交媒体:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="px-3 py-1 bg-pink-100 dark:bg-gray-700 rounded-full text-sm flex items-center">
+                                <i class="fab fa-weixin mr-1"></i> 微信公众号
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="px-3 py-1 bg-pink-100 dark:bg-gray-700 rounded-full text-sm flex items-center">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="px-3 py-1 bg-pink-100 dark:bg-gray-700 rounded-full text-sm flex items-center">
+                                <i class="fab fa-bilibili mr-1"></i> Bilibili
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                        <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                        <p>本作品仅供学习交流使用，未经许可不得用于商业用途。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check local storage or system preference
+        if (localStorage.getItem('darkMode') === 'enabled' || 
+            (!localStorage.getItem('darkMode') && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark');
+            toggle.checked = true;
+        }
+        
+        // Toggle dark mode
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation for enzyme badges
+        document.querySelectorAll('.enzyme-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', function() {
+                this.classList.add('animate-bounce');
+            });
+            badge.addEventListener('mouseleave', function() {
+                this.classList.remove('animate-bounce');
+            });
+        });
+    </script>
+</body>
+</html>
