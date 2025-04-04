@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写给四月 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(240, 208, 224, 0.8) 0%, rgba(224, 240, 176, 0.8) 50%, rgba(192, 224, 224, 0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .dark .dark\:gradient-bg-dark {
+            background: linear-gradient(135deg, rgba(80, 68, 88, 0.9) 0%, rgba(68, 88, 72, 0.9) 50%, rgba(48, 72, 88, 0.9) 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- 主题切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="themeToggle" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg">
+            <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+        </button>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- 标题部分 -->
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-pink-600 dark:text-pink-300 mb-4">写给四月</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">你是否和我一样，对四月怀着一种特别的情感...</p>
+            <div class="mt-6 emoji-float text-4xl">🌸</div>
+        </header>
+
+        <!-- 引言卡片 -->
+        <section class="mb-12 fade-in">
+            <div class="gradient-bg dark:gradient-bg-dark rounded-3xl p-8 shadow-md card-hover">
+                <div class="flex items-start">
+                    <div class="text-3xl mr-4">"</div>
+                    <div>
+                        <p class="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-200">
+                            大抵春天来得缓慢，三月的凛冽让人瑟缩，你会产生"三月还属残冬、不是春天"的印象。可是一进入四月，那就不一样了：天气陡然暖了起来，枝头渐次热闹了起来，愿意走出门踏青散步的人也陆续多了起来。
+                        </p>
+                        <p class="mt-4 text-lg md:text-xl font-medium text-gray-800 dark:text-gray-100">
+                            人间四月天真好。好在春融日暖的氛围，也好在酝酿着恰到好处的"希望感"！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主要内容卡片 -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.2s;">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md card-hover">
+                <h2 class="text-3xl font-bold text-center text-green-600 dark:text-green-300 mb-8">
+                    成为更好的人 <span class="text-2xl">✨</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 断弃卡片 -->
+                    <div class="bg-rose-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-rose-200 dark:bg-rose-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-leaf text-rose-600 dark:text-rose-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-rose-700 dark:text-rose-300">懂得断弃</h3>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            昨日之事不可留，无论它带给你喜悦、忧愁还是遗憾，逝去了就要学会放手。"别人与他物都是会离开的，但你自己一直都在"。
+                        </p>
+                        <div class="mt-4 text-right text-sm text-rose-600 dark:text-rose-400">
+                            —— 挥别过往的纠葛
+                        </div>
+                        <div class="mt-3 text-center text-2xl">🍃</div>
+                    </div>
+                    
+                    <!-- 疼惜卡片 -->
+                    <div class="bg-amber-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-200 dark:bg-amber-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-heart text-amber-600 dark:text-amber-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-amber-700 dark:text-amber-300">知晓疼惜</h3>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            允许自己多一些"空白"的时刻，好好与内心对话。如梭罗之言："别再过你应该过的人生，去过你想过的人生。"
+                        </p>
+                        <div class="mt-4 text-right text-sm text-amber-600 dark:text-amber-400">
+                            —— 安顿好当下的自己
+                        </div>
+                        <div class="mt-3 text-center text-2xl">💖</div>
+                    </div>
+                    
+                    <!-- 学习卡片 -->
+                    <div class="bg-blue-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-200 dark:bg-blue-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-book text-blue-600 dark:text-blue-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-blue-700 dark:text-blue-300">不断学习</h3>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            保持学而不怠，因为，"所有的出众和成功都是一连串细节的叠加，所有的惊喜也都是付出和努力的累积。"
+                        </p>
+                        <div class="mt-4 text-right text-sm text-blue-600 dark:text-blue-400">
+                            —— 持续不断的底气
+                        </div>
+                        <div class="mt-3 text-center text-2xl">📚</div>
+                    </div>
+                    
+                    <!-- 坚持卡片 -->
+                    <div class="bg-purple-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-mountain text-purple-600 dark:text-purple-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-purple-700 dark:text-purple-300">坚持自己</h3>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            "成为自己的高山，而非他人的风景"。诗人黑塞说："对每个人而言，真正的职责只有一个：找到自我。然后在心中坚守其一生..."
+                        </p>
+                        <div class="mt-4 text-right text-sm text-purple-600 dark:text-purple-400">
+                            —— 坚定内核
+                        </div>
+                        <div class="mt-3 text-center text-2xl">🏔️</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结尾部分 -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.4s;">
+            <div class="gradient-bg dark:gradient-bg-dark rounded-3xl p-8 shadow-md card-hover">
+                <div class="text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+                        希望你带着"做自己"的信念走进阳光明媚的四月！
+                    </h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+                        铮铮且昂扬地攀自己的山，在那里建构独属自己的精神小屋，仰可观流云，俯可见花田。对外在的繁闹不慕不羡，因为轻透又饱满的幸福已在你身边。
+                    </p>
+                    <div class="text-4xl emoji-float">🌻</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作者信息 -->
+        <footer class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md fade-in" style="animation-delay: 0.6s;">
+            <div class="text-center">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-r from-pink-300 to-amber-300 flex items-center justify-center">
+                    <i class="fas fa-sun text-white text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">冬日可爱know</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">希望我的作品像冬天的太阳一样让人温暖</p>
+                
+                <div class="flex justify-center space-x-4 mb-6">
+                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 rounded-full bg-green-100 dark:bg-gray-700 flex items-center justify-center text-green-600 dark:text-green-300 hover:bg-green-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-weixin"></i>
+                    </a>
+                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 rounded-full bg-pink-100 dark:bg-gray-700 flex items-center justify-center text-pink-600 dark:text-pink-300 hover:bg-pink-200 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-bilibili"></i>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400">
+                    <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                    <p class="mt-1">四月，是希望的季节，是成长的开始。</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+        } else {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            
+            if (html.classList.contains('dark')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+            }
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
