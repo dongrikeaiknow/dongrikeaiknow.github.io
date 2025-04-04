@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际组织：世界银行和国际货币基金组织是否真的促进了经济增长</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        }
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -32px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            border: 3px solid #e0f2fe;
+        }
+        .dark .timeline-item:before {
+            background-color: #7dd3fc;
+            border-color: #0c4a6e;
+        }
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary-700 dark:text-primary-300">国际组织：世界银行和国际货币基金组织</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-secondary-600 dark:text-secondary-400">它们是否真的促进了经济增长？</h2>
+            <div class="mt-6 flex justify-center">
+                <span class="inline-block px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium">全球经济</span>
+                <span class="inline-block px-4 py-2 bg-secondary-100 dark:bg-secondary-900 text-secondary-800 dark:text-secondary-200 rounded-full text-sm font-medium ml-2">国际金融</span>
+            </div>
+        </header>
+
+        <!-- Introduction Card -->
+        <div class="card gradient-bg p-6 mb-8">
+            <div class="flex items-start">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-4 text-primary-800 dark:text-primary-200">布雷顿森林体系的诞生</h3>
+                    <p class="mb-4">第二次世界大战即将结束时，44个盟国代表在新罕布什尔州的布雷顿森林举行会议，希望避免一战后的经济错误：恶性通货膨胀、货币贬值和孤立主义！</p>
+                    <p class="font-medium">他们的目标是建立互惠公平的经济体系，帮助战败国重建，使其成为战后经济的全面参与者！</p>
+                </div>
+                <div class="ml-6 hidden md:block">
+                    <span class="text-6xl emoji-float">🌍</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- World Bank Card -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-globe text-primary-600 dark:text-primary-300 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">世界银行</h3>
+                </div>
+                <p class="mb-4">最初名为国际复兴开发银行，总部设在华盛顿，负责监督战后欧洲重建，并承担促进全球经济稳定和增长的使命！</p>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 mb-4">
+                    <p class="font-semibold text-primary-700 dark:text-primary-300 mb-2">主要职能：</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>向有需要的国家提供长期贷款和发展援助</li>
+                        <li>资助学校、医院、发电厂等基础设施项目</li>
+                        <li>通过国际开发协会(IDA)启动发展中国家的私营部门</li>
+                    </ul>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">世界银行每年向发展中国家提供数十亿美元贷款，主要用于抗击贫困和鼓励经济增长！</p>
+            </div>
+
+            <!-- IMF Card -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-secondary-100 dark:bg-secondary-900 p-3 rounded-full mr-4">
+                        <i class="fas fa-coins text-secondary-600 dark:text-secondary-300 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">国际货币基金组织(IMF)</h3>
+                </div>
+                <p class="mb-4">为处于财务困境的国家提供短期贷款，帮助它们调整经济结构，在强大金融扶持下重新加入世界经济！</p>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 mb-4">
+                    <p class="font-semibold text-secondary-700 dark:text-secondary-300 mb-2">典型案例：</p>
+                    <p>2018年，阿根廷改革派政府向IMF寻求500亿美元临时贷款，为解决经济危机赢得时间！</p>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">IMF的使命是促进全球经济稳定，防止金融危机蔓延！</p>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="card bg-white dark:bg-gray-800 p-6 mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">布雷顿森林体系发展历程</h3>
+            <div class="relative pl-12 space-y-8">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative">
+                    <div class="bg-primary-50 dark:bg-primary-900/30 p-4 rounded-lg border-l-4 border-primary-400">
+                        <h4 class="font-bold text-lg mb-2">1944年：布雷顿森林会议</h4>
+                        <p>建立固定汇率制度，将主要货币与美元挂钩，美元与黄金挂钩（35美元=1盎司黄金）</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative">
+                    <div class="bg-primary-50 dark:bg-primary-900/30 p-4 rounded-lg border-l-4 border-primary-400">
+                        <h4 class="font-bold text-lg mb-2">1940s-1960s：黄金时代</h4>
+                        <p>体系使许多国家得以发展和繁荣，从日本到德国，从法国到巴西，世界经历空前经济增长！</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative">
+                    <div class="bg-primary-50 dark:bg-primary-900/30 p-4 rounded-lg border-l-4 border-primary-400">
+                        <h4 class="font-bold text-lg mb-2">1960s后期：危机开始</h4>
+                        <p>美国出现巨额赤字，法国首先要求将美元兑换为实物黄金，其他国家纷纷效仿</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item relative">
+                    <div class="bg-primary-50 dark:bg-primary-900/30 p-4 rounded-lg border-l-4 border-primary-400">
+                        <h4 class="font-bold text-lg mb-2">1971年：体系终结</h4>
+                        <p>美国放弃金本位制，美元及世界上几乎所有货币成为法定货币，汇率开始自由浮动</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Criticism Section -->
+        <div class="card bg-white dark:bg-gray-800 p-6 mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">批评与挑战</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Criticism 1 -->
+                <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                        <h4 class="font-bold">富裕国家的工具</h4>
+                    </div>
+                    <p>批评者认为这些机构是富裕国家的工具，因为富裕国家贡献大部分资金，获得最大份额的选票！</p>
+                </div>
+                <!-- Criticism 2 -->
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-balance-scale text-yellow-500 mr-2"></i>
+                        <h4 class="font-bold">经济限制条件</h4>
+                    </div>
+                    <p>IMF经常要求受援国削减公共开支、削减工资、进行国企私有化改革，这种"一刀切"方案常忽视当地实际情况！</p>
+                </div>
+                <!-- Criticism 3 -->
+                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-tree text-green-500 mr-2"></i>
+                        <h4 class="font-bold">环境问题</h4>
+                    </div>
+                    <p>世界银行资助的项目如贯穿巴西亚马孙雨林的高速公路、印度的水电项目，因环境影响饱受批评！</p>
+                </div>
+                <!-- Criticism 4 -->
+                <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-hand-holding-usd text-purple-500 mr-2"></i>
+                        <h4 class="font-bold">债务负担</h4>
+                    </div>
+                    <p>资金以贷款而非援助形式提供，增加了受援国家的债务负担，减少了可用于社会福利的资金！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reform Section -->
+        <div class="card gradient-bg p-6 mb-8">
+            <h3 class="text-2xl font-bold mb-4 text-primary-800 dark:text-primary-200">改革与替代方案</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Reform 1 -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-university text-3xl text-secondary-600 dark:text-secondary-400 mb-2"></i>
+                        <h4 class="font-bold">亚洲基础设施投资银行(AIIB)</h4>
+                    </div>
+                    <p class="text-sm">设立于北京，融资1000亿美元，为亚洲基础设施项目提供融资，替代世界银行功能！</p>
+                </div>
+                <!-- Reform 2 -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-building text-3xl text-secondary-600 dark:text-secondary-400 mb-2"></i>
+                        <h4 class="font-bold">新开发银行(NDB)</h4>
+                    </div>
+                    <p class="text-sm">设立于上海，融资500亿美元，旨在为发展中国家基础设施项目提供融资！</p>
+                </div>
+                <!-- Reform 3 -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-handshake text-3xl text-secondary-600 dark:text-secondary-400 mb-2"></i>
+                        <h4 class="font-bold">清迈倡议(CMI)</h4>
+                    </div>
+                    <p class="text-sm">为面临财务压力的亚洲国家提供替代性资金来源！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Card -->
+        <div class="card bg-white dark:bg-gray-800 p-6 mb-8">
+            <div class="flex items-start">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-4">结论与展望</h3>
+                    <p class="mb-4">尽管世界上没有解决贫困的灵丹妙药，但在地方政府和超国家组织的共同努力下，运作得当是有机会确保贫困国家人民未来变得富裕的！</p>
+                    <p class="font-medium">关键是要实现更好的教育、更健康的生活和更长的寿命，而不仅仅是争取越来越多的贷款来刺激经济生产！</p>
+                </div>
+                <div class="ml-6 hidden md:block">
+                    <span class="text-6xl">✨</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Author Section -->
+        <div class="card bg-gray-100 dark:bg-gray-800 p-6 mt-12">
+            <div class="text-center">
+                <div class="inline-block bg-primary-100 dark:bg-primary-900 p-4 rounded-full mb-4">
+                    <i class="fas fa-sun text-3xl text-primary-600 dark:text-primary-300"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">冬日可爱know</h3>
+                <p class="mb-4 text-gray-600 dark:text-gray-400">希望我的作品像冬天的太阳一样让人温暖</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i class="fab fa-weixin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/1943358001" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i class="fab fa-bilibili text-2xl"></i>
+                    </a>
+                </div>
+                <p class="mt-4 text-sm text-gray-500 dark:text-gray-500">© 2023 冬日可爱know. 保留所有权利。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark/Light Mode Toggle -->
+    <button id="theme-toggle" class="fixed bottom-6 right-6 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow">
+        <i id="theme-icon" class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+    </button>
+
+    <script>
+        // Dark/Light mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        // Check for saved user preference or use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.classList.toggle('fa-sun', isDark);
+            themeIcon.classList.toggle('fa-moon', !isDark);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
