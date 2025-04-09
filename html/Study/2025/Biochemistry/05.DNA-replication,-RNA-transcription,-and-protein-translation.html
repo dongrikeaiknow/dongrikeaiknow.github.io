@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分子生物学可视化笔记 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .dna-bg {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+        .rna-bg {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+        .protein-bg {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        }
+        .dark .dna-bg {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+        }
+        .dark .rna-bg {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+        }
+        .dark .protein-bg {
+            background: linear-gradient(135deg, #e65100 0%, #f57c00 100%);
+        }
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        .highlight:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 213, 79, 0.5);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        .highlight:hover:after {
+            height: 50%;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .notebook-border {
+            border-left: 4px solid #ff6b6b;
+            padding-left: 1rem;
+        }
+        .emoji-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 标题区 -->
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-indigo-700 dark:text-indigo-300">分子生物学核心过程可视化</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">DNA复制 • RNA转录 • 蛋白质翻译</p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <span class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium">#生物合成</span>
+                <span class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">#遗传信息流</span>
+                <span class="px-4 py-2 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-sm font-medium">#分子机制</span>
+            </div>
+        </header>
+
+        <!-- 简介卡片 -->
+        <section class="mb-12">
+            <div class="card gradient-bg p-8 shadow-md dark:shadow-none dark:bg-gray-800">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 md:pr-8">
+                        <h2 class="text-3xl font-bold mb-4 text-indigo-600 dark:text-indigo-300">🌱 分子生物学的中心法则</h2>
+                        <p class="text-lg mb-4">分子生物学研究生物大分子的结构与功能，特别是<strong class="highlight">DNA复制、RNA转录和蛋白质翻译</strong>这三大核心过程，构成了遗传信息传递的"中心法则"！</p>
+                        <p class="mb-6">本可视化笔记将带您深入了解这些精妙的分子机制，从原核到真核生物的比较，从合成过程到调控机制，全面展示生命最基础的分子舞蹈！</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-book-open text-2xl mr-3 text-indigo-500"></i>
+                            <span>基于《生物化学》教材第13-15章内容整理</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+                        <div class="w-48 h-48 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-inner border-4 border-indigo-200 dark:border-indigo-800">
+                            <i class="fas fa-dna text-6xl text-indigo-500 dark:text-indigo-400 emoji-float"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DNA复制部分 -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-dna mr-3 text-blue-500"></i>
+                <span class="highlight">DNA的生物合成</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- 半保留复制 -->
+                <div class="card dna-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">🔬 半保留复制机制</h3>
+                    <p class="mb-4">DNA复制采用<strong class="highlight">半保留方式</strong>，亲代DNA的两条链分开作为模板，各自合成互补链！</p>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300 italic">Meselson-Stahl实验证实：</p>
+                        <p>• 第一代DNA密度介于<sup>15</sup>N-DNA和<sup>14</sup>N-DNA之间</p>
+                        <p>• 第二代出现等量的杂合DNA和<sup>14</sup>N-DNA</p>
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 mb-2">
+                                <div class="w-16 h-8 bg-blue-500 rounded-l-full"></div>
+                                <div class="w-16 h-8 bg-blue-300 rounded-r-full"></div>
+                            </div>
+                            <p class="text-sm">亲代DNA</p>
+                        </div>
+                        <div class="mx-4 flex items-center">
+                            <i class="fas fa-arrow-right text-gray-500"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 mb-2">
+                                <div class="w-8 h-8 bg-blue-500 rounded-l-full"></div>
+                                <div class="w-8 h-8 bg-blue-300 rounded-r-full"></div>
+                            </div>
+                            <p class="text-sm">子代DNA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 复制酶与蛋白质 -->
+                <div class="card dna-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">🛠️ 复制酶与辅助蛋白</h3>
+                    <p class="mb-4">DNA复制需要多种酶和蛋白质协同工作：</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-lg p-3">
+                            <p class="font-medium text-blue-600 dark:text-blue-400">DNA聚合酶III</p>
+                            <p class="text-sm">主要复制酶，合成前导链和后随链</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-lg p-3">
+                            <p class="font-medium text-blue-600 dark:text-blue-400">DNA聚合酶I</p>
+                            <p class="text-sm">切除RNA引物，填补缺口</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-lg p-3">
+                            <p class="font-medium text-blue-600 dark:text-blue-400">解旋酶</p>
+                            <p class="text-sm">解开DNA双螺旋</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 rounded-lg p-3">
+                            <p class="font-medium text-blue-600 dark:text-blue-400">拓扑异构酶</p>
+                            <p class="text-sm">消除解螺旋产生的扭曲张力</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 复制过程 -->
+            <div class="card dna-bg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">🌀 DNA复制过程</h3>
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-4 md:mb-0">
+                        <p class="mb-4">DNA复制分为三个阶段：<strong class="highlight">起始、延伸和终止</strong>！</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>起始：在复制起点(oriC)形成预引发复合物</li>
+                            <li>延伸：前导链连续合成，后随链以冈崎片段不连续合成</li>
+                            <li>终止：复制叉相遇，拓扑异构酶IV解开连环体</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 max-w-xs">
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="w-16 h-4 bg-blue-500 rounded"></div>
+                                <div class="text-xs">前导链</div>
+                            </div>
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex space-x-1">
+                                    <div class="w-4 h-4 bg-green-500 rounded"></div>
+                                    <div class="w-4 h-4 bg-green-500 rounded"></div>
+                                    <div class="w-4 h-4 bg-green-500 rounded"></div>
+                                </div>
+                                <div class="text-xs">冈崎片段</div>
+                            </div>
+                            <div class="h-1 bg-gray-300 my-2"></div>
+                            <div class="w-full h-2 bg-gray-400 rounded-full"></div>
+                            <div class="text-center mt-2 text-sm">DNA模板链</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 真核与原核比较 -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-300">🔍 真核与原核DNA复制比较</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+                        <thead class="bg-blue-50 dark:bg-blue-900">
+                            <tr>
+                                <th class="py-3 px-4 text-left">特征</th>
+                                <th class="py-3 px-4 text-left">原核生物</th>
+                                <th class="py-3 px-4 text-left">真核生物</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr>
+                                <td class="py-3 px-4">复制起点</td>
+                                <td class="py-3 px-4">单一起点(oriC)</td>
+                                <td class="py-3 px-4">多个起点(约2000-3000个)</td>
+                            </tr>
+                            <tr class="bg-gray-50 dark:bg-gray-700">
+                                <td class="py-3 px-4">复制叉移动速度</td>
+                                <td class="py-3 px-4">约10<sup>5</sup> bp/min</td>
+                                <td class="py-3 px-4">约5×10<sup>2</sup>-5×10<sup>3</sup> bp/min</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">冈崎片段长度</td>
+                                <td class="py-3 px-4">1000-2000 nt</td>
+                                <td class="py-3 px-4">100-200 nt</td>
+                            </tr>
+                            <tr class="bg-gray-50 dark:bg-gray-700">
+                                <td class="py-3 px-4">端粒问题</td>
+                                <td class="py-3 px-4">无(环状DNA)</td>
+                                <td class="py-3 px-4">有(端粒酶解决)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- RNA转录部分 -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-rna mr-3 text-green-500"></i>
+                <span class="highlight">RNA的生物合成</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- RNA聚合酶 -->
+                <div class="card rna-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-700 dark:text-green-300">🧬 RNA聚合酶结构</h3>
+                    <p class="mb-4">RNA聚合酶是转录的核心酶，原核和真核生物有所不同：</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <p class="font-medium text-green-600 dark:text-green-400">原核生物RNA聚合酶</p>
+                            <p class="text-sm">全酶: α<sub>2</sub>ββ'ωσ • 核心酶: α<sub>2</sub>ββ'ω</p>
+                            <p class="text-sm mt-2">σ因子识别启动子，β和β'构成催化中心</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <p class="font-medium text-green-600 dark:text-green-400">真核生物RNA聚合酶</p>
+                            <p class="text-sm">三种类型: Pol I、Pol II、Pol III</p>
+                            <p class="text-sm mt-2">Pol II负责mRNA合成，含CTD结构域</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 启动子结构 -->
+                <div class="card rna-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-700 dark:text-green-300">🎯 启动子结构特征</h3>
+                    <p class="mb-4">启动子是RNA聚合酶识别和结合的特异DNA序列：</p>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                        <p class="font-medium text-green-600 dark:text-green-400 mb-2">原核生物启动子</p>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm">-35区: TTGACA</span>
+                            <span class="text-xs bg-green-100 dark:bg-green-900 px-2 py-1 rounded">识别区域</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">-10区: TATAAT</span>
+                            <span class="text-xs bg-green-100 dark:bg-green-900 px-2 py-1 rounded">解链区域</span>
+                        </div>
+                        <div class="h-1 bg-gray-300 my-2"></div>
+                        <p class="font-medium text-green-600 dark:text-green-400 mb-2">真核生物启动子</p>
+                        <p class="text-sm">TATA框、CAAT框、GC框等</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 转录过程 -->
+            <div class="card rna-bg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-green-700 dark:text-green-300">📝 转录过程三步曲</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <span class="text-2xl">1</span>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">起始</h4>
+                        <p class="text-sm text-center">RNA聚合酶识别启动子，形成转录泡，合成9-10nt后σ因子解离</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <span class="text-2xl">2</span>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">延伸</h4>
+                        <p class="text-sm text-center">核心酶沿模板移动，以40nt/s速度延伸RNA链</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-3 mx-auto">
+                            <span class="text-2xl">3</span>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">终止</h4>
+                        <p class="text-sm text-center">遇到终止子，RNA链释放，聚合酶解离</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-center">
+                    <div class="relative w-full max-w-2xl h-16">
+                        <div class="absolute left-0 top-1/2 w-full h-1 bg-gray-300 transform -translate-y-1/2"></div>
+                        <div class="absolute left-0 top-1/2 w-1/3 h-2 bg-green-500 transform -translate-y-1/2 rounded-l-full"></div>
+                        <div class="absolute left-1/3 top-1/2 w-1/3 h-2 bg-green-500 transform -translate-y-1/2"></div>
+                        <div class="absolute left-2/3 top-1/2 w-1/3 h-2 bg-green-500 transform -translate-y-1/2 rounded-r-full"></div>
+                        <div class="absolute left-0 top-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="absolute left-1/3 top-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white transform -translate-x-1/2">
+                            <i class="fas fa-forward"></i>
+                        </div>
+                        <div class="absolute left-2/3 top-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white transform -translate-x-1/2">
+                            <i class="fas fa-stop"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RNA加工 -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-green-700 dark:text-green-300">✂️ RNA转录后加工</h3>
+                <p class="mb-4">初级转录产物需要经过加工才能成为功能性RNA：</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-green-50 dark:bg-green-900 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="fas fa-cut mr-2"></i> mRNA加工
+                        </h4>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>5'端加帽(m<sup>7</sup>GpppN)</li>
+                            <li>3'端加polyA尾</li>
+                            <li>内含子剪接</li>
+                            <li>RNA编辑</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 dark:bg-green-900 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="fas fa-ruler-combined mr-2"></i> tRNA加工
+                        </h4>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>切除两端多余序列</li>
+                            <li>内含子剪接</li>
+                            <li>3'端加CCA</li>
+                            <li>碱基修饰</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 dark:bg-green-900 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="fas fa-puzzle-piece mr-2"></i> rRNA加工
+                        </h4>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>前体剪切</li>
+                            <li>碱基甲基化</li>
+                            <li>假尿苷形成</li>
+                            <li>与蛋白质组装</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-lg p-4 notebook-border">
+                    <h4 class="font-medium mb-2 text-green-600 dark:text-green-400">内含子剪接的四种类型</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <div class="bg-green-100 dark:bg-green-800 rounded p-2 text-center">
+                            <div class="text-xs font-semibold mb-1">I型内含子</div>
+                            <div class="text-xs">自我剪接，需GTP</div>
+                        </div>
+                        <div class="bg-green-100 dark:bg-green-800 rounded p-2 text-center">
+                            <div class="text-xs font-semibold mb-1">II型内含子</div>
+                            <div class="text-xs">自我剪接，形成套索</div>
+                        </div>
+                        <div class="bg-green-100 dark:bg-green-800 rounded p-2 text-center">
+                            <div class="text-xs font-semibold mb-1">III型内含子</div>
+                            <div class="text-xs">需剪接体参与</div>
+                        </div>
+                        <div class="bg-green-100 dark:bg-green-800 rounded p-2 text-center">
+                            <div class="text-xs font-semibold mb-1">IV型内含子</div>
+                            <div class="text-xs">需内切酶和连接酶</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 蛋白质翻译部分 -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-protein mr-3 text-amber-500"></i>
+                <span class="highlight">蛋白质的生物合成</span>
+            </h2>
+            
+            <!-- 遗传密码 -->
+            <div class="card protein-bg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-amber-700 dark:text-amber-300">🔤 遗传密码的特性</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="mb-4">mRNA上每三个核苷酸决定一个氨基酸，称为<strong class="highlight">三联体密码</strong>！</p>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <p class="font-medium text-amber-600 dark:text-amber-400">密码子特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>连续性：密码子不间断排列</li>
+                                <li>简并性：多数氨基酸有多个密码子</li>
+                                <li>摆动性：反密码子第一位碱基配对不严格</li>
+                                <li>通用性：几乎所有生物共用一套密码</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <p class="font-medium text-amber-600 dark:text-amber-400">特殊密码子：</p>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="bg-amber-50 dark:bg-amber-900 rounded p-2">
+                                    <p class="text-sm font-semibold">AUG</p>
+                                    <p class="text-xs">起始密码子(甲硫氨酸)</p>
+                                </div>
+                                <div class="bg-amber-50 dark:bg-amber-900 rounded p-2">
+                                    <p class="text-sm font-semibold">UAA</p>
+                                    <p class="text-xs">终止密码子</p>
+                                </div>
+                                <div class="bg-amber-50 dark:bg-amber-900 rounded p-2">
+                                    <p class="text-sm font-semibold">UAG</p>
+                                    <p class="text-xs">终止密码子</p>
+                                </div>
+                                <div class="bg-amber-50 dark:bg-amber-900 rounded p-2">
+                                    <p class="text-sm font-semibold">UGA</p>
+                                    <p class="text-xs">终止密码子</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 翻译装置 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- 核糖体结构 -->
+                <div class="card protein-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-amber-700 dark:text-amber-300">🏗️ 核糖体结构</h3>
+                    <p class="mb-4">核糖体是蛋白质合成的工厂，由rRNA和蛋白质组成：</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <span class="text-lg font-bold">70S</span>
+                            </div>
+                            <p class="text-sm">原核生物</p>
+                            <p class="text-xs">50S + 30S</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2 relative">
+                                <span class="text-lg font-bold">80S</span>
+                                <div class="absolute top-0 left-0 w-full h-full border-4 border-amber-300 dark:border-amber-700 rounded-full opacity-50"></div>
+                            </div>
+                            <p class="text-sm">真核生物</p>
+                            <p class="text-xs">60S + 40S</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-white dark:bg-gray-800 rounded-lg p-3">
+                        <p class="text-sm"><span class="font-medium">功能位点：</span>A位(氨酰-tRNA结合)、P位(肽酰-tRNA结合)、E位(出口)</p>
+                    </div>
+                </div>
+                
+                <!-- tRNA与氨酰-tRNA合成酶 -->
+                <div class="card protein-bg p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-amber-700 dark:text-amber-300">🔑 tRNA与氨酰-tRNA合成酶</h3>
+                    <p class="mb-4">tRNA是氨基酸的载体，氨酰-tRNA合成酶确保翻译的准确性：</p>
+                    <div class="flex items-start">
+                        <div class="mr-4">
+                            <div class="w-12 h-16 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-long-arrow-alt-down text-xl text-amber-600 dark:text-amber-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm mb-2">1. 氨基酸 + ATP → 氨酰-AMP + PPi</p>
+                            <p class="text-sm">2. 氨酰-AMP + tRNA → 氨酰-tRNA + AMP</p>
+                            <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-2">
+                                <p class="text-xs">每种氨基酸有专一的合成酶，确保正确的氨基酸连接到正确的tRNA上！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 翻译过程 -->
+            <div class="card protein-bg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-amber-700 dark:text-amber-300">🔄 翻译过程五阶段</h3>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                    <div class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3 text-center">
+                        <div class="w-10 h-10 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-lg">1</span>
+                        </div>
+                        <p class="text-sm font-medium">氨基酸活化</p>
+                    </div>
+                    <div class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3 text-center">
+                        <div class="w-10 h-10 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-lg">2</span>
+                        </div>
+                        <p class="text-sm font-medium">活化氨基酸转运</p>
+                    </div>
+                    <div class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3 text-center">
+                        <div class="w-10 h-10 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-lg">3</span>
+                        </div>
+                        <p class="text-sm font-medium">肽链合成起始</p>
+                    </div>
+                    <div class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3 text-center">
+                        <div class="w-10 h-10 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-lg">4</span>
+                        </div>
+                        <p class="text-sm font-medium">肽链延长</p>
+                    </div>
+                    <div class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3 text-center">
+                        <div class="w-10 h-10 bg-amber-200 dark:bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-lg">5</span>
+                        </div>
+                        <p class="text-sm font-medium">肽链合成终止</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h4 class="font-semibold mb-3 text-amber-600 dark:text-amber-400">肽链延长三步骤：</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white mr-2">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </div>
+                                <h5 class="font-medium">进位</h5>
+                            </div>
+                            <p class="text-sm">氨酰-tRNA进入A位，需EF-Tu和GTP</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white mr-2">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <h5 class="font-medium">转肽</h5>
+                            </div>
+                            <p class="text-sm">肽基转移酶催化肽键形成</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white mr-2">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <h5 class="font-medium">移位</h5>
+                            </div>
+                            <p class="text-sm">核糖体沿mRNA移动，需EF-G和GTP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 翻译后加工 -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <h3 class="text-2xl font-semibold mb-4 text-amber-700 dark:text-amber-300">🎁 翻译后加工修饰</h3>
+                <p class="mb-4">新合成的多肽链需要加工才能成为功能性蛋白质：</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-amber-50 dark:bg-amber-900 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="fas fa-cut mr-2"></i> 肽链修饰
+                        </h4>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>N端甲酰基或甲硫氨酸切除</li>
+                            <li>信号肽切除</li>
+                            <li>氨基酸修饰(磷酸化、羟基化等)</li>
+                            <li>二硫键形成</li>
+                        </ul>
+                    </div>
+                    <div class="bg-amber-50 dark:bg-amber-900 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="fas fa-puzzle-piece mr-2"></i> 高级结构形成
+                        </h4>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>分子伴侣辅助折叠</li>
+                            <li>亚基组装</li>
+                            <li>辅基添加(如血红素)</li>
+                            <li>糖基化修饰</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-lg p-4 notebook-border">
+                    <h4 class="font-medium mb-2 text-amber-600 dark:text-amber-400">蛋白质定向转运</h4>
+                    <p class="text-sm mb-3">蛋白质通过信号肽被定向输送到特定部位：</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">内质网</span>
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">高尔基体</span>
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">线粒体</span>
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">细胞核</span>
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">溶酶体</span>
+                        <span class="px-3 py-1 bg-amber-100 dark:bg-amber-800 rounded-full text-xs">细胞外</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 总结卡片 -->
+        <section class="mb-16 fade-in">
+            <div class="card gradient-bg p-8 shadow-md dark:shadow-none dark:bg-gray-800">
+                <h2 class="text-3xl font-bold mb-6 text-center text-indigo-600 dark:text-indigo-300">✨ 中心法则总结</h2>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative w-48 h-48">
+                            <div class="absolute inset-0 rounded-full border-4 border-indigo-300 dark:border-indigo-700 flex items-center justify-center">
+                                <i class="fas fa-dna text-5xl text-indigo-500 dark:text-indigo-400"></i>
+                            </div>
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-800">
+                                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-300">复制</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative w-48 h-48">
+                            <div class="absolute inset-0 rounded-full border-4 border-green-300 dark:border-green-700 flex items-center justify-center">
+                                <i class="fas fa-rna text-5xl text-green-500 dark:text-green-400"></i>
+                            </div>
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full border border-green-200 dark:border-green-800">
+                                <span class="text-sm font-medium text-green-600 dark:text-green-300">转录</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="relative w-48 h-48">
+                            <div class="absolute inset-0 rounded-full border-4 border-amber-300 dark:border-amber-700 flex items-center justify-center">
+                                <i class="fas fa-protein text-5xl text-amber-500 dark:text-amber-400"></i>
+                            </div>
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
+                                <span class="text-sm font-medium text-amber-600 dark:text-amber-300">翻译</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-lg">遗传信息从DNA流向RNA，再流向蛋白质，构成了分子生物学的<strong class="highlight">中心法则</strong>！</p>
+                    <p class="mt-4">这一过程在原核和真核生物中既有相似之处，又各具特色，展现了生命分子机器的精妙设计！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作者信息区 -->
+        <footer class="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12 fade-in">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-6 md:mb-0 md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-snowflake mr-2 text-blue-400"></i>
+                        冬日可爱know
+                    </h3>
+                    <p class="mb-4">希望我的作品像冬天的太阳一样让人温暖 ❄️☀️</p>
+                    <div class="flex space-x-4">
+                        <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-500 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://space.bilibili.com/1943358001" class="w-10 h-10 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center text-pink-500 dark:text-pink-300 hover:bg-pink-200 dark:hover:bg-pink-800 transition-colors">
+                            <i class="fab fa-bilibili"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 max-w-xs text-center">
+                        <div class="w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-user-astronaut text-4xl text-white"></i>
+                        </div>
+                        <p class="text-sm">"探索生命奥秘，分享科学之美"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>© 2023 冬日可爱know | 分子生物学可视化笔记</p>
+                <p class="mt-1">所有内容基于《生物化学》教材第13-15章整理</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // 初始加载时触发一次
+        window.addEventListener('load', fadeInOnScroll);
+        // 滚动时触发
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>

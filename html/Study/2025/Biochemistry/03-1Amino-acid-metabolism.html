@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>氨基酸代谢可视化指南 | 冬日可爱know</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        .dark body {
+            background-color: #1a202c;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card:hover {
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+        }
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1e293b 100%);
+        }
+        .emoji-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- 导航栏 -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm py-4 px-6 rounded-b-lg mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-pink-500 dark:text-pink-400">氨基酸代谢可视化指南</h1>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 pb-16">
+        <!-- 简介卡片 -->
+        <div class="card gradient-bg rounded-3xl p-8 mb-8 shadow-lg fade-in">
+            <h2 class="text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400">氨基酸代谢全解析！</h2>
+            <p class="text-lg mb-4">氨基酸是蛋白质的基本组成单位，在生命活动中扮演着至关重要的角色！它们的代谢过程包括降解、合成和转化，形成了一个复杂的代谢网络！</p>
+            <div class="flex flex-wrap gap-4">
+                <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900 rounded-full text-blue-800 dark:text-blue-200">脱氨基作用</span>
+                <span class="px-4 py-2 bg-green-100 dark:bg-green-900 rounded-full text-green-800 dark:text-green-200">氨的代谢</span>
+                <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900 rounded-full text-purple-800 dark:text-purple-200">合成代谢</span>
+                <span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900 rounded-full text-yellow-800 dark:text-yellow-200">代谢网络</span>
+            </div>
+            <div class="mt-6 flex justify-center">
+                <div class="emoji-float text-6xl">🧬</div>
+            </div>
+        </div>
+
+        <!-- 脱氨基作用部分 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-pink-200 dark:border-pink-800 inline-block">氨基酸的脱氨基作用 ✨</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 氧化脱氨基 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-bolt text-red-500 dark:text-red-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-red-600 dark:text-red-400">氧化脱氨基作用</h3>
+                    </div>
+                    <p class="mb-4">氨基酸在酶催化下氧化生成α-酮酸，消耗氧并产生氨！这是氨基酸分解代谢的重要方式之一！</p>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-4 overflow-x-auto">
+                        <p class="text-sm font-mono whitespace-nowrap">
+                            R-CH(NH₃⁺)-COO⁻ + H₂O + O₂ → R-CO-COO⁻ + NH₄⁺ + H₂O₂
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">关键酶：L-氨基酸氧化酶、D-氨基酸氧化酶和L-谷氨酸脱氢酶！</p>
+                </div>
+
+                <!-- 转氨基作用 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-exchange-alt text-blue-500 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">转氨基作用</h3>
+                    </div>
+                    <p class="mb-4">氨基酸的α-氨基转移到α-酮酸上，生成新的氨基酸和新的α-酮酸！这是氨基酸代谢中最常见的反应！</p>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-4 overflow-x-auto">
+                        <p class="text-sm font-mono whitespace-nowrap">
+                            氨基酸₁ + α-酮酸₂ ⇌ α-酮酸₁ + 氨基酸₂
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">辅酶：磷酸吡哆醛（维生素B6的活性形式）！</p>
+                </div>
+
+                <!-- 联合脱氨基 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-link text-green-500 dark:text-green-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-600 dark:text-green-400">联合脱氨基作用</h3>
+                    </div>
+                    <p class="mb-4">转氨基作用与谷氨酸氧化脱氨基作用联合进行！这是体内氨基酸脱氨基的主要方式！</p>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-4">
+                        <p class="text-sm">
+                            1. 氨基酸 + α-酮戊二酸 → α-酮酸 + 谷氨酸<br>
+                            2. 谷氨酸 + NAD⁺ + H₂O → α-酮戊二酸 + NADH + NH₄⁺
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">嘌呤核苷酸循环是另一种联合脱氨基方式！</p>
+                </div>
+
+                <!-- 脱酰胺基作用 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-tint text-purple-500 dark:text-purple-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">脱酰胺基作用</h3>
+                    </div>
+                    <p class="mb-4">天冬酰胺和谷氨酰胺的酰胺基由相应的酰胺酶加水脱去氨基！这是特定氨基酸的特殊代谢途径！</p>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-4 overflow-x-auto">
+                        <p class="text-sm font-mono whitespace-nowrap">
+                            天冬酰胺 + H₂O → 天冬氨酸 + NH₄⁺<br>
+                            谷氨酰胺 + H₂O → 谷氨酸 + NH₄⁺
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">酰胺酶在脑、肾等组织中活性较高！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 氨的代谢去路部分 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-blue-200 dark:border-blue-800 inline-block">氨的代谢去路与鸟氨酸循环 🌀</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- 排泄方式 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-toilet text-yellow-500 dark:text-yellow-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-600 dark:text-yellow-400">氨的排泄方式</h3>
+                    </div>
+                    <p class="mb-4">不同生物对氨的排泄方式不同，反映了进化过程中的环境适应！</p>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mt-2 mr-2"></span>
+                            <span><strong>排氨动物</strong>：水生动物，直接排氨（毒性大但水稀释）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mt-2 mr-2"></span>
+                            <span><strong>排尿动物</strong>：两栖类，将氨转化为尿素（中等毒性，中等水溶性）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mt-2 mr-2"></span>
+                            <span><strong>排尿酸动物</strong>：鸟类和爬行类，将氨转化为尿酸（毒性低，几乎不溶于水）</span>
+                        </li>
+                    </ul>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">人类和哺乳动物主要通过尿素循环将氨转化为尿素排出！</p>
+                </div>
+
+                <!-- 氨的转运 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-truck text-indigo-500 dark:text-indigo-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">氨的转运方式</h3>
+                    </div>
+                    <p class="mb-4">氨在体内需要安全转运，主要有两种方式！</p>
+                    <div class="mb-4">
+                        <p class="font-semibold mb-2">1. 以谷氨酰胺形式转运：</p>
+                        <p class="text-sm mb-3">谷氨酸 + NH₄⁺ + ATP → 谷氨酰胺 + ADP + Pi</p>
+                        <p class="font-semibold mb-2">2. 葡萄糖-丙氨酸循环：</p>
+                        <p class="text-sm">肌肉中：丙酮酸 + 氨基酸 → 丙氨酸<br>
+                        肝脏中：丙氨酸 → 丙酮酸 + NH₄⁺（进入尿素循环）</p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">谷氨酰胺是中性无毒物质，容易通过细胞膜！</p>
+                </div>
+            </div>
+
+            <!-- 鸟氨酸循环 -->
+            <div class="card bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900 rounded-2xl p-6 shadow-lg mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-recycle text-blue-500 dark:text-blue-300 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-300">鸟氨酸循环（尿素循环）</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="mb-4">鸟氨酸循环是哺乳动物将有毒的氨转化为尿素的主要代谢途径！1932年由Hans Krebs发现！</p>
+                        <p class="mb-4 font-semibold">循环过程：</p>
+                        <ol class="list-decimal pl-5 space-y-2 mb-4">
+                            <li>氨甲酰磷酸合成：NH₃ + CO₂ + 2ATP → 氨甲酰磷酸</li>
+                            <li>瓜氨酸合成：鸟氨酸 + 氨甲酰磷酸 → 瓜氨酸</li>
+                            <li>精氨琥珀酸合成：瓜氨酸 + 天冬氨酸 + ATP → 精氨琥珀酸</li>
+                            <li>精氨酸合成：精氨琥珀酸 → 精氨酸 + 延胡索酸</li>
+                            <li>尿素生成：精氨酸 → 鸟氨酸 + 尿素</li>
+                        </ol>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">每生成1分子尿素消耗4个高能磷酸键（3ATP）！</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="emoji-float absolute -top-8 -right-8 text-5xl">⚛️</div>
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-inner">
+                                <p class="text-center font-bold mb-2">尿素循环与三羧酸循环的联系</p>
+                                <p class="text-sm mb-2">1. 延胡索酸可转化为草酰乙酸进入TCA循环</p>
+                                <p class="text-sm mb-2">2. 草酰乙酸可转氨生成天冬氨酸重新进入尿素循环</p>
+                                <p class="text-sm">3. 两者共同构成"Krebs bicycle"（尿素-柠檬酸双循环）</p>
+                                <div class="mt-4 flex justify-center">
+                                    <div class="text-4xl">🚴‍♂️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 氨基酸合成代谢部分 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b-2 border-green-200 dark:border-green-800 inline-block">氨基酸的合成代谢 🌱</h2>
+            
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mr-4">
+                        <i class="fas fa-seedling text-green-500 dark:text-green-300 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-600 dark:text-green-400">氨基酸合成途径的六大类型</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- 类型1 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">1. α-酮戊二酸衍生型</p>
+                        <p class="text-sm">合成：谷氨酸、谷氨酰胺、脯氨酸、精氨酸</p>
+                    </div>
+                    <!-- 类型2 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">2. 草酰乙酸衍生型</p>
+                        <p class="text-sm">合成：天冬氨酸、天冬酰胺、赖氨酸、甲硫氨酸、苏氨酸、异亮氨酸</p>
+                    </div>
+                    <!-- 类型3 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">3. 丙酮酸衍生型</p>
+                        <p class="text-sm">合成：丙氨酸、缬氨酸、亮氨酸</p>
+                    </div>
+                    <!-- 类型4 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">4. 甘油酸-3-磷酸衍生型</p>
+                        <p class="text-sm">合成：丝氨酸、甘氨酸、半胱氨酸</p>
+                    </div>
+                    <!-- 类型5 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">5. 赤藓糖-4-磷酸和PEP衍生型</p>
+                        <p class="text-sm">合成：苯丙氨酸、酪氨酸、色氨酸</p>
+                    </div>
+                    <!-- 类型6 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="font-semibold mb-2 text-blue-600 dark:text-blue-400">6. 组氨酸生物合成</p>
+                        <p class="text-sm">由5'-磷酸核糖基焦磷酸(PRPP)开始合成</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 必需氨基酸 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-exclamation-triangle text-red-500 dark:text-red-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-red-600 dark:text-red-400">必需氨基酸</h3>
+                    </div>
+                    <p class="mb-4">人体无法合成，必须从食物中获取的氨基酸！共8种：</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">苏氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">赖氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">甲硫氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">色氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">苯丙氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">缬氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">亮氨酸</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-800 dark:text-red-200">异亮氨酸</span>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">婴幼儿还需组氨酸和精氨酸（半必需氨基酸）！</p>
+                </div>
+
+                <!-- 代谢去向 -->
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-project-diagram text-purple-500 dark:text-purple-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">氨基酸的代谢去向</h3>
+                    </div>
+                    <p class="mb-4">氨基酸在体内有多种代谢去向，构成复杂的代谢网络！</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-purple-500 mt-2 mr-2"></span>
+                            <span><strong>合成蛋白质</strong>：主要去向，用于组织生长和修复</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-purple-500 mt-2 mr-2"></span>
+                            <span><strong>合成其他含氮化合物</strong>：如嘌呤、嘧啶、肌酸等</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-purple-500 mt-2 mr-2"></span>
+                            <span><strong>氧化供能</strong>：脱氨后α-酮酸进入三羧酸循环</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full bg-purple-500 mt-2 mr-2"></span>
+                            <span><strong>转变为糖或脂肪</strong>：生糖氨基酸和生酮氨基酸</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 总结卡片 -->
+        <div class="card bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-900 dark:to-purple-900 rounded-2xl p-8 shadow-lg mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-center text-pink-600 dark:text-pink-300">氨基酸代谢要点总结 🎯</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 p-4 rounded-xl">
+                    <h3 class="font-bold mb-2 text-blue-600 dark:text-blue-400">1. 脱氨基作用</h3>
+                    <p class="text-sm">包括氧化脱氨、转氨、联合脱氨等多种方式，是氨基酸分解的关键步骤！</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 p-4 rounded-xl">
+                    <h3 class="font-bold mb-2 text-green-600 dark:text-green-400">2. 氨的代谢</h3>
+                    <p class="text-sm">氨通过尿素循环转化为尿素排出，与TCA循环紧密相连！</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-70 p-4 rounded-xl">
+                    <h3 class="font-bold mb-2 text-purple-600 dark:text-purple-400">3. 合成代谢</h3>
+                    <p class="text-sm">氨基酸可从多种代谢中间物合成，分为六大类型！</p>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block p-3 bg-white dark:bg-gray-800 rounded-full shadow-md">
+                    <div class="text-4xl">🌟</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作者信息 -->
+        <footer class="card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:mr-8 mb-6 md:mb-0">
+                    <div class="w-32 h-32 rounded-full bg-gradient-to-r from-pink-200 to-yellow-200 dark:from-pink-700 dark:to-yellow-700 flex items-center justify-center shadow-md">
+                        <div class="text-5xl">☀️</div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200">冬日可爱know</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">希望我的作品像冬天的太阳一样让人温暖</p>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-semibold mb-2 text-gray-700 dark:text-gray-300">社交媒体：</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="px-3 py-1 bg-blue-100 dark:bg-blue-900 rounded-full text-blue-800 dark:text-blue-200 text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors flex items-center">
+                                <i class="fab fa-weixin mr-1"></i> 微信公众号
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-800 dark:text-gray-200 text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="px-3 py-1 bg-pink-100 dark:bg-pink-900 rounded-full text-pink-800 dark:text-pink-200 text-sm hover:bg-pink-200 dark:hover:bg-pink-800 transition-colors flex items-center">
+                                <i class="fab fa-bilibili mr-1"></i> 哔哩哔哩
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                        <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

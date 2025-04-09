@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>氨基酸代谢可视化</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card {
+            background-color: #2d3748;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 1.5rem;
+        }
+        
+        .amino-acid-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .pathway-step {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pathway-step:before {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #4f46e5;
+        }
+        
+        .dark .pathway-step:before {
+            background-color: #818cf8;
+        }
+        
+        .pathway-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            margin: 0.5rem 0;
+        }
+        
+        .dark .pathway-arrow {
+            color: #a0aec0;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #4f46e5;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #4f46e5;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .highlight {
+            background-color: rgba(79, 70, 229, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        
+        .dark .highlight {
+            background-color: rgba(129, 140, 248, 0.2);
+        }
+        
+        .type-1 { background-color: #f0f9ff; color: #0369a1; }
+        .type-2 { background-color: #f0fdf4; color: #15803d; }
+        .type-3 { background-color: #fef2f2; color: #b91c1c; }
+        .type-4 { background-color: #fff7ed; color: #c2410c; }
+        .type-5 { background-color: #f5f3ff; color: #6d28d9; }
+        .type-6 { background-color: #fdf2f8; color: #be185d; }
+        
+        .dark .type-1 { background-color: #1e3a8a; color: #bae6fd; }
+        .dark .type-2 { background-color: #14532d; color: #bbf7d0; }
+        .dark .type-3 { background-color: #7f1d1d; color: #fecaca; }
+        .dark .type-4 { background-color: #7c2d12; color: #fed7aa; }
+        .dark .type-5 { background-color: #4c1d95; color: #ddd6fe; }
+        .dark .type-6 { background-color: #831843; color: #fbcfe8; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 头部区域 -->
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400">氨基酸代谢可视化</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400">探索蛋白质降解与氨基酸代谢的奥秘！</p>
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2 text-sm text-gray-600 dark:text-gray-400">深色模式</span>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+                <button id="print-btn" class="p-2 rounded-full bg-indigo-100 text-indigo-600 hover:bg-indigo-200 dark:bg-indigo-900 dark:text-indigo-200 dark:hover:bg-indigo-800 transition-colors">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- 简介卡片 -->
+        <div class="card bg-white dark:bg-gray-800 mb-8 fade-in">
+            <div class="card-header bg-indigo-100 dark:bg-indigo-900">
+                <h2 class="text-xl font-bold text-indigo-700 dark:text-indigo-300">氨基酸代谢概述</h2>
+            </div>
+            <div class="p-6">
+                <p class="mb-4">氨基酸代谢是生物体内蛋白质降解和合成的重要过程！它涉及多种复杂的生化反应途径，与能量代谢、物质转化等生命活动密切相关。</p>
+                <p>氨基酸代谢包括两个主要方向：<span class="font-bold">分解代谢</span>和<span class="font-bold">合成代谢</span>。分解代谢将氨基酸转化为能量或其他代谢中间物，而合成代谢则构建新的氨基酸分子。</p>
+            </div>
+        </div>
+        
+        <!-- 图11-6：氨基酸分解代谢简图 -->
+        <div class="card bg-white dark:bg-gray-800 mb-8 fade-in" style="animation-delay: 0.1s;">
+            <div class="card-header bg-blue-100 dark:bg-blue-900">
+                <h2 class="text-xl font-bold text-blue-700 dark:text-blue-300">图11-6：氨基酸分解代谢简图</h2>
+            </div>
+            <div class="p-6">
+                <p class="mb-4">该图展示了脊椎动物体内20种氨基酸分解代谢过程中，α-酮酸的代谢去向，体现了氨基酸与三羧酸循环的紧密联系！</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="font-bold text-lg mb-3 text-blue-600 dark:text-blue-400">关键代谢中间产物</h3>
+                        <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg mb-4">
+                            <p>不同氨基酸经各自的酶系催化氧化分解，分别形成5种关键中间产物：</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>乙酰CoA</li>
+                                <li>α-酮戊二酸</li>
+                                <li>琥珀酰CoA</li>
+                                <li>延胡索酸</li>
+                                <li>草酰乙酸</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-3 text-blue-600 dark:text-blue-400">代谢去向</h3>
+                        <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg">
+                            <p>这些中间产物进入三羧酸循环进一步分解：</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>氧化生成CO₂</li>
+                                <li>脱氢通过呼吸链生成水</li>
+                                <li>释放能量合成ATP</li>
+                                <li>与糖代谢、脂肪代谢相互关联</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="font-bold text-lg mb-3 text-blue-600 dark:text-blue-400">氨基酸分类及代谢途径</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100 dark:bg-blue-800">
+                                <th class="p-3 text-left border-b border-blue-200 dark:border-blue-700">氨基酸</th>
+                                <th class="p-3 text-left border-b border-blue-200 dark:border-blue-700">中文名称</th>
+                                <th class="p-3 text-left border-b border-blue-200 dark:border-blue-700">代谢中间产物</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Ala</td>
+                                <td class="p-3">丙氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Ser</td>
+                                <td class="p-3">丝氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Cys</td>
+                                <td class="p-3">半胱氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Gly</td>
+                                <td class="p-3">甘氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Thr</td>
+                                <td class="p-3">苏氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Trp</td>
+                                <td class="p-3">色氨酸</td>
+                                <td class="p-3">丙酮酸 → 乙酰CoA</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Asp</td>
+                                <td class="p-3">天冬氨酸</td>
+                                <td class="p-3">草酰乙酸</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                <td class="p-3">Arg</td>
+                                <td class="p-3">精氨酸</td>
+                                <td class="p-3">延胡索酸</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-l-4 border-yellow-400 dark:border-yellow-600">
+                    <h4 class="font-bold text-yellow-700 dark:text-yellow-400 mb-2">重要提示！</h4>
+                    <p>氨基酸的分解代谢是机体获取能量的重要途径之一，与糖代谢、脂肪代谢等通过三羧酸循环相互关联，共同维持机体的能量平衡和物质代谢稳定。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 图11-7：氨基酸合成代谢示意图 -->
+        <div class="card bg-white dark:bg-gray-800 mb-8 fade-in" style="animation-delay: 0.2s;">
+            <div class="card-header bg-green-100 dark:bg-green-900">
+                <h2 class="text-xl font-bold text-green-700 dark:text-green-300">图11-7：氨基酸合成代谢示意图</h2>
+            </div>
+            <div class="p-6">
+                <p class="mb-4">此图呈现了不同生物合成氨基酸的途径，根据氨基酸生物合成起始物的不同分为6种衍生类型！</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <!-- 类型1 -->
+                    <div class="type-1 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">α-酮戊二酸衍生类型</h3>
+                        <div class="pathway-step">α-酮戊二酸 + NH₃ → 谷氨酸 (Glu)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">谷氨酸 + NH₃ + ATP → 谷氨酰胺 (Gln)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">谷氨酸 → 脯氨酸 (Pro)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">谷氨酸 → 鸟氨酸 → 精氨酸 (Arg)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Glu</span>
+                            <span class="amino-acid-badge bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Gln</span>
+                            <span class="amino-acid-badge bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Pro</span>
+                            <span class="amino-acid-badge bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Arg</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型2 -->
+                    <div class="type-2 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">草酰乙酸衍生类型</h3>
+                        <div class="pathway-step">草酰乙酸 + 谷氨酸 → 天冬氨酸 (Asp)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">天冬氨酸 + Gln + ATP → 天冬酰胺 (Asn)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">天冬氨酸 → 赖氨酸 (Lys)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">天冬氨酸 → 甲硫氨酸 (Met)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">天冬氨酸 → 苏氨酸 (Thr)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">天冬氨酸 + 丙酮酸 → 异亮氨酸 (Ile)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Asp</span>
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Asn</span>
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Lys</span>
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Met</span>
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Thr</span>
+                            <span class="amino-acid-badge bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Ile</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型3 -->
+                    <div class="type-3 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">丙酮酸衍生类型</h3>
+                        <div class="pathway-step">丙酮酸 → 丙氨酸 (Ala)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">丙酮酸 → 缬氨酸 (Val)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">丙酮酸 → 亮氨酸 (Leu)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Ala</span>
+                            <span class="amino-acid-badge bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Val</span>
+                            <span class="amino-acid-badge bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Leu</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型4 -->
+                    <div class="type-4 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">甘油酸-3-磷酸衍生类型</h3>
+                        <div class="pathway-step">甘油酸-3-磷酸 → 丝氨酸 (Ser)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">丝氨酸 → 甘氨酸 (Gly)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">丝氨酸 → 半胱氨酸 (Cys)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">Ser</span>
+                            <span class="amino-acid-badge bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">Gly</span>
+                            <span class="amino-acid-badge bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">Cys</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型5 -->
+                    <div class="type-5 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">赤藓糖-4-磷酸和磷酸烯醇丙酮酸衍生类型</h3>
+                        <div class="pathway-step">赤藓糖-4-磷酸 + PEP → 分支酸</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">分支酸 → 色氨酸 (Trp)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">分支酸 → 酪氨酸 (Tyr)</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">分支酸 → 苯丙氨酸 (Phe)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">Trp</span>
+                            <span class="amino-acid-badge bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">Tyr</span>
+                            <span class="amino-acid-badge bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">Phe</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型6 -->
+                    <div class="type-6 p-4 rounded-lg">
+                        <h3 class="font-bold mb-2">组氨酸生物合成</h3>
+                        <div class="pathway-step">5'-磷酸核糖基焦磷酸 (PRPP) 起始</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">与ATP分子嘌呤环结合</div>
+                        <div class="pathway-arrow"><i class="fas fa-arrow-down"></i></div>
+                        <div class="pathway-step">经多步反应 → 组氨酸 (His)</div>
+                        
+                        <div class="mt-3">
+                            <span class="amino-acid-badge bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200">His</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border-l-4 border-green-400 dark:border-green-600">
+                    <h4 class="font-bold text-green-700 dark:text-green-400 mb-2">你知道吗？</h4>
+                    <p>动物不能合成全部20种氨基酸。人和大鼠只能合成10种氨基酸，其余10种必须由食物供给，称为必需氨基酸！植物和绝大多数微生物能合成全部氨基酸。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 代谢关系总结 -->
+        <div class="card bg-white dark:bg-gray-800 mb-8 fade-in" style="animation-delay: 0.3s;">
+            <div class="card-header bg-indigo-100 dark:bg-indigo-900">
+                <h2 class="text-xl font-bold text-indigo-700 dark:text-indigo-300">氨基酸代谢关系总结</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-lg mb-3 text-indigo-600 dark:text-indigo-400">分解代谢特点</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>氨基酸脱氨基生成氨和α-酮酸</li>
+                            <li>氨通过尿素循环转化为尿素排出</li>
+                            <li>α-酮酸进入三羧酸循环氧化供能</li>
+                            <li>部分氨基酸可转化为糖或脂肪</li>
+                            <li>氨基酸分为生糖、生酮和生糖兼生酮三类</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-3 text-indigo-600 dark:text-indigo-400">合成代谢特点</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>根据起始物分为6种衍生类型</li>
+                            <li>不同生物合成氨基酸能力不同</li>
+                            <li>必需氨基酸与非必需氨基酸概念</li>
+                            <li>与糖代谢、核苷酸代谢等密切相关</li>
+                            <li>涉及多种辅酶和能量消耗</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-700 dark:text-indigo-400 mb-2">代谢中心地位</h4>
+                    <p>氨基酸代谢与糖代谢、脂肪代谢通过三羧酸循环相互联系，构成生物体物质代谢和能量代谢的网络体系！三羧酸循环是代谢的中心环节。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 作者信息 -->
+        <footer class="card bg-white dark:bg-gray-800 mt-8 fade-in" style="animation-delay: 0.4s;">
+            <div class="card-header bg-pink-100 dark:bg-pink-900">
+                <h2 class="text-xl font-bold text-pink-700 dark:text-pink-300">作者信息</h2>
+            </div>
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="w-24 h-24 rounded-full bg-pink-200 dark:bg-pink-800 flex items-center justify-center mb-4 md:mb-0 md:mr-6">
+                        <i class="fas fa-sun text-4xl text-pink-600 dark:text-pink-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">冬日可爱know</h3>
+                        <p class="mb-3">希望我的作品像冬天的太阳一样让人温暖</p>
+                        <div class="flex space-x-4">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors" target="_blank">
+                                <i class="fab fa-weixin text-xl"></i>
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors" target="_blank">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-300 transition-colors" target="_blank">
+                                <i class="fab fa-bilibili text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
+                    <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                    <p class="mt-1">本作品仅供学习交流使用，未经许可不得用于商业用途。</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 深色模式切换
+        const toggle = document.getElementById('toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark');
+            toggle.checked = true;
+        }
+        
+        // 切换事件
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+        
+        // 打印功能
+        document.getElementById('print-btn').addEventListener('click', function() {
+            window.print();
+        });
+        
+        // 监听系统颜色模式变化
+        prefersDarkScheme.addEventListener('change', e => {
+            if (localStorage.getItem('darkMode') === null) {
+                if (e.matches) {
+                    document.body.classList.add('dark');
+                    toggle.checked = true;
+                } else {
+                    document.body.classList.remove('dark');
+                    toggle.checked = false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

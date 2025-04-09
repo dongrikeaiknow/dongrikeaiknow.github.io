@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>核苷酸代谢可视化指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .reaction-step {
+            border-left: 4px solid #4f46e5;
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+        .enzyme-highlight {
+            background-color: #e0e7ff;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        .dark .enzyme-highlight {
+            background-color: #3730a3;
+            color: white;
+        }
+        .pathway-title {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .pathway-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: #4f46e5;
+        }
+        .purple-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+        }
+        .blue-gradient {
+            background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+        }
+        .pink-gradient {
+            background: linear-gradient(135deg, #f9a8d4 0%, #ec4899 100%);
+        }
+        .teal-gradient {
+            background: linear-gradient(135deg, #5eead4 0%, #14b8a6 100%);
+        }
+        .dark .purple-gradient {
+            background: linear-gradient(135deg, #6b21a8 0%, #4c1d95 100%);
+        }
+        .dark .blue-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        }
+        .dark .pink-gradient {
+            background: linear-gradient(135deg, #9d174d 0%, #831843 100%);
+        }
+        .dark .teal-gradient {
+            background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 头部区域 -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">核苷酸代谢可视化指南</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">探索嘌呤和嘧啶的分解与合成途径，了解生命的基本分子构建过程！</p>
+            <div class="flex justify-center mt-6">
+                <button id="themeToggle" class="px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200 flex items-center gap-2">
+                    <i class="fas fa-moon"></i>
+                    <span>切换主题</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main>
+            <!-- 核苷酸代谢概述 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">核苷酸代谢概述</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-indigo-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-lg mb-2">核苷酸的重要功能</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>核酸的基本组成单位</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>辅酶(NAD⁺、FAD、CoA等)的组成部分</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>能量代谢中的高能化合物(ATP等)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>细胞信号转导的第二信使(cAMP、cGMP)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-indigo-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-lg mb-2">代谢途径特点</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>核苷酸主要通过机体自身合成，不属于营养必需物质</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>分解与合成代谢处于动态平衡，受到严格调控</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>有从头合成和补救合成两条途径</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-indigo-500 mr-2">•</span>
+                                    <span>代谢异常会导致痛风等疾病</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 嘌呤核苷酸的分解 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="purple-gradient text-white rounded-xl p-4 mb-6">
+                        <h2 class="text-2xl font-bold">嘌呤核苷酸的分解代谢</h2>
+                        <p class="opacity-90">不同生物分解嘌呤的终产物不同，人类最终产物为尿酸！</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="pathway-title text-xl font-semibold mb-3">嘌呤分解的主要步骤</h3>
+                        <div class="space-y-4">
+                            <div class="reaction-step">
+                                <p><strong>第一步：脱氨基反应</strong></p>
+                                <p>腺嘌呤 → 次黄嘌呤 (通过<span class="enzyme-highlight">腺苷脱氨酶</span>或<span class="enzyme-highlight">腺苷酸脱氨酶</span>)</p>
+                                <p>鸟嘌呤 → 黄嘌呤 (通过<span class="enzyme-highlight">鸟嘌呤脱氨酶</span>)</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>第二步：核苷水解</strong></p>
+                                <p>次黄嘌呤核苷/黄嘌呤核苷/腺嘌呤核苷 + 磷酸 → 次黄嘌呤/黄嘌呤/腺嘌呤 + 核糖-1-磷酸</p>
+                                <p>催化酶：<span class="enzyme-highlight">嘌呤核苷磷酸化酶(PNP)</span></p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>第三步：氧化反应</strong></p>
+                                <p>次黄嘌呤 → 黄嘌呤 (通过<span class="enzyme-highlight">黄嘌呤氧化酶</span>)</p>
+                                <p>黄嘌呤 → 尿酸 (通过<span class="enzyme-highlight">黄嘌呤氧化酶</span>)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-gray-700 p-4 rounded-xl">
+                        <h4 class="font-semibold text-purple-700 dark:text-purple-300 mb-2">💡 关键点</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• 人类等灵长类动物不能进一步分解尿酸，而其他动物可将尿酸分解为尿囊素、尿囊酸等</li>
+                            <li>• 血尿酸水平超过8mg/100mL时，会形成尿酸钠/钾盐沉积，导致痛风</li>
+                            <li>• 植物和微生物可将嘌呤彻底分解为CO₂、NH₃和有机酸</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 嘧啶核苷酸的分解 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="blue-gradient text-white rounded-xl p-4 mb-6">
+                        <h2 class="text-2xl font-bold">嘧啶核苷酸的分解代谢</h2>
+                        <p class="opacity-90">嘧啶分解最终生成β-氨基酸、NH₃和CO₂，比嘌呤分解更彻底！</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="pathway-title text-xl font-semibold mb-3">嘧啶分解的主要步骤</h3>
+                        <div class="space-y-4">
+                            <div class="reaction-step">
+                                <p><strong>胞嘧啶分解途径</strong></p>
+                                <p>胞嘧啶 → 尿嘧啶 (通过<span class="enzyme-highlight">胞嘧啶脱氨酶</span>)</p>
+                                <p>尿嘧啶 → 二氢尿嘧啶 (通过<span class="enzyme-highlight">二氢嘧啶脱氢酶</span>)</p>
+                                <p>二氢尿嘧啶 → β-脲基丙酸 → β-丙氨酸 + NH₃ + CO₂</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>胸腺嘧啶分解途径</strong></p>
+                                <p>胸腺嘧啶 → 二氢胸腺嘧啶 (通过<span class="enzyme-highlight">二氢嘧啶脱氢酶</span>)</p>
+                                <p>二氢胸腺嘧啶 → β-脲基异丁酸 → β-氨基异丁酸 + NH₃ + CO₂</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-xl">
+                        <h4 class="font-semibold text-blue-700 dark:text-blue-300 mb-2">🔬 临床意义</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• β-氨基异丁酸是胸腺嘧啶分解的特有产物，可随尿排出</li>
+                            <li>• 二氢嘧啶脱氢酶缺乏会导致嘧啶代谢障碍，影响5-氟尿嘧啶等药物的代谢</li>
+                            <li>• 嘧啶分解异常与遗传性代谢疾病有关</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 嘌呤核苷酸的从头合成 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="pink-gradient text-white rounded-xl p-4 mb-6">
+                        <h2 class="text-2xl font-bold">嘌呤核苷酸的从头合成</h2>
+                        <p class="opacity-90">从简单前体物质合成嘌呤环的复杂过程，共11步反应！</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="pathway-title text-xl font-semibold mb-3">嘌呤从头合成的主要步骤</h3>
+                        <div class="space-y-4">
+                            <div class="reaction-step">
+                                <p><strong>1. PRPP的生成</strong></p>
+                                <p>核糖-5-磷酸 + ATP → 5-磷酸核糖基焦磷酸(PRPP) + AMP</p>
+                                <p>催化酶：<span class="enzyme-highlight">PRPP合成酶</span></p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>2. 谷氨酰胺提供酰胺基</strong></p>
+                                <p>PRPP + 谷氨酰胺 → 5-磷酸核糖胺 + 谷氨酸 + PPi</p>
+                                <p>催化酶：<span class="enzyme-highlight">谷氨酰胺-PRPP酰胺基转移酶</span> (限速酶)</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>3-11. IMP的合成</strong></p>
+                                <p>经过甘氨酸掺入、甲酰化、谷氨酰胺掺入、闭环、CO₂掺入、天冬氨酸掺入、再次甲酰化等步骤</p>
+                                <p>关键酶：<span class="enzyme-highlight">GAR合成酶</span>、<span class="enzyme-highlight">AIR羧化酶</span>、<span class="enzyme-highlight">IMP合酶</span>等</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>AMP和GMP的生成</strong></p>
+                                <p>IMP + 天冬氨酸 + GTP → 腺苷琥珀酸 → AMP + 延胡索酸</p>
+                                <p>IMP → XMP → GMP (需要NAD⁺和谷氨酰胺)</p>
+                                <p>催化酶：<span class="enzyme-highlight">腺苷琥珀酸合成酶</span>、<span class="enzyme-highlight">IMP脱氢酶</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-xl">
+                        <h4 class="font-semibold text-pink-700 dark:text-pink-300 mb-2">🎯 嘌呤环原子来源</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-purple-500 rounded-full mr-2"></span>
+                                <span>N₁: 天冬氨酸</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+                                <span>C₂: N¹⁰-甲酰-FH₄</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+                                <span>N₃: 谷氨酰胺</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></span>
+                                <span>C₄, C₅, N₇: 甘氨酸</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
+                                <span>C₆: CO₂</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-indigo-500 rounded-full mr-2"></span>
+                                <span>N₉: 谷氨酰胺</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-teal-500 rounded-full mr-2"></span>
+                                <span>C₈: N¹⁰-甲酰-FH₄</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 嘧啶核苷酸的从头合成 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="teal-gradient text-white rounded-xl p-4 mb-6">
+                        <h2 class="text-2xl font-bold">嘧啶核苷酸的从头合成</h2>
+                        <p class="opacity-90">先合成嘧啶环，再与PRPP结合，与嘌呤合成顺序相反！</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="pathway-title text-xl font-semibold mb-3">嘧啶从头合成的主要步骤</h3>
+                        <div class="space-y-4">
+                            <div class="reaction-step">
+                                <p><strong>1. 氨甲酰磷酸的生成</strong></p>
+                                <p>谷氨酰胺 + CO₂ + 2ATP → 氨甲酰磷酸 + 2ADP + Pi + 谷氨酸</p>
+                                <p>催化酶：<span class="enzyme-highlight">氨甲酰磷酸合成酶II(CPS II)</span> (关键调节点)</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>2. 乳清酸的合成</strong></p>
+                                <p>氨甲酰磷酸 + 天冬氨酸 → 氨甲酰天冬氨酸 (通过<span class="enzyme-highlight">天冬氨酸氨基甲酰转移酶</span>)</p>
+                                <p>氨甲酰天冬氨酸 → 二氢乳清酸 → 乳清酸</p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>3. UMP的生成</strong></p>
+                                <p>乳清酸 + PRPP → 乳清酸核苷酸(OMP) → UMP + CO₂</p>
+                                <p>催化酶：<span class="enzyme-highlight">乳清酸磷酸核糖转移酶</span>、<span class="enzyme-highlight">OMP脱羧酶</span></p>
+                            </div>
+                            <div class="reaction-step">
+                                <p><strong>4. CTP的合成</strong></p>
+                                <p>UMP → UDP → UTP → CTP (谷氨酰胺提供氨基)</p>
+                                <p>催化酶：<span class="enzyme-highlight">CTP合成酶</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-teal-50 dark:bg-gray-700 p-4 rounded-xl">
+                        <h4 class="font-semibold text-teal-700 dark:text-teal-300 mb-2">🧬 嘧啶环原子来源</h4>
+                        <div class="flex flex-wrap gap-4 text-sm">
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-purple-500 rounded-full mr-2"></span>
+                                <span>N₁, C₄, C₅, C₆: 天冬氨酸</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+                                <span>C₂: CO₂</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+                                <span>N₃: 谷氨酰胺</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 补救合成途径 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <h2 class="text-2xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">核苷酸的补救合成途径</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- 嘌呤补救合成 -->
+                        <div class="bg-purple-50 dark:bg-gray-700 p-5 rounded-xl">
+                            <h3 class="text-xl font-semibold mb-4 text-purple-700 dark:text-purple-300">嘌呤核苷酸的补救合成</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="font-medium mb-2">1. 碱基与PRPP直接反应</p>
+                                    <p>腺嘌呤 + PRPP → AMP + PPi (通过<span class="enzyme-highlight">腺嘌呤磷酸核糖转移酶(APRT)</span>)</p>
+                                    <p>次黄嘌呤/鸟嘌呤 + PRPP → IMP/GMP + PPi (通过<span class="enzyme-highlight">HGPRT</span>)</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium mb-2">2. 核苷磷酸化反应</p>
+                                    <p>腺苷 + ATP → AMP + ADP (通过<span class="enzyme-highlight">腺苷激酶</span>)</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-white dark:bg-gray-600 rounded-lg">
+                                <p class="text-sm"><strong>💊 临床意义：</strong>HGPRT缺陷会导致Lesch-Nyhan综合征(自毁容貌症)，表现为高尿酸血症和神经系统异常！</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 嘧啶补救合成 -->
+                        <div class="bg-blue-50 dark:bg-gray-700 p-5 rounded-xl">
+                            <h3 class="text-xl font-semibold mb-4 text-blue-700 dark:text-blue-300">嘧啶核苷酸的补救合成</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="font-medium mb-2">1. 碱基与PRPP直接反应</p>
+                                    <p>尿嘧啶/胸腺嘧啶 + PRPP → UMP/TMP + PPi (通过<span class="enzyme-highlight">嘧啶磷酸核糖转移酶</span>)</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">* 胞嘧啶不能直接与PRPP反应</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium mb-2">2. 核苷磷酸化反应</p>
+                                    <p>尿苷/胞苷 + ATP → UMP/CMP + ADP (通过<span class="enzyme-highlight">尿苷激酶</span>)</p>
+                                    <p>脱氧胸苷 + ATP → dTMP + ADP (通过<span class="enzyme-highlight">胸苷激酶</span>)</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-white dark:bg-gray-600 rounded-lg">
+                                <p class="text-sm"><strong>🩺 临床意义：</strong>胸苷激酶在再生肝和恶性肿瘤中活性升高，可作为肿瘤标志物！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 抗代谢物 -->
+            <section class="mb-16">
+                <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <h2 class="text-2xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">核苷酸合成的抗代谢物</h2>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-red-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-red-700 dark:text-red-300 mb-2">嘌呤类似物</h3>
+                            <p>6-巯基嘌呤(6MP)、6-巯基鸟嘌呤等</p>
+                            <p class="text-sm mt-2">抑制IMP转变为AMP/GMP，反馈抑制PRPP酰胺基转移酶</p>
+                        </div>
+                        <div class="bg-yellow-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">嘧啶类似物</h3>
+                            <p>5-氟尿嘧啶(5-FU)、5-氟胞嘧啶等</p>
+                            <p class="text-sm mt-2">抑制胸苷酸合成酶，干扰DNA合成</p>
+                        </div>
+                        <div class="bg-green-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-green-700 dark:text-green-300 mb-2">核苷类似物</h3>
+                            <p>阿糖胞苷(AraC)、AZT、DDC等</p>
+                            <p class="text-sm mt-2">抑制CDP还原或病毒逆转录酶</p>
+                        </div>
+                        <div class="bg-indigo-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-indigo-700 dark:text-indigo-300 mb-2">氨基酸类似物</h3>
+                            <p>重氮丝氨酸、羽田杀菌素等</p>
+                            <p class="text-sm mt-2">干扰谷氨酰胺/天冬氨酸参与的反应</p>
+                        </div>
+                        <div class="bg-purple-50 dark:bg-gray-700 p-4 rounded-xl">
+                            <h3 class="font-semibold text-purple-700 dark:text-purple-300 mb-2">叶酸类似物</h3>
+                            <p>氨甲蝶呤(MTX)、氨基蝶呤等</p>
+                            <p class="text-sm mt-2">抑制二氢叶酸还原酶，阻断一碳单位转移</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-gray-100 dark:bg-gray-700 p-4 rounded-xl">
+                        <p class="text-sm"><strong>⚠️ 注意：</strong>抗代谢物会产生胃肠反应、造血抑制和免疫抑制等副作用，需合理使用！</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚作者信息 -->
+        <footer class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-24 h-24 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <i class="fas fa-sun text-4xl text-yellow-500 dark:text-yellow-300"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">冬日可爱know</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mt-1">希望我的作品像冬天的太阳一样让人温暖</p>
+                        
+                        <div class="flex flex-wrap gap-4 mt-4">
+                            <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                                <i class="fab fa-weixin mr-2"></i> 微信公众号
+                            </a>
+                            <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="flex items-center text-gray-800 dark:text-gray-200 hover:underline">
+                                <i class="fab fa-github mr-2"></i> GitHub
+                            </a>
+                            <a href="https://space.bilibili.com/1943358001" class="flex items-center text-pink-600 dark:text-pink-400 hover:underline">
+                                <i class="fab fa-bilibili mr-2"></i> Bilibili
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+                    <p>© 2023 冬日可爱know. 保留所有权利。</p>
+                    <p class="mt-1">本作品仅供学习交流使用，未经许可不得用于商业用途。</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = themeToggle.querySelector('.fa-moon');
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('color-theme') === 'dark' || 
+            (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            moonIcon.classList.replace('fa-moon', 'fa-sun');
+            themeToggle.querySelector('span').textContent = '切换浅色';
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                moonIcon.classList.replace('fa-sun', 'fa-moon');
+                themeToggle.querySelector('span').textContent = '切换深色';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                moonIcon.classList.replace('fa-moon', 'fa-sun');
+                themeToggle.querySelector('span').textContent = '切换浅色';
+            }
+        });
+        
+        // 卡片动画
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+        
+        // 滚动动画
+        window.addEventListener('scroll', () => {
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // 初始化卡片位置
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        // 触发初始动画
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 100);
+    </script>
+</body>
+</html>
