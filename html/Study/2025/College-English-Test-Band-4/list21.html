@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词学习卡片</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card {
+            background-color: #2d3748;
+        }
+        .dark .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .word-breakdown {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .dark .word-breakdown {
+            background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
+        }
+        .example {
+            border-left: 4px solid #6366f1;
+        }
+        .dark .example {
+            border-left-color: #818cf8;
+        }
+        .memory-tip {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+        .dark .memory-tip {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        .related-words {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+        }
+        .dark .related-words {
+            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">📚 英语单词学习卡片</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Entry 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">entry <span class="text-sm font-normal text-gray-500 dark:text-gray-400">n. 进入；入口；登记</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>enter-(进入) + -y(名词后缀) → 进入的行为或地方 → 入口；进入；登记</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">The entry to the museum is free on Sundays.</p>
+                        <p class="text-gray-600 dark:text-gray-300">博物馆周日免费入场。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">Please fill out this entry form before the interview.</p>
+                        <p class="text-gray-600 dark:text-gray-300">面试前请填写这份登记表。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>"entry"和"enter"都来自同一词根，想象走进(enter)一个建筑物的入口(entry)！</p>
+                </div>
+            </div>
+
+            <!-- Enterprise 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">enterprise <span class="text-sm font-normal text-gray-500 dark:text-gray-400">n. 企业；事业；进取心</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>enter-(进入) + prise(抓住) → 抓住机会进入市场 → 企业；进取的事业</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">He started his own enterprise after graduation.</p>
+                        <p class="text-gray-600 dark:text-gray-300">毕业后他创办了自己的企业。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">We need people with enterprise and creativity.</p>
+                        <p class="text-gray-600 dark:text-gray-300">我们需要有进取心和创造力的人。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>把"enter"(进入)和"prize"(奖品)联想在一起 → 进入市场赢得奖品的企业！</p>
+                </div>
+            </div>
+
+            <!-- Entertain 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">entertain <span class="text-sm font-normal text-gray-500 dark:text-gray-400">v. 娱乐；招待；考虑</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>enter-(在...之间) + tain(保持) → 把注意力保持在某事物上 → 娱乐；招待</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">The clown entertained the children with funny tricks.</p>
+                        <p class="text-gray-600 dark:text-gray-300">小丑用滑稽的把戏逗乐孩子们。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">We entertained the idea of moving abroad.</p>
+                        <p class="text-gray-600 dark:text-gray-300">我们考虑过搬到国外的想法。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>"entertain"可以拆分为"enter"(进入)和"tain"(保持) → 进入并保持快乐状态 → 娱乐！</p>
+                </div>
+            </div>
+
+            <!-- Effort 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">effort <span class="text-sm font-normal text-gray-500 dark:text-gray-400">n. 努力；尝试</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>ex-(向外) + fort(力量) → 把力量向外施展 → 努力；尝试</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">With great effort, he finally finished the marathon.</p>
+                        <p class="text-gray-600 dark:text-gray-300">经过巨大努力，他终于完成了马拉松。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">She made an effort to arrive on time.</p>
+                        <p class="text-gray-600 dark:text-gray-300">她努力准时到达。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>"effort"中的"fort"与"force"(力量)相似，想象把力量(ex)向外释放就是努力！</p>
+                </div>
+            </div>
+
+            <!-- Explore 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">explore <span class="text-sm font-normal text-gray-500 dark:text-gray-400">v. 探索；勘探；探究</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>ex-(向外) + plore(流出) → 向外流出寻找 → 探索；勘探</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">Scientists are exploring the depths of the ocean.</p>
+                        <p class="text-gray-600 dark:text-gray-300">科学家正在探索海洋深处。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">We should explore all possible solutions.</p>
+                        <p class="text-gray-600 dark:text-gray-300">我们应该探究所有可能的解决方案。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>"explore"中的"plore"与"pour"(倾倒)相似，想象向外(ex)倾倒注意力去探索！</p>
+                </div>
+            </div>
+
+            <!-- Expense 卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">expense <span class="text-sm font-normal text-gray-500 dark:text-gray-400">n. 费用；开支；代价</span></h2>
+                
+                <div class="word-breakdown rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">🔍 词根词缀解析：</h3>
+                    <p>ex-(向外) + pense(支付) → 向外支付的钱 → 费用；开支</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">📖 例句：</h3>
+                    <div class="example pl-4 mb-3">
+                        <p class="font-medium">The company will cover all travel expenses.</p>
+                        <p class="text-gray-600 dark:text-gray-300">公司将承担所有差旅费用。</p>
+                    </div>
+                    <div class="example pl-4">
+                        <p class="font-medium">He achieved success at the expense of his health.</p>
+                        <p class="text-gray-600 dark:text-gray-300">他以健康为代价取得了成功。</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p>"expense"中的"pense"与"spend"(花费)相似，想象钱向外(ex)花费！</p>
+                </div>
+            </div>
+
+            <!-- 相近单词汇总卡片 -->
+            <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md col-span-1 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-400">🔗 相近单词汇总</h2>
+                
+                <div class="related-words rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">📌 前缀：enter-（进入）</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <p class="font-medium">entry</p>
+                            <p class="text-gray-600 dark:text-gray-300">进入；入口</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">enterprise</p>
+                            <p class="text-gray-600 dark:text-gray-300">企业；事业</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">entertain</p>
+                            <p class="text-gray-600 dark:text-gray-300">娱乐；招待</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="related-words rounded-lg p-4 mb-4">
+                    <h3 class="font-semibold mb-2">📌 前缀：ex-（向外）</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <p class="font-medium">effort</p>
+                            <p class="text-gray-600 dark:text-gray-300">努力；尝试</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">explore</p>
+                            <p class="text-gray-600 dark:text-gray-300">探索；勘探</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">expense</p>
+                            <p class="text-gray-600 dark:text-gray-300">费用；开支</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="memory-tip rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">💡 记忆技巧：</h3>
+                    <p class="mb-2">前缀"enter-"表示"进入"：想象进入(enter)一个入口(entry)、企业(enterprise)或被娱乐(entertain)！</p>
+                    <p>前缀"ex-"表示"向外"：想象力量向外(ex)释放是努力(effort)、向外探索(explore)或向外花费(expense)！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // 检查本地存储或系统偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 卡片动画
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
+    </script>
+</body>
+</html>

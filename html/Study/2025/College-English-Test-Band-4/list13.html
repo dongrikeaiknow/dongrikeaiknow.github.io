@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .root-highlight {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,228,225,0.5) 50%, rgba(255,255,255,0) 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-pink-50 text-gray-800 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-pink-600 mb-2">Vocabulary Cards</h1>
+            <h2 class="text-2xl font-semibold text-pink-500">List13 - 词根学习</h2>
+            <div class="w-full max-w-md mx-auto mt-6 bg-white rounded-full p-1 shadow-md">
+                <div class="flex rounded-full bg-pink-100 overflow-hidden">
+                    <button id="tab1" class="tab-button flex-1 py-2 px-4 rounded-full font-medium text-pink-700 bg-pink-300">speci-种类</button>
+                    <button id="tab2" class="tab-button flex-1 py-2 px-4 rounded-full font-medium text-pink-700">spect-看</button>
+                    <button id="tab3" class="tab-button flex-1 py-2 px-4 rounded-full font-medium text-pink-700">st-站</button>
+                    <button id="tab4" class="tab-button flex-1 py-2 px-4 rounded-full font-medium text-pink-700">state-站立</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Tab 1: speci-种类 -->
+            <div id="content1" class="tab-content fade-in grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- species -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">species</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">speci-种类</span> + -es (名词后缀) → 种类 → 物种</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 物种，种类</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"This forest is home to many endangered species."</p>
+                        <p class="text-sm mt-1">这片森林是许多濒危物种的家园。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"speci"表示"种类"，加上"-es"表示复数，指多种生物种类</span></p>
+                    </div>
+                </div>
+
+                <!-- specialist -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">specialist</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">speci-种类</span> + -al (形容词后缀) + -ist (人) → 专注于某一种类的人 → 专家</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 专家，专科医生</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"She's a specialist in ancient Greek history."</p>
+                        <p class="text-sm mt-1">她是古希腊历史的专家。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"special"是"特殊的"，"-ist"表示人，特殊领域的人就是专家</span></p>
+                    </div>
+                </div>
+
+                <!-- specific -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">specific</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">speci-种类</span> + -fic (做) → 把种类分出来 → 具体的</p>
+                    <p class="mb-4"><span class="font-bold">adj.</span> 具体的，明确的</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"Can you give me more specific instructions?"</p>
+                        <p class="text-sm mt-1">你能给我更具体的指示吗？</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"speci"种类+"fic"做 → 把事物分类做出来 → 具体化</span></p>
+                    </div>
+                </div>
+
+                <!-- specialize -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">specialize</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">speci-种类</span> + -al (形容词后缀) + -ize (动词后缀) → 使专注于某一种类 → 专攻</p>
+                    <p class="mb-4"><span class="font-bold">v.</span> 专攻，专门研究</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"This restaurant specializes in Italian cuisine."</p>
+                        <p class="text-sm mt-1">这家餐厅专营意大利菜。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"special"特殊的+"ize"使...化 → 使成为特殊领域 → 专攻</span></p>
+                    </div>
+                </div>
+
+                <!-- Summary Card for speci- -->
+                <div class="card bg-gradient-to-br from-pink-100 to-pink-200 p-6 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-2xl font-bold text-pink-700 mb-4">词根 <span class="root-highlight">speci-种类</span> 总结</h3>
+                    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">species</h4>
+                            <p class="text-sm">物种，种类</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">specialist</h4>
+                            <p class="text-sm">专家</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">specific</h4>
+                            <p class="text-sm">具体的</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">specialize</h4>
+                            <p class="text-sm">专攻</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-pink-50 rounded-lg p-4">
+                        <h4 class="font-bold text-pink-700 mb-2">记忆技巧：</h4>
+                        <p>"speci"表示"种类"！想象一个科学家在分类(species)生物，他成为了某个领域的专家(specialist)，专注于具体的(specific)研究领域，并决定专攻(specialize)某一方向！</p>
+                        <div class="flex justify-center mt-3 text-2xl text-pink-600">
+                            <i class="fas fa-microscope mr-4"></i>
+                            <i class="fas fa-book mr-4"></i>
+                            <i class="fas fa-flask"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: spect-看 -->
+            <div id="content2" class="tab-content hidden fade-in grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- suspect -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">suspect</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">sus-(下)</span> + <span class="root-highlight">spect-看</span> → 从下面看 → 怀疑</p>
+                    <p class="mb-4"><span class="font-bold">v.</span> 怀疑，猜想</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"I suspect he's not telling the truth."</p>
+                        <p class="text-sm mt-1">我怀疑他没有说实话。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"sus"下面+"spect"看 → 从下面偷偷看 → 怀疑</span></p>
+                    </div>
+                </div>
+
+                <!-- prospect -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">prospect</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">pro-(前)</span> + <span class="root-highlight">spect-看</span> → 向前看 → 前景</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 前景，展望</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"The job offers excellent prospects for promotion."</p>
+                        <p class="text-sm mt-1">这份工作提供了很好的晋升前景。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"pro"向前+"spect"看 → 向前看未来 → 前景</span></p>
+                    </div>
+                </div>
+
+                <!-- expect -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">expect</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">ex-(外)</span> + <span class="root-highlight">spect-看</span> → 向外看等待 → 期待</p>
+                    <p class="mb-4"><span class="font-bold">v.</span> 期待，预料</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"We expect the delivery to arrive tomorrow."</p>
+                        <p class="text-sm mt-1">我们预计明天会收到快递。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"ex"向外+"pect"看 → 向外张望等待 → 期待</span></p>
+                    </div>
+                </div>
+
+                <!-- respect -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">respect</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">re-(再)</span> + <span class="root-highlight">spect-看</span> → 一再地看 → 尊敬</p>
+                    <p class="mb-4"><span class="font-bold">n./v.</span> 尊敬，尊重</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"You should always respect your elders."</p>
+                        <p class="text-sm mt-1">你应该始终尊重长辈。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"re"反复+"spect"看 → 反复看某人 → 重视、尊重</span></p>
+                    </div>
+                </div>
+
+                <!-- aspect -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">aspect</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">a-(朝向)</span> + <span class="root-highlight">spect-看</span> → 看的方向 → 方面</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 方面，外观</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"We need to consider every aspect of the problem."</p>
+                        <p class="text-sm mt-1">我们需要考虑问题的每个方面。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"a"朝向+"spect"看 → 看事物的不同方向 → 方面</span></p>
+                    </div>
+                </div>
+
+                <!-- Summary Card for spect- -->
+                <div class="card bg-gradient-to-br from-pink-100 to-pink-200 p-6 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-2xl font-bold text-pink-700 mb-4">词根 <span class="root-highlight">spect-看</span> 总结</h3>
+                    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">suspect</h4>
+                            <p class="text-sm">怀疑</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">prospect</h4>
+                            <p class="text-sm">前景</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">expect</h4>
+                            <p class="text-sm">期待</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">respect</h4>
+                            <p class="text-sm">尊重</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">aspect</h4>
+                            <p class="text-sm">方面</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-pink-50 rounded-lg p-4">
+                        <h4 class="font-bold text-pink-700 mb-2">记忆技巧：</h4>
+                        <p>想象你是一个侦探，从下面偷偷看(suspect)嫌疑人，向前看(prospect)案件的发展，向外看(expect)等待新线索，反复看(respect)重要的证据，从不同方向看(aspect)案件的各个方面！</p>
+                        <div class="flex justify-center mt-3 text-2xl text-pink-600">
+                            <i class="fas fa-search mr-4"></i>
+                            <i class="fas fa-binoculars mr-4"></i>
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: st-站 -->
+            <div id="content3" class="tab-content hidden fade-in grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- stable -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">stable</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">st-站</span> + -able (能...的) → 能站住的 → 稳定的</p>
+                    <p class="mb-4"><span class="font-bold">adj.</span> 稳定的，牢固的</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"After the surgery, her condition is now stable."</p>
+                        <p class="text-sm mt-1">手术后，她的病情现在稳定了。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"st"站+"able"能...的 → 能站住的 → 稳定的</span></p>
+                    </div>
+                </div>
+
+                <!-- instant -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">instant</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">in-(在...上)</span> + <span class="root-highlight">st-站</span> + -ant (形容词后缀) → 站在某一点上 → 即刻的</p>
+                    <p class="mb-4"><span class="font-bold">adj.</span> 立即的，速食的</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"The medicine provides instant relief from pain."</p>
+                        <p class="text-sm mt-1">这种药能立即缓解疼痛。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"in"在...上+"st"站 → 站在时间点上 → 即刻的</span></p>
+                    </div>
+                </div>
+
+                <!-- instance -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">instance</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">in-(在...上)</span> + <span class="root-highlight">st-站</span> + -ance (名词后缀) → 站在某一点上的事物 → 实例</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 实例，情况</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"This is just one instance of his kindness."</p>
+                        <p class="text-sm mt-1">这只是他善良的一个例子。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"in"在...上+"st"站 → 站在某个具体点上 → 实例</span></p>
+                    </div>
+                </div>
+
+                <!-- Summary Card for st- -->
+                <div class="card bg-gradient-to-br from-pink-100 to-pink-200 p-6 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-2xl font-bold text-pink-700 mb-4">词根 <span class="root-highlight">st-站</span> 总结</h3>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">stable</h4>
+                            <p class="text-sm">稳定的</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">instant</h4>
+                            <p class="text-sm">立即的</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">instance</h4>
+                            <p class="text-sm">实例</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-pink-50 rounded-lg p-4">
+                        <h4 class="font-bold text-pink-700 mb-2">记忆技巧：</h4>
+                        <p>想象一个稳固(stable)的柱子站在那里，它能立即(instant)支撑重量，每个具体的(instance)支撑点都很重要！</p>
+                        <div class="flex justify-center mt-3 text-2xl text-pink-600">
+                            <i class="fas fa-mountain mr-4"></i>
+                            <i class="fas fa-stopwatch mr-4"></i>
+                            <i class="fas fa-cube"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: state-站立 -->
+            <div id="content4" class="tab-content hidden fade-in grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- estate -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">estate</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">e-(外)</span> + <span class="root-highlight">state-站立</span> → 站立在外的东西 → 地产</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 地产，财产</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"He owns a large estate in the countryside."</p>
+                        <p class="text-sm mt-1">他在乡下拥有一大片地产。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"e"外+"state"站立 → 立在外面的不动产 → 地产</span></p>
+                    </div>
+                </div>
+
+                <!-- statement -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">statement</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">state-站立</span> + -ment (名词后缀) → 站立出来的话 → 声明</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 声明，陈述</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"The company issued a statement about the incident."</p>
+                        <p class="text-sm mt-1">公司就这一事件发表了声明。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"state"站立+"ment"名词后缀 → 站立出来的正式表达 → 声明</span></p>
+                    </div>
+                </div>
+
+                <!-- status -->
+                <div class="card bg-white p-6">
+                    <h3 class="text-2xl font-bold text-pink-600 mb-2">status</h3>
+                    <p class="text-sm text-pink-500 mb-3"><span class="root-highlight">stat-站立</span> + -us (名词后缀) → 站立的状态 → 地位</p>
+                    <p class="mb-4"><span class="font-bold">n.</span> 地位，状态</p>
+                    <div class="bg-pink-50 rounded-lg p-4 mb-4">
+                        <p class="italic">"His status in the company has improved."</p>
+                        <p class="text-sm mt-1">他在公司的地位提高了。</p>
+                    </div>
+                    <div class="flex items-center text-sm text-pink-700">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <p>记忆技巧：<span class="font-medium">"stat"站立+"us" → 站立的位置 → 地位</span></p>
+                    </div>
+                </div>
+
+                <!-- Summary Card for state- -->
+                <div class="card bg-gradient-to-br from-pink-100 to-pink-200 p-6 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-2xl font-bold text-pink-700 mb-4">词根 <span class="root-highlight">state-站立</span> 总结</h3>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">estate</h4>
+                            <p class="text-sm">地产</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">statement</h4>
+                            <p class="text-sm">声明</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 rounded-lg p-3">
+                            <h4 class="font-bold text-pink-600">status</h4>
+                            <p class="text-sm">地位</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-pink-50 rounded-lg p-4">
+                        <h4 class="font-bold text-pink-700 mb-2">记忆技巧：</h4>
+                        <p>想象一个富人站在(stand)他的地产(estate)上，发表(statement)重要声明，展示他的社会地位(status)！</p>
+                        <div class="flex justify-center mt-3 text-2xl text-pink-600">
+                            <i class="fas fa-home mr-4"></i>
+                            <i class="fas fa-scroll mr-4"></i>
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-12 text-center text-pink-600">
+            <p class="mb-2">快乐学习英语词根！</p>
+            <div class="flex justify-center space-x-4 text-2xl">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-book-open"></i>
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = ['tab1', 'tab2', 'tab3', 'tab4'];
+            const contents = ['content1', 'content2', 'content3', 'content4'];
+            
+            tabs.forEach((tab, index) => {
+                document.getElementById(tab).addEventListener('click', function() {
+                    // Reset all tabs and contents
+                    tabs.forEach(t => {
+                        document.getElementById(t).classList.remove('bg-pink-300');
+                    });
+                    contents.forEach(c => {
+                        document.getElementById(c).classList.add('hidden');
+                    });
+                    
+                    // Activate selected tab and content
+                    this.classList.add('bg-pink-300');
+                    document.getElementById(contents[index]).classList.remove('hidden');
+                    document.getElementById(contents[index]).classList.add('fade-in');
+                });
+            });
+            
+            // Activate first tab by default
+            document.getElementById('tab1').click();
+        });
+    </script>
+</body>
+</html>

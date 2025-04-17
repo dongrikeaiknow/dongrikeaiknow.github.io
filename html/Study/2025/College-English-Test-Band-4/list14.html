@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - Str/Struct/Sume/Tain Roots</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #fef6f6;
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .root-tag {
+            border-radius: 12px;
+            padding: 2px 8px;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .tab-button.active {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .dark-mode {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+        }
+        
+        .dark-card {
+            background-color: #16213e;
+            color: #e6e6e6;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-pink-600">词汇卡片 <i class="fas fa-book-open ml-2"></i></h1>
+            <button id="themeToggle" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full transition-all">
+                <i class="fas fa-moon mr-2"></i>深色模式
+            </button>
+        </div>
+        
+        <!-- Root Navigation Tabs -->
+        <div class="flex flex-wrap gap-2 mb-8">
+            <button class="tab-button bg-pink-200 text-pink-800 px-4 py-2" data-root="str">str-拉紧</button>
+            <button class="tab-button bg-blue-200 text-blue-800 px-4 py-2" data-root="struct">struct-建立</button>
+            <button class="tab-button bg-purple-200 text-purple-800 px-4 py-2" data-root="sume">sume-拿</button>
+            <button class="tab-button bg-green-200 text-green-800 px-4 py-2" data-root="tain">tain-拿住</button>
+            <button class="tab-button bg-yellow-200 text-yellow-800 px-4 py-2" data-root="summary">汇总对比</button>
+        </div>
+        
+        <!-- Cards Container -->
+        <div id="cardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Vocabulary data
+        const vocabularyData = {
+            "str": [
+                {
+                    word: "strive",
+                    pos: "v.",
+                    meaning: "努力，奋斗",
+                    breakdown: "str-(拉紧) + -ive(形容词后缀) → 拉紧自己 → 努力奋斗",
+                    example: "We must strive for excellence in everything we do. (我们必须努力在每件事上都追求卓越。)",
+                    note: "记忆技巧：想象自己在拉紧(str)肌肉，努力(ive)完成某个目标！"
+                },
+                {
+                    word: "restriction",
+                    pos: "n.",
+                    meaning: "限制，约束",
+                    breakdown: "re-(回) + strict-(拉紧) + -ion(名词后缀) → 拉回来 → 限制",
+                    example: "There are restrictions on how much luggage you can take. (你可以携带多少行李是有限制的。)",
+                    note: "记忆技巧：re(回)+strict(拉紧)→把东西拉紧限制住"
+                },
+                {
+                    word: "stress",
+                    pos: "n./v.",
+                    meaning: "压力；强调",
+                    breakdown: "str-(拉紧) + -ess → 拉紧的状态 → 压力",
+                    example: "Too much stress can make you ill. (压力太大会让你生病。)",
+                    note: "记忆技巧：拉紧(str)的状态(ess)就是有压力(stress)"
+                },
+                {
+                    word: "stretch",
+                    pos: "v./n.",
+                    meaning: "伸展，延伸",
+                    breakdown: "str-(拉紧) + -etch → 拉紧延长 → 伸展",
+                    example: "She stretched out her arm to reach the book. (她伸出手臂去够那本书。)",
+                    note: "记忆技巧：拉紧(str)然后延长(etch)就是伸展(stretch)"
+                },
+                {
+                    word: "struggle",
+                    pos: "v./n.",
+                    meaning: "斗争，奋斗",
+                    breakdown: "str-(拉紧) + -uggle → 拉紧对抗 → 斗争",
+                    example: "The team struggled to finish the project on time. (团队努力按时完成项目。)",
+                    note: "记忆技巧：拉紧(str)肌肉努力(uggle)战斗就是斗争(struggle)"
+                }
+            ],
+            "struct": [
+                {
+                    word: "structure",
+                    pos: "n.",
+                    meaning: "结构，建筑物",
+                    breakdown: "struct-(建立) + -ure(名词后缀) → 建立的东西 → 结构",
+                    example: "The company has a complex organizational structure. (公司有复杂的组织结构。)",
+                    note: "记忆技巧：建立(struct)出来的东西(-ure)就是结构(structure)"
+                },
+                {
+                    word: "instruction",
+                    pos: "n.",
+                    meaning: "指示，教学",
+                    breakdown: "in-(内) + struct-(建立) + -ion(名词后缀) → 在内部建立知识 → 教学",
+                    example: "Follow the instructions carefully. (仔细按照说明操作。)",
+                    note: "记忆技巧：在(in)内部建立(struct)知识就是教学(instruction)"
+                },
+                {
+                    word: "construct",
+                    pos: "v.",
+                    meaning: "建造，构造",
+                    breakdown: "con-(一起) + struct-(建立) → 一起建立 → 建造",
+                    example: "They plan to construct a new bridge. (他们计划建造一座新桥。)",
+                    note: "记忆技巧：一起(con)建立(struct)就是建造(construct)"
+                }
+            ],
+            "sume": [
+                {
+                    word: "consume",
+                    pos: "v.",
+                    meaning: "消耗，消费",
+                    breakdown: "con-(完全) + sume-(拿) → 全部拿走 → 消耗",
+                    example: "The car consumes a lot of fuel. (这辆车耗油很多。)",
+                    note: "记忆技巧：完全(con)拿走(sume)就是消耗(consume)"
+                },
+                {
+                    word: "assume",
+                    pos: "v.",
+                    meaning: "假定，承担",
+                    breakdown: "as-(朝向) + sume-(拿) → 拿过来 → 假定",
+                    example: "Let's assume he's telling the truth. (我们假设他说的是实话。)",
+                    note: "记忆技巧：朝(as)某个方向拿(sume)过来就是假定(assume)"
+                },
+                {
+                    word: "resume",
+                    pos: "v.",
+                    meaning: "重新开始，恢复",
+                    breakdown: "re-(再) + sume-(拿) → 再拿起来 → 重新开始",
+                    example: "We'll resume the meeting after lunch. (午餐后我们将继续会议。)",
+                    note: "记忆技巧：再(re)拿(sume)起来就是恢复(resume)"
+                }
+            ],
+            "tain": [
+                {
+                    word: "maintain",
+                    pos: "v.",
+                    meaning: "维持，保养",
+                    breakdown: "main-(手) + tain-(拿住) → 用手拿住 → 维持",
+                    example: "It's important to maintain good relationships. (维持良好关系很重要。)",
+                    note: "记忆技巧：用手(main)拿住(tain)就是维持(maintain)"
+                },
+                {
+                    word: "sustain",
+                    pos: "v.",
+                    meaning: "维持，支撑",
+                    breakdown: "sus-(下) + tain-(拿住) → 从下面拿住 → 支撑",
+                    example: "The pillars sustain the weight of the roof. (柱子支撑着屋顶的重量。)",
+                    note: "记忆技巧：从下面(sus)拿住(tain)就是支撑(sustain)"
+                },
+                {
+                    word: "retain",
+                    pos: "v.",
+                    meaning: "保留，记住",
+                    breakdown: "re-(回) + tain-(拿住) → 拿回来 → 保留",
+                    example: "She retained her title as champion. (她保住了冠军头衔。)",
+                    note: "记忆技巧：拿(re)回来(tain)就是保留(retain)"
+                },
+                {
+                    word: "obtain",
+                    pos: "v.",
+                    meaning: "获得，得到",
+                    breakdown: "ob-(朝向) + tain-(拿住) → 朝某物拿住 → 获得",
+                    example: "Where can I obtain a copy of the report? (我在哪里可以获得报告的副本？)",
+                    note: "记忆技巧：朝向(ob)某物拿住(tain)就是获得(obtain)"
+                }
+            ],
+            "summary": [
+                {
+                    type: "summary",
+                    title: "str-拉紧 词根词汇",
+                    words: ["strive", "restriction", "stress", "stretch", "struggle"],
+                    note: "记忆技巧：所有str-开头的词都与'拉紧'有关！想象拉紧绳子(str)的状态：努力(strive)拉紧，限制(restriction)拉紧程度，压力(stress)来自拉紧，伸展(stretch)是拉长，斗争(struggle)是拉紧对抗！"
+                },
+                {
+                    type: "summary",
+                    title: "struct-建立 词根词汇",
+                    words: ["structure", "instruction", "construct"],
+                    note: "记忆技巧：struct表示'建立'！结构(structure)是建立的东西，教学(instruction)是在头脑中建立知识，建造(construct)是一起建立东西！"
+                },
+                {
+                    type: "summary",
+                    title: "sume-拿 词根词汇",
+                    words: ["consume", "assume", "resume"],
+                    note: "记忆技巧：sume表示'拿'！完全(con)拿走是消耗(consume)，朝(as)某方向拿是假定(assume)，再(re)拿起来是恢复(resume)！"
+                },
+                {
+                    type: "summary",
+                    title: "tain-拿住 词根词汇",
+                    words: ["maintain", "sustain", "retain", "obtain"],
+                    note: "记忆技巧：tain表示'拿住'！用手(main)拿住是维持(maintain)，从下面(sus)拿住是支撑(sustain)，拿(re)回来是保留(retain)，朝向(ob)拿住是获得(obtain)！"
+                },
+                {
+                    type: "comparison",
+                    title: "sume-拿 vs tain-拿住 对比",
+                    note: "区别记忆：sume是'拿取'的动作，tain是'拿住'的状态！消耗(consume)是拿走，维持(maintain)是持续拿住。假定(assume)是拿过来一个想法，保留(retain)是持续拿住不放。"
+                }
+            ]
+        };
+
+        // DOM elements
+        const cardsContainer = document.getElementById('cardsContainer');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Initialize
+        let currentRoot = 'str';
+        renderCards(currentRoot);
+        
+        // Tab button event listeners
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                currentRoot = button.dataset.root;
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                renderCards(currentRoot);
+            });
+        });
+        
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i>浅色模式';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i>深色模式';
+            }
+        });
+        
+        // Render cards based on selected root
+        function renderCards(root) {
+            cardsContainer.innerHTML = '';
+            const cards = vocabularyData[root];
+            
+            cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card fade-in bg-white p-6 shadow-md';
+                cardElement.style.animationDelay = `${index * 0.1}s`;
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    cardElement.classList.add('dark-card');
+                }
+                
+                if (card.type === 'summary') {
+                    // Summary card
+                    cardElement.innerHTML = `
+                        <div class="mb-4">
+                            <h2 class="text-2xl font-bold mb-2 text-pink-600">${card.title}</h2>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${card.words.map(word => `<span class="root-tag bg-pink-100 text-pink-800">${word}</span>`).join('')}
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300">${card.note}</p>
+                        </div>
+                        <div class="mt-4 text-right">
+                            <i class="fas fa-lightbulb text-yellow-400 text-2xl"></i>
+                        </div>
+                    `;
+                } else if (card.type === 'comparison') {
+                    // Comparison card
+                    cardElement.innerHTML = `
+                        <div class="mb-4">
+                            <h2 class="text-2xl font-bold mb-2 text-purple-600">${card.title}</h2>
+                            <p class="text-gray-700 dark:text-gray-300">${card.note}</p>
+                        </div>
+                        <div class="mt-4 text-right">
+                            <i class="fas fa-balance-scale text-purple-400 text-2xl"></i>
+                        </div>
+                    `;
+                } else {
+                    // Regular word card
+                    let bgColor = 'bg-pink-50';
+                    if (root === 'struct') bgColor = 'bg-blue-50';
+                    if (root === 'sume') bgColor = 'bg-purple-50';
+                    if (root === 'tain') bgColor = 'bg-green-50';
+                    
+                    cardElement.classList.add(bgColor);
+                    
+                    cardElement.innerHTML = `
+                        <div class="mb-4">
+                            <div class="flex justify-between items-start">
+                                <h2 class="text-2xl font-bold mb-2">${card.word} <span class="text-lg font-normal text-gray-600">${card.pos}</span></h2>
+                                <span class="root-tag ${getRootTagColor(root)}">${root}</span>
+                            </div>
+                            <p class="text-gray-800 font-medium mb-2">${card.meaning}</p>
+                            <div class="bg-white dark:bg-gray-700 rounded-lg p-3 mb-3">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">${card.breakdown}</p>
+                            </div>
+                            <p class="text-sm mb-3"><span class="font-medium">例句：</span>${card.example}</p>
+                            <div class="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-3">
+                                <p class="text-sm text-yellow-800 dark:text-yellow-100"><span class="font-medium">记忆技巧：</span>${card.note}</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-right">
+                            ${getEmojiForWord(card.word)}
+                        </div>
+                    `;
+                }
+                
+                cardsContainer.appendChild(cardElement);
+            });
+        }
+        
+        function getRootTagColor(root) {
+            switch(root) {
+                case 'str': return 'bg-pink-200 text-pink-800';
+                case 'struct': return 'bg-blue-200 text-blue-800';
+                case 'sume': return 'bg-purple-200 text-purple-800';
+                case 'tain': return 'bg-green-200 text-green-800';
+                default: return 'bg-gray-200 text-gray-800';
+            }
+        }
+        
+        function getEmojiForWord(word) {
+            const emojis = {
+                'strive': '💪',
+                'restriction': '🚫',
+                'stress': '😫',
+                'stretch': '🧘',
+                'struggle': '🥊',
+                'structure': '🏗️',
+                'instruction': '📝',
+                'construct': '👷',
+                'consume': '🍽️',
+                'assume': '🤔',
+                'resume': '↩️',
+                'maintain': '🔧',
+                'sustain': '⚖️',
+                'retain': '📌',
+                'obtain': '🎁'
+            };
+            
+            return `<span class="text-3xl">${emojis[word] || '✨'}</span>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List22</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .word-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        .prefix-card {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffe8cc 100%);
+        }
+        
+        .group-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .dark .word-card {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        }
+        
+        .dark .prefix-card {
+            background: linear-gradient(135deg, #443937 0%, #5c423a 100%);
+        }
+        
+        .dark .group-card {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">Vocabulary Cards</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </header>
+        
+        <div class="tabs flex space-x-2 mb-6 overflow-x-auto pb-2">
+            <button class="tab-btn active px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium" data-tab="in-im">in/im- Words</button>
+            <button class="tab-btn px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium" data-tab="inter">inter- Words</button>
+            <button class="tab-btn px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium" data-tab="prefix">Prefixes</button>
+            <button class="tab-btn px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium" data-tab="group">Group Cards</button>
+        </div>
+        
+        <div class="tab-content active" id="in-im">
+            <h2 class="text-2xl font-bold mb-6 text-pink-600 dark:text-pink-400">Words with in-/im- Prefix</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- in-/im- words cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="inter">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400">Words with inter- Prefix</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- inter- words cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="prefix">
+            <h2 class="text-2xl font-bold mb-6 text-purple-600 dark:text-purple-400">Prefix Explanations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Prefix explanation cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="group">
+            <h2 class="text-2xl font-bold mb-6 text-green-600 dark:text-green-400">Group Memory Cards</h2>
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Group memory cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        } else if (localStorage.getItem('theme') === 'light') {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Tab switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const tabId = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Vocabulary data
+        const vocabularyData = {
+            "inImWords": [
+                {
+                    "word": "insight",
+                    "pos": "n.",
+                    "meaning": "洞察力，深刻见解",
+                    "etymology": "in-(里面) + sight(看) → 看到事物的内部 → 洞察力",
+                    "examples": [
+                        {
+                            "sentence": "The book provides valuable insights into human behavior.",
+                            "meaning": "这本书对人类行为提供了有价值的见解。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(里面)+sight(看)→往里面看→洞察力！想象你有X光眼能看透事物内部！"
+                },
+                {
+                    "word": "import",
+                    "pos": "v./n.",
+                    "meaning": "进口；重要性",
+                    "etymology": "im-(进入) + port(港口) → 进入港口 → 进口",
+                    "examples": [
+                        {
+                            "sentence": "The country imports most of its oil from the Middle East.",
+                            "meaning": "这个国家的大部分石油从中东进口。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(进入)+port(港口)→进入港口就是'进口'！反义词export(出港口)就是'出口'！"
+                },
+                {
+                    "word": "imply",
+                    "pos": "v.",
+                    "meaning": "暗示，意味着",
+                    "etymology": "im-(里面) + ply(折叠) → 意思折叠在里面 → 暗示",
+                    "examples": [
+                        {
+                            "sentence": "His silence implied agreement.",
+                            "meaning": "他的沉默暗示着同意。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(里面)+ply(折叠)→把意思折叠在里面不说出来→暗示！类似词explicit(展开的→明确的)是反义词！"
+                },
+                {
+                    "word": "impact",
+                    "pos": "n./v.",
+                    "meaning": "影响；冲击",
+                    "etymology": "im-(进入) + pact(压紧) → 压进去 → 冲击，影响",
+                    "examples": [
+                        {
+                            "sentence": "The new law will have a major impact on small businesses.",
+                            "meaning": "新法律将对小企业产生重大影响。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(进入)+pact(压)→压进去产生'冲击'！想象陨石撞击地球的画面！"
+                },
+                {
+                    "word": "invest",
+                    "pos": "v.",
+                    "meaning": "投资",
+                    "etymology": "in-(进入) + vest(衣服) → 古代指给某人穿上官服(象征授予权力/财产) → 投资",
+                    "examples": [
+                        {
+                            "sentence": "They invested all their savings in the stock market.",
+                            "meaning": "他们把全部积蓄投资到了股市。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(进入)+vest(衣服)→古代给钱让人'穿上官服'就是'投资'他！现在指投入资金！"
+                },
+                {
+                    "word": "impulse",
+                    "pos": "n.",
+                    "meaning": "冲动；脉冲",
+                    "etymology": "im-(使) + pulse(推) → 推动 → 冲动",
+                    "examples": [
+                        {
+                            "sentence": "She resisted the impulse to laugh.",
+                            "meaning": "她忍住了想笑的冲动。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(使)+pulse(脉搏)→使脉搏跳动→冲动！心跳加速就是冲动的表现！"
+                },
+                {
+                    "word": "intake",
+                    "pos": "n.",
+                    "meaning": "摄入量；吸入",
+                    "etymology": "in-(进入) + take(拿) → 拿进去 → 摄入",
+                    "examples": [
+                        {
+                            "sentence": "You should reduce your salt intake.",
+                            "meaning": "你应该减少盐的摄入量。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(进入)+take(拿)→拿进去就是'摄入'！反义词output(产出)！"
+                },
+                {
+                    "word": "inherit",
+                    "pos": "v.",
+                    "meaning": "继承",
+                    "etymology": "in-(里面) + her(继承人) + it → 成为继承人 → 继承",
+                    "examples": [
+                        {
+                            "sentence": "She inherited a fortune from her grandfather.",
+                            "meaning": "她从祖父那里继承了一大笔财产。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(里面)+her(继承人)+it→成为继承人就是'继承'！注意和inherent(内在的)区分！"
+                },
+                {
+                    "word": "institute",
+                    "pos": "n./v.",
+                    "meaning": "学院，研究所；建立",
+                    "etymology": "in-(里面) + stitute(建立) → 内部建立 → 学院",
+                    "examples": [
+                        {
+                            "sentence": "She works at a research institute.",
+                            "meaning": "她在一家研究所工作。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(里面)+stitute(建立)→内部建立的机构→学院！类似词constitution(宪法)也是'建立'国家的基本法！"
+                },
+                {
+                    "word": "immune",
+                    "pos": "adj.",
+                    "meaning": "免疫的；免除的",
+                    "etymology": "im-(不) + mune(服务) → 不用服务(兵役) → 免除的 → 免疫的",
+                    "examples": [
+                        {
+                            "sentence": "Vaccines help make people immune to certain diseases.",
+                            "meaning": "疫苗帮助人们对某些疾病产生免疫力。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(不)+mune(服务)→不用'服务'就是'免除'！医学上指免除疾病→免疫的！"
+                },
+                {
+                    "word": "immense",
+                    "pos": "adj.",
+                    "meaning": "巨大的，广大的",
+                    "etymology": "im-(不) + mense(测量) → 无法测量的 → 巨大的",
+                    "examples": [
+                        {
+                            "sentence": "The project required an immense amount of work.",
+                            "meaning": "这个项目需要巨大的工作量。"
+                        }
+                    ],
+                    "tips": "记忆技巧：im(不)+mense(测量)→大到'无法测量'→巨大的！类似词dimension(尺寸)也是测量相关！"
+                },
+                {
+                    "word": "individual",
+                    "pos": "n./adj.",
+                    "meaning": "个人；个别的",
+                    "etymology": "in-(不) + divid(分开) + ual → 不能再分开的 → 个体",
+                    "examples": [
+                        {
+                            "sentence": "Each individual has unique talents.",
+                            "meaning": "每个人都有独特的天赋。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(不)+divid(分开)+ual→不能再分的最小单位→个人！divide(分开)是它的词根！"
+                },
+                {
+                    "word": "illustrate",
+                    "pos": "v.",
+                    "meaning": "说明；图解",
+                    "etymology": "il-(使) + lustr(光) + ate → 使明亮 → 说明",
+                    "examples": [
+                        {
+                            "sentence": "The diagram illustrates how the machine works.",
+                            "meaning": "图表说明了机器的工作原理。"
+                        }
+                    ],
+                    "tips": "记忆技巧：il(使)+lustr(光)+ate→使问题'明亮'清楚→说明！类似词luminous(发光的)同词根！"
+                },
+                {
+                    "word": "increasingly",
+                    "pos": "adv.",
+                    "meaning": "越来越多地，逐渐增加地",
+                    "etymology": "in-(进入) + crease(增长) + ing + ly → 进入增长状态 → 越来越多地",
+                    "examples": [
+                        {
+                            "sentence": "It's becoming increasingly difficult to find affordable housing.",
+                            "meaning": "找到价格合理的住房变得越来越困难。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(进入)+crease(增长)→进入增长状态→越来越多地！crease本身就有'折痕，增长'的意思！"
+                }
+            ],
+            "interWords": [
+                {
+                    "word": "interfere",
+                    "pos": "v.",
+                    "meaning": "干涉，干扰",
+                    "etymology": "inter-(在...间) + fere(打击) → 在中间打击 → 干扰",
+                    "examples": [
+                        {
+                            "sentence": "Don't interfere in other people's business.",
+                            "meaning": "不要干涉别人的事情。"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(在中间)+fere(打击)→在中间打击就是'干扰'！类似词interrupt(打断)也是中间插入！"
+                },
+                {
+                    "word": "interaction",
+                    "pos": "n.",
+                    "meaning": "互动，相互作用",
+                    "etymology": "inter-(相互) + action(行动) → 相互行动 → 互动",
+                    "examples": [
+                        {
+                            "sentence": "Social interaction is important for children's development.",
+                            "meaning": "社交互动对儿童的成长很重要。"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(相互)+action(行动)→相互行动就是'互动'！简单好记！"
+                },
+                {
+                    "word": "interview",
+                    "pos": "n./v.",
+                    "meaning": "面试；采访",
+                    "etymology": "inter-(相互) + view(看) → 相互看 → 面试",
+                    "examples": [
+                        {
+                            "sentence": "She has a job interview tomorrow.",
+                            "meaning": "她明天有个工作面试。"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(相互)+view(看)→相互看就是'面试'或'采访'！想象记者和受访者相互观察！"
+                },
+                {
+                    "word": "intermediate",
+                    "pos": "adj.",
+                    "meaning": "中间的，中级的",
+                    "etymology": "inter-(在...间) + medi(中间) + ate → 在中间的 → 中级的",
+                    "examples": [
+                        {
+                            "sentence": "This course is for intermediate learners.",
+                            "meaning": "这门课程是为中级学习者设计的。"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(在中间)+medi(中间)→双倍'中间'→中级的！media(媒体)也是'中间'传播信息！"
+                },
+                {
+                    "word": "interest",
+                    "pos": "n./v.",
+                    "meaning": "兴趣；利益；使感兴趣",
+                    "etymology": "inter-(在...间) + est(存在) → 在事物之间存在联系 → 兴趣",
+                    "examples": [
+                        {
+                            "sentence": "She has a great interest in art history.",
+                            "meaning": "她对艺术史有浓厚的兴趣。"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(在中间)+est(存在)→在你和事物之间存在联系就是'兴趣'！银行利息也是你的'利益'！"
+                },
+                {
+                    "word": "integrate",
+                    "pos": "v.",
+                    "meaning": "整合，使成为一体",
+                    "etymology": "in-(不) + teg(接触) + rate → 使不分开 → 整合",
+                    "examples": [
+                        {
+                            "sentence": "The school integrates children with and without disabilities.",
+                            "meaning": "这所学校让残疾和非残疾儿童一起学习。"
+                        }
+                    ],
+                    "tips": "记忆技巧：in(不)+teg(接触)+rate→使不分开→整合！integer(整数)也是完整不分开的数字！"
+                },
+                {
+                    "word": "interpret",
+                    "pos": "v.",
+                    "meaning": "解释；口译",
+                    "etymology": "inter-(在...间) + pret(价格) → 在买卖双方间定价 → 解释",
+                    "examples": [
+                        {
+                            "sentence": "Can you interpret this ancient text for us?",
+                            "meaning": "你能为我们解释这段古文吗？"
+                        }
+                    ],
+                    "tips": "记忆技巧：inter(在中间)+pret(价格)→古代中间人'解释'价格→现在泛指解释！口译也是在不同语言间'解释'！"
+                }
+            ],
+            "prefixExplanations": [
+                {
+                    "prefix": "in-/im-",
+                    "meaning": "里面，进入；使；不（否定前缀）",
+                    "examples": [
+                        "inside (里面)",
+                        "import (进口)",
+                        "immobile (不动的)"
+                    ],
+                    "tips": "记忆技巧：in/im-有3种意思：1)里面/进入(如inside) 2)使(如illuminate照亮) 3)不/否定(如impossible不可能)！根据单词意思判断是哪种！"
+                },
+                {
+                    "prefix": "inter-",
+                    "meaning": "在……之间，相互",
+                    "examples": [
+                        "international (国际的)",
+                        "interact (互动)",
+                        "intercity (城市间的)"
+                    ],
+                    "tips": "记忆技巧：inter-表示'在...之间'或'相互'！想象两个人之间的互动(interact)或国家之间的(international)关系！"
+                }
+            ],
+            "groupCards": [
+                {
+                    "title": "in-/im- 前缀单词记忆组",
+                    "words": ["insight", "import", "imply", "impact", "invest", "impulse", "intake", "inherit", "institute", "immune", "immense", "individual", "illustrate", "increasingly"],
+                    "tips": "记忆技巧：in/im-前缀有三大方向：\n1) 里面/进入：insight(往里看→洞察)、import(进入港口→进口)、intake(拿进去→摄入)\n2) 使...：illustrate(使明亮→说明)、impulse(使推动→冲动)\n3) 不/否定：immune(不服务→免疫)、immense(不能测量→巨大)\n\n分类记忆更高效！"
+                },
+                {
+                    "title": "inter- 前缀单词记忆组",
+                    "words": ["interfere", "interaction", "interview", "intermediate", "interest", "integrate", "interpret"],
+                    "tips": "记忆技巧：inter-表示'之间/相互'，所有单词都包含这个核心概念：\n• 干扰(interfere)：在中间打击\n• 互动(interaction)：相互行动\n• 面试(interview)：相互看\n• 解释(interpret)：在不同语言间转换\n\n想象各种'之间'的关系场景！"
+                }
+            ]
+        };
+        
+        // Function to create word cards
+        function createWordCards() {
+            // in-/im- words
+            const inImContainer = document.querySelector('#in-im .grid');
+            vocabularyData.inImWords.forEach(word => {
+                const examplesHtml = word.examples.map(example => `
+                    <div class="mb-3">
+                        <p class="font-medium">"${example.sentence}"</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">${example.meaning}</p>
+                    </div>
+                `).join('');
+                
+                const card = `
+                    <div class="card word-card p-6 fade-in">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-pink-600 dark:text-pink-400">${word.word}</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">${word.pos} ${word.meaning}</p>
+                            </div>
+                            <span class="emoji">🧠</span>
+                        </div>
+                        <div class="my-4 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                            <p class="text-sm font-medium">${word.etymology}</p>
+                        </div>
+                        <div class="examples mb-4">
+                            <h4 class="font-medium mb-2">例句：</h4>
+                            ${examplesHtml}
+                        </div>
+                        <div class="tips p-3 bg-pink-50 dark:bg-pink-900 rounded-lg">
+                            <p class="text-sm font-medium">${word.tips}</p>
+                        </div>
+                    </div>
+                `;
+                inImContainer.innerHTML += card;
+            });
+            
+            // inter- words
+            const interContainer = document.querySelector('#inter .grid');
+            vocabularyData.interWords.forEach(word => {
+                const examplesHtml = word.examples.map(example => `
+                    <div class="mb-3">
+                        <p class="font-medium">"${example.sentence}"</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">${example.meaning}</p>
+                    </div>
+                `).join('');
+                
+                const card = `
+                    <div class="card word-card p-6 fade-in">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">${word.word}</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">${word.pos} ${word.meaning}</p>
+                            </div>
+                            <span class="emoji">🤝</span>
+                        </div>
+                        <div class="my-4 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                            <p class="text-sm font-medium">${word.etymology}</p>
+                        </div>
+                        <div class="examples mb-4">
+                            <h4 class="font-medium mb-2">例句：</h4>
+                            ${examplesHtml}
+                        </div>
+                        <div class="tips p-3 bg-blue-50 dark:bg-blue-900 rounded-lg">
+                            <p class="text-sm font-medium">${word.tips}</p>
+                        </div>
+                    </div>
+                `;
+                interContainer.innerHTML += card;
+            });
+            
+            // Prefix explanations
+            const prefixContainer = document.querySelector('#prefix .grid');
+            vocabularyData.prefixExplanations.forEach(prefix => {
+                const examplesHtml = prefix.examples.map(example => `
+                    <li class="text-sm">${example}</li>
+                `).join('');
+                
+                const card = `
+                    <div class="card prefix-card p-6 fade-in">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">前缀：${prefix.prefix}</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">${prefix.meaning}</p>
+                            </div>
+                            <span class="emoji">🔍</span>
+                        </div>
+                        <div class="my-4">
+                            <h4 class="font-medium mb-2">例子：</h4>
+                            <ul class="list-disc pl-5">
+                                ${examplesHtml}
+                            </ul>
+                        </div>
+                        <div class="tips p-3 bg-purple-50 dark:bg-purple-900 rounded-lg">
+                            <p class="text-sm font-medium">${prefix.tips}</p>
+                        </div>
+                    </div>
+                `;
+                prefixContainer.innerHTML += card;
+            });
+            
+            // Group cards
+            const groupContainer = document.querySelector('#group .grid');
+            vocabularyData.groupCards.forEach(group => {
+                const wordsHtml = group.words.map(word => `
+                    <span class="inline-block bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2">${word}</span>
+                `).join('');
+                
+                const card = `
+                    <div class="card group-card p-6 fade-in">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-green-600 dark:text-green-400">${group.title}</h3>
+                            </div>
+                            <span class="emoji">📚</span>
+                        </div>
+                        <div class="my-4">
+                            <div class="flex flex-wrap">
+                                ${wordsHtml}
+                            </div>
+                        </div>
+                        <div class="tips p-3 bg-green-50 dark:bg-green-900 rounded-lg">
+                            <p class="text-sm font-medium whitespace-pre-line">${group.tips}</p>
+                        </div>
+                    </div>
+                `;
+                groupContainer.innerHTML += card;
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createWordCards();
+            
+            // Add hover effects
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('shadow-lg');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('shadow-lg');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

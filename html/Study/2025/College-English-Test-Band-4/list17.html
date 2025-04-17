@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词学习卡片 - List17</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+        }
+        .dark body {
+            background-color: #1a202c;
+        }
+        .word-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-bg-1 {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+        }
+        .gradient-bg-4 {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+        }
+        .gradient-bg-5 {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+        }
+        .dark .gradient-bg-1 {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        }
+        .dark .gradient-bg-2 {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        }
+        .dark .gradient-bg-3 {
+            background: linear-gradient(135deg, #3e4a61 0%, #6a8caf 100%);
+        }
+        .dark .gradient-bg-4 {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+        }
+        .dark .gradient-bg-5 {
+            background: linear-gradient(135deg, #614385 0%, #516395 100%);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        .tab-button.active {
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-indigo-700 dark:text-indigo-300 mb-4">英语单词学习卡片</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">List17 - 前缀 ad- 系列单词</p>
+            <div class="flex justify-center mt-6">
+                <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-md">
+                    <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex justify-center mb-8 overflow-x-auto">
+            <div class="flex space-x-2 p-2 bg-white dark:bg-gray-800 rounded-full shadow-inner">
+                <button class="tab-button active px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-700 text-indigo-700 dark:text-indigo-100" data-tab="all">全部单词</button>
+                <button class="tab-button px-4 py-2 rounded-full hover:bg-indigo-50 dark:hover:bg-gray-700" data-tab="noun">名词</button>
+                <button class="tab-button px-4 py-2 rounded-full hover:bg-indigo-50 dark:hover:bg-gray-700" data-tab="verb">动词</button>
+                <button class="tab-button px-4 py-2 rounded-full hover:bg-indigo-50 dark:hover:bg-gray-700" data-tab="adj">形容词</button>
+                <button class="tab-button px-4 py-2 rounded-full hover:bg-indigo-50 dark:hover:bg-gray-700" data-tab="similar">相近单词</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="word-container">
+            <!-- 单词卡片将通过JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <script>
+        // 单词数据
+        const words = [
+            {
+                word: "abuse",
+                pos: "n./v.",
+                meaning: "滥用；虐待；辱骂",
+                etymology: "ab-(远离，不) + use(使用) → 不正确使用 → 滥用",
+                examples: [
+                    "Drug abuse can lead to serious health problems. (药物滥用会导致严重的健康问题。)",
+                    "She was accused of abusing her power. (她被指控滥用权力。)"
+                ],
+                tips: "记忆技巧：ab-表示'远离正常使用'，use是'使用'，合起来就是'不正常使用'即'滥用'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "abolish",
+                pos: "v.",
+                meaning: "废除，废止",
+                etymology: "ab-(远离) + ol(生长) + -ish(动词后缀) → 使不再生长 → 废除",
+                examples: [
+                    "Slavery was abolished in the 19th century. (奴隶制在19世纪被废除。)",
+                    "They are campaigning to abolish the death penalty. (他们正在开展废除死刑的运动。)"
+                ],
+                tips: "记忆技巧：abolish中的'oli'与'old'相似，ab-表示'远离'，合起来就是'远离旧事物'即'废除'！",
+                colorClass: "gradient-bg-2"
+            },
+            {
+                word: "adequate",
+                pos: "adj.",
+                meaning: "足够的；适当的",
+                etymology: "ad-(加强) + equ(平等) + -ate(形容词后缀) → 使平等 → 足够的",
+                examples: [
+                    "The food was adequate but not outstanding. (食物足够但不突出。)",
+                    "Make sure you have adequate insurance cover. (确保你有足够的保险保障。)"
+                ],
+                tips: "记忆技巧：ad-加强意义，equ表示'平等'，-ate是形容词后缀，合起来就是'达到平等标准的'即'足够的'！",
+                colorClass: "gradient-bg-3"
+            },
+            {
+                word: "accustom",
+                pos: "v.",
+                meaning: "使习惯于",
+                etymology: "ac-(加强) + custom(习惯) → 使成为习惯 → 使习惯于",
+                examples: [
+                    "It took him a while to accustom himself to the new environment. (他花了一段时间才适应新环境。)",
+                    "You need to accustom your eyes to the darkness. (你需要让眼睛适应黑暗。)"
+                ],
+                tips: "记忆技巧：ac-加强意义，custom就是'习惯'，合起来就是'使成为习惯'！",
+                colorClass: "gradient-bg-4"
+            },
+            {
+                word: "appreciate",
+                pos: "v.",
+                meaning: "欣赏；感激；增值",
+                etymology: "ap-(加强) + preci(价值) + -ate(动词后缀) → 认识到价值 → 欣赏",
+                examples: [
+                    "I really appreciate your help. (我非常感谢你的帮助。)",
+                    "Property values have appreciated over the last year. (房地产价值在过去一年中增值了。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，preci与price(价格)相关，-ate动词后缀，合起来就是'认识到价值'即'欣赏'！",
+                colorClass: "gradient-bg-5"
+            },
+            {
+                word: "affirm",
+                pos: "v.",
+                meaning: "断言；确认",
+                etymology: "af-(加强) + firm(坚定) → 坚定地说 → 断言",
+                examples: [
+                    "She affirmed her innocence. (她坚称自己是无辜的。)",
+                    "The court affirmed the lower court's decision. (法院维持了下级法院的判决。)"
+                ],
+                tips: "记忆技巧：af-加强意义，firm就是'坚定的'，合起来就是'坚定地说'即'断言'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "arrest",
+                pos: "v./n.",
+                meaning: "逮捕；阻止；吸引",
+                etymology: "ar-(加强) + rest(停留) → 使停留 → 逮捕",
+                examples: [
+                    "The police arrested the suspect. (警方逮捕了嫌疑人。)",
+                    "The drug was used to arrest the spread of the disease. (这种药物用于阻止疾病传播。)"
+                ],
+                tips: "记忆技巧：ar-加强意义，rest是'休息'，合起来就是'强制休息'即'逮捕'！",
+                colorClass: "gradient-bg-2"
+            },
+            {
+                word: "associate",
+                pos: "v./n./adj.",
+                meaning: "联系；伙伴；副的",
+                etymology: "as-(加强) + soci(同伴) + -ate(后缀) → 使成为同伴 → 联系",
+                examples: [
+                    "I don't associate with people like that. (我不和那样的人交往。)",
+                    "She's an associate professor at the university. (她是大学的副教授。)"
+                ],
+                tips: "记忆技巧：as-加强意义，soci与social(社会的)相关，-ate后缀，合起来就是'使成为社会同伴'即'联系'！",
+                colorClass: "gradient-bg-3"
+            },
+            {
+                word: "asset",
+                pos: "n.",
+                meaning: "资产；优点",
+                etymology: "as-(加强) + set(足够) → 足够有价值的东西 → 资产",
+                examples: [
+                    "The company's assets exceed its liabilities. (公司的资产超过负债。)",
+                    "Her ability to stay calm is a real asset. (她保持冷静的能力是一个真正的优点。)"
+                ],
+                tips: "记忆技巧：as-加强意义，set与'settle'(安置)相关，合起来就是'安置好的有价值物品'即'资产'！",
+                colorClass: "gradient-bg-4"
+            },
+            {
+                word: "accelerate",
+                pos: "v.",
+                meaning: "加速；促进",
+                etymology: "ac-(加强) + celer(快速) + -ate(动词后缀) → 使更快 → 加速",
+                examples: [
+                    "The car accelerated as it went downhill. (汽车下坡时加速了。)",
+                    "The government is taking measures to accelerate economic growth. (政府正在采取措施促进经济增长。)"
+                ],
+                tips: "记忆技巧：ac-加强意义，celer与'celerity'(迅速)相关，-ate动词后缀，合起来就是'使更快'即'加速'！",
+                colorClass: "gradient-bg-5"
+            },
+            {
+                word: "advocate",
+                pos: "v./n.",
+                meaning: "提倡；拥护者",
+                etymology: "ad-(加强) + voc(声音) + -ate(后缀) → 大声说出 → 提倡",
+                examples: [
+                    "She advocates for women's rights. (她倡导妇女权利。)",
+                    "He is a strong advocate of free speech. (他是言论自由的坚定拥护者。)"
+                ],
+                tips: "记忆技巧：ad-加强意义，voc与'voice'(声音)相关，-ate后缀，合起来就是'大声说出'即'提倡'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "afford",
+                pos: "v.",
+                meaning: "负担得起；提供",
+                etymology: "af-(加强) + ford(前进) → 能够前进 → 负担得起",
+                examples: [
+                    "We can't afford a vacation this year. (我们今年负担不起度假。)",
+                    "The window affords a beautiful view. (窗户提供了美丽的景色。)"
+                ],
+                tips: "记忆技巧：af-加强意义，ford与'forward'(向前)相关，合起来就是'能够向前'即'负担得起'！",
+                colorClass: "gradient-bg-2"
+            },
+            {
+                word: "accord",
+                pos: "n./v.",
+                meaning: "一致；协议；给予",
+                etymology: "ac-(加强) + cord(心) → 心在一起 → 一致",
+                examples: [
+                    "The two sides reached an accord. (双方达成协议。)",
+                    "He was accorded a hero's welcome. (他受到了英雄般的欢迎。)"
+                ],
+                tips: "记忆技巧：ac-加强意义，cord与'core'(核心)相关，合起来就是'核心在一起'即'一致'！",
+                colorClass: "gradient-bg-3"
+            },
+            {
+                word: "approach",
+                pos: "v./n.",
+                meaning: "接近；方法",
+                etymology: "ap-(加强) + proach(接近) → 更加接近 → 接近",
+                examples: [
+                    "The train is approaching the station. (火车正在接近车站。)",
+                    "We need a new approach to this problem. (我们需要一个新的方法来解决这个问题。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，proach与'proximity'(接近)相关，合起来就是'更加接近'！",
+                colorClass: "gradient-bg-4"
+            },
+            {
+                word: "attempt",
+                pos: "v./n.",
+                meaning: "尝试；企图",
+                etymology: "at-(加强) + tempt(尝试) → 尝试",
+                examples: [
+                    "He attempted to climb the mountain. (他尝试攀登那座山。)",
+                    "Her attempt at baking a cake failed. (她尝试烤蛋糕失败了。)"
+                ],
+                tips: "记忆技巧：at-加强意义，tempt与'temptation'(诱惑)相关，合起来就是'尝试诱惑'即'尝试'！",
+                colorClass: "gradient-bg-5"
+            },
+            {
+                word: "absorb",
+                pos: "v.",
+                meaning: "吸收；吸引",
+                etymology: "ab-(远离) + sorb(吸收) → 吸收进来 → 吸收",
+                examples: [
+                    "The sponge absorbed all the water. (海绵吸收了所有的水。)",
+                    "She was completely absorbed in her book. (她完全被书吸引住了。)"
+                ],
+                tips: "记忆技巧：ab-表示'方向'，sorb与'soak'(浸泡)相关，合起来就是'吸收进来'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "accomplish",
+                pos: "v.",
+                meaning: "完成；实现",
+                etymology: "ac-(加强) + compl(完成) + -ish(动词后缀) → 完成",
+                examples: [
+                    "We accomplished our mission. (我们完成了任务。)",
+                    "She has accomplished a great deal in her career. (她在职业生涯中取得了很大成就。)"
+                ],
+                tips: "记忆技巧：ac-加强意义，compl与'complete'(完成)相关，-ish动词后缀，合起来就是'完成'！",
+                colorClass: "gradient-bg-2"
+            },
+            {
+                word: "attack",
+                pos: "v./n.",
+                meaning: "攻击；抨击",
+                etymology: "at-(加强) + tack(钉住) → 钉住对方 → 攻击",
+                examples: [
+                    "The army attacked at dawn. (军队在黎明时发动攻击。)",
+                    "The article was an attack on government policy. (这篇文章是对政府政策的抨击。)"
+                ],
+                tips: "记忆技巧：at-加强意义，tack与'tackle'(处理)相关，合起来就是'强行处理'即'攻击'！",
+                colorClass: "gradient-bg-3"
+            },
+            {
+                word: "aggressive",
+                pos: "adj.",
+                meaning: "侵略的；有进取心的",
+                etymology: "ag-(加强) + gress(行走) + -ive(形容词后缀) → 向前走的 → 侵略的",
+                examples: [
+                    "He's very aggressive in business. (他在商业上很有进取心。)",
+                    "The dog became aggressive. (狗变得有攻击性。)"
+                ],
+                tips: "记忆技巧：ag-加强意义，gress与'progress'(进步)相关，-ive形容词后缀，合起来就是'向前走的'即'侵略的'！",
+                colorClass: "gradient-bg-4"
+            },
+            {
+                word: "approval",
+                pos: "n.",
+                meaning: "批准；赞成",
+                etymology: "ap-(加强) + prov(证明) + -al(名词后缀) → 证明通过 → 批准",
+                examples: [
+                    "The plan needs the manager's approval. (这个计划需要经理的批准。)",
+                    "He nodded in approval. (他点头表示赞成。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，prov与'prove'(证明)相关，-al名词后缀，合起来就是'证明通过'即'批准'！",
+                colorClass: "gradient-bg-5"
+            },
+            {
+                word: "arouse",
+                pos: "v.",
+                meaning: "唤醒；引起",
+                etymology: "a-(加强) + rouse(唤醒) → 唤醒",
+                examples: [
+                    "The noise aroused the baby. (噪音吵醒了婴儿。)",
+                    "His speech aroused great interest. (他的演讲引起了极大兴趣。)"
+                ],
+                tips: "记忆技巧：a-加强意义，rouse就是'唤醒'，合起来就是'唤醒'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "accompany",
+                pos: "v.",
+                meaning: "陪伴；伴奏",
+                etymology: "ac-(加强) + company(陪伴) → 陪伴",
+                examples: [
+                    "She accompanied me to the hospital. (她陪我去医院。)",
+                    "The singer was accompanied on the piano. (歌手由钢琴伴奏。)"
+                ],
+                tips: "记忆技巧：ac-加强意义，company就是'陪伴'，合起来就是'陪伴'！",
+                colorClass: "gradient-bg-2"
+            },
+            {
+                word: "appeal",
+                pos: "v./n.",
+                meaning: "呼吁；上诉；吸引力",
+                etymology: "ap-(加强) + peal(呼叫) → 大声呼叫 → 呼吁",
+                examples: [
+                    "They appealed for help. (他们呼吁帮助。)",
+                    "The verdict was appealed to a higher court. (判决被上诉到更高法院。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，peal与'peal'(钟声)相关，合起来就是'像钟声一样大声呼叫'即'呼吁'！",
+                colorClass: "gradient-bg-3"
+            },
+            {
+                word: "amount",
+                pos: "n./v.",
+                meaning: "数量；总计",
+                etymology: "a-(加强) + mount(山) → 像山一样堆积 → 数量",
+                examples: [
+                    "A large amount of money was stolen. (大量金钱被盗。)",
+                    "His debts amount to over $10,000. (他的债务总计超过1万美元。)"
+                ],
+                tips: "记忆技巧：a-加强意义，mount就是'山'，合起来就是'像山一样堆积'即'数量'！",
+                colorClass: "gradient-bg-4"
+            },
+            {
+                word: "attach",
+                pos: "v.",
+                meaning: "附上；使依附",
+                etymology: "at-(加强) + tach(钉住) → 钉在一起 → 附上",
+                examples: [
+                    "Please attach your photo to the application form. (请将照片附在申请表上。)",
+                    "She is deeply attached to her family. (她深深依恋她的家人。)"
+                ],
+                tips: "记忆技巧：at-加强意义，tach与'tack'(钉住)相关，合起来就是'钉在一起'即'附上'！",
+                colorClass: "gradient-bg-5"
+            },
+            {
+                word: "apply",
+                pos: "v.",
+                meaning: "申请；应用",
+                etymology: "ap-(加强) + ply(折叠) → 使重叠 → 应用",
+                examples: [
+                    "I'm applying for a job. (我正在申请一份工作。)",
+                    "This rule applies to everyone. (这条规则适用于每个人。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，ply与'fold'(折叠)相关，合起来就是'使重叠'即'应用'！",
+                colorClass: "gradient-bg-1"
+            },
+            {
+                word: "appliance",
+                pos: "n.",
+                meaning: "器具；装置",
+                etymology: "ap-(加强) + pli(折叠) + -ance(名词后缀) → 可折叠的工具 → 器具",
+                examples: [
+                    "Modern kitchens have many electrical appliances. (现代厨房有许多电器。)",
+                    "This appliance is very energy-efficient. (这个装置非常节能。)"
+                ],
+                tips: "记忆技巧：ap-加强意义，pli与'fold'(折叠)相关，-ance名词后缀，合起来就是'可折叠的工具'即'器具'！",
+                colorClass: "gradient-bg-2"
+            }
+        ];
+
+        // 相近单词卡片
+        const similarWordsCard = {
+            type: "similar",
+            title: "相近单词汇总",
+            words: [
+                "apply (应用) - appliance (器具)",
+                "approach (接近) - reproach (责备)",
+                "affirm (断言) - confirm (确认)",
+                "associate (联系) - dissociate (分离)",
+                "attach (附上) - detach (分离)"
+            ],
+            tips: "记忆技巧：注意前缀的变化！ad-及其变体(ac-, af-, ag-等)表示'加强'，而dis-, de-等表示'相反'。例如：attach(附上) vs detach(分离)；associate(联系) vs dissociate(分离)。记住这些前缀可以帮助你理解单词的反义词！",
+            colorClass: "gradient-bg-3"
+        };
+
+        // 渲染单词卡片
+        function renderWordCards(filter = "all") {
+            const container = document.getElementById("word-container");
+            container.innerHTML = "";
+            
+            // 添加主单词卡片
+            words.forEach((word, index) => {
+                if (filter === "all" || 
+                    (filter === "noun" && word.pos.includes("n.")) ||
+                    (filter === "verb" && word.pos.includes("v.")) ||
+                    (filter === "adj" && word.pos.includes("adj."))) {
+                    
+                    const card = document.createElement("div");
+                    card.className = `word-card rounded-2xl p-6 shadow-md ${word.colorClass} dark:bg-opacity-80 fade-in`;
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800 dark:text-white">${word.word}</h2>
+                            <span class="px-3 py-1 rounded-full bg-white dark:bg-gray-700 text-sm font-medium text-indigo-700 dark:text-indigo-300">${word.pos}</span>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">${word.meaning}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">词源: ${word.etymology}</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="font-medium text-gray-800 dark:text-gray-100 mb-2">例句：</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
+                                ${word.examples.map(example => `<li class="text-sm">${example}</li>`).join("")}
+                            </ul>
+                        </div>
+                        <div class="mt-4 p-3 bg-white dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 rounded-lg">
+                            <h4 class="font-medium text-gray-800 dark:text-gray-100 mb-1">记忆技巧：</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">${word.tips}</p>
+                        </div>
+                        <div class="mt-4 flex justify-end">
+                            <span class="text-4xl opacity-30">${index % 3 === 0 ? "📚" : index % 3 === 1 ? "✏️" : "🧠"}</span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+            
+            // 添加相近单词卡片
+            if (filter === "all" || filter === "similar") {
+                const card = document.createElement("div");
+                card.className = `word-card rounded-2xl p-6 shadow-md ${similarWordsCard.colorClass} dark:bg-opacity-80 fade-in`;
+                card.innerHTML = `
+                    <div class="mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">${similarWordsCard.title}</h2>
+                    </div>
+                    <div class="mb-4">
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
+                            ${similarWordsCard.words.map(word => `<li class="text-sm">${word}</li>`).join("")}
+                        </ul>
+                    </div>
+                    <div class="mt-4 p-3 bg-white dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 rounded-lg">
+                        <h4 class="font-medium text-gray-800 dark:text-gray-100 mb-1">记忆技巧：</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">${similarWordsCard.tips}</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="text-4xl opacity-30">🔍</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            }
+        }
+
+        // 初始渲染
+        renderWordCards();
+
+        // 标签页切换
+        document.querySelectorAll(".tab-button").forEach(button => {
+            button.addEventListener("click", function() {
+                document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active", "bg-indigo-100", "dark:bg-indigo-700", "text-indigo-700", "dark:text-indigo-100"));
+                this.classList.add("active", "bg-indigo-100", "dark:bg-indigo-700", "text-indigo-700", "dark:text-indigo-100");
+                renderWordCards(this.dataset.tab);
+            });
+        });
+
+        // 主题切换
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+
+        // 检查本地存储或系统偏好
+        const savedTheme = localStorage.getItem("theme") || 
+                         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (savedTheme === "dark") {
+            html.classList.add("dark");
+            themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+        }
+
+        themeToggle.addEventListener("click", function() {
+            html.classList.toggle("dark");
+            if (html.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                this.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+            } else {
+                localStorage.setItem("theme", "light");
+                this.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+            }
+        });
+    </script>
+</body>
+</html>

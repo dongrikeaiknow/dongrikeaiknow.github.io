@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards with Prefix "de-"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background: white;
+        }
+        
+        .dark .card {
+            background: #2d3748;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #a5b4fc 0%, #c084fc 100%);
+        }
+        
+        .word-header {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        
+        .example {
+            border-left: 4px solid #a5b4fc;
+            background-color: #f3f4f6;
+        }
+        
+        .dark .example {
+            background-color: #4a5568;
+            border-left-color: #c084fc;
+        }
+        
+        .memory-tip {
+            background-color: #e9d5ff;
+            border-radius: 12px;
+        }
+        
+        .dark .memory-tip {
+            background-color: #5b21b6;
+        }
+        
+        .tab {
+            border-radius: 12px 12px 0 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: white;
+            font-weight: bold;
+        }
+        
+        .dark .tab.active {
+            background-color: #2d3748;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-700 dark:text-indigo-300">Vocabulary Cards</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+        
+        <div class="mb-8 p-6 rounded-2xl gradient-bg text-white">
+            <h2 class="text-2xl font-bold mb-2">Prefix: <span class="bg-white text-indigo-600 px-3 py-1 rounded-full text-sm">de-</span></h2>
+            <p class="text-lg">离开，出，除去，否定，向下，相反，加强</p>
+            <p class="mt-4">Words: deny, destination, debate, delay, demand, detect, derive, define, devote, determine, degree, detail, desire, deprive</p>
+        </div>
+        
+        <div class="flex overflow-x-auto mb-6 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+            <button class="tab px-4 py-2 active" data-tab="all">All Words</button>
+            <button class="tab px-4 py-2" data-tab="verbs">Verbs</button>
+            <button class="tab px-4 py-2" data-tab="nouns">Nouns</button>
+            <button class="tab px-4 py-2" data-tab="related">Related Words</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-container">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                filterCards(tab.dataset.tab);
+            });
+        });
+
+        // Filter cards based on tab selection
+        function filterCards(filter) {
+            const cards = document.querySelectorAll('.word-card');
+            cards.forEach(card => {
+                card.classList.add('hidden');
+                if (filter === 'all') {
+                    card.classList.remove('hidden');
+                } else if (card.classList.contains(filter)) {
+                    card.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Vocabulary data
+        const words = [
+            {
+                word: "deny",
+                pos: "verb",
+                meaning: "否认，拒绝",
+                etymology: "de-(否定) + ny(拉丁语nēre, 说'不') → 说不 → 否认",
+                examples: [
+                    "He denied the allegations against him. (他否认了对他的指控。)",
+                    "She was denied entry to the club. (她被拒绝进入俱乐部。)"
+                ],
+                memoryTip: "记忆技巧：de-表示'否定'，ny发音像'no'，合起来就是'说不'→否认！",
+                related: []
+            },
+            {
+                word: "destination",
+                pos: "noun",
+                meaning: "目的地，终点",
+                etymology: "de-(加强) + stin(站，立) + -ation(名词后缀) → 最终站立的地方 → 目的地",
+                examples: [
+                    "Our destination is Paris. (我们的目的地是巴黎。)",
+                    "The package reached its destination safely. (包裹安全到达了目的地。)"
+                ],
+                memoryTip: "记忆技巧：destin-听起来像'destined'(注定的)，-ation是地方，注定要去的地方→目的地！",
+                related: []
+            },
+            {
+                word: "debate",
+                pos: "noun/verb",
+                meaning: "辩论，讨论",
+                etymology: "de-(加强) + bat(打) + -e → 言语上的打击 → 辩论",
+                examples: [
+                    "There was a heated debate about climate change. (关于气候变化有一场激烈的辩论。)",
+                    "They debated for hours on the topic. (他们就这个话题辩论了几个小时。)"
+                ],
+                memoryTip: "记忆技巧：bat是'打'，de-加强，用言语'打击'对方→辩论！",
+                related: []
+            },
+            {
+                word: "delay",
+                pos: "verb/noun",
+                meaning: "延迟，耽搁",
+                etymology: "de-(向下) + lay(放) → 放下不做 → 延迟",
+                examples: [
+                    "The flight was delayed due to bad weather. (由于天气不好，航班延误了。)",
+                    "Please don't delay your decision. (请不要延迟你的决定。)"
+                ],
+                memoryTip: "记忆技巧：lay是'放'，de-表示'向下'，把事情'放下来'→延迟！",
+                related: []
+            },
+            {
+                word: "demand",
+                pos: "verb/noun",
+                meaning: "要求，需求",
+                etymology: "de-(加强) + mand(命令) → 强烈命令 → 要求",
+                examples: [
+                    "The workers demanded higher wages. (工人们要求更高的工资。)",
+                    "There's a high demand for this product. (这个产品需求很高。)"
+                ],
+                memoryTip: "记忆技巧：mand来自'command'(命令)，de-加强→强烈命令→要求！",
+                related: []
+            },
+            {
+                word: "detect",
+                pos: "verb",
+                meaning: "察觉，发现",
+                etymology: "de-(离开) + tect(覆盖) → 揭开覆盖 → 发现",
+                examples: [
+                    "The test can detect early signs of disease. (这个测试能发现疾病的早期迹象。)",
+                    "I detected a note of sadness in her voice. (我察觉到她声音中的一丝悲伤。)"
+                ],
+                memoryTip: "记忆技巧：tect来自'protect'(保护)中的'覆盖'，de-表示'离开'，揭开覆盖→发现！",
+                related: []
+            },
+            {
+                word: "derive",
+                pos: "verb",
+                meaning: "源自，获得",
+                etymology: "de-(从...向下) + riv(河流) + -e → 从河流中引出 → 源自",
+                examples: [
+                    "Many English words derive from Latin. (许多英语单词源自拉丁语。)",
+                    "She derives great pleasure from reading. (她从阅读中获得很大乐趣。)"
+                ],
+                memoryTip: "记忆技巧：riv是'河流'，de-表示'从...向下'，从河流中引出→源自！",
+                related: []
+            },
+            {
+                word: "define",
+                pos: "verb",
+                meaning: "定义，明确",
+                etymology: "de-(加强) + fin(界限) + -e → 划出界限 → 定义",
+                examples: [
+                    "Can you define this word for me? (你能为我定义这个词吗？)",
+                    "The boundaries need to be clearly defined. (边界需要被明确定义。)"
+                ],
+                memoryTip: "记忆技巧：fin是'界限'(如final)，de-加强→划出界限→定义！",
+                related: []
+            },
+            {
+                word: "devote",
+                pos: "verb",
+                meaning: "奉献，致力于",
+                etymology: "de-(加强) + vot(发誓) + -e → 强烈发誓 → 奉献",
+                examples: [
+                    "She devoted her life to helping others. (她一生致力于帮助他人。)",
+                    "He devotes two hours a day to practice. (他每天花两小时练习。)"
+                ],
+                memoryTip: "记忆技巧：vot来自'vote'(投票)中的'发誓'，de-加强→强烈发誓→奉献！",
+                related: []
+            },
+            {
+                word: "determine",
+                pos: "verb",
+                meaning: "决定，确定",
+                etymology: "de-(加强) + termin(界限) + -e → 划出明确界限 → 决定",
+                examples: [
+                    "We need to determine the cause of the problem. (我们需要确定问题的原因。)",
+                    "Your attitude determines your success. (你的态度决定你的成功。)"
+                ],
+                memoryTip: "记忆技巧：termin是'界限'(如terminal)，de-加强→划出明确界限→决定！",
+                related: []
+            },
+            {
+                word: "degree",
+                pos: "noun",
+                meaning: "程度，度数，学位",
+                etymology: "de-(向下) + gree(步，级) → 一步步向下分 → 程度",
+                examples: [
+                    "She has a degree in biology. (她有生物学学位。)",
+                    "To what degree do you agree? (你同意到什么程度？)"
+                ],
+                memoryTip: "记忆技巧：gree来自'grade'(等级)，de-表示'向下'，一步步向下分→程度！",
+                related: []
+            },
+            {
+                word: "detail",
+                pos: "noun/verb",
+                meaning: "细节，详述",
+                etymology: "de-(分开) + tail(切) → 切分开 → 细节",
+                examples: [
+                    "Pay attention to the details. (注意细节。)",
+                    "He detailed his plan to us. (他向我们详述了他的计划。)"
+                ],
+                memoryTip: "记忆技巧：tail是'切'(如tailor裁缝)，de-表示'分开'，切分开→细节！",
+                related: []
+            },
+            {
+                word: "desire",
+                pos: "noun/verb",
+                meaning: "欲望，渴望",
+                etymology: "de-(加强) + sire(星星) → 像星星一样强烈想要 → 渴望",
+                examples: [
+                    "He has a strong desire to succeed. (他有强烈的成功欲望。)",
+                    "We all desire happiness. (我们都渴望幸福。)"
+                ],
+                memoryTip: "记忆技巧：sire来自'star'(星星)，de-加强→像星星一样强烈想要→渴望！",
+                related: []
+            },
+            {
+                word: "deprive",
+                pos: "verb",
+                meaning: "剥夺，使丧失",
+                etymology: "de-(离开) + priv(私人) + -e → 从私人处拿走 → 剥夺",
+                examples: [
+                    "They were deprived of their freedom. (他们被剥夺了自由。)",
+                    "Sleep deprivation affects health. (睡眠剥夺影响健康。)"
+                ],
+                memoryTip: "记忆技巧：priv是'私人'(如private)，de-表示'离开'，从私人处拿走→剥夺！",
+                related: ["deprivation"]
+            }
+        ];
+
+        // Related words group
+        const relatedWords = [
+            {
+                title: "Words with 'pose' root",
+                words: [
+                    "expose (ex-出 + pose 放 → 放在外面 → 暴露)",
+                    "dispose (dis-分开 + pose 放 → 分开摆放 → 处理)",
+                    "suppose (sup-下面 + pose 放 → 放在下面作为基础 → 假设)",
+                    "compose (com-一起 + pose 放 → 放在一起 → 组成)",
+                    "opposite (op-对面 + pos 放 + ite → 放在对面 → 相反的)"
+                ],
+                memoryTip: "想象你在摆放(pose)物品：可以放在外面(ex-pose)、分开摆放(dis-pose)、放在下面作为基础(sup-pose)、放在一起(com-pose)、或放在对面(op-posite)！"
+            }
+        ];
+
+        // Create cards
+        const container = document.getElementById('cards-container');
+        
+        // Add word cards
+        words.forEach(word => {
+            const card = document.createElement('div');
+            card.className = `word-card ${word.pos === 'verb' ? 'verbs' : 'nouns'} fade-in`;
+            
+            let examplesHTML = '';
+            word.examples.forEach(example => {
+                examplesHTML += `
+                    <div class="example p-3 my-2 rounded-lg">
+                        <p class="text-sm">${example}</p>
+                    </div>
+                `;
+            });
+            
+            let relatedHTML = '';
+            if (word.related.length > 0) {
+                relatedHTML = `
+                    <div class="mt-4">
+                        <p class="font-semibold">相关词汇：</p>
+                        <p>${word.related.join(', ')}</p>
+                    </div>
+                `;
+            }
+            
+            card.innerHTML = `
+                <div class="card h-full">
+                    <div class="word-header gradient-bg p-4">
+                        <h2 class="text-2xl font-bold text-white">${word.word}</h2>
+                        <p class="text-white">${word.pos} · ${word.meaning}</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-4">
+                            <p class="font-semibold">词源解析：</p>
+                            <p>${word.etymology}</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <p class="font-semibold">例句：</p>
+                            ${examplesHTML}
+                        </div>
+                        
+                        <div class="memory-tip p-3 mt-4">
+                            <p class="font-semibold">记忆技巧：</p>
+                            <p>${word.memoryTip}</p>
+                        </div>
+                        
+                        ${relatedHTML}
+                        
+                        <div class="mt-4 flex justify-end">
+                            <span class="text-4xl">」</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+        });
+        
+        // Add related words card
+        relatedWords.forEach(group => {
+            const card = document.createElement('div');
+            card.className = 'word-card related fade-in hidden';
+            
+            let wordsHTML = '';
+            group.words.forEach(word => {
+                wordsHTML += `<li class="mb-2">${word}</li>`;
+            });
+            
+            card.innerHTML = `
+                <div class="card h-full">
+                    <div class="word-header gradient-bg p-4">
+                        <h2 class="text-2xl font-bold text-white">相关词汇组</h2>
+                        <p class="text-white">${group.title}</p>
+                    </div>
+                    <div class="p-4">
+                        <ul class="list-disc pl-5 mb-4">
+                            ${wordsHTML}
+                        </ul>
+                        
+                        <div class="memory-tip p-3 mt-4">
+                            <p class="font-semibold">记忆技巧：</p>
+                            <p>${group.memoryTip}</p>
+                        </div>
+                        
+                        <div class="mt-4 flex justify-end">
+                            <span class="text-4xl">☺</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+        });
+
+        // Initialize by showing all cards
+        filterCards('all');
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语词根学习卡片</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #fef6e4;
+            transition: all 0.3s ease;
+        }
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .word-card {
+            background: linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%);
+        }
+        .root-card {
+            background: linear-gradient(135deg, #ffd54f 0%, #ffb74d 100%);
+        }
+        .dark .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .dark .word-card {
+            background: linear-gradient(135deg, #5d4037 0%, #3e2723 100%);
+            color: #fff;
+        }
+        .dark .root-card {
+            background: linear-gradient(135deg, #ff8f00 0%, #e65100 100%);
+            color: #fff;
+        }
+        .dark body {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+        .tab {
+            border-radius: 12px 12px 0 0;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab.active {
+            background-color: #ffd54f;
+            font-weight: bold;
+        }
+        .dark .tab.active {
+            background-color: #ff8f00;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-amber-800 dark:text-amber-200">英语词根学习卡片</h1>
+            <button id="themeToggle" class="p-2 rounded-full bg-amber-100 dark:bg-amber-800 text-amber-800 dark:text-amber-100">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+
+        <div class="flex overflow-x-auto mb-6 gap-1">
+            <div class="tab active" data-tab="serve">serve-服务</div>
+            <div class="tab" data-tab="sign">sign-标记</div>
+            <div class="tab" data-tab="sist">sist-站立</div>
+        </div>
+
+        <!-- Serve Tab Content -->
+        <div id="serve-tab" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Deserve Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">deserve <span class="text-lg font-normal">/dɪˈzɜːrv/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>de- (完全) + serve (服务) → 完全服务 → 应得的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 应受，值得</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. You <span class="underline">deserve</span> a break after all that hard work.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(在所有这些辛苦工作之后，你值得休息一下。)</p>
+                        <p class="mb-2 mt-2">2. He <span class="underline">deserves</span> praise for his honesty.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他的诚实值得表扬。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>把"de"想成"得"(得到)，"serve"是服务 → 得到服务是因为你"值得"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">😊</span>
+                    </div>
+                </div>
+
+                <!-- Reserve Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">reserve <span class="text-lg font-normal">/rɪˈzɜːrv/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>re- (回) + serve (服务) → 保留下来服务以后 → 保留，储备</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 保留，预订 n. 储备，保护区</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. I'd like to <span class="underline">reserve</span> a table for two.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(我想预订一张两人桌。)</p>
+                        <p class="mb-2 mt-2">2. She spoke with <span class="underline">reserve</span>, choosing her words carefully.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她说话谨慎，字斟句酌。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"re"表示"重新"，"serve"服务 → 把服务保留到以后 → 预订！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">📝</span>
+                    </div>
+                </div>
+
+                <!-- Observe Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">observe <span class="text-lg font-normal">/əbˈzɜːrv/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>ob- (朝向) + serve (服务) → 朝向服务 → 观察以便服务 → 观察</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 观察，遵守，庆祝</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. Scientists <span class="underline">observe</span> the behavior of animals in the wild.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(科学家观察野外动物的行为。)</p>
+                        <p class="mb-2 mt-2">2. We <span class="underline">observe</span> Thanksgiving with a family dinner.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(我们用家庭晚餐来庆祝感恩节。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"ob"表示"朝向"，"serve"服务 → 朝向服务需要先"观察"情况！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🔍</span>
+                    </div>
+                </div>
+
+                <!-- Conservation Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">conservation <span class="text-lg font-normal">/ˌkɒnsəˈveɪʃən/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>con- (一起) + serv (服务) + -ation (名词后缀) → 一起服务保护 → 保护</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">n. 保护，保存</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. <span class="underline">Conservation</span> of water is important in dry areas.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(在干旱地区节约用水很重要。)</p>
+                        <p class="mb-2 mt-2">2. The zoo participates in wildlife <span class="underline">conservation</span> programs.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(动物园参与野生动物保护项目。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"con"一起，"serve"服务 → 大家一起服务保护环境 → 保护！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🌳</span>
+                    </div>
+                </div>
+
+                <!-- Preserve Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">preserve <span class="text-lg font-normal">/prɪˈzɜːrv/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>pre- (前) + serve (服务) → 提前服务 → 预先保护 → 保存</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 保护，保存，腌制 n. 保护区，蜜饯</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. We must <span class="underline">preserve</span> our cultural heritage.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(我们必须保护我们的文化遗产。)</p>
+                        <p class="mb-2 mt-2">2. The fruit was <span class="underline">preserved</span> in sugar.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(水果用糖腌制保存。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"pre"表示"预先"，"serve"服务 → 预先服务保护 → 保存！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🛡️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Serve Root Summary Card -->
+            <div class="card root-card p-6 mt-8">
+                <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">词根总结：serve-服务</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-semibold mb-2">1. deserve (v. 应得)</p>
+                        <p class="text-sm">de- (完全) + serve → 完全服务 → 应得的</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">2. reserve (v. 保留)</p>
+                        <p class="text-sm">re- (回) + serve → 保留下来服务以后</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">3. observe (v. 观察)</p>
+                        <p class="text-sm">ob- (朝向) + serve → 观察以便服务</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">4. conservation (n. 保护)</p>
+                        <p class="text-sm">con- (一起) + serv + -ation → 一起保护</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">5. preserve (v. 保存)</p>
+                        <p class="text-sm">pre- (前) + serve → 预先保护</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="font-semibold">记忆技巧：</p>
+                    <p>所有包含"serve"的词都与"服务"有关，前缀决定具体含义：</p>
+                    <p>- de-完全 → 完全服务 → 应得</p>
+                    <p>- re-回 → 保留服务</p>
+                    <p>- ob-朝向 → 观察服务</p>
+                    <p>- con-一起 → 一起保护</p>
+                    <p>- pre-前 → 预先保护</p>
+                </div>
+                <div class="mt-4 text-right">
+                    <span class="text-4xl">📚</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Tab Content -->
+        <div id="sign-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Resign Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">resign <span class="text-lg font-normal">/rɪˈzaɪn/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>re- (反) + sign (标记) → 反标记 → 放弃原有标记 → 辞职</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 辞职，放弃</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. She <span class="underline">resigned</span> from her job to travel the world.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她辞职去环游世界。)</p>
+                        <p class="mb-2 mt-2">2. He <span class="underline">resigned</span> himself to the fact that he would never be rich.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他接受了永远不会富有的事实。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"re"表示"反"，"sign"标记 → 反标记就是取消原来的标记 → 辞职！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🚪</span>
+                    </div>
+                </div>
+
+                <!-- Assign Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">assign <span class="text-lg font-normal">/əˈsaɪn/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>as- (向) + sign (标记) → 向某人做标记 → 分配</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 分配，指派</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. The teacher <span class="underline">assigned</span> homework to the students.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(老师给学生布置了家庭作业。)</p>
+                        <p class="mb-2 mt-2">2. They <span class="underline">assigned</span> me a new project at work.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他们在工作中给我分配了一个新项目。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"as"表示"向"，"sign"标记 → 向某人做标记就是"分配"任务给他！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">📋</span>
+                    </div>
+                </div>
+
+                <!-- Assignment Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">assignment <span class="text-lg font-normal">/əˈsaɪnmənt/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>assign (分配) + -ment (名词后缀) → 分配的任务</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">n. 任务，作业，分配</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. The students completed their <span class="underline">assignment</span> on time.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(学生们按时完成了作业。)</p>
+                        <p class="mb-2 mt-2">2. His new <span class="underline">assignment</span> was to manage the sales team.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他的新任务是管理销售团队。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>来自assign(分配) + ment → 分配的东西就是"任务"或"作业"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">📝</span>
+                    </div>
+                </div>
+
+                <!-- Design Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">design <span class="text-lg font-normal">/dɪˈzaɪn/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>de- (下) + sign (标记) → 做下标记 → 设计</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 设计 n. 设计，图案</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. She <span class="underline">designed</span> a beautiful dress for the fashion show.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她为时装秀设计了一件漂亮的裙子。)</p>
+                        <p class="mb-2 mt-2">2. The building has a modern <span class="underline">design</span>.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(这座建筑有现代的设计风格。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"de"表示"下"，"sign"标记 → 做下标记就是"设计"图案！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🎨</span>
+                    </div>
+                </div>
+
+                <!-- Signal Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">signal <span class="text-lg font-normal">/ˈsɪɡnəl/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>sign (标记) + -al (名词后缀) → 用作标记的东西 → 信号</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">n. 信号，标志 v. 发信号</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. The traffic <span class="underline">signal</span> turned red.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(交通信号灯变红了。)</p>
+                        <p class="mb-2 mt-2">2. She <span class="underline">signaled</span> to the waiter for the bill.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她向服务员示意要结账。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"sign"标记 + al → 用作标记的东西就是"信号"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🚦</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sign Root Summary Card -->
+            <div class="card root-card p-6 mt-8">
+                <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">词根总结：sign-标记</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-semibold mb-2">1. resign (v. 辞职)</p>
+                        <p class="text-sm">re- (反) + sign → 反标记 → 放弃原有标记</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">2. assign (v. 分配)</p>
+                        <p class="text-sm">as- (向) + sign → 向某人做标记 → 分配</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">3. assignment (n. 任务)</p>
+                        <p class="text-sm">assign + -ment → 分配的任务</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">4. design (v. 设计)</p>
+                        <p class="text-sm">de- (下) + sign → 做下标记 → 设计</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">5. signal (n. 信号)</p>
+                        <p class="text-sm">sign + -al → 用作标记的东西</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="font-semibold">记忆技巧：</p>
+                    <p>所有包含"sign"的词都与"标记"有关，前缀决定具体含义：</p>
+                    <p>- re-反 → 反标记 → 辞职</p>
+                    <p>- as-向 → 向某人标记 → 分配</p>
+                    <p>- de-下 → 做下标记 → 设计</p>
+                    <p>- 直接加-al → 用作标记的东西 → 信号</p>
+                </div>
+                <div class="mt-4 text-right">
+                    <span class="text-4xl">📚</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sist Tab Content -->
+        <div id="sist-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Consistent Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">consistent <span class="text-lg font-normal">/kənˈsɪstənt/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>con- (一起) + sist (站立) + -ent (形容词后缀) → 站在一起不矛盾 → 一致的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">adj. 一致的，始终如一的</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. Her work is always <span class="underline">consistent</span> in quality.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她的工作质量总是很稳定。)</p>
+                        <p class="mb-2 mt-2">2. His actions are not <span class="underline">consistent</span> with his words.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他的言行不一致。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"con"一起，"sist"站立 → 站在一起不矛盾 → 一致的！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🔄</span>
+                    </div>
+                </div>
+
+                <!-- Insist Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">insist <span class="text-lg font-normal">/ɪnˈsɪst/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>in- (上) + sist (站立) → 站在上面不退缩 → 坚持</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 坚持，坚决要求</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. She <span class="underline">insisted</span> on paying for dinner.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她坚持要付晚餐的钱。)</p>
+                        <p class="mb-2 mt-2">2. I <span class="underline">insist</span> that you see a doctor.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(我坚持你应该去看医生。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"in"表示"上"，"sist"站立 → 站在上面不退缩 → 坚持！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">💪</span>
+                    </div>
+                </div>
+
+                <!-- Assist Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">assist <span class="text-lg font-normal">/əˈsɪst/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>as- (向) + sist (站立) → 向某人站立 → 站在旁边帮助 → 协助</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 帮助，协助</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. Can you <span class="underline">assist</span> me with this heavy box?</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(你能帮我搬这个重箱子吗？)</p>
+                        <p class="mb-2 mt-2">2. The nurse <span class="underline">assisted</span> the doctor during the operation.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(护士在手术中协助医生。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"as"表示"向"，"sist"站立 → 向某人站立就是站在旁边"帮助"他！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🤝</span>
+                    </div>
+                </div>
+
+                <!-- Assistant Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">assistant <span class="text-lg font-normal">/əˈsɪstənt/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>assist (帮助) + -ant (表示人的后缀) → 帮助的人 → 助手</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">n. 助手，助理 adj. 辅助的</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. She works as a teaching <span class="underline">assistant</span> at the university.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(她在大学里担任教学助理。)</p>
+                        <p class="mb-2 mt-2">2. The manager has an <span class="underline">assistant</span> to help with paperwork.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(经理有一位助理帮助处理文书工作。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>来自assist(帮助) + ant → 帮助的人就是"助手"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">👩‍💼</span>
+                    </div>
+                </div>
+
+                <!-- Resist Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">resist <span class="text-lg font-normal">/rɪˈzɪst/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>re- (反) + sist (站立) → 反着站立 → 抵抗</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 抵抗，抗拒</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. The soldiers <span class="underline">resisted</span> the enemy attack.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(士兵们抵抗了敌人的进攻。)</p>
+                        <p class="mb-2 mt-2">2. I can't <span class="underline">resist</span> chocolate cake.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(我无法抗拒巧克力蛋糕。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"re"表示"反"，"sist"站立 → 反着站立就是"抵抗"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">✊</span>
+                    </div>
+                </div>
+
+                <!-- Persist Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">persist <span class="text-lg font-normal">/pərˈsɪst/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>per- (贯穿) + sist (站立) → 一直站立 → 坚持</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 坚持，持续</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. If you <span class="underline">persist</span> in your efforts, you will succeed.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(如果你坚持努力，你会成功的。)</p>
+                        <p class="mb-2 mt-2">2. The rain will <span class="underline">persist</span> throughout the week.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(雨将持续整个星期。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"per"表示"贯穿"，"sist"站立 → 一直站立就是"坚持"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">⏳</span>
+                    </div>
+                </div>
+
+                <!-- Exist Card -->
+                <div class="card word-card p-6">
+                    <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">exist <span class="text-lg font-normal">/ɪɡˈzɪst/</span></h2>
+                    <div class="mb-4">
+                        <p class="font-semibold">词根词缀：</p>
+                        <p>ex- (出) + sist (站立) → 站出来 → 存在</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">词性及意思：</p>
+                        <p><span class="bg-amber-100 dark:bg-amber-900 px-2 py-1 rounded">v. 存在，生存</span></p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold">例句：</p>
+                        <p class="mb-2">1. Do you believe ghosts <span class="underline">exist</span>?</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(你相信鬼魂存在吗？)</p>
+                        <p class="mb-2 mt-2">2. They can barely <span class="underline">exist</span> on such a low income.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">(他们靠这么低的收入几乎无法生存。)</p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-200 dark:border-amber-800">
+                        <p class="font-semibold">记忆技巧：</p>
+                        <p>"ex"表示"出"，"sist"站立 → 站出来就是"存在"！</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl">🌍</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sist Root Summary Card -->
+            <div class="card root-card p-6 mt-8">
+                <h2 class="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">词根总结：sist-站立</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-semibold mb-2">1. consistent (adj. 一致的)</p>
+                        <p class="text-sm">con- (一起) + sist + -ent → 站在一起不矛盾</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">2. insist (v. 坚持)</p>
+                        <p class="text-sm">in- (上) + sist → 站在上面不退缩</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">3. assist (v. 帮助)</p>
+                        <p class="text-sm">as- (向) + sist → 向某人站立 → 协助</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">4. assistant (n. 助手)</p>
+                        <p class="text-sm">assist + -ant → 帮助的人</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">5. resist (v. 抵抗)</p>
+                        <p class="text-sm">re- (反) + sist → 反着站立</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">6. persist (v. 坚持)</p>
+                        <p class="text-sm">per- (贯穿) + sist → 一直站立</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">7. exist (v. 存在)</p>
+                        <p class="text-sm">ex- (出) + sist → 站出来</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="font-semibold">记忆技巧：</p>
+                    <p>所有包含"sist"的词都与"站立"有关，前缀决定具体含义：</p>
+                    <p>- con-一起 → 站在一起 → 一致的</p>
+                    <p>- in-上 → 站在上面 → 坚持</p>
+                    <p>- as-向 → 向某人站立 → 帮助</p>
+                    <p>- re-反 → 反着站立 → 抵抗</p>
+                    <p>- per-贯穿 → 一直站立 → 坚持</p>
+                    <p>- ex-出 → 站出来 → 存在</p>
+                </div>
+                <div class="mt-4 text-right">
+                    <span class="text-4xl">📚</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show the selected tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

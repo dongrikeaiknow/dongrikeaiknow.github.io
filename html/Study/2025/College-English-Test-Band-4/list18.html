@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - Prefix "con-" (Together)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .tab-button.active {
+            font-weight: bold;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .dark .card {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-indigo-700 mb-2 dark:text-indigo-300">List18: 前缀 "con-" (一起，共同)</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">学习表示"共同、一起"的前缀con-及其衍生词汇！</p>
+            <button id="themeToggle" class="mt-4 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full hover:bg-indigo-200 transition dark:bg-indigo-900 dark:text-indigo-100">
+                <i class="fas fa-moon mr-2"></i>切换主题
+            </button>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-8">
+            <button class="tab-button active px-4 py-2 bg-indigo-500 text-white rounded-full" data-tab="all">全部单词</button>
+            <button class="tab-button px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full hover:bg-indigo-200 transition dark:bg-gray-700 dark:text-gray-300" data-tab="verbs">动词</button>
+            <button class="tab-button px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full hover:bg-indigo-200 transition dark:bg-gray-700 dark:text-gray-300" data-tab="nouns">名词</button>
+            <button class="tab-button px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full hover:bg-indigo-200 transition dark:bg-gray-700 dark:text-gray-300" data-tab="adjectives">形容词</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1: considerable -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="adjectives">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">considerable <span class="text-sm font-normal text-indigo-500">形容词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(共同) + sider-(星星) + -able(能够)→ 古代占星师一起观察星星 → 需要大量思考的 → 相当大/多的</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 相当大的，相当多的</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. She has <span class="font-bold">considerable</span> experience in this field. <span class="text-sm text-gray-500">(她在这个领域有相当丰富的经验。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The project requires a <span class="font-bold">considerable</span> amount of time. <span class="text-sm text-gray-500">(这个项目需要相当多的时间。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">把"consider"(考虑)和"able"(能够)结合起来 → 需要考虑很多 → 相当大的/多的！古代占星师一起(con)观察星星(sider)需要大量思考！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同观察星星 «</span>
+                </div>
+            </div>
+
+            <!-- Card 2: concerning -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="prepositions adjectives">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">concerning <span class="text-sm font-normal text-indigo-500">介词/形容词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(共同) + cern-(筛选) + -ing → 一起筛选 → 与...有关的</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 关于；令人担忧的</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. I received a letter <span class="font-bold">concerning</span> the meeting. <span class="text-sm text-gray-500">(我收到了一封关于会议的信。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The report shows some <span class="font-bold">concerning</span> trends. <span class="text-sm text-gray-500">(报告显示了一些令人担忧的趋势。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(共同) + "cern"(关心) → 大家一起关心的事情 → 关于/令人担忧的！想象大家一起筛选(cern)重要信息！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同关心 «</span>
+                </div>
+            </div>
+
+            <!-- Card 3: comprehend -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">comprehend <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">com-(完全) + prehend-(抓住) → 完全抓住 → 理解</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 理解，领会</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. I cannot <span class="font-bold">comprehend</span> why he did that. <span class="text-sm text-gray-500">(我无法理解他为什么那样做。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The concept is difficult to <span class="font-bold">comprehend</span>. <span class="text-sm text-gray-500">(这个概念很难理解。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"com"(完全) + "prehend"(抓住) → 完全抓住想法 → 理解！想象用手(prehend)完全抓住一个复杂概念！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 完全抓住 «</span>
+                </div>
+            </div>
+
+            <!-- Card 4: complex -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="adjectives nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">complex <span class="text-sm font-normal text-indigo-500">形容词/名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">com-(一起) + plex-(编织) → 编织在一起 → 复杂的</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 复杂的；建筑群</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. This is a <span class="font-bold">complex</span> problem with no easy solution. <span class="text-sm text-gray-500">(这是一个没有简单解决方案的复杂问题。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The new sports <span class="font-bold">complex</span> will open next month. <span class="text-sm text-gray-500">(新的体育建筑群将于下个月开放。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"com"(一起) + "plex"(编织) → 像织物一样交织在一起 → 复杂的！想象多条线编织在一起的复杂图案！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 编织在一起 «</span>
+                </div>
+            </div>
+
+            <!-- Card 5: confront -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">confront <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(共同) + front-(前面) → 一起面对 → 面对，对抗</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 面对，对抗</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. She decided to <span class="font-bold">confront</span> him about his behavior. <span class="text-sm text-gray-500">(她决定就他的行为与他当面对质。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. We must <span class="font-bold">confront</span> these challenges together. <span class="text-sm text-gray-500">(我们必须共同面对这些挑战。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(共同) + "front"(前面) → 一起站在前面 → 面对/对抗！想象两个人面对面站着对抗的场景！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同面对 «</span>
+                </div>
+            </div>
+
+            <!-- Card 6: convince -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">convince <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(完全) + vinc-(征服) + -e → 完全征服 → 说服</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 说服，使信服</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. He tried to <span class="font-bold">convince</span> me to join the team. <span class="text-sm text-gray-500">(他试图说服我加入团队。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. I'm <span class="font-bold">convinced</span> that she's telling the truth. <span class="text-sm text-gray-500">(我确信她在说真话。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(完全) + "vince"(征服) → 完全征服某人的想法 → 说服！想象用论据完全征服对方的疑虑！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 完全征服 «</span>
+                </div>
+            </div>
+
+            <!-- Card 7: continue -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">continue <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(一起) + tin-(握住) + -ue → 一起握住不放 → 继续</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 继续，持续</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. The rain will <span class="font-bold">continue</span> throughout the week. <span class="text-sm text-gray-500">(雨将持续一整周。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. Please <span class="font-bold">continue</span> with your presentation. <span class="text-sm text-gray-500">(请继续你的演讲。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(一起) + "tin"(握住) → 一起握住不放手 → 继续！想象握住接力棒继续奔跑！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 握住不放 «</span>
+                </div>
+            </div>
+
+            <!-- Card 8: couple -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">couple <span class="text-sm font-normal text-indigo-500">名词/动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">源自拉丁语 "copula"(连接) → 两个连在一起 → 一对</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 一对；连接</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. They are a lovely <span class="font-bold">couple</span>. <span class="text-sm text-gray-500">(他们是一对可爱的夫妻。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. I'll stay for a <span class="font-bold">couple</span> of days. <span class="text-sm text-gray-500">(我会停留几天。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"couple"听起来像"扣在一起" → 两个东西扣在一起 → 一对！想象两个环扣在一起的画面！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 连在一起 «</span>
+                </div>
+            </div>
+
+            <!-- Card 9: collapse -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">collapse <span class="text-sm font-normal text-indigo-500">动词/名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">col-(一起) + lapse-(滑落) → 一起滑落 → 倒塌</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 倒塌；崩溃</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. The old building <span class="font-bold">collapsed</span> in the earthquake. <span class="text-sm text-gray-500">(旧建筑在地震中倒塌了。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. He suffered a <span class="font-bold">collapse</span> from exhaustion. <span class="text-sm text-gray-500">(他因精疲力尽而崩溃。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"col"(一起) + "lapse"(滑落) → 所有部分一起滑落 → 倒塌！想象积木塔瞬间倒塌的画面！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 一起滑落 «</span>
+                </div>
+            </div>
+
+            <!-- Card 10: cooperate -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">cooperate <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">co-(共同) + oper-(工作) + -ate → 一起工作 → 合作</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 合作，协作</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. We need to <span class="font-bold">cooperate</span> to solve this problem. <span class="text-sm text-gray-500">(我们需要合作解决这个问题。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The two companies <span class="font-bold">cooperated</span> on the project. <span class="text-sm text-gray-500">(两家公司在这个项目上进行了合作。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"co"(共同) + "operate"(操作) → 共同操作 → 合作！想象两个人一起操作一台机器的场景！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同工作 «</span>
+                </div>
+            </div>
+
+            <!-- Card 11: commercial -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="adjectives nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">commercial <span class="text-sm font-normal text-indigo-500">形容词/名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">com-(共同) + merc-(贸易) + -ial → 与贸易有关的 → 商业的</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 商业的；商业广告</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. This is a <span class="font-bold">commercial</span> district with many shops. <span class="text-sm text-gray-500">(这是一个有许多商店的商业区。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The TV show was interrupted by <span class="font-bold">commercials</span>. <span class="text-sm text-gray-500">(电视节目被商业广告打断了。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"com"(共同) + "merci"(贸易) → 大家一起做买卖 → 商业的！"merci"与"merchant"(商人)同源！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同贸易 «</span>
+                </div>
+            </div>
+
+            <!-- Card 12: consequence -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">consequence <span class="text-sm font-normal text-indigo-500">名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(一起) + sequ-(跟随) + -ence → 跟随而来的事物 → 后果</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 结果，后果</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. The <span class="font-bold">consequences</span> of his actions were severe. <span class="text-sm text-gray-500">(他行为的后果很严重。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. This decision will have important <span class="font-bold">consequences</span>. <span class="text-sm text-gray-500">(这个决定将产生重要后果。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(一起) + "sequence"(序列) → 跟随而来的序列 → 后果！想象多米诺骨牌一个接一个倒下！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 跟随而来 «</span>
+                </div>
+            </div>
+
+            <!-- Card 13: confirm -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">confirm <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(加强) + firm-(坚固) → 使更加坚固 → 确认</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 确认，证实</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. Please <span class="font-bold">confirm</span> your attendance by Friday. <span class="text-sm text-gray-500">(请于周五前确认您的出席。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The test results <span class="font-bold">confirmed</span> our suspicions. <span class="text-sm text-gray-500">(测试结果证实了我们的怀疑。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(加强) + "firm"(坚固) → 使更加坚固确定 → 确认！想象给摇晃的桌子加固使其稳固！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 使更坚固 «</span>
+                </div>
+            </div>
+
+            <!-- Card 14: community -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">community <span class="text-sm font-normal text-indigo-500">名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">com-(共同) + mun-(服务) + -ity → 共同服务的地方 → 社区</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 社区，团体</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. Our <span class="font-bold">community</span> is very close-knit. <span class="text-sm text-gray-500">(我们的社区非常紧密。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. The international <span class="font-bold">community</span> responded quickly. <span class="text-sm text-gray-500">(国际社会迅速做出了反应。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"com"(共同) + "muni"(服务) → 共同服务的地方 → 社区！"muni"与"municipal"(市政的)同源！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同服务 «</span>
+                </div>
+            </div>
+
+            <!-- Card 15: colleague -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">colleague <span class="text-sm font-normal text-indigo-500">名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">col-(共同) + league-(选择) → 共同被选择的人 → 同事</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 同事，同僚</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. My <span class="font-bold">colleague</span> will help you with the project. <span class="text-sm text-gray-500">(我的同事会帮你完成这个项目。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. She had lunch with her <span class="font-bold">colleagues</span>. <span class="text-sm text-gray-500">(她和同事们一起吃了午餐。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"col"(共同) + "league"(联盟) → 同一个联盟的人 → 同事！想象被选入同一个团队的成员！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同联盟 «</span>
+                </div>
+            </div>
+
+            <!-- Card 16: council -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">council <span class="text-sm font-normal text-indigo-500">名词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">coun-(共同) + cil-(召唤) → 被共同召唤的人 → 委员会</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 委员会，理事会</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. The city <span class="font-bold">council</span> approved the new plan. <span class="text-sm text-gray-500">(市议会批准了新计划。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. She's a member of the student <span class="font-bold">council</span>. <span class="text-sm text-gray-500">(她是学生会的成员。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"coun"(共同) + "cil"(召唤) → 被共同召唤到一起的人 → 委员会！想象一群人被召集起来开会！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 共同召唤 «</span>
+                </div>
+            </div>
+
+            <!-- Card 17: confuse -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">confuse <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(一起) + fuse-(倾倒) → 倒在一起 → 混淆</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 使困惑，混淆</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. The instructions <span class="font-bold">confused</span> me. <span class="text-sm text-gray-500">(这些说明让我困惑。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. Don't <span class="font-bold">confuse</span> these two concepts. <span class="text-sm text-gray-500">(不要混淆这两个概念。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(一起) + "fuse"(倾倒) → 把不同东西倒在一起 → 混淆！想象把不同颜色的颜料混在一起！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 倒在一起 «</span>
+                </div>
+            </div>
+
+            <!-- Card 18: conflict -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="nouns verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">conflict <span class="text-sm font-normal text-indigo-500">名词/动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(共同) + flict-(打击) → 互相打击 → 冲突</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 冲突；抵触</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. There was a <span class="font-bold">conflict</span> between the two groups. <span class="text-sm text-gray-500">(两组之间发生了冲突。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. His schedule <span class="font-bold">conflicts</span> with the meeting time. <span class="text-sm text-gray-500">(他的日程与会议时间冲突。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(共同) + "flict"(打击) → 互相打击 → 冲突！"flict"与"affliction"(痛苦)同源！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 互相打击 «</span>
+                </div>
+            </div>
+
+            <!-- Card 19: consult -->
+            <div class="card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 fade-in" data-category="verbs">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">consult <span class="text-sm font-normal text-indigo-500">动词</span></h2>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">词源分析:</p>
+                    <p class="text-gray-600 dark:text-gray-300">con-(一起) + sult-(召集) → 召集到一起 → 咨询</p>
+                </div>
+                <p class="mb-3"><span class="font-semibold">中文意思:</span> 咨询，请教</p>
+                <div class="mb-4 p-3 bg-white rounded-lg dark:bg-gray-700">
+                    <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                    <p class="mb-2 text-gray-600 dark:text-gray-300">1. You should <span class="font-bold">consult</span> a doctor about your symptoms. <span class="text-sm text-gray-500">(你应该就症状咨询医生。)</span></p>
+                    <p class="text-gray-600 dark:text-gray-300">2. I need to <span class="font-bold">consult</span> with my colleagues first. <span class="text-sm text-gray-500">(我需要先和同事商量。)</span></p>
+                </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg dark:bg-indigo-900">
+                    <p class="font-semibold text-indigo-700 dark:text-indigo-200">记忆技巧:</p>
+                    <p class="text-indigo-600 dark:text-indigo-300">"con"(一起) + "sult"(召集) → 召集他人一起讨论 → 咨询！"sult"与"result"(结果)有关联！</p>
+                </div>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-sm text-gray-500">» 召集讨论 «</span>
+                </div>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="card col-span-full bg-gradient-to-br from-purple-50 to-pink-50 p-6 fade-in">
+                <h2 class="text-3xl font-bold text-purple-700 mb-6 text-center dark:text-purple-300">前缀"con-"词汇总结</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">共同观察</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>considerable (con+sider+able)</li>
+                            <li>concerning (con+cern+ing)</li>
+                            <li>comprehend (com+prehend)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">共同行动</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>cooperate (co+oper+ate)</li>
+                            <li>confront (con+front)</li>
+                            <li>consult (con+sult)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">共同存在</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>community (com+mun+ity)</li>
+                            <li>colleague (col+league)</li>
+                            <li>couple (源自copula)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">共同关系</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>complex (com+plex)</li>
+                            <li>conflict (con+flict)</li>
+                            <li>confuse (con+fuse)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">共同结果</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>consequence (con+sequ+ence)</li>
+                            <li>confirm (con+firm)</li>
+                            <li>collapse (col+lapse)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <h3 class="font-bold text-purple-600 mb-2 dark:text-purple-300">其他</h3>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+                            <li>commercial (com+merc+ial)</li>
+                            <li>council (coun+cil)</li>
+                            <li>continue (con+tin+ue)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-purple-50 rounded-lg dark:bg-purple-900">
+                    <h3 class="font-bold text-purple-700 mb-3 dark:text-purple-200">记忆技巧总结</h3>
+                    <p class="text-purple-600 dark:text-purple-300 mb-3">前缀"con-"表示"共同、一起"，可以想象一群人共同做某事的场景：</p>
+                    <ul class="list-disc pl-5 text-purple-600 dark:text-purple-300">
+                        <li>共同观察星星(considerable)</li>
+                        <li>共同面对问题(confront)</li>
+                        <li>共同工作(cooperate)</li>
+                        <li>共同生活(community)</li>
+                        <li>共同讨论(consult)</li>
+                        <li>共同编织(complex)</li>
+                    </ul>
+                    <p class="mt-3 text-purple-600 dark:text-purple-300">记住"con-"就像中文的"共"，表示共同参与的动作或状态！</p>
+                </div>
+                
+                <div class="mt-6 flex justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-lightbulb text-4xl text-yellow-400 mb-2"></i>
+                        <p class="text-gray-600 dark:text-gray-300">记住前缀"con-"的核心含义是"共同"，就能轻松理解这些单词啦！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.classList.add(savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            
+            // Update button icon
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // Tab filtering
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const cards = document.querySelectorAll('.card[data-category]');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tab = button.getAttribute('data-tab');
+                
+                // Update active tab
+                tabButtons.forEach(btn => btn.classList.remove('active', 'bg-indigo-500', 'text-white'));
+                tabButtons.forEach(btn => btn.classList.add('bg-indigo-100', 'text-indigo-700', 'dark:bg-gray-700', 'dark:text-gray-300'));
+                button.classList.add('active', 'bg-indigo-500', 'text-white');
+                button.classList.remove('bg-indigo-100', 'text-indigo-700', 'dark:bg-gray-700', 'dark:text-gray-300');
+                
+                // Filter cards
+                cards.forEach(card => {
+                    if (tab === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (categories.includes(tab)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Add fade-in animation when scrolling
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

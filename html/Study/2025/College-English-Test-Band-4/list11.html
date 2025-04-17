@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #fef6f6;
+        }
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .word-type {
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+        }
+        .noun { background-color: #fbcfe8; }
+        .verb { background-color: #bfdbfe; }
+        .adj { background-color: #bbf7d0; }
+        .adv { background-color: #fde68a; }
+        .primary-bg { background-color: #f1939c; }
+        .secondary-bg { background-color: #f07c82; }
+        .tertiary-bg { background-color: #f1908c; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-[#f07c82]">Vocabulary Cards</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Card 1: primary -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">primary</h2>
+                    <span class="word-type adj">adjective</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈpraɪ.mər.i/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> prin/prim- (主要的)</p>
+                    <p><strong>意思:</strong> 首要的，主要的</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> prim(第一) + ary(形容词后缀) → 排在第一的 → 首要的</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> English is her <span class="font-bold text-[#f07c82]">primary</span> language.</p>
+                        <p class="text-sm text-gray-600">(英语是她的主要语言。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "primary school" 小学，"primary color" 原色</p>
+                </div>
+            </div>
+
+            <!-- Card 2: priority -->
+            <div class="card bg-white p-6 secondary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">priority</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/praɪˈɒr.ə.ti/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> prin/prim- (主要的) + -ity (名词后缀)</p>
+                    <p><strong>意思:</strong> 优先事项，优先权</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> prior(优先的) + ity → 优先权</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> Safety is our top <span class="font-bold text-[#f07c82]">priority</span>.</p>
+                        <p class="text-sm text-gray-600">(安全是我们的首要任务。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "high priority" 高优先级，"priority seating" 优先座位</p>
+                </div>
+            </div>
+
+            <!-- Card 3: principle -->
+            <div class="card bg-white p-6 tertiary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">principle</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈprɪn.sə.pəl/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> prin/prim- (主要的) + cip (拿) + le → 主要拿的东西</p>
+                    <p><strong>意思:</strong> 原则，原理</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> 与"principal"(校长)区分，校长是学校里"主要"的人</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> He refuses to compromise his <span class="font-bold text-[#f07c82]">principles</span>.</p>
+                        <p class="text-sm text-gray-600">(他拒绝妥协自己的原则。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "basic principles" 基本原则，"moral principles" 道德准则</p>
+                </div>
+            </div>
+
+            <!-- Card 4: dispute -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">dispute</h2>
+                    <span class="word-type noun verb">noun/verb</span>
+                </div>
+                <p class="mt-2 font-medium">/dɪˈspjuːt/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> dis- (分开) + pute (思考) → 想法不同</p>
+                    <p><strong>意思:</strong> 争论，争议</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "pute"想，"dis"分开 → 想法不同 → 争论</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> They're having a <span class="font-bold text-[#f07c82]">dispute</span> over money.</p>
+                        <p class="text-sm text-gray-600">(他们正在为钱争吵。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "beyond dispute" 无可争议，"labor dispute" 劳资纠纷</p>
+                </div>
+            </div>
+
+            <!-- Card 5: reputation -->
+            <div class="card bg-white p-6 secondary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">reputation</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ˌrep.jəˈteɪ.ʃən/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> re- (再次) + pute (思考) + -ation → 大家反复思考的东西</p>
+                    <p><strong>意思:</strong> 名声，声誉</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> 大家对你的"评价"就是你的"声誉"</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> The company has a good <span class="font-bold text-[#f07c82]">reputation</span>.</p>
+                        <p class="text-sm text-gray-600">(这家公司有良好的声誉。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "reputable" 有声望的，"ill reputation" 坏名声</p>
+                </div>
+            </div>
+
+            <!-- Card 6: quality -->
+            <div class="card bg-white p-6 tertiary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">quality</h2>
+                    <span class="word-type noun adj">noun/adj</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈkwɒl.ə.ti/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> qua (质量) + -lity (名词后缀)</p>
+                    <p><strong>意思:</strong> 质量；优质的</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "qua"发音类似"夸" → 质量好才会被夸</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> We focus on <span class="font-bold text-[#f07c82]">quality</span>, not quantity.</p>
+                        <p class="text-sm text-gray-600">(我们注重质量而非数量。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "quality time" 优质时间，"quality control" 质量控制</p>
+                </div>
+            </div>
+
+            <!-- Card 7: qualify -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">qualify</h2>
+                    <span class="word-type verb">verb</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈkwɒl.ɪ.faɪ/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> qua (质量) + -ify (使...) → 使具备质量</p>
+                    <p><strong>意思:</strong> 使合格，取得资格</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "quality"的动词形式，使具有质量</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> She <span class="font-bold text-[#f07c82]">qualified</span> as a doctor last year.</p>
+                        <p class="text-sm text-gray-600">(她去年取得了医生资格。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "qualification" 资格，"qualified" 合格的</p>
+                </div>
+            </div>
+
+            <!-- Card 8: quantity -->
+            <div class="card bg-white p-6 secondary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">quantity</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈkwɒn.tə.ti/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> qua (数量) + -tity (名词后缀)</p>
+                    <p><strong>意思:</strong> 数量</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "qua"发音类似"宽" → 宽泛的数量</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> We need a large <span class="font-bold text-[#f07c82]">quantity</span> of paper.</p>
+                        <p class="text-sm text-gray-600">(我们需要大量的纸张。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "quantitative" 数量的，"quantity surveyor" 工料测量师</p>
+                </div>
+            </div>
+
+            <!-- Card 9: equality -->
+            <div class="card bg-white p-6 tertiary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">equality</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ɪˈkwɒl.ə.ti/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> equ (平等) + qua (质量) + -lity → 平等质量</p>
+                    <p><strong>意思:</strong> 平等</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "equal"(平等)的名词形式</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> We believe in <span class="font-bold text-[#f07c82]">equality</span> for all people.</p>
+                        <p class="text-sm text-gray-600">(我们相信人人平等。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "gender equality" 性别平等，"inequality" 不平等</p>
+                </div>
+            </div>
+
+            <!-- Card 10: require -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">require</h2>
+                    <span class="word-type verb">verb</span>
+                </div>
+                <p class="mt-2 font-medium">/rɪˈkwaɪər/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> re- (再次) + quir (寻求) + e → 反复寻求</p>
+                    <p><strong>意思:</strong> 需要，要求</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "quire"类似"quest"(寻求) → 需要</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> This job <span class="font-bold text-[#f07c82]">requires</span> patience.</p>
+                        <p class="text-sm text-gray-600">(这份工作需要耐心。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "requirement" 要求，"required" 必需的</p>
+                </div>
+            </div>
+
+            <!-- Card 11: acquire -->
+            <div class="card bg-white p-6 secondary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">acquire</h2>
+                    <span class="word-type verb">verb</span>
+                </div>
+                <p class="mt-2 font-medium">/əˈkwaɪər/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> ac- (加强) + quir (寻求) + e → 努力寻求</p>
+                    <p><strong>意思:</strong> 获得，学到</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "ac"加强 + "quire"寻求 → 努力寻求 → 获得</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> She <span class="font-bold text-[#f07c82]">acquired</span> a taste for olives.</p>
+                        <p class="text-sm text-gray-600">(她逐渐喜欢上了橄榄的味道。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "acquisition" 获得，"acquired taste" 后天养成的爱好</p>
+                </div>
+            </div>
+
+            <!-- Card 12: inquiry -->
+            <div class="card bg-white p-6 tertiary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">inquiry</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ɪnˈkwaɪə.ri/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> in- (内) + quir (寻求) + -y → 向内寻求</p>
+                    <p><strong>意思:</strong> 询问，调查</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "inquire"(询问)的名词形式</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> The police are making <span class="font-bold text-[#f07c82]">inquiries</span>.</p>
+                        <p class="text-sm text-gray-600">(警方正在调查。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "inquisitive" 好奇的，"line of inquiry" 调查方向</p>
+                </div>
+            </div>
+
+            <!-- Card 13: enquire -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">enquire</h2>
+                    <span class="word-type verb">verb</span>
+                </div>
+                <p class="mt-2 font-medium">/ɪnˈkwaɪər/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> en- (使) + quir (寻求) + e → 使寻求</p>
+                    <p><strong>意思:</strong> 询问(同inquire)</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "en"使 + "quire"寻求 → 使寻求 → 询问</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> I'll <span class="font-bold text-[#f07c82]">enquire</span> about train times.</p>
+                        <p class="text-sm text-gray-600">(我会去询问火车时刻。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "enquiry" 询问(名词)，"enquiry desk" 问讯处</p>
+                </div>
+            </div>
+
+            <!-- Card 14: sensible -->
+            <div class="card bg-white p-6 secondary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">sensible</h2>
+                    <span class="word-type adj">adjective</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈsen.sə.bəl/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> sens (感觉) + -ible (能...的) → 能感觉到的</p>
+                    <p><strong>意思:</strong> 明智的，合理的</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "sense"(感觉) + "ible" → 能感觉到的 → 明智的</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> That's a very <span class="font-bold text-[#f07c82]">sensible</span> suggestion.</p>
+                        <p class="text-sm text-gray-600">(那是个非常明智的建议。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "sensibly" 明智地，"sensibility" 敏感性</p>
+                </div>
+            </div>
+
+            <!-- Card 15: sensitive -->
+            <div class="card bg-white p-6 tertiary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">sensitive</h2>
+                    <span class="word-type adj">adjective</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈsen.sə.tɪv/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> sens (感觉) + -itive (倾向于...的) → 倾向于感觉的</p>
+                    <p><strong>意思:</strong> 敏感的，灵敏的</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "sense"(感觉) + "itive" → 容易感觉的 → 敏感的</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> She's very <span class="font-bold text-[#f07c82]">sensitive</span> to criticism.</p>
+                        <p class="text-sm text-gray-600">(她对批评非常敏感。)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "sensitivity" 敏感性，"hypersensitive" 过度敏感的</p>
+                </div>
+            </div>
+
+            <!-- Card 16: nonsense -->
+            <div class="card bg-white p-6 primary-bg text-white">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold">nonsense</h2>
+                    <span class="word-type noun">noun</span>
+                </div>
+                <p class="mt-2 font-medium">/ˈnɒn.səns/</p>
+                <div class="mt-4 bg-white text-gray-800 p-4 rounded-lg">
+                    <p><strong>词根:</strong> non- (无) + sens (感觉) + e → 无感觉的</p>
+                    <p><strong>意思:</strong> 胡说，废话</p>
+                    <p class="mt-2"><strong>记忆技巧:</strong> "non"无 + "sense"意义 → 无意义的话</p>
+                    <div class="mt-3 border-t pt-3">
+                        <p><strong>例句:</strong> That's complete <span class="font-bold text-[#f07c82]">nonsense</span>!</p>
+                        <p class="text-sm text-gray-600">(那完全是胡说八道！)</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <p><strong>拓展:</strong> "nonsensical" 荒谬的，"talk nonsense" 说废话</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-center mb-6 text-[#f07c82]">词根总结卡片</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Summary Card 1: prin/prim -->
+                <div class="card bg-gradient-to-br from-[#f1939c] to-[#f07c82] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">词根: prin/prim- (主要的)</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. primary - 首要的</p>
+                        <p class="font-medium">2. priority - 优先权</p>
+                        <p class="font-medium">3. principle - 原则</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>记忆技巧:</strong> "prim"类似"prime"(首要的)，"prince"(王子)是王国中"主要"的人物</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card 2: put -->
+                <div class="card bg-gradient-to-br from-[#f07c82] to-[#f1908c] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">词根: put- (思考)</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. dispute - 争论</p>
+                        <p class="font-medium">2. reputation - 声誉</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>记忆技巧:</strong> "compute"(计算)也需要"思考"，"put"在中间</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card 3: qua -->
+                <div class="card bg-gradient-to-br from-[#f1908c] to-[#f1939c] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">词根: qua- (质量，数量)</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. quality - 质量</p>
+                        <p class="font-medium">2. qualify - 使合格</p>
+                        <p class="font-medium">3. quantity - 数量</p>
+                        <p class="font-medium">4. equality - 平等</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>记忆技巧:</strong> "qua"发音类似"夸"，质量好才会被夸</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card 4: quir -->
+                <div class="card bg-gradient-to-br from-[#f1939c] to-[#f07c82] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">词根: quir- (寻求)</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. require - 需要</p>
+                        <p class="font-medium">2. acquire - 获得</p>
+                        <p class="font-medium">3. inquiry - 调查</p>
+                        <p class="font-medium">4. enquire - 询问</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>记忆技巧:</strong> "quest"(寻求)与"quir"同源，都表示"寻求"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card 5: sens/sent -->
+                <div class="card bg-gradient-to-br from-[#f07c82] to-[#f1908c] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">词根: sens/sent- (感觉)</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. sensible - 明智的</p>
+                        <p class="font-medium">2. sensitive - 敏感的</p>
+                        <p class="font-medium">3. nonsense - 废话</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>记忆技巧:</strong> "sense"(感觉)是核心词，"sent"在"sentence"(句子)中表达"感觉"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card 6: Memory Tips -->
+                <div class="card bg-gradient-to-br from-[#f1908c] to-[#f1939c] p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">记忆技巧总结</h3>
+                    <div class="bg-white/20 p-4 rounded-lg">
+                        <p class="font-medium">1. 联想记忆: 将词根与熟悉词联系</p>
+                        <p class="font-medium">2. 发音联想: 如"qua"→"夸"</p>
+                        <p class="font-medium">3. 词族记忆: 同词根词一起记</p>
+                        <p class="font-medium">4. 词根拆分: 分析前缀+词根+后缀</p>
+                        <div class="mt-3 pt-3 border-t border-white/30">
+                            <p><strong>建议:</strong> 制作词根思维导图，每天复习一组</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center text-gray-600">
+            <p>Happy learning! <i class="fas fa-smile-beam ml-1"></i></p>
+            <p class="mt-2 text-sm">Designed for English beginners</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - 15 Essential Word Roots</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .dark .card {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .root-badge {
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-weight: 500;
+        }
+        
+        .tab-button {
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button.active {
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .example-box {
+            border-left: 4px solid;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700 dark:text-indigo-400">
+                <i class="fas fa-book-open mr-2"></i> 15个核心词根词汇卡
+            </h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </header>
+        
+        <!-- Introduction -->
+        <div class="card p-6 mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900">
+            <h2 class="text-xl font-bold mb-4 text-indigo-800 dark:text-indigo-200">
+                <i class="fas fa-lightbulb mr-2"></i> 学习提示
+            </h2>
+            <p class="mb-4">🌟 本套卡片包含5个核心词根及其衍生词汇，每个单词都包含：</p>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>词根词缀分解与中文解释</li>
+                <li>词性与中文释义</li>
+                <li>实用例句与翻译</li>
+                <li>记忆技巧与拓展</li>
+            </ul>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="flex overflow-x-auto mb-6 pb-2 space-x-2">
+            <button class="tab-button bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 active" data-tab="techn">
+                techn-技术
+            </button>
+            <button class="tab-button bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-4 py-2" data-tab="tend">
+                tend/tent/tens-伸
+            </button>
+            <button class="tab-button bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-4 py-2" data-tab="tract">
+                tract-拉/拖
+            </button>
+            <button class="tab-button bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-4 py-2" data-tab="tribute">
+                tribute-给予
+            </button>
+            <button class="tab-button bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-4 py-2" data-tab="uni">
+                uni-一个
+            </button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="space-y-6">
+            <!-- techn-技术 -->
+            <div id="techn-tab" class="tab-content fade-in">
+                <!-- technology -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">technology</h2>
+                        <span class="root-badge bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">techn-技术 + -ology 学科</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>techn-(技术) + -o-(连接字母) + -logy(学科) → 研究技术的学科 → 技术
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 技术；科技；工艺
+                        </p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">Modern technology has transformed our lives.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">现代科技改变了我们的生活。</p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">The company invests heavily in new technologies.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这家公司大力投资新技术。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-indigo-700 dark:text-indigo-300">💡 记忆技巧：</p>
+                        <p>把"techn-"想象成"tech"(技术缩写)，加上"-ology"(学科后缀)就是"技术学"！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>techno-(技术前缀) + -cracy(统治) → technocracy(技术统治)</p>
+                    </div>
+                </div>
+                
+                <!-- technological -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">technological</h2>
+                        <span class="root-badge bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">techn-技术 + -logical 形容词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>techn-(技术) + -o-(连接字母) + -logical(与...有关的) → 与技术有关的 → 技术的
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">adj.</span> 技术的；工艺的
+                        </p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">The country has made great technological progress.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这个国家取得了巨大的技术进步。</p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">This is a major technological breakthrough.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这是一项重大的技术突破。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-indigo-700 dark:text-indigo-300">💡 记忆技巧：</p>
+                        <p>在"technology"后面加上"-al"变成形容词，就像"logic"→"logical"一样！</p>
+                    </div>
+                </div>
+                
+                <!-- technique -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">technique</h2>
+                        <span class="root-badge bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">techn-技术 + -ique 名词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>techn-(技术) + -ique(名词后缀) → 技术的方法 → 技巧
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 技巧；技术；手法
+                        </p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">She has perfect painting technique.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">她有完美的绘画技巧。</p>
+                    </div>
+                    <div class="example-box bg-indigo-50 dark:bg-indigo-900/50 border-indigo-400 p-4 my-3">
+                        <p class="font-medium">This surgical technique is less invasive.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这种手术技术创伤性更小。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-indigo-700 dark:text-indigo-300">💡 记忆技巧：</p>
+                        <p>"technique"发音类似"tech-neek"，想象一个技术宅(geek)掌握各种技巧！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>technical(技术的), technician(技术员)</p>
+                    </div>
+                </div>
+                
+                <!-- Similar Words Card -->
+                <div class="card p-6 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900">
+                    <h2 class="text-xl font-bold mb-4 text-indigo-800 dark:text-indigo-200">
+                        <i class="fas fa-brain mr-2"></i> 相近词汇总结：techn-技术
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">technology</p>
+                            <p class="text-sm">技术学科</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">technological</p>
+                            <p class="text-sm">与技术有关的</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">technique</p>
+                            <p class="text-sm">技术方法</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                        <p class="font-semibold">🎯 记忆技巧：</p>
+                        <p>把"techn-"看作"tech"(技术)，加上不同后缀：</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>"-ology"(学科) → technology(技术学科)</li>
+                            <li>"-ical"(形容词) → technological(技术的)</li>
+                            <li>"-ique"(方法) → technique(技巧)</li>
+                        </ul>
+                        <p class="mt-2">想象一个技术专家(technician)在研究(technology)技术方法(technique)！</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- tend/tent/tens-伸 -->
+            <div id="tend-tab" class="tab-content hidden fade-in">
+                <!-- tender -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">tender</h2>
+                        <span class="root-badge bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200">tend-伸 + -er 名词/形容词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>tend-(伸) + -er(后缀) → 伸出的状态 → 柔软的；温柔的
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">adj.</span> 温柔的；柔软的；嫩的<br>
+                            <span class="font-semibold">n.</span> 投标；照料者
+                        </p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">She spoke in a tender voice to the baby.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">她用温柔的声音对婴儿说话。</p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">The meat is very tender and juicy.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这肉非常嫩且多汁。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-pink-700 dark:text-pink-300">💡 记忆技巧：</p>
+                        <p>"tender"可以联想"tend"(照料) + "er"(人) → 温柔照料的人！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>tenderness(温柔), tenderize(使变嫩)</p>
+                    </div>
+                </div>
+                
+                <!-- tend -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">tend</h2>
+                        <span class="root-badge bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200">tend-伸</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>tend-(伸) → 延伸向某个方向 → 趋向；照料
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 趋向；倾向；照料
+                        </p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">Prices tend to rise during holidays.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">假日期间价格往往上涨。</p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">She tends to her garden every morning.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">她每天早晨照料她的花园。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-pink-700 dark:text-pink-300">💡 记忆技巧：</p>
+                        <p>"tend"可以拆解为"ten"(十) + "d"(方向) → 向十个方向延伸 → 趋向！</p>
+                    </div>
+                </div>
+                
+                <!-- intend -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">intend</h2>
+                        <span class="root-badge bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200">in-向内 + tend-伸</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>in-(向内) + tend-(伸) → 心思伸向某处 → 打算
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 打算；想要；意指
+                        </p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">I intend to finish this project by Friday.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">我打算在周五前完成这个项目。</p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">This gift is intended for your birthday.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这个礼物是为你的生日准备的。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-pink-700 dark:text-pink-300">💡 记忆技巧：</p>
+                        <p>"in"(内) + "tend"(伸) → 内心伸向某个目标 → 打算！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>intention(意图), intentional(故意的)</p>
+                    </div>
+                </div>
+                
+                <!-- extend -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">extend</h2>
+                        <span class="root-badge bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200">ex-向外 + tend-伸</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>ex-(向外) + tend-(伸) → 向外伸展 → 延伸；延长
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 延伸；延长；扩展
+                        </p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">We decided to extend our vacation by a week.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">我们决定将假期延长一周。</p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">The road extends all the way to the coast.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这条路一直延伸到海岸。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-pink-700 dark:text-pink-300">💡 记忆技巧：</p>
+                        <p>"ex"(外) + "tend"(伸) → 向外伸展 → 延伸！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>extension(延伸), extensive(广泛的)</p>
+                    </div>
+                </div>
+                
+                <!-- trend -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300">trend</h2>
+                        <span class="root-badge bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200">tend-伸的变体</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>tend-(伸)的变体 → 延伸的方向 → 趋势
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 趋势；倾向；流行<br>
+                            <span class="font-semibold">v.</span> 趋向；倾向
+                        </p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">The trend towards remote work is increasing.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">远程工作的趋势正在增长。</p>
+                    </div>
+                    <div class="example-box bg-pink-50 dark:bg-pink-900/50 border-pink-400 p-4 my-3">
+                        <p class="font-medium">This color is trending this season.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这种颜色是本季的流行色。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-pink-700 dark:text-pink-300">💡 记忆技巧：</p>
+                        <p>"trend"是"tend"的变体，想象一个箭头(trend)指向趋势方向！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>trendy(时髦的), trendsetter(潮流引领者)</p>
+                    </div>
+                </div>
+                
+                <!-- Similar Words Card -->
+                <div class="card p-6 bg-gradient-to-r from-pink-100 to-red-100 dark:from-pink-900 dark:to-red-900">
+                    <h2 class="text-xl font-bold mb-4 text-pink-800 dark:text-pink-200">
+                        <i class="fas fa-brain mr-2"></i> 相近词汇总结：tend/tent/tens-伸
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">tender</p>
+                            <p class="text-sm">伸出的状态→柔软</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">tend</p>
+                            <p class="text-sm">延伸→趋向</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">intend</p>
+                            <p class="text-sm">心思伸向→打算</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">extend</p>
+                            <p class="text-sm">向外伸→延伸</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">trend</p>
+                            <p class="text-sm">延伸方向→趋势</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                        <p class="font-semibold">🎯 记忆技巧：</p>
+                        <p>想象一根橡皮筋(tend)可以：</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>自然伸展 → tend(趋向)</li>
+                            <li>向内拉 → intend(打算)</li>
+                            <li>向外拉 → extend(延伸)</li>
+                            <li>变柔软 → tender(温柔的)</li>
+                            <li>伸展方向 → trend(趋势)</li>
+                        </ul>
+                        <p class="mt-2">所有词都来自"伸"的基本概念！</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- tract-拉/拖 -->
+            <div id="tract-tab" class="tab-content hidden fade-in">
+                <!-- attract -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">attract</h2>
+                        <span class="root-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">at-向 + tract-拉</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>at-(向) + tract-(拉) → 把...拉向自己 → 吸引
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 吸引；引起注意
+                        </p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">The bright colors attract butterflies.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">鲜艳的颜色吸引蝴蝶。</p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">The museum attracts thousands of visitors.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这个博物馆吸引了成千上万的游客。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-green-700 dark:text-green-300">💡 记忆技巧：</p>
+                        <p>"at"(向) + "tract"(拉) → 向自己拉 → 吸引！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>attraction(吸引物), attractive(有吸引力的)</p>
+                    </div>
+                </div>
+                
+                <!-- distraction -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">distraction</h2>
+                        <span class="root-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">dis-分开 + tract-拉 + -ion 名词</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>dis-(分开) + tract-(拉) + -ion(名词) → 把注意力拉开 → 分心
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 分心；分散注意力；娱乐
+                        </p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">Noise is a major distraction when studying.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">噪音是学习时的主要干扰。</p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">The movie provided a welcome distraction.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这部电影提供了一个愉快的消遣。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-green-700 dark:text-green-300">💡 记忆技巧：</p>
+                        <p>"dis"(分开) + "tract"(拉) → 把注意力拉开 → 分心！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>distract(使分心), distracted(注意力分散的)</p>
+                    </div>
+                </div>
+                
+                <!-- contract -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">contract</h2>
+                        <span class="root-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">con-一起 + tract-拉</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>con-(一起) + tract-(拉) → 把双方拉到一起 → 合同；收缩
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 合同；契约<br>
+                            <span class="font-semibold">v.</span> 收缩；感染
+                        </p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">We signed a contract for the new house.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">我们签了新房的合同。</p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">Metals contract when cooled.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">金属冷却时会收缩。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-green-700 dark:text-green-300">💡 记忆技巧：</p>
+                        <p>"con"(一起) + "tract"(拉) → 合同把双方拉到一起；肌肉收缩是把纤维拉到一起！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>contraction(收缩), contractor(承包商)</p>
+                    </div>
+                </div>
+                
+                <!-- abstract -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">abstract</h2>
+                        <span class="root-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">abs-离开 + tract-拉</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>abs-(离开) + tract-(拉) → 从具体中拉出来 → 抽象的
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">adj.</span> 抽象的；理论的<br>
+                            <span class="font-semibold">n.</span> 摘要；抽象
+                        </p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">Abstract concepts can be hard to understand.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">抽象概念可能难以理解。</p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">Please write an abstract of your paper.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">请写一份你论文的摘要。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-green-700 dark:text-green-300">💡 记忆技巧：</p>
+                        <p>"abs"(离开) + "tract"(拉) → 从具体实例中拉出来 → 抽象的！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>abstraction(抽象概念), abstracted(心不在焉的)</p>
+                    </div>
+                </div>
+                
+                <!-- track -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-green-700 dark:text-green-300">track</h2>
+                        <span class="root-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">tract-拉的变体</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>tract-(拉)的变体 → 拉出的痕迹 → 轨道；追踪
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 轨道；踪迹；跑道<br>
+                            <span class="font-semibold">v.</span> 追踪；跟踪
+                        </p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">The train runs on this track.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">火车在这条轨道上行驶。</p>
+                    </div>
+                    <div class="example-box bg-green-50 dark:bg-green-900/50 border-green-400 p-4 my-3">
+                        <p class="font-medium">We tracked the animal's footprints.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">我们追踪了动物的足迹。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-green-700 dark:text-green-300">💡 记忆技巧：</p>
+                        <p>"track"是"tract"的变体，想象火车头(tractor)拉着车厢在轨道(track)上行驶！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>tracker(追踪者), tracking(追踪)</p>
+                    </div>
+                </div>
+                
+                <!-- Similar Words Card -->
+                <div class="card p-6 bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900 dark:to-teal-900">
+                    <h2 class="text-xl font-bold mb-4 text-green-800 dark:text-green-200">
+                        <i class="fas fa-brain mr-2"></i> 相近词汇总结：tract-拉/拖
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">attract</p>
+                            <p class="text-sm">拉向自己→吸引</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">distraction</p>
+                            <p class="text-sm">拉开→分心</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">contract</p>
+                            <p class="text-sm">拉到一起→合同</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">abstract</p>
+                            <p class="text-sm">拉出来→抽象</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">track</p>
+                            <p class="text-sm">拉出的痕迹→轨道</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                        <p class="font-semibold">🎯 记忆技巧：</p>
+                        <p>想象一个拖拉机(tractor)可以：</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>拉向自己 → attract(吸引)</li>
+                            <li>拉开 → distract(分散)</li>
+                            <li>拉到一起 → contract(合同)</li>
+                            <li>拉出来 → abstract(抽象)</li>
+                            <li>留下痕迹 → track(轨道)</li>
+                        </ul>
+                        <p class="mt-2">所有词都来自"拉"的基本概念！</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- tribute-给予 -->
+            <div id="tribute-tab" class="tab-content hidden fade-in">
+                <!-- attribute -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-yellow-700 dark:text-yellow-300">attribute</h2>
+                        <span class="root-badge bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">at-向 + tribute-给予</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>at-(向) + tribute-(给予) → 把...给予... → 归因于；属性
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 把...归因于<br>
+                            <span class="font-semibold">n.</span> 属性；特质
+                        </p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">She attributes her success to hard work.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">她把成功归因于努力工作。</p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">Kindness is one of her best attributes.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">善良是她最好的品质之一。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-yellow-700 dark:text-yellow-300">💡 记忆技巧：</p>
+                        <p>"at"(向) + "tribute"(给予) → 把功劳给予某人 → 归因于！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>attribution(归因), attributive(属性的)</p>
+                    </div>
+                </div>
+                
+                <!-- contribute -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-yellow-700 dark:text-yellow-300">contribute</h2>
+                        <span class="root-badge bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">con-一起 + tribute-给予</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>con-(一起) + tribute-(给予) → 一起给予 → 贡献；捐献
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 贡献；捐献；投稿
+                        </p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">Everyone contributed to the discussion.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">每个人都参与了讨论。</p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">He contributes regularly to charity.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">他定期向慈善机构捐款。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-yellow-700 dark:text-yellow-300">💡 记忆技巧：</p>
+                        <p>"con"(一起) + "tribute"(给予) → 大家一起给予 → 贡献！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>contribution(贡献), contributor(贡献者)</p>
+                    </div>
+                </div>
+                
+                <!-- distribute -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-yellow-700 dark:text-yellow-300">distribute</h2>
+                        <span class="root-badge bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">dis-分开 + tribute-给予</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>dis-(分开) + tribute-(给予) → 分开给予 → 分配；分发
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 分配；分发；分布
+                        </p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">The teacher distributed the test papers.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">老师分发了试卷。</p>
+                    </div>
+                    <div class="example-box bg-yellow-50 dark:bg-yellow-900/50 border-yellow-400 p-4 my-3">
+                        <p class="font-medium">This species is widely distributed in Asia.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这个物种在亚洲分布广泛。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-yellow-700 dark:text-yellow-300">💡 记忆技巧：</p>
+                        <p>"dis"(分开) + "tribute"(给予) → 分开给予 → 分配！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>distribution(分配), distributive(分布的)</p>
+                    </div>
+                </div>
+                
+                <!-- Similar Words Card -->
+                <div class="card p-6 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900 dark:to-orange-900">
+                    <h2 class="text-xl font-bold mb-4 text-yellow-800 dark:text-yellow-200">
+                        <i class="fas fa-brain mr-2"></i> 相近词汇总结：tribute-给予
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">attribute</p>
+                            <p class="text-sm">给予归因→属性</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">contribute</p>
+                            <p class="text-sm">一起给予→贡献</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">distribute</p>
+                            <p class="text-sm">分开给予→分配</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                        <p class="font-semibold">🎯 记忆技巧：</p>
+                        <p>想象你在分发(tribute)礼物：</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>把功劳给予某人 → attribute(归因)</li>
+                            <li>大家一起给予 → contribute(贡献)</li>
+                            <li>分开给予 → distribute(分配)</li>
+                        </ul>
+                        <p class="mt-2">"tribute"原指古罗马的贡品，现在指各种"给予"！</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- uni-一个 -->
+            <div id="uni-tab" class="tab-content hidden fade-in">
+                <!-- unique -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-300">unique</h2>
+                        <span class="root-badge bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">uni-一个 + -que 形容词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>uni-(一个) + -que(形容词后缀) → 只有一个的 → 独特的
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">adj.</span> 独特的；独一无二的
+                        </p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">Each person's fingerprint is unique.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">每个人的指纹都是独一无二的。</p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">This is a unique opportunity for you.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">这对你来说是一个独特的机会。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-purple-700 dark:text-purple-300">💡 记忆技巧：</p>
+                        <p>"uni"(一个) + "que"(形容词) → 只有一个 → 独特的！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>uniqueness(独特性), uniquely(独特地)</p>
+                    </div>
+                </div>
+                
+                <!-- union -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-300">union</h2>
+                        <span class="root-badge bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">uni-一个 + -ion 名词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>uni-(一个) + -ion(名词后缀) → 合为一个 → 联合；联盟
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">n.</span> 联合；联盟；工会
+                        </p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">The European Union has many member countries.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">欧盟有许多成员国。</p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">They formed a union to protect workers' rights.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">他们成立了工会来保护工人权利。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-purple-700 dark:text-purple-300">💡 记忆技巧：</p>
+                        <p>"uni"(一个) + "on"(状态) → 成为一个整体 → 联合！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>reunion(重聚), unionize(成立工会)</p>
+                    </div>
+                </div>
+                
+                <!-- uniform -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-300">uniform</h2>
+                        <span class="root-badge bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">uni-一个 + form-形状</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>uni-(一个) + form-(形状) → 一个形状的 → 统一的；制服
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">adj.</span> 统一的；一致的<br>
+                            <span class="font-semibold">n.</span> 制服
+                        </p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">The students wear school uniforms.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">学生们穿校服。</p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">The bricks should be of uniform size.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">砖块应该是统一尺寸的。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-purple-700 dark:text-purple-300">💡 记忆技巧：</p>
+                        <p>"uni"(一个) + "form"(形状) → 一个形状 → 制服(统一服装)！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>uniformity(一致性), uniformly(一致地)</p>
+                    </div>
+                </div>
+                
+                <!-- unite -->
+                <div class="card p-6 mb-6">
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-2xl font-bold text-purple-700 dark:text-purple-300">unite</h2>
+                        <span class="root-badge bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">uni-一个 + -te 动词后缀</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="font-semibold">词根分解：</span>uni-(一个) + -te(动词后缀) → 使成为一个 → 联合；统一
+                        </p>
+                        <p class="mt-2">
+                            <span class="font-semibold">v.</span> 联合；统一；团结
+                        </p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">The two companies united to form a larger one.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">两家公司合并成一家更大的公司。</p>
+                    </div>
+                    <div class="example-box bg-purple-50 dark:bg-purple-900/50 border-purple-400 p-4 my-3">
+                        <p class="font-medium">We must unite to solve this problem.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">我们必须团结起来解决这个问题。</p>
+                    </div>
+                    <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <p class="font-semibold text-purple-700 dark:text-purple-300">💡 记忆技巧：</p>
+                        <p>"uni"(一个) + "te"(动词) → 使成为一个 → 联合！</p>
+                        <p class="mt-2">🔍 <span class="font-semibold">拓展：</span>united(联合的), unity(团结)</p>
+                    </div>
+                </div>
+                
+                <!-- Similar Words Card -->
+                <div class="card p-6 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900">
+                    <h2 class="text-xl font-bold mb-4 text-purple-800 dark:text-purple-200">
+                        <i class="fas fa-brain mr-2"></i> 相近词汇总结：uni-一个
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">unique</p>
+                            <p class="text-sm">只有一个→独特</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">union</p>
+                            <p class="text-sm">合为一个→联合</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">uniform</p>
+                            <p class="text-sm">一个形状→制服</p>
+                        </div>
+                        <div class="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+                            <p class="font-bold">unite</p>
+                            <p class="text-sm">使成一个→联合</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                        <p class="font-semibold">🎯 记忆技巧：</p>
+                        <p>想象"uni"代表"一个"：</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>只有一个 → unique(独特的)</li>
+                            <li>合为一个 → union(联合)</li>
+                            <li>一个形状 → uniform(制服)</li>
+                            <li>使成一个 → unite(联合)</li>
+                        </ul>
+                        <p class="mt-2">"uni-"还出现在unicycle(独轮车), universe(宇宙)等词中！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600 dark:text-gray-400 text-sm">
+            <p>🎉 恭喜你学习了15个核心词根及其衍生词汇！每天复习一遍，词汇量将大幅提升！</p>
+            <p class="mt-2">💡 提示：尝试用这些词根分析新遇到的单词，你会惊讶于自己的进步！</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.classList.add(savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Tab switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                    content.classList.remove('fade-in');
+                });
+                
+                // Show selected tab content
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                const selectedTab = document.getElementById(tabId);
+                selectedTab.classList.remove('hidden');
+                setTimeout(() => {
+                    selectedTab.classList.add('fade-in');
+                }, 10);
+            });
+        });
+        
+        // Activate first tab by default
+        if (tabButtons.length > 0) {
+            tabButtons[0].click();
+        }
+        
+        // Add hover effects to cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-lg');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-lg');
+            });
+        });
+    </script>
+</body>
+</html>

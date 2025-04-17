@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List10</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #fff5f7;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-title {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .root-highlight {
+            background: linear-gradient(90deg, #fbc2eb 0%, #a6c1ee 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        
+        .dark .card {
+            background-color: #1f2937;
+        }
+        
+        .dark body {
+            background-color: #111827;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f9c5d1 0%, #f9c5d1 50%, #fce4ec 50%, #fce4ec 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #6b7280 0%, #6b7280 50%, #4b5563 50%, #4b5563 100%);
+        }
+    </style>
+</head>
+<body class="text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-pink-600 dark:text-pink-400">List10 单词卡片</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-pink-100 dark:bg-gray-700 text-pink-600 dark:text-pink-300">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+        
+        <div class="mb-12 gradient-bg p-6 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4">📚 词根学习法</h2>
+            <p class="mb-3">今天我们要学习三个重要的词根：</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">pos-</h3>
+                    <p>意思是"放"，来自拉丁语</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">present-</h3>
+                    <p>意思是"介绍，展示"</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">press-</h3>
+                    <p>意思是"挤压"</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-6 flex items-center">
+            <i class="fas fa-star mr-3"></i>词根：pos- 放
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Card 1: pose -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">pose</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v./n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-e</span>(动词后缀) → 摆放姿势/提出问题</p>
+                <p class="font-bold mb-3">意思：v. 摆姿势；提出(问题) n. 姿势</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"She posed for the artist."</p>
+                    <p class="text-sm mt-1">她为艺术家摆姿势。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"His question posed a challenge to the theory."</p>
+                    <p class="text-sm mt-1">他的问题对这个理论提出了挑战。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>想象拍照时说"摆个pose"，就是"摆放"一个姿势！</p>
+                </div>
+            </div>
+            
+            <!-- Card 2: expose -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">expose</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">ex-</span>(向外) + <span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-e</span> → 把...放到外面 → 暴露</p>
+                <p class="font-bold mb-3">意思：v. 暴露；揭露；使接触</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"The report exposed corruption in the government."</p>
+                    <p class="text-sm mt-1">这份报告揭露了政府中的腐败。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"Children should be exposed to different cultures."</p>
+                    <p class="text-sm mt-1">应该让孩子们接触不同的文化。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"ex"表示"外"，"pose"是"放"，把东西放到外面就是"暴露"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 3: dispose -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">dispose</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">dis-</span>(分开) + <span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-e</span> → 分开摆放 → 处理掉</p>
+                <p class="font-bold mb-3">意思：v. 处理；安排；使倾向于</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"We need to dispose of these old newspapers."</p>
+                    <p class="text-sm mt-1">我们需要处理掉这些旧报纸。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"His kindness disposed me to like him."</p>
+                    <p class="text-sm mt-1">他的友善使我倾向于喜欢他。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"dis"表示"分开"，"pose"是"放"，把东西分开摆放就是"处理"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 4: suppose -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">suppose</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">sup-</span>(在...下) + <span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-e</span> → 放在下面作为基础 → 假设</p>
+                <p class="font-bold mb-3">意思：v. 假设；认为；推测</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"Let's suppose that you're right."</p>
+                    <p class="text-sm mt-1">让我们假设你是对的。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"I suppose it will rain tomorrow."</p>
+                    <p class="text-sm mt-1">我猜明天会下雨。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"sup"表示"下面"，"pose"是"放"，把一个想法放在下面作为基础就是"假设"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 5: compose -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">compose</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">com-</span>(一起) + <span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-e</span> → 把...放在一起 → 组成；创作</p>
+                <p class="font-bold mb-3">意思：v. 组成；创作(音乐、诗歌等)；使平静</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"Water is composed of hydrogen and oxygen."</p>
+                    <p class="text-sm mt-1">水由氢和氧组成。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"Mozart composed many symphonies."</p>
+                    <p class="text-sm mt-1">莫扎特创作了许多交响乐。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"com"表示"一起"，"pose"是"放"，把音符或元素放在一起就是"创作"或"组成"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 6: opposite -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">opposite</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">adj./n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">op-</span>(对面) + <span class="root-highlight">pos-</span>(放) + <span class="root-highlight">-ite</span>(形容词后缀) → 放在对面的 → 相反的</p>
+                <p class="font-bold mb-3">意思：adj. 相反的 n. 对立面；反义词</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"They sat at opposite ends of the table."</p>
+                    <p class="text-sm mt-1">他们坐在桌子的两端。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"Hot is the opposite of cold."</p>
+                    <p class="text-sm mt-1">热是冷的反义词。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"op"表示"对面"，"posite"是"放"，放在对面的就是"相反的"！</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Summary card for pos- words -->
+        <div class="card bg-pink-100 dark:bg-pink-900 p-6 mb-12">
+            <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 flex items-center">
+                <i class="fas fa-clipboard-list mr-3"></i>词根 pos- 总结
+            </h2>
+            <p class="mb-4">所有以 <span class="root-highlight">pos-</span> (放) 为词根的单词：</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">pose</p>
+                    <p class="text-sm">摆放姿势/提出问题</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">expose</p>
+                    <p class="text-sm">暴露；揭露</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">dispose</p>
+                    <p class="text-sm">处理；安排</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">suppose</p>
+                    <p class="text-sm">假设；认为</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">compose</p>
+                    <p class="text-sm">组成；创作</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">opposite</p>
+                    <p class="text-sm">相反的</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-pink-200 dark:border-pink-700">
+                <p class="font-bold">记忆技巧：</p>
+                <p>想象你在摆放(pose)物品：可以放在外面(ex-pose)、分开摆放(dis-pose)、放在下面作为基础(sup-pose)、放在一起(com-pose)、或放在对面(op-posite)！</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-6 flex items-center">
+            <i class="fas fa-star mr-3"></i>词根：present- 介绍，展示
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
+            <!-- Card 7: present -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">present</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v./n./adj.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">present-</span>(展示) → 呈现；礼物；现在的</p>
+                <p class="font-bold mb-3">意思：v. 呈现；介绍 n. 礼物；现在 adj. 现在的；出席的</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"She presented her research at the conference."</p>
+                    <p class="text-sm mt-1">她在会议上介绍了她的研究。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"He gave her a birthday present."</p>
+                    <p class="text-sm mt-1">他给了她一份生日礼物。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"present"可以表示"礼物"(展示心意)、"出席"(展示在场)、或"现在"(展示的时间)！</p>
+                </div>
+            </div>
+            
+            <!-- Card 8: presentation -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">presentation</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">present-</span>(展示) + <span class="root-highlight">-ation</span>(名词后缀) → 展示的行为 → 演讲；介绍</p>
+                <p class="font-bold mb-3">意思：n. 演讲；介绍；呈现方式</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"She gave an excellent presentation about climate change."</p>
+                    <p class="text-sm mt-1">她做了一个关于气候变化的精彩演讲。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"The presentation of the food was beautiful."</p>
+                    <p class="text-sm mt-1">食物的呈现方式很漂亮。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"present"是"展示"，加上"-ation"变成名词，就是"展示的行为"即"演讲"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 9: represent -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">represent</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">re-</span>(再次) + <span class="root-highlight">present-</span>(展示) → 再次展示 → 代表；象征</p>
+                <p class="font-bold mb-3">意思：v. 代表；象征；描绘</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"This painting represents peace."</p>
+                    <p class="text-sm mt-1">这幅画象征着和平。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"She represents our company at the meeting."</p>
+                    <p class="text-sm mt-1">她在会议上代表我们公司。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"re"表示"再次"，"present"是"展示"，再次展示某人/某物就是"代表"他们！</p>
+                </div>
+            </div>
+            
+            <!-- Card 10: representative -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">representative</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">n./adj.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">represent</span>(代表) + <span class="root-highlight">-ative</span>(形容词/名词后缀) → 代表(的)</p>
+                <p class="font-bold mb-3">意思：n. 代表；代理人 adj. 代表性的；典型的</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"He is the sales representative for our region."</p>
+                    <p class="text-sm mt-1">他是我们地区的销售代表。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"This sample is representative of the whole batch."</p>
+                    <p class="text-sm mt-1">这个样品能代表整批货物。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"represent"是"代表"，加上"-ative"变成"代表的人"或"有代表性的"！</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Summary card for present- words -->
+        <div class="card bg-pink-100 dark:bg-pink-900 p-6 mb-12">
+            <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 flex items-center">
+                <i class="fas fa-clipboard-list mr-3"></i>词根 present- 总结
+            </h2>
+            <p class="mb-4">所有以 <span class="root-highlight">present-</span> (介绍，展示) 为词根的单词：</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">present</p>
+                    <p class="text-sm">呈现；礼物；现在的</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">presentation</p>
+                    <p class="text-sm">演讲；介绍</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">represent</p>
+                    <p class="text-sm">代表；象征</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">representative</p>
+                    <p class="text-sm">代表(的)</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-pink-200 dark:border-pink-700">
+                <p class="font-bold">记忆技巧：</p>
+                <p>想象你在展示(present)东西：可以是一份礼物(present)、一场演讲(presentation)、代表(represent)某人，或是派一个代表(representative)！</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-6 flex items-center">
+            <i class="fas fa-star mr-3"></i>词根：press- 挤压
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Card 11: pressure -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">pressure</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">n./v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">press-</span>(挤压) + <span class="root-highlight">-ure</span>(名词后缀) → 挤压的力量 → 压力</p>
+                <p class="font-bold mb-3">意思：n. 压力；压迫 v. 对...施加压力</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"Blood pressure is an important health indicator."</p>
+                    <p class="text-sm mt-1">血压是重要的健康指标。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"Don't let them pressure you into making a quick decision."</p>
+                    <p class="text-sm mt-1">不要让他们迫使你仓促做决定。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"press"是"挤压"，加上"-ure"变成名词，就是"挤压的力量"即"压力"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 12: impress -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">impress</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">im-</span>(向内) + <span class="root-highlight">press-</span>(挤压) → 向内挤压 → 留下印象</p>
+                <p class="font-bold mb-3">意思：v. 给...留下深刻印象；使铭记</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"Her speech impressed everyone in the audience."</p>
+                    <p class="text-sm mt-1">她的演讲给所有听众留下了深刻印象。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"My father impressed on me the value of hard work."</p>
+                    <p class="text-sm mt-1">我父亲让我铭记努力工作的价值。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"im"表示"向内"，"press"是"挤压"，把印象"压入"心里就是"留下印象"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 13: impression -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">impression</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">impress</span>(留下印象) + <span class="root-highlight">-ion</span>(名词后缀) → 印象</p>
+                <p class="font-bold mb-3">意思：n. 印象；压痕；模仿表演</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"First impressions are very important in job interviews."</p>
+                    <p class="text-sm mt-1">第一印象在求职面试中非常重要。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"He does a great impression of the president."</p>
+                    <p class="text-sm mt-1">他模仿总统模仿得很像。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"impress"是"留下印象"，加上"-ion"变成名词，就是"印象"本身！</p>
+                </div>
+            </div>
+            
+            <!-- Card 14: depress -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">depress</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">de-</span>(向下) + <span class="root-highlight">press-</span>(挤压) → 向下压 → 使沮丧；使萧条</p>
+                <p class="font-bold mb-3">意思：v. 使沮丧；使萧条；按下</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"The bad news depressed her for days."</p>
+                    <p class="text-sm mt-1">这个坏消息让她沮丧了好几天。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"The economic crisis depressed the housing market."</p>
+                    <p class="text-sm mt-1">经济危机使房地产市场萧条。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"de"表示"向下"，"press"是"挤压"，把情绪或经济"向下压"就是"使沮丧/萧条"！</p>
+                </div>
+            </div>
+            
+            <!-- Card 15: depression -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">depression</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">depress</span>(使沮丧) + <span class="root-highlight">-ion</span>(名词后缀) → 沮丧；萧条</p>
+                <p class="font-bold mb-3">意思：n. 抑郁；沮丧；经济萧条；洼地</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"She suffered from depression after her loss."</p>
+                    <p class="text-sm mt-1">她在遭受损失后患上了抑郁症。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"The Great Depression of the 1930s affected many countries."</p>
+                    <p class="text-sm mt-1">20世纪30年代的大萧条影响了许多国家。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"depress"是"使沮丧"，加上"-ion"变成名词，就是"抑郁"或"经济萧条"的状态！</p>
+                </div>
+            </div>
+            
+            <!-- Card 16: express -->
+            <div class="card bg-white dark:bg-gray-800 p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="word-title text-2xl font-bold text-pink-600 dark:text-pink-400 mb-2">express</h3>
+                    <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">v./adj./n.</span>
+                </div>
+                <p class="mb-3"><span class="root-highlight">ex-</span>(向外) + <span class="root-highlight">press-</span>(挤压) → 向外挤压 → 表达；快递</p>
+                <p class="font-bold mb-3">意思：v. 表达 adj. 快速的；明确的 n. 快车；快递服务</p>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg mb-3">
+                    <p class="italic">"She expressed her feelings through poetry."</p>
+                    <p class="text-sm mt-1">她通过诗歌表达自己的感情。</p>
+                </div>
+                <div class="bg-pink-50 dark:bg-gray-700 p-4 rounded-lg">
+                    <p class="italic">"I sent the package by express mail."</p>
+                    <p class="text-sm mt-1">我用快递寄出了包裹。</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-pink-100 dark:border-gray-700">
+                    <p class="text-sm"><span class="font-bold">记忆技巧：</span>"ex"表示"向外"，"press"是"挤压"，把想法"向外挤压"就是"表达"！</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Summary card for press- words -->
+        <div class="card bg-pink-100 dark:bg-pink-900 p-6 mb-12">
+            <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 flex items-center">
+                <i class="fas fa-clipboard-list mr-3"></i>词根 press- 总结
+            </h2>
+            <p class="mb-4">所有以 <span class="root-highlight">press-</span> (挤压) 为词根的单词：</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">pressure</p>
+                    <p class="text-sm">压力；压迫</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">impress</p>
+                    <p class="text-sm">给...留下印象</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">impression</p>
+                    <p class="text-sm">印象；压痕</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">depress</p>
+                    <p class="text-sm">使沮丧；使萧条</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">depression</p>
+                    <p class="text-sm">抑郁；经济萧条</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
+                    <p class="font-bold">express</p>
+                    <p class="text-sm">表达；快递</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-pink-200 dark:border-pink-700">
+                <p class="font-bold">记忆技巧：</p>
+                <p>想象"挤压"(press)的不同方式：可以产生压力(pressure)、向内压留下印象(impress)、向下压使人沮丧(depress)、或向外压表达(express)想法！</p>
+            </div>
+        </div>
+        
+        <div class="card bg-pink-200 dark:bg-pink-800 p-6 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-pink-700 dark:text-pink-300 mb-4 flex items-center">
+                <i class="fas fa-lightbulb mr-3"></i>记忆技巧总结
+            </h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">词根 pos- (放)</h3>
+                    <p>想象你在摆放物品：可以放在外面(ex-pose)、分开摆放(dis-pose)、放在下面作为基础(sup-pose)、放在一起(com-pose)、或放在对面(op-posite)！</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">词根 present- (介绍，展示)</h3>
+                    <p>想象你在展示东西：可以是一份礼物(present)、一场演讲(presentation)、代表(represent)某人，或是派一个代表(representative)！</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-pink-600 dark:text-pink-400">词根 press- (挤压)</h3>
+                    <p>想象"挤压"的不同方式：可以产生压力(pressure)、向内压留下印象(impress)、向下压使人沮丧(depress)、或向外压表达(express)想法！</p>
+                </div>
+            </div>
+            <div class="mt-6 bg-white dark:bg-gray-700 p-4 rounded-lg">
+                <h4 class="font-bold mb-2">💡 学习建议：</h4>
+                <p>1. 每天复习5-10个单词卡片</p>
+                <p>2. 尝试用新单词造句</p>
+                <p>3. 注意观察词根在不同单词中的变化</p>
+                <p>4. 把相关单词分组记忆</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-pink-100 dark:bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-pink-600 dark:text-pink-300">🎉 恭喜你完成了List10的学习！记得定期复习哦！</p>
+            <div class="flex justify-center space-x-4 mt-4 text-2xl">
+                <i class="fas fa-book text-pink-500"></i>
+                <i class="fas fa-brain text-pink-500"></i>
+                <i class="fas fa-graduation-cap text-pink-500"></i>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme or use system preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Add animation to cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

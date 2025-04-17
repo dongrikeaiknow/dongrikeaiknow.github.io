@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List23</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+        }
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .prefix-card {
+            background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+        }
+        .ob-card {
+            background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%);
+        }
+        .over-card {
+            background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%);
+        }
+        .per-card {
+            background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+        }
+        .pro-card {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+        }
+        .summary-card {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+        }
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .tab {
+            border-radius: 12px 12px 0 0;
+        }
+        .tab.active {
+            background-color: #ffffff;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+        .dark .tab.active {
+            background-color: #1e293b;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">Vocabulary Cards - List23</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">Learn prefixes and related words with fun!</p>
+            <button id="theme-toggle" class="mt-4 px-4 py-2 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-600 dark:text-indigo-300">
+                <i class="fas fa-moon mr-2"></i>Toggle Dark Mode
+            </button>
+        </header>
+
+        <div class="flex justify-center mb-8 overflow-x-auto">
+            <div class="flex space-x-1 bg-gray-200 dark:bg-gray-700 p-1 rounded-lg">
+                <button class="tab px-4 py-2 active" data-tab="all">All</button>
+                <button class="tab px-4 py-2" data-tab="ob">ob-</button>
+                <button class="tab px-4 py-2" data-tab="over">over-</button>
+                <button class="tab px-4 py-2" data-tab="per">per-</button>
+                <button class="tab px-4 py-2" data-tab="pro">pro-</button>
+                <button class="tab px-4 py-2" data-tab="summary">Summary</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Prefix Cards -->
+            <div class="card prefix-card p-6 text-white fade-in" data-category="all">
+                <div class="emoji">📚</div>
+                <h2 class="text-2xl font-bold mb-4">Prefix: ob-</h2>
+                <p class="mb-4"><strong>含义：</strong>逆，倒，反对，否定，表加强</p>
+                <p class="italic">"ob-" 表示相反或对立的意思，帮助我们理解很多否定含义的单词！</p>
+            </div>
+
+            <div class="card prefix-card p-6 text-white fade-in" data-category="all">
+                <div class="emoji">📚</div>
+                <h2 class="text-2xl font-bold mb-4">Prefix: over-</h2>
+                <p class="mb-4"><strong>含义：</strong>超过，过度，上面</p>
+                <p class="italic">"over-" 表示过度或在上面的意思，帮助我们理解程度或位置的单词！</p>
+            </div>
+
+            <div class="card prefix-card p-6 text-white fade-in" data-category="all">
+                <div class="emoji">📚</div>
+                <h2 class="text-2xl font-bold mb-4">Prefix: per-</h2>
+                <p class="mb-4"><strong>含义：</strong>贯穿，彻底</p>
+                <p class="italic">"per-" 表示完全或贯穿的意思，帮助我们理解彻底或持续的单词！</p>
+            </div>
+
+            <div class="card prefix-card p-6 text-white fade-in" data-category="all">
+                <div class="emoji">📚</div>
+                <h2 class="text-2xl font-bold mb-4">Prefix: pro-/pre-</h2>
+                <p class="mb-4"><strong>含义：</strong>向前，在前</p>
+                <p class="italic">"pro-" 和 "pre-" 都表示向前或在前的意思，帮助我们理解方向或时间的单词！</p>
+            </div>
+
+            <!-- ob- words -->
+            <div class="card ob-card p-6 fade-in" data-category="ob">
+                <div class="emoji">🤬</div>
+                <h2 class="text-2xl font-bold mb-2">offend</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>冒犯，得罪</p>
+                <p class="mb-4"><strong>词根词缀：</strong>ob-(反对) + fend(打击) → 反对并打击 → 冒犯</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"His rude comments offended many people at the party."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">他粗鲁的评论冒犯了派对上的许多人。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>想象有人反对(ob)你的防御(fend)，这就是冒犯！</p>
+            </div>
+
+            <div class="card ob-card p-6 fade-in" data-category="ob">
+                <div class="emoji">🚧</div>
+                <h2 class="text-2xl font-bold mb-2">obstacle</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>名词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>障碍，阻碍</p>
+                <p class="mb-4"><strong>词根词缀：</strong>ob-(反对) + sta(站立) + cle(名词后缀) → 站在对面 → 障碍</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"Lack of education can be an obstacle to success."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">缺乏教育可能成为成功的障碍。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>想象有人(ob)站在(sta)路中间阻碍你前进！</p>
+            </div>
+
+            <div class="card ob-card p-6 fade-in" data-category="ob">
+                <div class="emoji">🍔</div>
+                <h2 class="text-2xl font-bold mb-2">obesity</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>名词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>肥胖</p>
+                <p class="mb-4"><strong>词根词缀：</strong>ob-(过度) + es(吃) + ity(名词后缀) → 吃得过多 → 肥胖</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"Childhood obesity has become a serious health problem."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">儿童肥胖已成为严重的健康问题。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>过度(ob)吃(es)导致肥胖！</p>
+            </div>
+
+            <div class="card ob-card p-6 fade-in" data-category="ob">
+                <div class="emoji">🥊</div>
+                <h2 class="text-2xl font-bold mb-2">opponent</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>名词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>对手，反对者</p>
+                <p class="mb-4"><strong>词根词缀：</strong>op-(反对) + pon(放置) + ent(人) → 站在对面的人 → 对手</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"He defeated his opponent in the tennis match."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">他在网球比赛中击败了对手。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>想象有人(op)站在对面(pon)和你对抗！</p>
+            </div>
+
+            <!-- over- words -->
+            <div class="card over-card p-6 fade-in" data-category="over">
+                <div class="emoji">👀</div>
+                <h2 class="text-2xl font-bold mb-2">overlook</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>忽视；俯瞰</p>
+                <p class="mb-4"><strong>词根词缀：</strong>over-(上面) + look(看) → 从上面看 → 俯瞰；忽视</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"Don't overlook the small details in the contract."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">不要忽视合同中的小细节。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>从上面(over)看(look)可能忽略细节！</p>
+            </div>
+
+            <div class="card over-card p-6 fade-in" data-category="over">
+                <div class="emoji">🌊</div>
+                <h2 class="text-2xl font-bold mb-2">overwhelm</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>压倒，淹没</p>
+                <p class="mb-4"><strong>词根词缀：</strong>over-(过度) + whelm(淹没) → 过度淹没 → 压倒</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"She was overwhelmed by the amount of work she had to do."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">她被要做的大量工作压垮了。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>过度(over)淹没(whelm)就是压倒！</p>
+            </div>
+
+            <div class="card over-card p-6 fade-in" data-category="over">
+                <div class="emoji">✈️</div>
+                <h2 class="text-2xl font-bold mb-2">overseas</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>形容词/副词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>海外的；在海外</p>
+                <p class="mb-4"><strong>词根词缀：</strong>over-(上面) + sea(海) + s → 在海的那边 → 海外的</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"He works for an overseas company."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">他为一家海外公司工作。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>海(sea)的那边(over)就是海外！</p>
+            </div>
+
+            <div class="card over-card p-6 fade-in" data-category="over">
+                <div class="emoji">🏎️</div>
+                <h2 class="text-2xl font-bold mb-2">overtake</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>超过，赶上</p>
+                <p class="mb-4"><strong>词根词缀：</strong>over-(超过) + take(拿) → 拿到前面 → 超过</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"The car overtook us on the highway."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">那辆车在高速公路上超过了我们。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>超过(over)并拿走(take)领先位置！</p>
+            </div>
+
+            <!-- per- words -->
+            <div class="card per-card p-6 fade-in" data-category="per">
+                <div class="emoji">⏳</div>
+                <h2 class="text-2xl font-bold mb-2">permanent</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>形容词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>永久的，持久的</p>
+                <p class="mb-4"><strong>词根词缀：</strong>per-(贯穿) + man(保持) + ent(形容词后缀) → 一直保持 → 永久的</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"They are looking for a permanent solution to the problem."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">他们正在寻找问题的永久解决方案。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>贯穿(per)保持(man)的状态就是永久的！</p>
+            </div>
+
+            <div class="card per-card p-6 fade-in" data-category="per">
+                <div class="emoji">✏️</div>
+                <h2 class="text-2xl font-bold mb-2">persuade</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>说服，劝说</p>
+                <p class="mb-4"><strong>词根词缀：</strong>per-(彻底) + suade(劝告) → 彻底劝告 → 说服</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"I tried to persuade him to change his mind."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">我试图说服他改变主意。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>彻底(per)的劝说(suade)才能说服别人！</p>
+            </div>
+
+            <!-- pro- words -->
+            <div class="card pro-card p-6 fade-in" data-category="pro">
+                <div class="emoji">🛒</div>
+                <h2 class="text-2xl font-bold mb-2">purchase</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>动词/名词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>购买；购买的东西</p>
+                <p class="mb-4"><strong>词根词缀：</strong>pur-(向前) + chase(追逐) → 向前追逐 → 购买</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"She purchased a new dress for the party."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">她为派对买了一条新裙子。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>向前(pur)追逐(chase)你想要的东西就是购买！</p>
+            </div>
+
+            <div class="card pro-card p-6 fade-in" data-category="pro">
+                <div class="emoji">⏱️</div>
+                <h2 class="text-2xl font-bold mb-2">prompt</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>形容词/动词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>迅速的；促使</p>
+                <p class="mb-4"><strong>词根词缀：</strong>pro-(向前) + empt(拿) → 向前拿 → 迅速的；促使</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"Please give me a prompt reply."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">请给我一个迅速的回复。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>向前(pro)行动就是迅速(prompt)！</p>
+            </div>
+
+            <div class="card pro-card p-6 fade-in" data-category="pro">
+                <div class="emoji">📜</div>
+                <h2 class="text-2xl font-bold mb-2">proverb</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>词性：</strong>名词</p>
+                <p class="text-gray-700 dark:text-gray-200 mb-2"><strong>意思：</strong>谚语，格言</p>
+                <p class="mb-4"><strong>词根词缀：</strong>pro-(向前) + verb(词语) → 流传下来的词语 → 谚语</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="italic">"The proverb 'Actions speak louder than words' is very true."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">"行动胜于言语"这句谚语非常正确。</p>
+                </div>
+                <p class="text-sm"><strong>记忆技巧：</strong>向前(pro)流传的词语(verb)就是谚语！</p>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="card summary-card p-6 fade-in" data-category="summary">
+                <div class="emoji">🧠</div>
+                <h2 class="text-2xl font-bold mb-4">记忆技巧总结</h2>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4">
+                    <p class="font-bold mb-2">ob- 前缀：</p>
+                    <p class="mb-3">想象有人(ob)站在对面反对你！</p>
+                    <p class="font-bold mb-2">over- 前缀：</p>
+                    <p class="mb-3">表示"过度"或"在上面"，如over(超过)+look(看)=忽视！</p>
+                    <p class="font-bold mb-2">per- 前缀：</p>
+                    <p class="mb-3">表示"贯穿"或"彻底"，如per(彻底)+suade(劝)=说服！</p>
+                    <p class="font-bold mb-2">pro- 前缀：</p>
+                    <p class="">表示"向前"，如pro(向前)+verb(词语)=流传向前的词语→谚语！</p>
+                </div>
+                <p class="italic text-purple-700 dark:text-purple-300">把这些前缀想象成方向指示牌，帮助理解单词含义！</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.classList.add(savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            
+            // Update button icon
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-tab');
+                const cards = document.querySelectorAll('.card');
+                
+                cards.forEach(card => {
+                    if (category === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        if (card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add hover effects to cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
