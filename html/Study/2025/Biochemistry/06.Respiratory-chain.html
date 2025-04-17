@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸链详解 | 生物化学可视化学习</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+        }
+        
+        .respiratory-chain-path {
+            position: relative;
+            height: 60px;
+            background: linear-gradient(90deg, #f59e0b, #ef4444, #ec4899, #8b5cf6, #3b82f6, #10b981);
+            border-radius: 30px;
+        }
+        
+        .respiratory-chain-path::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(245,158,11,0.3) 0%, 
+                rgba(239,68,68,0.3) 20%, 
+                rgba(236,72,153,0.3) 40%, 
+                rgba(139,92,246,0.3) 60%, 
+                rgba(59,130,246,0.3) 80%, 
+                rgba(16,185,129,0.3) 100%);
+            border-radius: 30px;
+        }
+        
+        .complex-dot {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            top: 10px;
+            transform: translateX(-50%);
+        }
+        
+        .electron-flow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: white;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: electron-move 4s linear infinite;
+            z-index: 2;
+        }
+        
+        @keyframes electron-move {
+            0% { left: 0%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- 导航栏 -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm py-4 sticky top-0 z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-atom text-primary-500 text-2xl"></i>
+                <h1 class="text-xl font-bold text-primary-600 dark:text-primary-400">生物化学可视化学习</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 标题部分 -->
+        <section class="mb-12 text-center animate-fade-in">
+            <div class="inline-block bg-primary-100 dark:bg-primary-900 rounded-full px-6 py-2 mb-4">
+                <span class="text-primary-600 dark:text-primary-300 font-medium">生物化学专题</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">呼吸链：细胞的能量转换工厂</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">线粒体内膜上的电子传递与ATP合成机制</p>
+        </section>
+
+        <!-- 呼吸链概念卡片 -->
+        <section class="mb-12">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg card-hover animate-fade-in">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                        <h2 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-4 flex items-center">
+                            <i class="fas fa-question-circle mr-3"></i>什么是呼吸链？
+                        </h2>
+                        <p class="text-lg mb-4">呼吸链，又称<strong class="text-primary-600 dark:text-primary-400">电子传递链</strong>，是位于线粒体内膜上的一系列<strong>电子传递体</strong>按一定顺序排列形成的连锁反应体系！</p>
+                        <p class="mb-4">」它是<strong>有氧呼吸</strong>的第三阶段，将还原当量（NADH和FADH₂）中的电子传递给氧分子，释放能量用于合成ATP！</p>
+                        <div class="bg-primary-50 dark:bg-gray-700 rounded-xl p-4 border-l-4 border-primary-500">
+                            <p class="text-primary-700 dark:text-primary-300 font-medium">✨ 关键点：呼吸链是连接代谢物氧化与ATP生成的桥梁，是细胞能量转换的核心环节！</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-gradient-to-br from-green-100 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-bolt text-yellow-500 text-5xl mb-4 animate-float"></i>
+                                <h3 class="text-xl font-semibold mb-2">能量转换效率</h3>
+                                <p class="text-gray-600 dark:text-gray-300">每对电子通过呼吸链可产生<strong class="text-primary-600 dark:text-primary-400">2.5-3个ATP</strong>！</p>
+                                <p class="text-gray-600 dark:text-gray-300 mt-2">总反应式：</p>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3 mt-2 inline-block">
+                                    <p class="text-sm font-mono">NADH + H⁺ + ½O₂ → NAD⁺ + H₂O</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 呼吸链组成与传递体 -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-primary-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-lg card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-6 flex items-center">
+                    <i class="fas fa-sitemap mr-3"></i>呼吸链的组成与电子传递体
+                </h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">🔬 呼吸链四大复合体：</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- 复合体I -->
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-white font-bold mr-3">I</div>
+                                <h4 class="text-lg font-bold">NADH脱氢酶</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">催化NADH的氧化，将电子传递给辅酶Q</p>
+                            <div class="mt-3 text-sm bg-red-50 dark:bg-gray-600 rounded-lg p-2">
+                                <p>包含FMN和铁硫蛋白</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 复合体II -->
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mr-3">II</div>
+                                <h4 class="text-lg font-bold">琥珀酸脱氢酶</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">催化琥珀酸氧化，将电子传递给辅酶Q</p>
+                            <div class="mt-3 text-sm bg-orange-50 dark:bg-gray-600 rounded-lg p-2">
+                                <p>包含FAD和铁硫蛋白</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 复合体III -->
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold mr-3">III</div>
+                                <h4 class="text-lg font-bold">细胞色素bc₁</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">将电子从辅酶Q传递给细胞色素c</p>
+                            <div class="mt-3 text-sm bg-purple-50 dark:bg-gray-600 rounded-lg p-2">
+                                <p>包含细胞色素b、c₁和铁硫蛋白</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 复合体IV -->
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5 shadow-md">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mr-3">IV</div>
+                                <h4 class="text-lg font-bold">细胞色素氧化酶</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">将电子从细胞色素c传递给氧分子</p>
+                            <div class="mt-3 text-sm bg-blue-50 dark:bg-gray-600 rounded-lg p-2">
+                                <p>包含细胞色素a、a₃和铜离子</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 电子传递路径可视化 -->
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">⚡ 电子传递路径：</h3>
+                    <div class="respiratory-chain-path mb-8">
+                        <div class="electron-flow"></div>
+                        <div class="electron"></div>
+                        
+                        <div class="complex-dot bg-red-500 left-[10%]">
+                            I
+                        </div>
+                        <div class="complex-dot bg-orange-500 left-[20%]">
+                            II
+                        </div>
+                        <div class="complex-dot bg-yellow-500 left-[40%]">
+                            Q
+                        </div>
+                        <div class="complex-dot bg-purple-500 left-[60%]">
+                            III
+                        </div>
+                        <div class="complex-dot bg-blue-400 left-[70%]">
+                            c
+                        </div>
+                        <div class="complex-dot bg-blue-500 left-[90%]">
+                            IV
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5">
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-exchange-alt text-primary-500 mr-2"></i>两条电子传递路径：
+                            </h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <span class="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">1</span>
+                                    <span><strong>NADH路径</strong>：NADH → 复合体I → CoQ → 复合体III → Cyt c → 复合体IV → O₂</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0">2</span>
+                                    <span><strong>FADH₂路径</strong>：FADH₂ → 复合体II → CoQ → 复合体III → Cyt c → 复合体IV → O₂</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-5">
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-battery-three-quarters text-primary-500 mr-2"></i>质子泵送与ATP合成：
+                            </h4>
+                            <p class="mb-2">复合体I、III、IV在传递电子同时将H⁺泵到膜间隙，形成<strong>质子梯度</strong>！</p>
+                            <p>ATP合酶利用质子回流能量合成ATP，这一过程称为<strong class="text-primary-600 dark:text-primary-400">氧化磷酸化</strong>！</p>
+                            <div class="mt-3 bg-green-50 dark:bg-gray-600 rounded-lg p-3">
+                                <p class="text-sm">每对电子通过NADH路径可泵出<strong>10个H⁺</strong>，产生约<strong>2.5-3个ATP</strong>！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 呼吸链抑制剂与解偶联剂 -->
+        <section class="mb-12">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-6 flex items-center">
+                    <i class="fas fa-ban mr-3"></i>呼吸链的抑制剂与解偶联剂
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">🛑 呼吸链抑制剂：</h3>
+                        <p class="mb-4">能阻断呼吸链中某一部位电子传递的物质，导致ATP合成停止！</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-red-100 dark:bg-red-900 rounded-lg p-3 mr-4 flex-shrink-0">
+                                    <i class="fas fa-skull-crossbones text-red-500 dark:text-red-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">鱼藤酮、安密妥</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">抑制复合体I，阻断NADH到CoQ的电子传递</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 dark:bg-purple-900 rounded-lg p-3 mr-4 flex-shrink-0">
+                                    <i class="fas fa-skull-crossbones text-purple-500 dark:text-purple-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">抗霉素A</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">抑制复合体III，阻断Cyt b到Cyt c₁的电子传递</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-lg p-3 mr-4 flex-shrink-0">
+                                    <i class="fas fa-skull-crossbones text-blue-500 dark:text-blue-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">氰化物、CO</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">抑制复合体IV，阻断Cyt a₃到O₂的电子传递</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">🔋 解偶联剂：</h3>
+                        <p class="mb-4">使氧化与磷酸化过程解偶联，电子传递照常进行但不生成ATP！</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 dark:bg-yellow-900 rounded-lg p-3 mr-4 flex-shrink-0">
+                                    <i class="fas fa-fire text-yellow-500 dark:text-yellow-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">2,4-二硝基苯酚(DNP)</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">携带H⁺返回基质，破坏质子梯度</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 dark:bg-green-900 rounded-lg p-3 mr-4 flex-shrink-0">
+                                    <i class="fas fa-thermometer-full text-green-500 dark:text-green-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">解偶联蛋白(UCP1)</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">棕色脂肪组织中产热的关键蛋白</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 dark:bg-gray-700 rounded-xl p-4 mt-4">
+                                <p class="text-sm text-blue-700 dark:text-blue-300">💡 解偶联作用在体温调节中有重要意义！新生儿和冬眠动物棕色脂肪组织丰富，通过解偶联产热维持体温。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 呼吸链总结 -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-br from-primary-100 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 shadow-lg card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-6 flex items-center">
+                    <i class="fas fa-lightbulb mr-3"></i>呼吸链学习要点总结
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-gray-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>核心概念
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">✓</span>
+                                <span>呼吸链位于<strong>线粒体内膜</strong>，是电子传递和氧化磷酸化的场所</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">✓</span>
+                                <span>电子传递方向按<strong>还原电位从低到高</strong>的顺序进行</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">✓</span>
+                                <span>最终电子受体是<strong>氧分子</strong>，生成水</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">✓</span>
+                                <span>能量以<strong>质子梯度</strong>形式储存，驱动ATP合成</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-flask text-blue-500 mr-2"></i>重要数据
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">•</span>
+                                <span>NADH路径产生<strong>~2.5-3 ATP</strong>，FADH₂路径产生<strong>~1.5-2 ATP</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">•</span>
+                                <span>每对电子传递释放能量约<strong>-220 kJ/mol</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">•</span>
+                                <span>ATP合酶每合成1个ATP需要<strong>~3-4个H⁺</strong>回流</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-500 mr-2">•</span>
+                                <span>完整葡萄糖氧化可产生<strong>~30-32 ATP</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-primary-50 dark:bg-gray-600 rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center">
+                        <i class="fas fa-brain text-purple-500 mr-2"></i>记忆技巧
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-gray-700 rounded-xl p-4">
+                            <h4 class="font-medium mb-2">复合体顺序记忆</h4>
+                            <p class="text-sm">"<strong>NAD</strong>先走<strong>I</strong>，<strong>FAD</strong>走<strong>II</strong>，<strong>Q</strong>在中间，<strong>III</strong>传<strong>c</strong>，<strong>IV</strong>接氧"</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 rounded-xl p-4">
+                            <h4 class="font-medium mb-2">抑制剂作用点</h4>
+                            <p class="text-sm">"<strong>鱼</strong>在<strong>I</strong>，<strong>抗</strong>在<strong>III</strong>，<strong>氰</strong>在<strong>IV</strong>"</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 rounded-xl p-4">
+                            <h4 class="font-medium mb-2">ATP数量记忆</h4>
+                            <p class="text-sm">"<strong>NADH 2.5</strong>，<strong>FADH₂ 1.5</strong>，葡萄糖<strong>30-32</strong>"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 互动问答 -->
+        <section class="mb-12">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-6 flex items-center">
+                    <i class="fas fa-question-circle mr-3"></i>互动小测试
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-5">
+                        <h3 class="text-xl font-semibold mb-3">1. 下列哪种物质不是呼吸链的组成成分？</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                A. 细胞色素c
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                B. 辅酶Q
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                C. NAD⁺
+                            </button>
+                            <button class="answer-btn correct-answer bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                D. 柠檬酸
+                            </button>
+                        </div>
+                        <div class="answer-feedback mt-3 hidden bg-green-50 dark:bg-green-900 rounded-lg p-3">
+                            <p class="text-green-700 dark:text-green-300">✅ 正确！柠檬酸是三羧酸循环的中间产物，不属于呼吸链组分。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-5">
+                        <h3 class="text-xl font-semibold mb-3">2. 哪个复合体不参与质子泵送？</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                A. 复合体I
+                            </button>
+                            <button class="answer-btn correct-answer bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                B. 复合体II
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                C. 复合体III
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                D. 复合体IV
+                            </button>
+                        </div>
+                        <div class="answer-feedback mt-3 hidden bg-green-50 dark:bg-green-900 rounded-lg p-3">
+                            <p class="text-green-700 dark:text-green-300">✅ 正确！复合体II(琥珀酸脱氢酶)不泵送质子，只传递电子。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-5">
+                        <h3 class="text-xl font-semibold mb-3">3. 下列哪种抑制剂作用于复合体IV？</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                A. 鱼藤酮
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                B. 抗霉素A
+                            </button>
+                            <button class="answer-btn correct-answer bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                C. 氰化物
+                            </button>
+                            <button class="answer-btn bg-white dark:bg-gray-600 rounded-xl p-3 text-left hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                D. 寡霉素
+                            </button>
+                        </div>
+                        <div class="answer-feedback mt-3 hidden bg-green-50 dark:bg-green-900 rounded-lg p-3">
+                            <p class="text-green-700 dark:text-green-300">✅ 正确！氰化物抑制细胞色素氧化酶(复合体IV)，阻断电子传递给氧。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 作者信息 -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-white dark:bg-gray-700 rounded-3xl p-8 max-w-4xl mx-auto shadow-lg">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary-200 to-primary-400 dark:from-primary-600 dark:to-primary-800 flex items-center justify-center text-4xl">
+                            ☀️
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">冬日可爱know</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">希望我的作品像冬天的太阳一样让人温暖</p>
+                        
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-gray-700 dark:text-gray-200 mb-2">社交媒体链接：</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://mp.weixin.qq.com/s/CjzfFVXky-yGv582koJR2g" class="bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full px-4 py-2 text-sm flex items-center transition-colors">
+                                    <i class="fab fa-weixin text-green-500 mr-2"></i> 微信公众号
+                                </a>
+                                <a href="https://github.com/dongrikeaiknow/dongrikeaiknow.github.io" class="bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full px-4 py-2 text-sm flex items-center transition-colors">
+                                    <i class="fab fa-github text-gray-800 dark:text-gray-200 mr-2"></i> GitHub
+                                </a>
+                                <a href="https://space.bilibili.com/1943358001" class="bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full px-4 py-2 text-sm flex items-center transition-colors">
+                                    <i class="fab fa-bilibili text-blue-500 mr-2"></i> 哔哩哔哩
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 dark:border-gray-600 pt-4">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">© 2023 冬日可爱know. 保留所有权利。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 互动问答功能
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const questionBox = this.closest('.bg-gray-50, .bg-gray-700');
+                const feedback = questionBox.querySelector('.answer-feedback');
+                
+                // 移除其他按钮的高亮
+                questionBox.querySelectorAll('.answer-btn').forEach(b => {
+                    b.classList.remove('bg-primary-100', 'dark:bg-primary-800', 'border-primary-500', 'border-2');
+                });
+                
+                // 添加高亮
+                if (this.classList.contains('correct-answer')) {
+                    this.classList.add('bg-primary-100', 'dark:bg-primary-800', 'border-primary-500', 'border-2');
+                } else {
+                    this.classList.add('bg-red-100', 'dark:bg-red-900', 'border-red-500', 'border-2');
+                    // 高亮显示正确答案
+                    const correctBtn = questionBox.querySelector('.correct-answer');
+                    correctBtn.classList.add('bg-primary-100', 'dark:bg-primary-800', 'border-primary-500', 'border-2');
+                }
+                
+                // 显示反馈
+                feedback.classList.remove('hidden');
+            });
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
