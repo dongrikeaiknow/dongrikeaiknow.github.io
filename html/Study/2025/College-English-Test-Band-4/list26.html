@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Flashcards - List26</title>
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #fef6f6;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a1a2e;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-title {
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .tab-button.active {
+            transform: scale(1.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .highlight {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,228,225,0.5) 50%, rgba(255,255,255,0) 100%);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-rose-600">词汇卡片 List26</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-rose-100 text-rose-600 hover:bg-rose-200 dark:bg-rose-900 dark:text-rose-200">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </header>
+        
+        <!-- Tabs -->
+        <div class="flex flex-wrap gap-2 mb-8">
+            <button class="tab-button active px-4 py-2 rounded-full bg-rose-500 text-white" data-category="size">形容大</button>
+            <button class="tab-button px-4 py-2 rounded-full bg-rose-300 text-rose-800" data-category="quantity">形容数量</button>
+            <button class="tab-button px-4 py-2 rounded-full bg-rose-400 text-white" data-category="ue">含-ue的词</button>
+        </div>
+        
+        <!-- Cards Container -->
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+        
+        <!-- Similar Words Section -->
+        <div id="similar-words" class="mt-12 hidden">
+            <h2 class="text-2xl font-bold text-rose-600 mb-4">相近词汇总结</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                <!-- Content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vocabulary data
+        const vocabulary = {
+            size: [
+                {
+                    word: "giant",
+                    pos: "adj./n.",
+                    meaning: "巨大的；巨人",
+                    etymology: "来自希腊神话中的巨人族(Gigantes)，直接指体型巨大",
+                    examples: [
+                        "They discovered a giant turtle on the island. (他们在岛上发现了一只巨大的乌龟。)",
+                        "He works for a giant tech company. (他在一家大型科技公司工作。)"
+                    ],
+                    tips: "记忆技巧：直接联想希腊神话中的巨人族(Gigantes)，或'捷安特'自行车品牌给人的'巨大'印象！"
+                },
+                {
+                    word: "vast",
+                    pos: "adj.",
+                    meaning: "辽阔的，广大的",
+                    etymology: "来自拉丁语'vastus'，意为'空的，荒芜的'，引申为'广阔无边的'",
+                    examples: [
+                        "The vast desert stretched as far as the eye could see. (广阔的沙漠一望无际。)",
+                        "She has a vast knowledge of history. (她拥有渊博的历史知识。)"
+                    ],
+                    tips: "记忆技巧：'vas'音似'哇！'，看到广阔景象时的感叹！'t'像伸展的手臂，表示范围大。"
+                },
+                {
+                    word: "tremendous",
+                    pos: "adj.",
+                    meaning: "极大的，惊人的",
+                    etymology: "来自拉丁语'tremendus'(令人颤抖的)，'tremere'(颤抖) + '-endus'(应当)，字面意思是'应当令人颤抖的'",
+                    examples: [
+                        "The rocket made a tremendous noise when it took off. (火箭起飞时发出震耳欲聋的噪音。)",
+                        "She's been a tremendous help to me. (她给了我极大的帮助。)"
+                    ],
+                    tips: "记忆技巧：拆分为'tremble'(颤抖) + 'end'(极端)，'极端到让人颤抖的'→极大的！"
+                },
+                {
+                    word: "grand",
+                    pos: "adj.",
+                    meaning: "宏伟的，盛大的",
+                    etymology: "来自拉丁语'grandis'(大的，成年的)，与'great'同源",
+                    examples: [
+                        "They held a grand celebration for the victory. (他们为胜利举行了盛大的庆祝活动。)",
+                        "The view from the top of the mountain was grand. (从山顶看到的景色非常壮观。)"
+                    ],
+                    tips: "记忆技巧：'gr'开头常与'大'相关(great, grand, gravity)，'and'表示'和'，'大和'→宏伟的！"
+                },
+                {
+                    word: "enormous",
+                    pos: "adj.",
+                    meaning: "巨大的，庞大的",
+                    etymology: "e-(出) + norm(标准) + -ous(形容词后缀)→超出标准的→巨大的",
+                    examples: [
+                        "An enormous amount of money was spent on the project. (这个项目花费了巨额资金。)",
+                        "The elephant was enormous compared to the other animals. (与其他动物相比，这头大象非常庞大。)"
+                    ],
+                    tips: "记忆技巧：'e'+'norm'(标准)+'ous'→超出标准(e超出+norm标准)→巨大的！"
+                },
+                {
+                    word: "extreme",
+                    pos: "adj./n.",
+                    meaning: "极端的；极端情况",
+                    etymology: "来自拉丁语'extremus'(最外面的)，'exter'(外部的)的最高级形式",
+                    examples: [
+                        "She went to extreme lengths to help her friend. (她竭尽全力帮助朋友。)",
+                        "The weather in the desert can reach extremes. (沙漠的天气可以达到极端情况。)"
+                    ],
+                    tips: "记忆技巧：'ex'(出) + 'treme'(看作'trim'修剪)→修剪到最外面→极端的！"
+                }
+            ],
+            quantity: [
+                {
+                    word: "numerous",
+                    pos: "adj.",
+                    meaning: "许多的，大量的",
+                    etymology: "来自拉丁语'numerosus'(数量多的)，'numerus'(数字) + '-osus'(多的)",
+                    examples: [
+                        "Numerous studies have confirmed this effect. (大量研究证实了这一效应。)",
+                        "She has numerous friends in the city. (她在城里有众多朋友。)"
+                    ],
+                    tips: "记忆技巧：'number'(数字)的形容词形式，'numer'(数字)+'ous'(多)→数量多的！"
+                },
+                {
+                    word: "multiple",
+                    pos: "adj./n.",
+                    meaning: "多重的；倍数",
+                    etymology: "来自拉丁语'multiplex'，'multi'(多) + '-plex'(折叠)，原指'折叠多次的'",
+                    examples: [
+                        "The problem has multiple causes. (这个问题有多种原因。)",
+                        "16 is a multiple of 4. (16是4的倍数。)"
+                    ],
+                    tips: "记忆技巧：'multi'(多) + 'ple'(折叠)→多次折叠→多重的！类似词：multiply(乘)"
+                },
+                {
+                    word: "minor",
+                    pos: "adj./n.",
+                    meaning: "较小的；未成年人",
+                    etymology: "来自拉丁语'minor'(更小的)，是'minus'(小)的比较级形式",
+                    examples: [
+                        "He suffered only minor injuries in the accident. (他在事故中只受了轻伤。)",
+                        "It's illegal to sell alcohol to minors. (向未成年人出售酒精是违法的。)"
+                    ],
+                    tips: "记忆技巧：与'major'(主要的)相反，'min'表示'小'，如'miniature'(微型)"
+                },
+                {
+                    word: "bulk",
+                    pos: "n.",
+                    meaning: "主体，大量",
+                    etymology: "来自古英语'bulca'(货物堆)，与'belly'(腹部)同源，都表示'鼓起的部分'",
+                    examples: [
+                        "The bulk of the work has already been done. (大部分工作已经完成。)",
+                        "They buy rice in bulk to save money. (他们大量购买大米以节省开支。)"
+                    ],
+                    tips: "记忆技巧：'bulk'音似'饱满'，表示'大量'；或联想'bulky'(庞大的)！"
+                },
+                {
+                    word: "mass",
+                    pos: "n./adj.",
+                    meaning: "大量；群众的",
+                    etymology: "来自拉丁语'massa'(面团，块)，源自希腊语'maza'(大麦饼)",
+                    examples: [
+                        "A mass of people gathered in the square. (一大群人聚集在广场上。)",
+                        "Mass production reduced the cost. (大规模生产降低了成本。)"
+                    ],
+                    tips: "记忆技巧：'mass'本身表示'质量'，引申为'大量'；联想'Massive'(巨大的)！"
+                },
+                {
+                    word: "odd",
+                    pos: "adj.",
+                    meaning: "奇怪的；零散的",
+                    etymology: "来自古 Norse 'oddi'(三角形，角)，引申为'不匹配的'，'奇怪的'",
+                    examples: [
+                        "He's an odd man with strange habits. (他是个有奇怪习惯的怪人。)",
+                        "I have a few odd socks left. (我还剩下几只不成对的袜子。)"
+                    ],
+                    tips: "记忆技巧：'odd'形似'0dd'，零(d)的(d)→零散的；或联想'add'少了个'a'→不完整→奇怪的！"
+                },
+                {
+                    word: "mere",
+                    pos: "adj.",
+                    meaning: "仅仅的，只不过",
+                    etymology: "来自拉丁语'merus'(纯粹的，未混合的)，引申为'仅仅的'",
+                    examples: [
+                        "She's a mere child and doesn't understand. (她只是个孩子，不明白。)",
+                        "The mere thought of spiders makes her nervous. (只要想到蜘蛛就让她紧张。)"
+                    ],
+                    tips: "记忆技巧：'me'(我) + 're'(拼音'热')→'我热'仅仅是因为太阳→仅仅的！"
+                },
+                {
+                    word: "limited",
+                    pos: "adj.",
+                    meaning: "有限的",
+                    etymology: "来自拉丁语'limitare'(限制)，'limes'(边界) + '-ed'(形容词后缀)",
+                    examples: [
+                        "We have a limited amount of time to finish. (我们完成的时间有限。)",
+                        "The edition is limited to 500 copies. (这个版本限量500册。)"
+                    ],
+                    tips: "记忆技巧：'limit'(限制) + 'ed'→被限制的→有限的！反义词：unlimited(无限的)"
+                },
+                {
+                    word: "rare",
+                    pos: "adj.",
+                    meaning: "稀有的；半熟的(肉)",
+                    etymology: "来自拉丁语'rarus'(稀疏的，不密集的)",
+                    examples: [
+                        "This is a rare species of bird. (这是一种稀有鸟类。)",
+                        "I'd like my steak rare, please. (我的牛排要三分熟。)"
+                    ],
+                    tips: "记忆技巧：'rare'音似'瑞尔'(珍贵金属)→稀有的；或联想'rarely'(很少地)！"
+                },
+                {
+                    word: "series",
+                    pos: "n.",
+                    meaning: "系列，连续",
+                    etymology: "来自拉丁语'series'(一连串)，源自'serere'(连接)",
+                    examples: [
+                        "A series of accidents happened on this road. (这条路上发生了一系列事故。)",
+                        "I'm watching a new TV series. (我正在看一部新的电视剧。)"
+                    ],
+                    tips: "记忆技巧：'seri'(看作'serial'连续的) + 'es'→系列！注意单复数同形。"
+                },
+                {
+                    word: "range",
+                    pos: "n./v.",
+                    meaning: "范围；排列",
+                    etymology: "来自古法语'range'(排列)，源自'renc'(行，排)",
+                    examples: [
+                        "The store offers a wide range of products. (这家商店提供多种多样的产品。)",
+                        "The mountains range along the coast. (山脉沿海岸延伸。)"
+                    ],
+                    tips: "记忆技巧：'ran'(跑) + 'ge'(拼音'各')→跑到各处→范围！"
+                }
+            ],
+            ue: [
+                {
+                    word: "clue",
+                    pos: "n.",
+                    meaning: "线索，提示",
+                    etymology: "最初拼作'clew'，指'线团'，源自希腊神话中忒修斯用线团走出迷宫的故事",
+                    examples: [
+                        "The police found a clue at the crime scene. (警方在犯罪现场发现了一条线索。)",
+                        "I have no clue how to solve this problem. (我完全不知道如何解决这个问题。)"
+                    ],
+                    tips: "记忆技巧：'clue'音似'可路'→可以指路的→线索！或联想'glue'(胶水)粘住线索！"
+                },
+                {
+                    word: "due",
+                    pos: "adj./n.",
+                    meaning: "到期的；应得的",
+                    etymology: "来自古法语'deu'(欠的)，源自拉丁语'debere'(欠)",
+                    examples: [
+                        "The rent is due on the first of the month. (房租每月一号到期。)",
+                        "Give credit where credit is due. (该表扬时就表扬。)"
+                    ],
+                    tips: "记忆技巧：'due'音似'丢'→到期不还钱就丢脸！或联想'due to'(由于)。"
+                },
+                {
+                    word: "fuel",
+                    pos: "n./v.",
+                    meaning: "燃料；加燃料",
+                    etymology: "来自古法语'fouaille'，源自拉丁语'focus'(炉子，火炉)",
+                    examples: [
+                        "The plane stopped to take on fuel. (飞机停下来加油。)",
+                        "His words fueled her anger. (他的话加剧了她的愤怒。)"
+                    ],
+                    tips: "记忆技巧：'fuel'音似'费油'→燃料！或联想'fire'(火)需要'fuel'！"
+                },
+                {
+                    word: "issue",
+                    pos: "n./v.",
+                    meaning: "问题；发行",
+                    etymology: "来自古法语'issir'(出去)，源自拉丁语'exire'(出去)，引申为'流出的东西'→问题",
+                    examples: [
+                        "We need to discuss this important issue. (我们需要讨论这个重要问题。)",
+                        "The bank issues new credit cards. (银行发行新的信用卡。)"
+                    ],
+                    tips: "记忆技巧：'is'(是) + 'sue'(起诉)→是个需要起诉的问题→问题！"
+                },
+                {
+                    word: "pursue",
+                    pos: "v.",
+                    meaning: "追求；追赶",
+                    etymology: "pur-(向前) + sue(跟随)→向前跟随→追求",
+                    examples: [
+                        "She decided to pursue a career in medicine. (她决定追求医学事业。)",
+                        "The police pursued the thief. (警察追赶小偷。)"
+                    ],
+                    tips: "记忆技巧：'pur'(看作'pure'纯粹) + 'sue'(追求)→纯粹追求！或联想'pursuit'(追求的名词形式)"
+                },
+                {
+                    word: "rescue",
+                    pos: "v./n.",
+                    meaning: "救援，营救",
+                    etymology: "来自古法语'rescoure'，'re-'(再) + 'escoure'(摇出，摆脱)，字面意思是'再次摆脱危险'",
+                    examples: [
+                        "The firemen rescued the cat from the tree. (消防员从树上救下了猫。)",
+                        "A rescue team arrived at the scene. (救援队到达了现场。)"
+                    ],
+                    tips: "记忆技巧：'res'音似'热死'，'cue'线索→热死时需要救援的线索！"
+                }
+            ]
+        };
+
+        // Similar words data
+        const similarWords = {
+            size: {
+                title: "形容'大'的词汇总结",
+                description: "这些词都表示'大'的概念，但侧重点不同：",
+                words: [
+                    "giant - 强调体型巨大(如巨人)",
+                    "vast - 强调面积广阔(如沙漠)",
+                    "tremendous - 强调程度惊人(如噪音)",
+                    "grand - 强调宏伟壮观(如建筑)",
+                    "enormous - 强调超出常规标准",
+                    "extreme - 强调达到极限"
+                ],
+                tips: "记忆技巧：想象一个场景——一个giant(巨人)站在vast(广阔的)沙漠中，发出tremendous(惊人的)叫声，身后是grand(宏伟的)金字塔，留下了enormous(巨大的)脚印，经历了extreme(极端的)天气！"
+            },
+            quantity: {
+                title: "形容'数量'的词汇总结",
+                description: "这些词都与数量相关，但用法不同：",
+                words: [
+                    "numerous/multiple - 数量多(可数)",
+                    "bulk/mass - 大量(不可数)",
+                    "minor - 数量少",
+                    "odd - 零散的",
+                    "mere - 仅仅的",
+                    "limited - 有限的",
+                    "rare - 稀有的",
+                    "series/range - 系列/范围"
+                ],
+                tips: "记忆技巧：numerous apples(许多苹果)，mass water(大量水)，minor issues(小问题)，odd socks(零散的袜子)，mere child(仅仅是个孩子)，limited time(有限时间)，rare species(稀有物种)，TV series(电视剧)，price range(价格范围)。"
+            },
+            ue: {
+                title: "含'-ue'的高频词汇总结",
+                description: "这些词都以'-ue'结尾，但意义各异：",
+                words: [
+                    "clue - 线索(来自'线团')",
+                    "due - 到期(来自'欠的')",
+                    "fuel - 燃料(来自'火炉')",
+                    "issue - 问题/发行(来自'出去')",
+                    "pursue - 追求(向前跟随)",
+                    "rescue - 救援(再次摆脱)"
+                ],
+                tips: "记忆技巧：编个故事：没有clue(线索)，due(到期)的fuel(燃料)成为issue(问题)，但警察pursue(追查)后成功rescue(救援)！注意发音：'ue'通常不发音！"
+            }
+        };
+
+        // DOM elements
+        const cardsContainer = document.getElementById('cards-container');
+        const similarWordsSection = document.getElementById('similar-words');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        
+        // Current active category
+        let activeCategory = 'size';
+        
+        // Function to render cards
+        function renderCards(category) {
+            cardsContainer.innerHTML = '';
+            const words = vocabulary[category];
+            
+            words.forEach(word => {
+                const card = document.createElement('div');
+                card.className = 'card bg-white dark:bg-gray-800 p-6 fade-in';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="word-title text-2xl font-bold text-rose-600 dark:text-rose-400">${word.word}</h3>
+                        <span class="bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200 px-3 py-1 rounded-full text-sm">${word.pos}</span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="font-semibold text-gray-700 dark:text-gray-300">中文释义：${word.meaning}</p>
+                    </div>
+                    
+                    <div class="mb-4 p-4 bg-rose-50 dark:bg-gray-700 rounded-lg">
+                        <p class="text-sm text-gray-800 dark:text-gray-200"><span class="font-semibold">词源解析：</span>${word.etymology}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="font-semibold text-gray-700 dark:text-gray-300 mb-2">例句：</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            ${word.examples.map(example => `<li class="pl-4 border-l-2 border-rose-200 dark:border-rose-800">${example}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                        <p class="text-sm font-medium text-amber-800 dark:text-amber-200"><span class="font-bold">记忆技巧：</span>${word.tips}</p>
+                    </div>
+                    
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl opacity-20">」</span>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+            
+            // Render similar words section
+            renderSimilarWords(category);
+        }
+        
+        // Function to render similar words
+        function renderSimilarWords(category) {
+            const similar = similarWords[category];
+            if (!similar) {
+                similarWordsSection.classList.add('hidden');
+                return;
+            }
+            
+            similarWordsSection.classList.remove('hidden');
+            similarWordsSection.innerHTML = `
+                <h2 class="text-2xl font-bold text-rose-600 dark:text-rose-400 mb-4">${similar.title}</h2>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                    <p class="mb-4 text-gray-700 dark:text-gray-300">${similar.description}</p>
+                    <ul class="mb-6 space-y-2 text-gray-600 dark:text-gray-300">
+                        ${similar.words.map(word => `<li class="pl-4 border-l-2 border-rose-200 dark:border-rose-800">${word}</li>`).join('')}
+                    </ul>
+                    <div class="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                        <p class="text-sm font-medium text-amber-800 dark:text-amber-200"><span class="font-bold">记忆技巧：</span>${similar.tips}</p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <span class="text-4xl opacity-20">」</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Tab switching
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                activeCategory = category;
+                
+                // Update active tab
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-rose-500', 'text-white');
+                    btn.classList.add('bg-rose-300', 'text-rose-800');
+                });
+                button.classList.add('active', 'bg-rose-500', 'text-white');
+                button.classList.remove('bg-rose-300', 'text-rose-800');
+                
+                // Render cards
+                renderCards(category);
+            });
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            
+            // Save preference to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Initial render
+        renderCards(activeCategory);
+    </script>
+</body>
+</html>

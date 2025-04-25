@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-Related Vocabulary Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fff5f7;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a1a2e;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #fff9fb 0%, #ffeef2 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+        }
+        
+        .dark .card {
+            background: linear-gradient(135deg, #2a2a3e 0%, #1e1e2e 100%);
+            border: 1px solid rgba(255, 182, 193, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-title {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .dark .word-title {
+            background: linear-gradient(135deg, #ff8a9c 0%, #ff9eb5 100%);
+        }
+        
+        .tab {
+            border-radius: 12px 12px 0 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: #fff5f7;
+            font-weight: bold;
+        }
+        
+        .dark .tab.active {
+            background-color: #1a1a2e;
+        }
+        
+        .example {
+            background-color: rgba(255, 182, 193, 0.1);
+            border-left: 4px solid #ff758c;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .dark .example {
+            background-color: rgba(255, 182, 193, 0.05);
+            border-left: 4px solid #ff8a9c;
+        }
+        
+        .memory-tip {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .dark .memory-tip {
+            background-color: rgba(255, 215, 0, 0.05);
+            border-left: 4px solid #ffd700;
+        }
+        
+        .similar-words {
+            background-color: rgba(100, 200, 255, 0.1);
+            border-left: 4px solid #64c8ff;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .dark .similar-words {
+            background-color: rgba(100, 200, 255, 0.05);
+            border-left: 4px solid #64c8ff;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            background-color: #ff758c;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #ff8a9c;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div class="flex items-center mb-4 md:mb-0">
+                <i class="fas fa-piggy-bank text-4xl mr-3 text-pink-500"></i>
+                <h1 class="text-3xl font-bold text-pink-700 dark:text-pink-400">Money Vocabulary Cards</h1>
+            </div>
+            
+            <!-- Dark mode toggle -->
+            <div class="flex items-center">
+                <span class="mr-2 text-gray-700 dark:text-gray-300">Light</span>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                    <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">Dark</span>
+            </div>
+        </header>
+        
+        <!-- Introduction -->
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-pink-600 dark:text-pink-300">💰 与"钱"有关的高频词</h2>
+            <p class="mb-4">学习这些与金钱相关的词汇，帮助你更好地理解经济、金融和个人理财！每个卡片包含单词的词根词缀分析、例句和记忆技巧。</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">tax</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">revenue</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">wage</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">saving</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">fund</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">loan</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">debt</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">budget</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">bargain</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">allowance</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">million</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">jewel</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">worth</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">precious</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">financial</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">donate</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">charge</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">poverty</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">economy</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">economic</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">wealthy</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">welfare</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm dark:bg-pink-900 dark:text-pink-200">sponsor</span>
+            </div>
+        </div>
+        
+        <!-- Vocabulary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1: tax -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">tax</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/tæks/ <span class="italic">n. 税，税款</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自拉丁语 "taxare"，意为"评估、指控"。与"tangible"(有形的)同源，最初指评估财产价值。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"Income tax is deducted from your salary every month."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(所得税每个月从你的工资中扣除。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>把"tax"想象成"take x"(拿走一部分)，政府从你的收入中拿走一部分就是税收！</p>
+                </div>
+            </div>
+            
+            <!-- Card 2: revenue -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">revenue</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/ˈrevənuː/ <span class="italic">n. 收入，税收</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自法语 "revenue"，源自拉丁语 "revenire"(返回)。re-(回) + venire(来) → 返回来的钱 → 收入。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"The company's annual revenue exceeded $1 billion."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(公司年收入超过了10亿美元。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"revenue"中的"venue"(场所)可以联想为"收入来源的地方"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 3: wage -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">wage</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/weɪdʒ/ <span class="italic">n. 工资，报酬</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古法语 "gage"(抵押品)，源自日耳曼语，与"wed"(抵押)同源。最初指作为抵押的报酬。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"The workers demanded a higher wage for their labor."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(工人们要求为他们的劳动获得更高的工资。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"wage"与"age"(年龄)相似，可以联想为"随着年龄增长，工资也会增加"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 4: saving -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">saving</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/ˈseɪvɪŋ/ <span class="italic">n. 储蓄，节省</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古英语 "safian"(保存)，源自原始日耳曼语，与"safe"(安全的)同源。save(保存) + -ing(名词后缀) → 储蓄。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"She puts a portion of her salary into savings every month."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(她每月将一部分工资存入储蓄。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"saving"来自"save"(拯救)，可以联想为"储蓄能拯救你的财务危机"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 5: fund -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">fund</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/fʌnd/ <span class="italic">n. 基金，资金 v. 资助</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自拉丁语 "fundus"(底部，基础)，与"foundation"(基础)同源。资金是经济的基础。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"The government established a fund to support small businesses."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(政府设立了一个基金来支持小企业。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"fund"与"fun"(有趣)相似，可以联想为"有资金(fund)才能有乐趣(fun)"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 6: loan -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">loan</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/loʊn/ <span class="italic">n. 贷款 v. 借出</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古诺尔斯语 "lán"(借)，与古英语 "lǣn"(借)同源。与"lend"(借出)相关。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"He took out a loan to buy a new car."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(他贷款买了一辆新车。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"loan"发音类似"lone"(孤独的)，可以联想为"贷款后可能会感到孤独(因为要还债)"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 7: debt -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">debt</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/det/ <span class="italic">n. 债务</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古法语 "dete"，源自拉丁语 "debitum"(欠的东西)，de-(离开) + habere(拥有) → 从你拥有的东西中拿走 → 债务。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"Many students struggle with student loan debt after graduation."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(许多学生在毕业后为偿还学生贷款债务而挣扎。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"debt"中的"b"不发音，可以联想为"债务让人沉默(b不发音)"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 8: budget -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">budget</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/ˈbʌdʒɪt/ <span class="italic">n. 预算 v. 编制预算</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古法语 "bougette"(小包)，源自拉丁语 "bulga"(皮包)。最初指财政大臣的钱包，后引申为预算。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"We need to stick to our budget to save money for vacation."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(我们需要坚持预算，为度假存钱。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"budget"中的"bud"(芽)可以联想为"预算像植物的芽，需要精心培育才能成长"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 9: bargain -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">bargain</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/ˈbɑːrɡɪn/ <span class="italic">n. 便宜货，交易 v. 讨价还价</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>来自古法语 "bargaigner"(讨价还价)，可能源自法兰克语。与"borrow"(借)同源，最初指交换。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"I found a real bargain at the flea market yesterday."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(昨天我在跳蚤市场发现了一个真正的便宜货。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"bargain"可以拆分为"bar"(酒吧) + "gain"(获得)，联想为"在酒吧里获得便宜货"。</p>
+                </div>
+            </div>
+            
+            <!-- Card 10: allowance -->
+            <div class="card p-6 fade-in">
+                <h2 class="word-title text-2xl font-bold mb-2">allowance</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">/əˈlaʊəns/ <span class="italic">n. 零用钱，津贴</span></p>
+                
+                <div class="mb-4">
+                    <p class="font-semibold">词源分析:</p>
+                    <p>allow(允许) + -ance(名词后缀) → 被允许使用的钱 → 零用钱。来自古法语 "alouance"。</p>
+                </div>
+                
+                <div class="example p-4 mb-4">
+                    <p class="font-semibold">例句:</p>
+                    <p class="mb-2">"My parents give me a weekly allowance of $20."</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">(我父母每周给我20美元的零用钱。)</p>
+                </div>
+                
+                <div class="memory-tip p-4 mb-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p>"allowance"可以联想为"被允许(allowed)的钱"。</p>
+                </div>
+            </div>
+            
+            <!-- Similar Words Card -->
+            <div class="card p-6 fade-in col-span-1 md:col-span-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">💰 相近词汇汇总</h2>
+                
+                <div class="similar-words p-4 mb-4">
+                    <p class="font-semibold">与"钱"相关的词汇家族:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-2">
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">finance</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">monetary</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">capital</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">investment</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">income</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">expense</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">profit</div>
+                        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">loss</div>
+                    </div>
+                </div>
+                
+                <div class="memory-tip p-4">
+                    <p class="font-semibold">记忆技巧:</p>
+                    <p class="mb-2">1. 词根记忆法:</p>
+                    <p>- "fin-"表示"结束"(如final)，在finance中表示"结算"</p>
+                    <p>- "monet-"来自拉丁语"moneta"(钱币)，与"money"同源</p>
+                    <p>- "capit-"表示"头"，capital原指"主要的"财产</p>
+                    
+                    <p class="mt-4 mb-2">2. 分类记忆法:</p>
+                    <p>- 收入类: income, revenue, wage, salary</p>
+                    <p>- 支出类: expense, cost, expenditure</p>
+                    <p>- 储蓄投资类: saving, investment, fund</p>
+                    <p>- 借贷类: loan, debt, credit</p>
+                    
+                    <p class="mt-4 mb-2">3. 联想记忆法:</p>
+                    <p>- "profit"(利润)可以联想为"for fit"(为了合适)，利润使财务状况合适</p>
+                    <p>- "capital"(资本)可以联想为"cap"(帽子) + "ital"(意大利)，想象意大利商人戴着帽子数钱</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600 dark:text-gray-400">
+            <p class="mb-2">🎯 每天学习5个单词，坚持30天就能掌握这些高频词汇！</p>
+            <p>💡 记住：理解词源能帮助你更轻松地记忆单词！</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <i class="fas fa-heart text-pink-500"></i>
+                <i class="fas fa-book text-blue-500"></i>
+                <i class="fas fa-lightbulb text-yellow-500"></i>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme or use system preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+            toggle.checked = true;
+        }
+        
+        // Toggle theme
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Add fade-in animation to cards as they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

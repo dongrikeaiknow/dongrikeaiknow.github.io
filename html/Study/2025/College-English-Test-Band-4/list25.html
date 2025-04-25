@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List25</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prefix-card {
+            background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+        }
+        
+        .word-card {
+            background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%);
+        }
+        
+        .example-card {
+            background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%);
+        }
+        
+        .tips-card {
+            background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%);
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tab {
+            border-radius: 12px 12px 0 0;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: white;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+        
+        .dark .tab.active {
+            background-color: #2d3748;
+            color: #a5b4fc;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">Vocabulary Cards</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </header>
+        
+        <div class="tabs flex mb-6 bg-gray-200 dark:bg-gray-700 rounded-t-xl p-1">
+            <div class="tab active" data-tab="se">se-前缀</div>
+            <div class="tab" data-tab="sub">sub-前缀</div>
+            <div class="tab" data-tab="super">super-/sur-前缀</div>
+            <div class="tab" data-tab="under">under-前缀</div>
+        </div>
+        
+        <div id="se-content" class="tab-content fade-in grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- se- prefix words -->
+            <div class="card prefix-card p-6">
+                <div class="emoji">🔍</div>
+                <h2 class="text-2xl font-bold mb-4">前缀: se-</h2>
+                <p class="mb-4">表示<strong>分离、分开、区别开</strong>或<strong>表否定</strong>的意思！</p>
+                <p>这个前缀来自拉丁语，常见于表示分离或否定含义的单词中！</p>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">separate <span class="text-lg font-normal">(v./adj.)</span></h2>
+                <p class="mb-4"><strong>se-(分开) + par(准备) + -ate(动词后缀)</strong> → 准备分开 → <strong>分离；分开的</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v. 使分离，分开</li>
+                    <li>adj. 分开的，单独的</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">separate 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The teacher separated the boys from the girls."</p>
+                    <p class="mt-2">老师把男孩和女孩分开。</p>
+                </div>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"They live in separate houses."</p>
+                    <p class="mt-2">他们住在不同的房子里。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">sector <span class="text-lg font-normal">(n.)</span></h2>
+                <p class="mb-4"><strong>se-(分开) + ct(切) + -or(名词后缀)</strong> → 切分开的部分 → <strong>部门；扇形</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>n. 部门，领域</li>
+                    <li>n. 扇形</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">sector 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"He works in the private sector."</p>
+                    <p class="mt-2">他在私营部门工作。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The circle is divided into six sectors."</p>
+                    <p class="mt-2">这个圆被分成六个扇形。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">severe <span class="text-lg font-normal">(adj.)</span></h2>
+                <p class="mb-4"><strong>se-(分开) + ver(真实) + -e</strong> → 与真实分开 → <strong>严重的；严厉的</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>adj. 严重的，剧烈的</li>
+                    <li>adj. 严厉的，严格的</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">severe 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"She has a severe headache."</p>
+                    <p class="mt-2">她有严重的头痛。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The teacher was severe but fair."</p>
+                    <p class="mt-2">这位老师严厉但公平。</p>
+                </div>
+            </div>
+            
+            <div class="card tips-card p-6 col-span-full">
+                <h2 class="text-2xl font-bold mb-4">记忆技巧 💡</h2>
+                <p class="mb-4">把<strong>se-</strong>想象成一把剪刀✂️，表示"分开"的意思！</p>
+                <ul class="list-disc pl-5">
+                    <li><strong>separate</strong> - 用剪刀把东西分开</li>
+                    <li><strong>sector</strong> - 用剪刀把圆切成扇形</li>
+                    <li><strong>severe</strong> - 与真实分开，变得严厉</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="sub-content" class="tab-content hidden grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- sub- prefix words -->
+            <div class="card prefix-card p-6">
+                <div class="emoji">⬇️</div>
+                <h2 class="text-2xl font-bold mb-4">前缀: sub-</h2>
+                <p class="mb-4">表示<strong>下面、次一等</strong>的意思！</p>
+                <p>这个前缀来自拉丁语，常见于表示位置在下或次要含义的单词中！</p>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">suburb <span class="text-lg font-normal">(n.)</span></h2>
+                <p class="mb-4"><strong>sub-(下面) + urb(城市)</strong> → 城市下面的区域 → <strong>郊区</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>n. 郊区，城郊</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">suburb 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"They live in the suburbs of New York."</p>
+                    <p class="mt-2">他们住在纽约郊区。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"Suburban life is quieter than city life."</p>
+                    <p class="mt-2">郊区生活比城市生活更安静。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">suggest <span class="text-lg font-normal">(v.)</span></h2>
+                <p class="mb-4"><strong>sub-(下面) + gest(携带)</strong> → 在下面携带想法 → <strong>建议</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v. 建议，提议</li>
+                    <li>v. 暗示</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">suggest 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"I suggest we go to the museum."</p>
+                    <p class="mt-2">我建议我们去博物馆。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"His tone suggested he was unhappy."</p>
+                    <p class="mt-2">他的语气暗示他不高兴。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supply <span class="text-lg font-normal">(v./n.)</span></h2>
+                <p class="mb-4"><strong>sub-(下面) + ply(填满)</strong> → 从下面填满 → <strong>供应</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v. 供应，提供</li>
+                    <li>n. 供应品，补给</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supply 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The company supplies computers to schools."</p>
+                    <p class="mt-2">这家公司向学校提供电脑。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"We need to buy office supplies."</p>
+                    <p class="mt-2">我们需要购买办公用品。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">substantial <span class="text-lg font-normal">(adj.)</span></h2>
+                <p class="mb-4"><strong>sub-(下面) + stant(站立) + -ial(形容词后缀)</strong> → 在下面站立的 → <strong>实质的；大量的</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>adj. 大量的，可观的</li>
+                    <li>adj. 实质的，真实的</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">substantial 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"She inherited a substantial amount of money."</p>
+                    <p class="mt-2">她继承了一大笔钱。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"There is substantial evidence to support his claim."</p>
+                    <p class="mt-2">有大量证据支持他的主张。</p>
+                </div>
+            </div>
+            
+            <div class="card tips-card p-6 col-span-full">
+                <h2 class="text-2xl font-bold mb-4">记忆技巧 💡</h2>
+                <p class="mb-4">把<strong>sub-</strong>想象成潜水艇🚢，表示"在下面"的意思！</p>
+                <ul class="list-disc pl-5">
+                    <li><strong>suburb</strong> - 城市下面的区域</li>
+                    <li><strong>suggest</strong> - 在下面携带想法</li>
+                    <li><strong>supply</strong> - 从下面填满</li>
+                    <li><strong>substantial</strong> - 在下面站立的，有实质的</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="super-content" class="tab-content hidden grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- super-/sur- prefix words -->
+            <div class="card prefix-card p-6">
+                <div class="emoji">🚀</div>
+                <h2 class="text-2xl font-bold mb-4">前缀: super-/sur-</h2>
+                <p class="mb-4">表示<strong>超过、超级、过度、在…之上</strong>的意思！</p>
+                <p>这个前缀来自拉丁语，常见于表示超越或在上含义的单词中！</p>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supreme <span class="text-lg font-normal">(adj.)</span></h2>
+                <p class="mb-4"><strong>super-(超过) + eme(最高级)</strong> → 超过一切的 → <strong>最高的；至上的</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>adj. 最高的，至上的</li>
+                    <li>adj. 极度的</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supreme 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The Supreme Court is the highest court in the country."</p>
+                    <p class="mt-2">最高法院是这个国家的最高法庭。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"She made a supreme effort to finish the work."</p>
+                    <p class="mt-2">她付出了极大的努力来完成这项工作。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">superior <span class="text-lg font-normal">(adj./n.)</span></h2>
+                <p class="mb-4"><strong>super-(超过) + ior(比较级后缀)</strong> → 超过其他的 → <strong>优越的；上级</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>adj. 优越的，更好的</li>
+                    <li>n. 上级，上司</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">superior 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"This wine is superior to that one."</p>
+                    <p class="mt-2">这种葡萄酒比那种好。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"He reported the problem to his superior."</p>
+                    <p class="mt-2">他向他的上级报告了这个问题。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supervise <span class="text-lg font-normal">(v.)</span></h2>
+                <p class="mb-4"><strong>super-(在...之上) + vis(看) + -e</strong> → 在上面看 → <strong>监督</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v. 监督，管理</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">supervise 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"She supervises a team of ten people."</p>
+                    <p class="mt-2">她管理着一个十人团队。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The teacher supervised the students during the exam."</p>
+                    <p class="mt-2">老师在考试期间监督学生。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">survey <span class="text-lg font-normal">(v./n.)</span></h2>
+                <p class="mb-4"><strong>sur-(在...之上) + vey(看)</strong> → 从上面看 → <strong>调查；俯瞰</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v./n. 调查</li>
+                    <li>v./n. 俯瞰，测量</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">survey 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"We conducted a survey of customer satisfaction."</p>
+                    <p class="mt-2">我们进行了一项客户满意度调查。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"From the hill, we could survey the whole town."</p>
+                    <p class="mt-2">从山上，我们可以俯瞰整个城镇。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">surface <span class="text-lg font-normal">(n./v.)</span></h2>
+                <p class="mb-4"><strong>sur-(在...之上) + face(面)</strong> → 在上面的面 → <strong>表面；浮出水面</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>n. 表面，外表</li>
+                    <li>v. 浮出水面；出现</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">surface 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The table has a smooth surface."</p>
+                    <p class="mt-2">这张桌子表面光滑。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The submarine surfaced after a long dive."</p>
+                    <p class="mt-2">潜水艇在长时间潜水后浮出水面。</p>
+                </div>
+            </div>
+            
+            <div class="card tips-card p-6 col-span-full">
+                <h2 class="text-2xl font-bold mb-4">记忆技巧 💡</h2>
+                <p class="mb-4">把<strong>super-/sur-</strong>想象成超人🦸，表示"超过、在上"的意思！</p>
+                <ul class="list-disc pl-5">
+                    <li><strong>supreme</strong> - 超人是最高的</li>
+                    <li><strong>superior</strong> - 超人比其他人优越</li>
+                    <li><strong>supervise</strong> - 超人在上面看着</li>
+                    <li><strong>survey</strong> - 超人从上面看</li>
+                    <li><strong>surface</strong> - 超人在上面的面</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="under-content" class="tab-content hidden grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- under- prefix words -->
+            <div class="card prefix-card p-6">
+                <div class="emoji">👇</div>
+                <h2 class="text-2xl font-bold mb-4">前缀: under-</h2>
+                <p class="mb-4">表示<strong>下面</strong>的意思！</p>
+                <p>这个前缀来自古英语，常见于表示位置在下或不足含义的单词中！</p>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">undertake <span class="text-lg font-normal">(v.)</span></h2>
+                <p class="mb-4"><strong>under-(下面) + take(拿)</strong> → 在下面承担 → <strong>承担；着手做</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>v. 承担，从事</li>
+                    <li>v. 承诺，保证</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">undertake 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"She undertook the responsibility of caring for her sick mother."</p>
+                    <p class="mt-2">她承担了照顾生病母亲的责任。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"The company undertook to finish the project by June."</p>
+                    <p class="mt-2">公司承诺在六月前完成这个项目。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">undergraduate <span class="text-lg font-normal">(n.)</span></h2>
+                <p class="mb-4"><strong>under-(下面) + graduate(毕业生)</strong> → 在毕业生下面的 → <strong>本科生</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>n. 大学本科生</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">undergraduate 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"He is an undergraduate at Harvard University."</p>
+                    <p class="mt-2">他是哈佛大学的本科生。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"Undergraduate students usually take four years to complete their degrees."</p>
+                    <p class="mt-2">本科生通常需要四年时间完成学位。</p>
+                </div>
+            </div>
+            
+            <div class="card word-card p-6">
+                <h2 class="text-2xl font-bold mb-4">underground <span class="text-lg font-normal">(adj./n.)</span></h2>
+                <p class="mb-4"><strong>under-(下面) + ground(地面)</strong> → 在地面下面的 → <strong>地下的；地铁</strong></p>
+                <p class="font-bold mb-2">意思：</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>adj. 地下的</li>
+                    <li>n. 地铁</li>
+                </ul>
+            </div>
+            
+            <div class="card example-card p-6">
+                <h2 class="text-2xl font-bold mb-4">underground 例句</h2>
+                <div class="mb-4 p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"There is an underground parking lot beneath the building."</p>
+                    <p class="mt-2">大楼下面有一个地下停车场。</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <p class="font-bold">"We took the underground to get to the city center."</p>
+                    <p class="mt-2">我们乘地铁去市中心。</p>
+                </div>
+            </div>
+            
+            <div class="card tips-card p-6 col-span-full">
+                <h2 class="text-2xl font-bold mb-4">记忆技巧 💡</h2>
+                <p class="mb-4">把<strong>under-</strong>想象成地下鼹鼠🐭，表示"在下面"的意思！</p>
+                <ul class="list-disc pl-5">
+                    <li><strong>undertake</strong> - 鼹鼠在地下承担工作</li>
+                    <li><strong>undergraduate</strong> - 在毕业生下面的学生</li>
+                    <li><strong>underground</strong> - 鼹鼠的地下世界</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card summary-card p-6 mt-8">
+            <h2 class="text-2xl font-bold mb-4">前缀总结 📚</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <h3 class="font-bold mb-2">se-</h3>
+                    <p>分离，分开，区别开，表否定</p>
+                    <p class="mt-2">separate, sector, severe</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <h3 class="font-bold mb-2">sub-</h3>
+                    <p>下面，次一等</p>
+                    <p class="mt-2">suburb, suggest, supply, substantial</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <h3 class="font-bold mb-2">super-/sur-</h3>
+                    <p>超过，超级，过度，在…之上</p>
+                    <p class="mt-2">supreme, superior, supervise, survey, surface</p>
+                </div>
+                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg">
+                    <h3 class="font-bold mb-2">under-</h3>
+                    <p>下面</p>
+                    <p class="mt-2">undertake, undergraduate, underground</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Set initial theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                    content.classList.remove('fade-in');
+                });
+                
+                // Show selected tab content
+                const tabId = tab.getAttribute('data-tab') + '-content';
+                const activeContent = document.getElementById(tabId);
+                activeContent.classList.remove('hidden');
+                setTimeout(() => {
+                    activeContent.classList.add('fade-in');
+                }, 10);
+            });
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

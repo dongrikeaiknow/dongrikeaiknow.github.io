@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f7fa;
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-1 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .category-2 {
+            background: linear-gradient(135deg, #c1fba4 0%, #7bf1a8 100%);
+        }
+        
+        .category-3 {
+            background: linear-gradient(135deg, #ffb7b7 0%, #ffd8d8 100%);
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid #4f46e5;
+            color: #4f46e5;
+            font-weight: 500;
+        }
+        
+        .dark .card {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+        
+        .dark .category-1 {
+            background: linear-gradient(135deg, #1a3a8f 0%, #4a148c 100%);
+        }
+        
+        .dark .category-2 {
+            background: linear-gradient(135deg, #166534 0%, #065f46 100%);
+        }
+        
+        .dark .category-3 {
+            background: linear-gradient(135deg, #991b1b 0%, #9d174d 100%);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">Vocabulary Flashcards</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </header>
+        
+        <div class="tabs flex space-x-4 mb-6 border-b border-gray-200 dark:border-gray-700">
+            <button class="tab py-2 px-4 font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400" data-category="all">All Words</button>
+            <button class="tab py-2 px-4 font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400" data-category="1">Academic Subjects</button>
+            <button class="tab py-2 px-4 font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400" data-category="2">Positive Words</button>
+            <button class="tab py-2 px-4 font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400" data-category="3">Negative Words</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-container">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-active'));
+                tab.classList.add('tab-active');
+                filterCards(tab.dataset.category);
+            });
+        });
+        
+        // Activate first tab by default
+        tabs[0].classList.add('tab-active');
+        
+        // Vocabulary data
+        const vocabulary = [
+            // Category 1: Academic Subjects
+            {
+                word: "psychological",
+                category: "1",
+                partOfSpeech: "adj.",
+                meaning: "心理学的，心理的",
+                etymology: "psycho(心理) + logy(学科) + -ical(形容词后缀) → 关于心理研究的 → 心理学的",
+                examples: [
+                    "The study examines the psychological effects of social media on teenagers. (这项研究考察了社交媒体对青少年的心理影响。)"
+                ],
+                tips: "记忆技巧：'psycho'表示'心理'，'logy'表示'学科'，合起来就是'心理学'！",
+                related: ["psychology (n. 心理学)", "psychiatrist (n. 精神病医生)", "psychoanalysis (n. 心理分析)"]
+            },
+            {
+                word: "literature",
+                category: "1",
+                partOfSpeech: "n.",
+                meaning: "文学，文学作品",
+                etymology: "litera(字母，文字) + -ture(名词后缀) → 用文字创作的作品 → 文学",
+                examples: [
+                    "She has a degree in English literature. (她拥有英国文学学位。)",
+                    "The professor specializes in 19th-century literature. (这位教授专攻19世纪文学。)"
+                ],
+                tips: "记忆技巧：'litera'与'letter(字母)'同源，文字的艺术就是文学！",
+                related: ["literary (adj. 文学的)", "literate (adj. 有文化的)", "illiterate (adj. 文盲的)"]
+            },
+            {
+                word: "physical",
+                category: "1",
+                partOfSpeech: "adj.",
+                meaning: "物理的，身体的，物质的",
+                etymology: "phys(自然) + -ical(形容词后缀) → 与自然有关的 → 物理的",
+                examples: [
+                    "Regular physical exercise is important for health. (定期体育锻炼对健康很重要。)",
+                    "The physical properties of this material are amazing. (这种材料的物理特性非常惊人。)"
+                ],
+                tips: "记忆技巧：'phys'表示'自然'，物理就是研究自然规律的学科！",
+                related: ["physics (n. 物理学)", "physician (n. 医生)", "physique (n. 体格)"]
+            },
+            {
+                word: "philosophy",
+                category: "1",
+                partOfSpeech: "n.",
+                meaning: "哲学",
+                etymology: "philo(爱) + sophy(智慧) → 对智慧的热爱 → 哲学",
+                examples: [
+                    "He studied philosophy at university. (他在大学学习哲学。)",
+                    "Her personal philosophy is to treat others with kindness. (她的人生哲学是与人为善。)"
+                ],
+                tips: "记忆技巧：'philo'=爱，'sophy'=智慧，哲学就是'爱智慧'！",
+                related: ["philosopher (n. 哲学家)", "philosophical (adj. 哲学的)"]
+            },
+            {
+                word: "policy",
+                category: "1",
+                partOfSpeech: "n.",
+                meaning: "政策，方针",
+                etymology: "polis(城市) + -cy(名词后缀) → 管理城市的方法 → 政策",
+                examples: [
+                    "The company has a strict no-smoking policy. (公司有严格的禁烟政策。)",
+                    "The government announced a new economic policy. (政府宣布了一项新的经济政策。)"
+                ],
+                tips: "记忆技巧：与'police(警察)'同源，都是关于管理的词汇！",
+                related: ["political (adj. 政治的)", "politics (n. 政治)"]
+            },
+            {
+                word: "political",
+                category: "1",
+                partOfSpeech: "adj.",
+                meaning: "政治的",
+                etymology: "polit(城市，国家) + -ical(形容词后缀) → 与国家事务有关的 → 政治的",
+                examples: [
+                    "She has strong political opinions. (她有强烈的政治观点。)",
+                    "The country is going through political changes. (这个国家正在经历政治变革。)"
+                ],
+                tips: "记忆技巧：'polit'与'policy'同源，都与国家管理相关！",
+                related: ["politics (n. 政治)", "politician (n. 政治家)"]
+            },
+            {
+                word: "statistic",
+                category: "1",
+                partOfSpeech: "n.",
+                meaning: "统计，统计数据",
+                etymology: "stat(状态) + -istic(名词后缀) → 关于状态的数字 → 统计数据",
+                examples: [
+                    "According to the latest statistics, unemployment is rising. (根据最新统计数据，失业率正在上升。)",
+                    "He quoted some interesting statistics about internet usage. (他引用了一些关于互联网使用的有趣统计数据。)"
+                ],
+                tips: "记忆技巧：'stat'表示'状态'，统计就是记录状态数据的学科！",
+                related: ["statistical (adj. 统计的)", "statistician (n. 统计学家)"]
+            },
+            
+            // Category 2: Positive Words
+            {
+                word: "optimistic",
+                category: "2",
+                partOfSpeech: "adj.",
+                meaning: "乐观的",
+                etymology: "optim(最好的) + -istic(形容词后缀) → 认为会是最好的 → 乐观的",
+                examples: [
+                    "She's optimistic about her chances of getting the job. (她对获得这份工作的机会持乐观态度。)",
+                    "Despite the difficulties, he remained optimistic. (尽管有困难，他仍然保持乐观。)"
+                ],
+                tips: "记忆技巧：'optim'与'optimal(最佳的)'同源，乐观的人总是期待最好的结果！",
+                related: ["optimism (n. 乐观主义)", "optimist (n. 乐观主义者)"]
+            },
+            {
+                word: "ease",
+                category: "2",
+                partOfSpeech: "n./v.",
+                meaning: "轻松，舒适；减轻，缓解",
+                etymology: "来自古法语'aise'，意为'舒适，机会'",
+                examples: [
+                    "She completed the task with ease. (她轻松地完成了任务。) [轻松]",
+                    "The medicine helped to ease the pain. (药物有助于缓解疼痛。) [缓解]"
+                ],
+                tips: "记忆技巧：'easy(容易的)'就是来自'ease'这个词！",
+                related: ["easy (adj. 容易的)", "easily (adv. 容易地)"]
+            },
+            {
+                word: "inspire",
+                category: "2",
+                partOfSpeech: "v.",
+                meaning: "激励，鼓舞",
+                etymology: "in-(进入) + spire(呼吸) → 注入气息 → 激励",
+                examples: [
+                    "His speech inspired the team to work harder. (他的演讲激励团队更加努力工作。)",
+                    "The beautiful scenery inspired her to write a poem. (美丽的风景激发她写了一首诗。)"
+                ],
+                tips: "记忆技巧：'spire'也表示'精神'，'inspire'就是注入精神力量！",
+                related: ["inspiration (n. 灵感)", "inspiring (adj. 鼓舞人心的)"]
+            },
+            {
+                word: "credit",
+                category: "2",
+                partOfSpeech: "n./v.",
+                meaning: "信用，学分；归功于",
+                etymology: "cred(相信) + -it(名词后缀) → 被相信的东西 → 信用",
+                examples: [
+                    "She has excellent credit. (她有极好的信用记录。) [信用]",
+                    "He was given credit for the idea. (这个想法归功于他。) [归功]"
+                ],
+                tips: "记忆技巧：'cred'表示'相信'，信用卡就是'credit card'！",
+                related: ["credible (adj. 可信的)", "incredible (adj. 难以置信的)"]
+            },
+            {
+                word: "pleasure",
+                category: "2",
+                partOfSpeech: "n.",
+                meaning: "愉快，快乐",
+                etymology: "pleas(取悦) + -ure(名词后缀) → 使人高兴的事 → 快乐",
+                examples: [
+                    "It's a pleasure to meet you. (很高兴见到你。)",
+                    "Reading gives me great pleasure. (阅读给我带来很大快乐。)"
+                ],
+                tips: "记忆技巧：与'please(请，使高兴)'同源！",
+                related: ["please (v. 使高兴)", "pleasant (adj. 令人愉快的)"]
+            },
+            {
+                word: "passion",
+                category: "2",
+                partOfSpeech: "n.",
+                meaning: "激情，热情",
+                etymology: "来自拉丁语'passio'，意为'忍受，感受'",
+                examples: [
+                    "She has a passion for music. (她对音乐充满热情。)",
+                    "They argued with great passion. (他们争论得非常激烈。)"
+                ],
+                tips: "记忆技巧：'passion fruit(百香果)'就是充满激情的果实！",
+                related: ["passionate (adj. 热情的)", "compassion (n. 同情)"]
+            },
+            
+            // Category 3: Negative Words
+            {
+                word: "passive",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "被动的，消极的",
+                etymology: "pass(忍受) + -ive(形容词后缀) → 只是忍受而不主动 → 被动的",
+                examples: [
+                    "He played a passive role in the relationship. (他在这段关系中扮演被动角色。)",
+                    "The drug has a passive effect on the disease. (这种药对这种疾病有消极作用。)"
+                ],
+                tips: "记忆技巧：与'passion'同源，但表示相反的状态！",
+                related: ["passivity (n. 被动性)", "passivize (v. 使被动化)"]
+            },
+            {
+                word: "harsh",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "严厉的，严酷的",
+                etymology: "可能来自古英语'harsk'，意为'粗糙的'",
+                examples: [
+                    "The punishment seemed too harsh for the crime. (对于这个罪行，惩罚似乎太严厉了。)",
+                    "The desert has a harsh climate. (沙漠气候严酷。)"
+                ],
+                tips: "记忆技巧：'harsh'听起来像'呵斥'，表示严厉的责备！",
+                related: ["harshness (n. 严酷)", "harshly (adv. 严厉地)"]
+            },
+            {
+                word: "frustrate",
+                category: "3",
+                partOfSpeech: "v.",
+                meaning: "使沮丧，挫败",
+                etymology: "frustr(徒劳的) + -ate(动词后缀) → 使徒劳 → 挫败",
+                examples: [
+                    "The difficult problem frustrated the students. (这个难题让学生们感到沮丧。)",
+                    "Bad weather frustrated our plans. (恶劣天气挫败了我们的计划。)"
+                ],
+                tips: "记忆技巧：'frustrate'与'frost(冰冻)'联想，心情被冰冻了！",
+                related: ["frustration (n. 挫折)", "frustrating (adj. 令人沮丧的)"]
+            },
+            {
+                word: "anxiety",
+                category: "3",
+                partOfSpeech: "n.",
+                meaning: "焦虑，担心",
+                etymology: "anx(狭窄的) + -iety(名词后缀) → 感到受限制 → 焦虑",
+                examples: [
+                    "She felt anxiety about the upcoming exam. (她对即将到来的考试感到焦虑。)",
+                    "The news caused widespread anxiety. (这个消息引起了普遍的担忧。)"
+                ],
+                tips: "记忆技巧：'anxiety'与'angry(生气的)'有相似之处，都是负面情绪！",
+                related: ["anxious (adj. 焦虑的)", "anxiously (adv. 焦虑地)"]
+            },
+            {
+                word: "impatient",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "不耐烦的",
+                etymology: "im-(不) + patient(耐心的) → 不耐烦的",
+                examples: [
+                    "He became impatient with the slow service. (他对缓慢的服务变得不耐烦。)",
+                    "Don't be so impatient - good things take time. (别这么不耐烦——好事多磨。)"
+                ],
+                tips: "记忆技巧：就是'patient(耐心的)'加否定前缀'im-'！",
+                related: ["impatience (n. 不耐烦)", "patiently (adv. 耐心地)"]
+            },
+            {
+                word: "miserable",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "痛苦的，悲惨的",
+                etymology: "miser(可怜的) + -able(形容词后缀) → 可怜的 → 悲惨的",
+                examples: [
+                    "The refugees were living in miserable conditions. (难民们生活在悲惨的条件下。)",
+                    "She felt miserable after losing her job. (失去工作后她感到痛苦。)"
+                ],
+                tips: "记忆技巧：'miser'就是'守财奴'，守财奴的生活是悲惨的！",
+                related: ["misery (n. 痛苦)", "miserably (adv. 悲惨地)"]
+            },
+            {
+                word: "negative",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "消极的，否定的",
+                etymology: "neg(否定) + -ative(形容词后缀) → 否定的",
+                examples: [
+                    "He has a negative attitude towards everything. (他对一切都有消极态度。)",
+                    "The test results came back negative. (检测结果是阴性的。)"
+                ],
+                tips: "记忆技巧：'neg'表示'否定'，如'neglect(忽视)'也是否定！",
+                related: ["negativity (n. 消极性)", "negate (v. 否定)"]
+            },
+            {
+                word: "pessimistic",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "悲观的",
+                etymology: "pessim(最坏的) + -istic(形容词后缀) → 认为会是最坏的 → 悲观的",
+                examples: [
+                    "She's pessimistic about the chances of peace. (她对和平的可能性持悲观态度。)",
+                    "His pessimistic outlook depressed everyone. (他悲观的观点让每个人都沮丧。)"
+                ],
+                tips: "记忆技巧：与'optimistic(乐观的)'是反义词！",
+                related: ["pessimism (n. 悲观主义)", "pessimist (n. 悲观主义者)"]
+            },
+            {
+                word: "panic",
+                category: "3",
+                partOfSpeech: "n./v.",
+                meaning: "恐慌，惊慌",
+                etymology: "来自希腊神话中的牧神Pan，据说他会突然出现引起恐慌",
+                examples: [
+                    "There was panic when the fire started. (火灾发生时出现了恐慌。) [n.]",
+                    "Don't panic - we'll find a solution. (别惊慌——我们会找到解决办法。) [v.]"
+                ],
+                tips: "记忆技巧：'panic'听起来像'怕你克'，表示极度恐惧！",
+                related: ["panicky (adj. 恐慌的)", "panicked (adj. 惊慌的)"]
+            },
+            {
+                word: "guilty",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "有罪的，内疚的",
+                etymology: "guilt(罪) + -y(形容词后缀) → 有罪的",
+                examples: [
+                    "The jury found him guilty. (陪审团裁定他有罪。)",
+                    "I feel guilty about forgetting her birthday. (我因忘记她的生日而感到内疚。)"
+                ],
+                tips: "记忆技巧：'guilt'就是'罪'，加'-y'变成形容词！",
+                related: ["guilt (n. 罪行)", "guiltily (adv. 内疚地)"]
+            },
+            {
+                word: "upset",
+                category: "3",
+                partOfSpeech: "adj./v.",
+                meaning: "心烦的；使心烦",
+                etymology: "up-(向上) + set(放置) → 把正常状态打乱 → 使心烦",
+                examples: [
+                    "She was upset by the bad news. (她被这个坏消息弄得心烦意乱。) [adj.]",
+                    "The loss upset the team. (失败使团队心烦意乱。) [v.]"
+                ],
+                tips: "记忆技巧：'upset'字面意思是'向上放'，把心情弄乱了！",
+                related: ["upsetting (adj. 令人心烦的)"]
+            },
+            {
+                word: "awful",
+                category: "3",
+                partOfSpeech: "adj.",
+                meaning: "糟糕的，可怕的",
+                etymology: "awe(敬畏) + -ful(充满的) → 原本指'充满敬畏的'，后转为'可怕的'",
+                examples: [
+                    "The weather was awful yesterday. (昨天的天气糟透了。)",
+                    "I had an awful headache. (我头痛得厉害。)"
+                ],
+                tips: "记忆技巧：'awful'就是'awe(敬畏)'加'-ful'，表示程度很深！",
+                related: ["awe (n. 敬畏)", "awfully (adv. 非常)"]
+            }
+        ];
+        
+        // Create cards
+        function createCards(words) {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = '';
+            
+            words.forEach((word, index) => {
+                const card = document.createElement('div');
+                card.className = `card p-6 fade-in category-${word.category} bg-white dark:bg-gray-800`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">${word.word}</h2>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium ${word.category === '1' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : word.category === '2' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'}">${word.partOfSpeech}</span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">意思:</span> ${word.meaning}</p>
+                    </div>
+                    
+                    <div class="mb-4 bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="text-sm text-gray-600 dark:text-gray-300"><span class="font-semibold">词源解析:</span> ${word.etymology}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="font-semibold text-gray-700 dark:text-gray-300">例句:</p>
+                        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-400 space-y-1">
+                            ${word.examples.map(example => `<li>${example}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4 bg-yellow-50 dark:bg-yellow-900 p-3 rounded-lg">
+                        <p class="text-sm text-gray-700 dark:text-gray-300"><span class="font-semibold">记忆技巧:</span> ${word.tips}</p>
+                    </div>
+                    
+                    ${word.related ? `
+                    <div class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">相关词汇:</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">${word.related.join(', ')}</p>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="mt-4 flex justify-end">
+                        <span class="text-3xl">${word.category === '1' ? '📚' : word.category === '2' ? '😊' : '😞'}</span>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Filter cards by category
+        function filterCards(category) {
+            if (category === 'all') {
+                createCards(vocabulary);
+            } else {
+                const filtered = vocabulary.filter(word => word.category === category);
+                createCards(filtered);
+            }
+        }
+        
+        // Initialize with all cards
+        createCards(vocabulary);
+    </script>
+</body>
+</html>

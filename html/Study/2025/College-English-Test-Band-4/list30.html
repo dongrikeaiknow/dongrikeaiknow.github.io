@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List30 Vocabulary Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .negative-card {
+            background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+        }
+        
+        .compound-card {
+            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+        }
+        
+        .dark .negative-card {
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+        }
+        
+        .dark .compound-card {
+            background: linear-gradient(135deg, #388e3c 0%, #1b5e20 100%);
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid;
+            font-weight: bold;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        
+        .dark .card {
+            background-color: #2d3748;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-indigo-700 dark:text-indigo-300 mb-4">List30 Vocabulary Cards</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">Learn English words with roots, examples, and memory techniques!</p>
+        </header>
+        
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex rounded-lg border border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 overflow-hidden">
+                <button id="tab-negative" class="px-6 py-2 text-sm font-medium tab-active text-pink-600 dark:text-pink-300 bg-white dark:bg-gray-800" onclick="showTab('negative')">
+                    Negative Words
+                </button>
+                <button id="tab-compound" class="px-6 py-2 text-sm font-medium text-green-600 dark:text-green-300" onclick="showTab('compound')">
+                    Compound Words
+                </button>
+            </div>
+        </div>
+        
+        <div id="negative-words" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
+            <!-- Negative connotation words cards will be inserted here by JavaScript -->
+        </div>
+        
+        <div id="compound-words" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden fade-in">
+            <!-- Compound words cards will be inserted here by JavaScript -->
+        </div>
+        
+        <div id="related-words" class="mt-12 hidden">
+            <h2 class="text-2xl font-bold text-center mb-6 text-indigo-700 dark:text-indigo-300">Related Words Summary</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Related words cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vocabulary data
+        const vocabularyData = {
+            negative: [
+                {
+                    word: "idle",
+                    pos: "adjective",
+                    meaning: "懒惰的；闲置的",
+                    roots: "来自古英语 'īdel'，意为'空的，无价值的'",
+                    derivation: "原意'空的' → 无事可做 → 懒惰的",
+                    examples: [
+                        {
+                            sentence: "The workers were idle during the strike.",
+                            meaning: "工人们在罢工期间无所事事。"
+                        },
+                        {
+                            sentence: "Don't leave your computer idle for too long.",
+                            meaning: "不要让电脑闲置太久。"
+                        }
+                    ],
+                    tips: "记忆技巧：想象一个人坐在空(idle谐音'艾兜')椅子上什么都不做，就是懒惰的。",
+                    related: ["lazy", "inactive", "unoccupied"]
+                },
+                {
+                    word: "violence",
+                    pos: "noun",
+                    meaning: "暴力",
+                    roots: "来自拉丁语 'violentia'（激烈，暴力），源自 'violare'（侵犯）",
+                    derivation: "violare（侵犯） + -ence（名词后缀） → 暴力",
+                    examples: [
+                        {
+                            sentence: "The movie contains scenes of graphic violence.",
+                            meaning: "这部电影包含生动的暴力场景。"
+                        },
+                        {
+                            sentence: "We must find ways to reduce violence in our community.",
+                            meaning: "我们必须找到减少社区暴力的方法。"
+                        }
+                    ],
+                    tips: "记忆技巧：'vio-'音似'威哦'，想到'威胁'，'-lence'音似'冷死'，想到冷酷的行为 → 暴力",
+                    related: ["aggression", "force", "brutality"]
+                },
+                {
+                    word: "blame",
+                    pos: "verb/noun",
+                    meaning: "责备；责任",
+                    roots: "来自古法语 'blasmer'（责备），源自教会拉丁语 'blasphemare'（亵渎）",
+                    derivation: "blasme（古法语责备） → blame（现代英语责备）",
+                    examples: [
+                        {
+                            sentence: "Don't blame others for your mistakes.",
+                            meaning: "不要为自己的错误责备他人。"
+                        },
+                        {
+                            sentence: "The report placed the blame squarely on the management.",
+                            meaning: "报告明确将责任归咎于管理层。"
+                        }
+                    ],
+                    tips: "记忆技巧：'bla'音似'不啦'，'me'是'我'，'不啦是我的错' → 责备",
+                    related: ["accuse", "criticize", "fault"]
+                },
+                {
+                    word: "threat",
+                    pos: "noun",
+                    meaning: "威胁",
+                    roots: "来自古英语 'þreat'（压迫，威胁），与古诺尔斯语 'þraut'（困难）相关",
+                    derivation: "þreat（古英语压迫） → threat（现代英语威胁）",
+                    examples: [
+                        {
+                            sentence: "He received death threats after the article was published.",
+                            meaning: "文章发表后，他收到了死亡威胁。"
+                        },
+                        {
+                            sentence: "Climate change poses a serious threat to our planet.",
+                            meaning: "气候变化对我们的星球构成严重威胁。"
+                        }
+                    ],
+                    tips: "记忆技巧：'threat'音似'死拽他'，想到'死拽着他不放' → 威胁",
+                    related: ["danger", "menace", "intimidation"]
+                },
+                {
+                    word: "vulnerable",
+                    pos: "adjective",
+                    meaning: "易受伤害的；脆弱的",
+                    roots: "来自拉丁语 'vulnerare'（伤害），源自 'vulnus'（伤口） + -able（能够）",
+                    derivation: "vulnus（伤口） + -able（能够） → 能够受伤的 → 脆弱的",
+                    examples: [
+                        {
+                            sentence: "Children are particularly vulnerable to this disease.",
+                            meaning: "儿童特别容易感染这种疾病。"
+                        },
+                        {
+                            sentence: "The team's defense looked vulnerable in the second half.",
+                            meaning: "球队的防守在下半场看起来很脆弱。"
+                        }
+                    ],
+                    tips: "记忆技巧：'vul'音似'哇哦'，'ner'音似'呢'，'able'是'能够'，'哇哦呢能够受伤' → 脆弱的",
+                    related: ["sensitive", "exposed", "defenseless"]
+                }
+            ],
+            compound: [
+                {
+                    word: "widespread",
+                    pos: "adjective",
+                    meaning: "广泛的；普遍的",
+                    roots: "wide（宽的） + spread（传播）",
+                    derivation: "广泛传播的 → 普遍的",
+                    examples: [
+                        {
+                            sentence: "There is widespread support for the new policy.",
+                            meaning: "新政策得到了广泛支持。"
+                        },
+                        {
+                            sentence: "The disease has become widespread in the region.",
+                            meaning: "这种疾病在该地区已经变得很普遍。"
+                        }
+                    ],
+                    tips: "记忆技巧：直接拆分'wide(宽)'+'spread(传播)'→广泛传播的",
+                    related: ["extensive", "prevalent", "universal"]
+                },
+                {
+                    word: "worldwide",
+                    pos: "adjective/adverb",
+                    meaning: "全世界的(地)",
+                    roots: "world（世界） + wide（宽的）",
+                    derivation: "整个世界范围的 → 全世界的",
+                    examples: [
+                        {
+                            sentence: "The company has a worldwide reputation for quality.",
+                            meaning: "这家公司以质量闻名全球。"
+                        },
+                        {
+                            sentence: "The song became popular worldwide.",
+                            meaning: "这首歌在全世界流行起来。"
+                        }
+                    ],
+                    tips: "记忆技巧：'world(世界)'+'wide(宽的)'→全世界的",
+                    related: ["global", "international", "universal"]
+                },
+                {
+                    word: "airline",
+                    pos: "noun",
+                    meaning: "航空公司；航线",
+                    roots: "air（空气） + line（线）",
+                    derivation: "空中线路 → 航空公司",
+                    examples: [
+                        {
+                            sentence: "I always fly with this airline because of their good service.",
+                            meaning: "我总是乘坐这家航空公司的航班，因为他们的服务很好。"
+                        },
+                        {
+                            sentence: "The airline added three new routes this year.",
+                            meaning: "这家航空公司今年新增了三条航线。"
+                        }
+                    ],
+                    tips: "记忆技巧：'air(空中)'+'line(线路)'→航空公司",
+                    related: ["airway", "carrier", "aviation"]
+                },
+                {
+                    word: "outcome",
+                    pos: "noun",
+                    meaning: "结果；成果",
+                    roots: "out（出来） + come（来）",
+                    derivation: "出来的东西 → 结果",
+                    examples: [
+                        {
+                            sentence: "We are waiting to see the outcome of the negotiations.",
+                            meaning: "我们正在等待谈判的结果。"
+                        },
+                        {
+                            sentence: "The outcome of the experiment was surprising.",
+                            meaning: "实验的结果令人惊讶。"
+                        }
+                    ],
+                    tips: "记忆技巧：'out(出来)'+'come(来)'→出来的东西就是结果",
+                    related: ["result", "consequence", "effect"]
+                },
+                {
+                    word: "household",
+                    pos: "noun/adjective",
+                    meaning: "家庭；家喻户晓的",
+                    roots: "house（房子） + hold（持有）",
+                    derivation: "持有一个房子的人 → 家庭",
+                    examples: [
+                        {
+                            sentence: "The average household size has decreased in recent years.",
+                            meaning: "近年来平均家庭规模缩小了。"
+                        },
+                        {
+                            sentence: "This brand has become a household name.",
+                            meaning: "这个品牌已经家喻户晓。"
+                        }
+                    ],
+                    tips: "记忆技巧：'house(房子)'+'hold(持有)'→持有一个房子就是家庭",
+                    related: ["family", "domestic", "home"]
+                },
+                {
+                    word: "highlight",
+                    pos: "noun/verb",
+                    meaning: "亮点；强调",
+                    roots: "high（高） + light（光）",
+                    derivation: "用高光照射 → 突出显示",
+                    examples: [
+                        {
+                            sentence: "The highlight of our trip was visiting the Great Wall.",
+                            meaning: "我们旅行的亮点是参观长城。"
+                        },
+                        {
+                            sentence: "Please highlight the important points in the text.",
+                            meaning: "请在文本中突出显示重点。"
+                        }
+                    ],
+                    tips: "记忆技巧：'high(高)'+'light(光)'→用高光照射就是突出显示",
+                    related: ["emphasize", "accentuate", "spotlight"]
+                },
+                {
+                    word: "feedback",
+                    pos: "noun",
+                    meaning: "反馈；意见",
+                    roots: "feed（喂养） + back（回）",
+                    derivation: "把信息喂回去 → 反馈",
+                    examples: [
+                        {
+                            sentence: "We welcome feedback from our customers.",
+                            meaning: "我们欢迎客户的反馈意见。"
+                        },
+                        {
+                            sentence: "The teacher gave me some useful feedback on my essay.",
+                            meaning: "老师对我的文章给出了一些有用的反馈。"
+                        }
+                    ],
+                    tips: "记忆技巧：'feed(喂养)'+'back(回)'→把信息喂回去就是反馈",
+                    related: ["response", "comment", "evaluation"]
+                },
+                {
+                    word: "network",
+                    pos: "noun/verb",
+                    meaning: "网络；建立联系",
+                    roots: "net（网） + work（工作）",
+                    derivation: "网状工作系统 → 网络",
+                    examples: [
+                        {
+                            sentence: "The company has a nationwide network of distributors.",
+                            meaning: "该公司拥有全国性的分销商网络。"
+                        },
+                        {
+                            sentence: "It's important to network with people in your industry.",
+                            meaning: "与行业内的人建立联系很重要。"
+                        }
+                    ],
+                    tips: "记忆技巧：'net(网)'+'work(工作)'→网络",
+                    related: ["web", "system", "connect"]
+                },
+                {
+                    word: "update",
+                    pos: "verb/noun",
+                    meaning: "更新；最新信息",
+                    roots: "up（向上） + date（日期）",
+                    derivation: "把日期向上提 → 更新",
+                    examples: [
+                        {
+                            sentence: "I need to update my software to the latest version.",
+                            meaning: "我需要将软件更新到最新版本。"
+                        },
+                        {
+                            sentence: "Here's an update on the current situation.",
+                            meaning: "这是关于当前情况的最新信息。"
+                        }
+                    ],
+                    tips: "记忆技巧：'up(向上)'+'date(日期)'→把日期向上提就是更新",
+                    related: ["upgrade", "refresh", "modernize"]
+                },
+                {
+                    word: "workforce",
+                    pos: "noun",
+                    meaning: "劳动力；全体员工",
+                    roots: "work（工作） + force（力量）",
+                    derivation: "工作力量 → 劳动力",
+                    examples: [
+                        {
+                            sentence: "The company has a workforce of over 10,000 employees.",
+                            meaning: "该公司拥有超过1万名员工。"
+                        },
+                        {
+                            sentence: "Educating the workforce is essential for economic growth.",
+                            meaning: "对劳动力进行教育对经济增长至关重要。"
+                        }
+                    ],
+                    tips: "记忆技巧：'work(工作)'+'force(力量)'→工作力量就是劳动力",
+                    related: ["labor", "staff", "personnel"]
+                },
+                {
+                    word: "throughout",
+                    pos: "preposition/adverb",
+                    meaning: "遍及；自始至终",
+                    roots: "through（通过） + out（出）",
+                    derivation: "通过并超出 → 遍及",
+                    examples: [
+                        {
+                            sentence: "The disease spread throughout the country.",
+                            meaning: "这种疾病蔓延到全国。"
+                        },
+                        {
+                            sentence: "She remained calm throughout the crisis.",
+                            meaning: "在整个危机期间，她始终保持冷静。"
+                        }
+                    ],
+                    tips: "记忆技巧：'through(通过)'+'out(出)'→通过并超出就是遍及",
+                    related: ["all over", "during", "everywhere"]
+                },
+                {
+                    word: "within",
+                    pos: "preposition/adverb",
+                    meaning: "在...之内",
+                    roots: "with（与） + in（内）",
+                    derivation: "与内部在一起 → 在...之内",
+                    examples: [
+                        {
+                            sentence: "Please complete the task within two hours.",
+                            meaning: "请在两小时内完成任务。"
+                        },
+                        {
+                            sentence: "The answer lies within yourself.",
+                            meaning: "答案就在你自己心中。"
+                        }
+                    ],
+                    tips: "记忆技巧：'with(与)'+'in(内)'→与内部在一起就是在...之内",
+                    related: ["inside", "inner", "interior"]
+                },
+                {
+                    word: "breakthrough",
+                    pos: "noun",
+                    meaning: "突破；重大进展",
+                    roots: "break（打破） + through（通过）",
+                    derivation: "打破并通过 → 突破",
+                    examples: [
+                        {
+                            sentence: "Scientists have made a major breakthrough in cancer research.",
+                            meaning: "科学家在癌症研究方面取得了重大突破。"
+                        },
+                        {
+                            sentence: "This invention represents a real technological breakthrough.",
+                            meaning: "这项发明代表了一项真正的技术突破。"
+                        }
+                    ],
+                    tips: "记忆技巧：'break(打破)'+'through(通过)'→打破并通过就是突破",
+                    related: ["advance", "discovery", "innovation"]
+                },
+                {
+                    word: "meanwhile",
+                    pos: "adverb/noun",
+                    meaning: "与此同时",
+                    roots: "mean（中间的） + while（时间）",
+                    derivation: "中间的时间 → 与此同时",
+                    examples: [
+                        {
+                            sentence: "I'll prepare dinner. Meanwhile, you can set the table.",
+                            meaning: "我来准备晚餐。与此同时，你可以摆桌子。"
+                        },
+                        {
+                            sentence: "The main event starts at 8. In the meanwhile, we can have some drinks.",
+                            meaning: "主要活动8点开始。在此期间，我们可以喝点东西。"
+                        }
+                    ],
+                    tips: "记忆技巧：'mean(中间的)'+'while(时间)'→中间的时间就是与此同时",
+                    related: ["meantime", "simultaneously", "concurrently"]
+                },
+                {
+                    word: "outstanding",
+                    pos: "adjective",
+                    meaning: "杰出的；未解决的",
+                    roots: "out（出） + stand（站） + -ing（形容词后缀）",
+                    derivation: "站出来 → 突出的 → 杰出的",
+                    examples: [
+                        {
+                            sentence: "She did an outstanding job on the project.",
+                            meaning: "她在这个项目上做得非常出色。"
+                        },
+                        {
+                            sentence: "There are still a few outstanding issues to resolve.",
+                            meaning: "还有一些未解决的问题需要解决。"
+                        }
+                    ],
+                    tips: "记忆技巧：'out(出)'+'stand(站)'+'ing'→站出来就是杰出的",
+                    related: ["excellent", "unresolved", "remarkable"]
+                },
+                {
+                    word: "landscape",
+                    pos: "noun/verb",
+                    meaning: "风景；美化",
+                    roots: "land（土地） + scape（景象）",
+                    derivation: "土地景象 → 风景",
+                    examples: [
+                        {
+                            sentence: "The mountain landscape was breathtaking.",
+                            meaning: "山景令人叹为观止。"
+                        },
+                        {
+                            sentence: "We hired a company to landscape our garden.",
+                            meaning: "我们雇了一家公司来美化我们的花园。"
+                        }
+                    ],
+                    tips: "记忆技巧：'land(土地)'+'scape(景象)'→土地景象就是风景",
+                    related: ["scenery", "terrain", "view"]
+                },
+                {
+                    word: "copyright",
+                    pos: "noun/verb",
+                    meaning: "版权",
+                    roots: "copy（复制） + right（权利）",
+                    derivation: "复制的权利 → 版权",
+                    examples: [
+                        {
+                            sentence: "The book is protected by copyright.",
+                            meaning: "这本书受版权保护。"
+                        },
+                        {
+                            sentence: "Make sure you copyright your work before publishing it.",
+                            meaning: "在发表作品前确保你拥有版权。"
+                        }
+                    ],
+                    tips: "记忆技巧：'copy(复制)'+'right(权利)'→复制的权利就是版权",
+                    related: ["patent", "trademark", "intellectual property"]
+                },
+                {
+                    word: "microwave",
+                    pos: "noun/verb",
+                    meaning: "微波；微波炉",
+                    roots: "micro（微小） + wave（波）",
+                    derivation: "微小波 → 微波",
+                    examples: [
+                        {
+                            sentence: "Heat the soup in the microwave for two minutes.",
+                            meaning: "把汤放在微波炉里加热两分钟。"
+                        },
+                        {
+                            sentence: "Microwave technology is used in many applications.",
+                            meaning: "微波技术被用于许多应用中。"
+                        }
+                    ],
+                    tips: "记忆技巧：'micro(微小)'+'wave(波)'→微小波就是微波",
+                    related: ["oven", "radiation", "electromagnetic"]
+                },
+                {
+                    word: "wildlife",
+                    pos: "noun",
+                    meaning: "野生动物",
+                    roots: "wild（野生的） + life（生命）",
+                    derivation: "野生的生命 → 野生动物",
+                    examples: [
+                        {
+                            sentence: "The national park is home to diverse wildlife.",
+                            meaning: "国家公园是多种野生动物的家园。"
+                        },
+                        {
+                            sentence: "We must protect wildlife habitats.",
+                            meaning: "我们必须保护野生动物栖息地。"
+                        }
+                    ],
+                    tips: "记忆技巧：'wild(野生的)'+'life(生命)'→野生的生命就是野生动物",
+                    related: ["animals", "fauna", "creatures"]
+                },
+                {
+                    word: "therefore",
+                    pos: "adverb",
+                    meaning: "因此；所以",
+                    roots: "there（那里） + fore（前面）",
+                    derivation: "在那前面 → 因此",
+                    examples: [
+                        {
+                            sentence: "He didn't study, therefore he failed the exam.",
+                            meaning: "他没有学习，因此考试不及格。"
+                        },
+                        {
+                            sentence: "The item is rare and therefore expensive.",
+                            meaning: "这件物品很稀有，因此很昂贵。"
+                        }
+                    ],
+                    tips: "记忆技巧：'there(那里)'+'fore(前面)'→在那前面就是因此",
+                    related: ["thus", "consequently", "hence"]
+                },
+                {
+                    word: "foresight",
+                    pos: "noun",
+                    meaning: "远见；先见之明",
+                    roots: "fore（前面） + sight（看见）",
+                    derivation: "在前面看见 → 远见",
+                    examples: [
+                        {
+                            sentence: "With great foresight, she invested in the company early.",
+                            meaning: "凭借远见卓识，她很早就投资了这家公司。"
+                        },
+                        {
+                            sentence: "The plan shows a lack of foresight.",
+                            meaning: "这个计划显示出缺乏远见。"
+                        }
+                    ],
+                    tips: "记忆技巧：'fore(前面)'+'sight(看见)'→在前面看见就是远见",
+                    related: ["vision", "anticipation", "prudence"]
+                },
+                {
+                    word: "extraordinary",
+                    pos: "adjective",
+                    meaning: "非凡的；特别的",
+                    roots: "extra（超出） + ordinary（普通的）",
+                    derivation: "超出普通的 → 非凡的",
+                    examples: [
+                        {
+                            sentence: "She showed extraordinary courage in the face of danger.",
+                            meaning: "她在危险面前表现出非凡的勇气。"
+                        },
+                        {
+                            sentence: "The team achieved extraordinary results this year.",
+                            meaning: "团队今年取得了非凡的成绩。"
+                        }
+                    ],
+                    tips: "记忆技巧：'extra(超出)'+'ordinary(普通的)'→超出普通的就是非凡的",
+                    related: ["remarkable", "exceptional", "unusual"]
+                }
+            ]
+        };
+
+        // Function to create vocabulary cards
+        function createVocabularyCards() {
+            const negativeContainer = document.getElementById('negative-words');
+            const compoundContainer = document.getElementById('compound-words');
+            
+            // Create negative words cards
+            vocabularyData.negative.forEach(word => {
+                const card = createCard(word, 'negative');
+                negativeContainer.appendChild(card);
+            });
+            
+            // Create compound words cards
+            vocabularyData.compound.forEach(word => {
+                const card = createCard(word, 'compound');
+                compoundContainer.appendChild(card);
+            });
+        }
+        
+        // Function to create a single card
+        function createCard(wordData, type) {
+            const card = document.createElement('div');
+            card.className = `card p-6 ${type}-card shadow-lg`;
+            
+            // Word and POS
+            const wordHeader = document.createElement('div');
+            wordHeader.className = 'flex justify-between items-center mb-4';
+            wordHeader.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white">${wordData.word}</h2>
+                <span class="px-3 py-1 rounded-full text-sm font-semibold bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200">${wordData.pos}</span>
+            `;
+            card.appendChild(wordHeader);
+            
+            // Meaning
+            const meaningDiv = document.createElement('div');
+            meaningDiv.className = 'mb-4';
+            meaningDiv.innerHTML = `
+                <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">意思:</span> ${wordData.meaning}</p>
+            `;
+            card.appendChild(meaningDiv);
+            
+            // Roots and derivation
+            const rootsDiv = document.createElement('div');
+            rootsDiv.className = 'mb-4 bg-white dark:bg-gray-700 p-3 rounded-lg';
+            rootsDiv.innerHTML = `
+                <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold">词根词缀:</span> ${wordData.roots}</p>
+                <p class="text-gray-700 dark:text-gray-300 mt-2"><span class="font-semibold">词义推导:</span> ${wordData.derivation}</p>
+            `;
+            card.appendChild(rootsDiv);
+            
+            // Examples
+            const examplesDiv = document.createElement('div');
+            examplesDiv.className = 'mb-4';
+            examplesDiv.innerHTML = `<p class="font-semibold mb-2 text-gray-800 dark:text-white">例句:</p>`;
+            
+            wordData.examples.forEach((example, index) => {
+                const exampleDiv = document.createElement('div');
+                exampleDiv.className = 'mb-2 bg-white dark:bg-gray-700 p-3 rounded-lg';
+                exampleDiv.innerHTML = `
+                    <p class="text-gray-700 dark:text-gray-300 italic">"${example.sentence}"</p>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1">${example.meaning}</p>
+                `;
+                examplesDiv.appendChild(exampleDiv);
+            });
+            
+            card.appendChild(examplesDiv);
+            
+            // Tips
+            const tipsDiv = document.createElement('div');
+            tipsDiv.className = 'mb-4 bg-yellow-50 dark:bg-yellow-900 p-3 rounded-lg';
+            tipsDiv.innerHTML = `
+                <p class="font-semibold text-gray-800 dark:text-white">记忆技巧:</p>
+                <p class="text-gray-700 dark:text-gray-300">${wordData.tips}</p>
+            `;
+            card.appendChild(tipsDiv);
+            
+            // Related words (clickable)
+            if (wordData.related && wordData.related.length > 0) {
+                const relatedDiv = document.createElement('div');
+                relatedDiv.className = 'mt-4';
+                relatedDiv.innerHTML = `
+                    <p class="text-sm text-gray-600 dark:text-gray-400"><span class="font-semibold">相关词汇:</span> ${wordData.related.join(', ')}</p>
+                `;
+                card.appendChild(relatedDiv);
+            }
+            
+            // Emoji decoration
+            const emojiDiv = document.createElement('div');
+            emojiDiv.className = 'text-center mt-4 text-2xl';
+            const emojis = ['🧠', '📚', '💡', '🎓', '🤔', '✏️'];
+            emojiDiv.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            card.appendChild(emojiDiv);
+            
+            return card;
+        }
+        
+        // Function to show/hide tabs
+        function showTab(tabName) {
+            const negativeTab = document.getElementById('tab-negative');
+            const compoundTab = document.getElementById('tab-compound');
+            const negativeDiv = document.getElementById('negative-words');
+            const compoundDiv = document.getElementById('compound-words');
+            
+            if (tabName === 'negative') {
+                negativeTab.classList.add('tab-active');
+                compoundTab.classList.remove('tab-active');
+                negativeDiv.classList.remove('hidden');
+                compoundDiv.classList.add('hidden');
+            } else {
+                negativeTab.classList.remove('tab-active');
+                compoundTab.classList.add('tab-active');
+                negativeDiv.classList.add('hidden');
+                compoundDiv.classList.remove('hidden');
+            }
+        }
+        
+        // Dark/light mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+        }
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark');
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createVocabularyCards();
+            
+            // Add dark mode toggle button
+            const header = document.querySelector('header');
+            const darkModeButton = document.createElement('button');
+            darkModeButton.className = 'absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-600';
+            darkModeButton.innerHTML = '<i class="fas fa-moon dark:fa-sun"></i>';
+            darkModeButton.onclick = toggleDarkMode;
+            header.appendChild(darkModeButton);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Cards - List27</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .age-card {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+        
+        .al-card {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .tab-button.active {
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700 dark:text-indigo-300">Vocabulary Cards - List27</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+        
+        <div class="flex space-x-2 mb-8 overflow-x-auto pb-2">
+            <button class="tab-button active px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-200" data-tab="all">全部单词</button>
+            <button class="tab-button px-4 py-2 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200" data-tab="age">含-age的单词</button>
+            <button class="tab-button px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200" data-tab="al">含-al的单词</button>
+        </div>
+        
+        <div id="age-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- shortage -->
+            <div class="card age-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">shortage <span class="text-sm font-normal">/ˈʃɔːrtɪdʒ/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">名词 - 短缺，不足</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>short(短的) + -age(名词后缀，表示状态) → 短缺的状态 → 短缺</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>There is a shortage of water in this area. (这个地区水资源短缺。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>short(短) + age → 东西"短少"的状态就是"短缺"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">storage(存储), advantage(优势), damage(损害)</p>
+                    </div>
+                    <div class="emoji">😰</div>
+                </div>
+            </div>
+            
+            <!-- average -->
+            <div class="card age-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">average <span class="text-sm font-normal">/ˈævərɪdʒ/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 平均的；平均数</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>aver(来自古法语，意为"财产损失") + -age(名词后缀) → 最初指海损分担 → 后来引申为"平均数"</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>The average temperature in July is 30°C. (七月份的平均气温是30度。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>ave(音似"爱抚") + rage(愤怒) → 爱抚和愤怒的"平均"状态就是平静！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">coverage(覆盖), leverage(杠杆作用), percentage(百分比)</p>
+                    </div>
+                    <div class="emoji">🧮</div>
+                </div>
+            </div>
+            
+            <!-- heritage -->
+            <div class="card age-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">heritage <span class="text-sm font-normal">/ˈherɪtɪdʒ/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">名词 - 遗产，传统</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>herit(继承) + -age(名词后缀) → 继承的东西 → 遗产</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This ancient temple is part of our cultural heritage. (这座古庙是我们文化遗产的一部分。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>herit(继承) + age → 继承下来的东西就是"遗产"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">inherit(继承), heir(继承人), hereditary(遗传的)</p>
+                    </div>
+                    <div class="emoji">🏛️</div>
+                </div>
+            </div>
+            
+            <!-- eager -->
+            <div class="card age-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">eager <span class="text-sm font-normal">/ˈiːɡər/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 热切的，渴望的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>来自古法语aigre(尖锐的，急切的)，与-age无关，但拼写相似</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>The children were eager to open their presents. (孩子们迫不及待地想打开礼物。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>eager(音似"一个") → "一个"机会都不想错过 → 热切的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">eagerness(渴望), eagle(鹰 → 象征渴望高飞), anxiety(焦虑)</p>
+                    </div>
+                    <div class="emoji">🤩</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="al-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- vital -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">vital <span class="text-sm font-normal">/ˈvaɪtl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 至关重要的，生命的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>vit(生命) + -al(形容词后缀) → 与生命有关的 → 至关重要的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Water is vital for all living things. (水对所有生物都至关重要。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>vit(生命) + al → "维他命"就是vital的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">vitamin(维生素), vitality(活力), revitalize(使恢复活力)</p>
+                    </div>
+                    <div class="emoji">💖</div>
+                </div>
+            </div>
+            
+            <!-- legal -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">legal <span class="text-sm font-normal">/ˈliːɡl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 法律的，合法的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>leg(法律) + -al(形容词后缀) → 与法律有关的 → 合法的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Is it legal to park here? (在这里停车合法吗？)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>leg(腿) + al → 用"腿"走路要遵守交通"法律"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">illegal(非法的), legislation(立法), legitimate(合法的)</p>
+                    </div>
+                    <div class="emoji">⚖️</div>
+                </div>
+            </div>
+            
+            <!-- moral -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">moral <span class="text-sm font-normal">/ˈmɔːrəl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 道德的；寓意</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>mor(习俗，道德) + -al(形容词后缀) → 与道德有关的 → 道德的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>The story teaches an important moral lesson. (这个故事传达了一个重要的道德教训。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>mor(音似"more") + al → 我们需要"更多"道德！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">morality(道德), immoral(不道德的), morale(士气)</p>
+                    </div>
+                    <div class="emoji">🧭</div>
+                </div>
+            </div>
+            
+            <!-- potential -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">potential <span class="text-sm font-normal">/pəˈtenʃl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 潜在的；潜力</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>potent(力量) + -ial(形容词后缀) → 有力量的 → 有潜力的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>She has the potential to become a great leader. (她有成为伟大领袖的潜力。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>pot(罐子) + ential → 罐子里藏着"潜力"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">potent(强有力的), potency(力量), potentiality(可能性)</p>
+                    </div>
+                    <div class="emoji">💪</div>
+                </div>
+            </div>
+            
+            <!-- typical -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">typical <span class="text-sm font-normal">/ˈtɪpɪkl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 典型的，有代表性的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>type(类型) + -ical(形容词后缀) → 属于某种类型的 → 典型的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This is a typical example of Roman architecture. (这是罗马建筑的典型例子。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>type(类型) + ical → "典型的"就是有"类型"特征的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">atypical(非典型的), stereotype(刻板印象), typify(代表)</p>
+                    </div>
+                    <div class="emoji">🎯</div>
+                </div>
+            </div>
+            
+            <!-- federal -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">federal <span class="text-sm font-normal">/ˈfedərəl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 联邦的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>feder(联盟) + -al(形容词后缀) → 与联盟有关的 → 联邦的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>The federal government is located in Washington D.C. (联邦政府位于华盛顿特区。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>feder(音似"费的") + al → "联邦"政府管理"费的"事情！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">federation(联邦), confederate(同盟的), federate(结成联邦)</p>
+                    </div>
+                    <div class="emoji">🏛️</div>
+                </div>
+            </div>
+            
+            <!-- ideal -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">ideal <span class="text-sm font-normal">/aɪˈdiːəl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 理想的；理想</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>idea(想法) + -al(形容词后缀) → 理想的想法 → 理想的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This would be the ideal place for a picnic. (这里将是野餐的理想地点。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>idea(想法) + l → "理想"就是完美的"想法"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">idealism(理想主义), idealize(理想化), ideality(理想状态)</p>
+                    </div>
+                    <div class="emoji">🌟</div>
+                </div>
+            </div>
+            
+            <!-- digital -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">digital <span class="text-sm font-normal">/ˈdɪdʒɪtl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 数字的，数码的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>digit(数字) + -al(形容词后缀) → 与数字有关的 → 数字的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Most cameras are digital these days. (现在大多数相机都是数码的。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>digit(数字) + al → "数码"的就是用"数字"表示的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">digit(数字), digitize(数字化), digitalize(数字化)</p>
+                    </div>
+                    <div class="emoji">💻</div>
+                </div>
+            </div>
+            
+            <!-- total -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">total <span class="text-sm font-normal">/ˈtoʊtl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 全部的；总数</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>tot(全部) + -al(形容词后缀) → 全部的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>The total cost was $200. (总费用是200美元。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>tot(全部) + al → "总数"就是"全部"加起来！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">totality(全体), totalize(总计), totalitarian(极权主义的)</p>
+                    </div>
+                    <div class="emoji">🧮</div>
+                </div>
+            </div>
+            
+            <!-- local -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">local <span class="text-sm font-normal">/ˈloʊkl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 本地的；当地人</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>loc(地方) + -al(形容词后缀) → 与地方有关的 → 本地的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>I prefer to buy local produce. (我更喜欢购买本地农产品。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>loc(地方) + al → "本地"的就是某个"地方"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">location(位置), locate(位于), locality(所在地)</p>
+                    </div>
+                    <div class="emoji">🏘️</div>
+                </div>
+            </div>
+            
+            <!-- criminal -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">criminal <span class="text-sm font-normal">/ˈkrɪmɪnl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 犯罪的；罪犯</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>crimin(犯罪) + -al(形容词后缀) → 与犯罪有关的 → 犯罪的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>He was charged with criminal damage. (他被指控犯有刑事损害罪。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>crime(犯罪) + in + al → "犯罪"的人就是"罪犯"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">crime(犯罪), criminology(犯罪学), incriminate(控告)</p>
+                    </div>
+                    <div class="emoji">🚨</div>
+                </div>
+            </div>
+            
+            <!-- rural -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">rural <span class="text-sm font-normal">/ˈrʊrəl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 乡村的，农村的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>rur(乡村) + -al(形容词后缀) → 与乡村有关的 → 乡村的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>She prefers the quiet of rural life. (她更喜欢乡村生活的宁静。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>rur(乡村) + al → "乡村"的就是"农村"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">rustic(乡村的), rurality(乡村特性), ruralize(使乡村化)</p>
+                    </div>
+                    <div class="emoji">🌄</div>
+                </div>
+            </div>
+            
+            <!-- personal -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">personal <span class="text-sm font-normal">/ˈpɜːrsənl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 个人的，私人的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>person(人) + -al(形容词后缀) → 与个人有关的 → 个人的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This is a personal matter. (这是个人私事。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>person(人) + al → "个人"的就是属于某个"人"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">person(人), personality(个性), personalize(个性化)</p>
+                    </div>
+                    <div class="emoji">👤</div>
+                </div>
+            </div>
+            
+            <!-- rival -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">rival <span class="text-sm font-normal">/ˈraɪvl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">名词/形容词 - 竞争对手；竞争的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>riv(河岸) + -al(名词后缀) → 原指住在河对岸的人 → 竞争对手</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Our team defeated our main rivals. (我们队击败了主要对手。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>riv(河) + al → 住在河对岸的"对手"！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">rivalry(竞争), derive(源自), river(河)</p>
+                    </div>
+                    <div class="emoji">🥊</div>
+                </div>
+            </div>
+            
+            <!-- mental -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">mental <span class="text-sm font-normal">/ˈmentl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 精神的，心理的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>ment(心智) + -al(形容词后缀) → 与心智有关的 → 精神的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>He has a mental illness. (他患有精神疾病。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>ment(心智) + al → "精神"的就是与"心智"有关的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">mentality(心态), mention(提及), dementia(痴呆)</p>
+                    </div>
+                    <div class="emoji">🧠</div>
+                </div>
+            </div>
+            
+            <!-- original -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">original <span class="text-sm font-normal">/əˈrɪdʒənl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 原始的；原作</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>origin(起源) + -al(形容词后缀) → 与起源有关的 → 原始的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This is the original version of the story. (这是故事的原始版本。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>origin(起源) + al → "原始"的就是"起源"时的样子！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">origin(起源), originate(起源), originality(原创性)</p>
+                    </div>
+                    <div class="emoji">🖼️</div>
+                </div>
+            </div>
+            
+            <!-- crucial -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">crucial <span class="text-sm font-normal">/ˈkruːʃl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 关键的，决定性的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>cruc(十字) + -ial(形容词后缀) → 处于十字路口的 → 决定性的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>This is a crucial moment in our history. (这是我们历史上的关键时刻。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>cruc(十字) + ial → 在"十字"路口需要做"关键"决定！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">crucifix(十字架), crucify(钉在十字架上), crucible(坩埚)</p>
+                    </div>
+                    <div class="emoji">⏳</div>
+                </div>
+            </div>
+            
+            <!-- rational -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">rational <span class="text-sm font-normal">/ˈræʃnəl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 理性的，合理的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>ratio(理性) + -nal(形容词后缀) → 与理性有关的 → 理性的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>There must be a rational explanation. (一定有一个合理的解释。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>ratio(比率) + nal → 用"比率"计算是"理性"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">rationality(理性), rationalize(合理化), irrational(不合理的)</p>
+                    </div>
+                    <div class="emoji">🤔</div>
+                </div>
+            </div>
+            
+            <!-- global -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">global <span class="text-sm font-normal">/ˈɡloʊbl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 全球的，全世界的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>globe(地球) + -al(形容词后缀) → 与地球有关的 → 全球的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Climate change is a global problem. (气候变化是一个全球性问题。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>globe(地球) + al → "全球"的就是整个"地球"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">globe(地球), globalization(全球化), globetrotter(环球旅行者)</p>
+                    </div>
+                    <div class="emoji">🌍</div>
+                </div>
+            </div>
+            
+            <!-- practical -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">practical <span class="text-sm font-normal">/ˈpræktɪkl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词 - 实际的，实用的</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>practic(实践) + -al(形容词后缀) → 与实践有关的 → 实际的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>We need a practical solution. (我们需要一个实际的解决方案。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>practice(实践) + al → "实际"的就是可以"实践"的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">practice(实践), practically(实际上), practitioner(从业者)</p>
+                    </div>
+                    <div class="emoji">🛠️</div>
+                </div>
+            </div>
+            
+            <!-- essential -->
+            <div class="card al-card fade-in p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">essential <span class="text-sm font-normal">/ɪˈsenʃl/</span></h2>
+                <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-4">
+                    <p class="font-semibold mb-2">形容词/名词 - 必要的；必需品</p>
+                    <p class="mb-2"><span class="font-semibold">词根词缀：</span>essent(存在) + -ial(形容词后缀) → 存在所必需的 → 必要的</p>
+                    <p class="mb-2"><span class="font-semibold">例句：</span>Water is essential for life. (水是生命所必需的。)</p>
+                    <p class="mb-2"><span class="font-semibold">记忆技巧：</span>essent(存在) + ial → "必要"的就是"存在"所需的！</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm font-semibold">类似单词：</p>
+                        <p class="text-sm">essence(本质), essentially(本质上), quintessential(精髓的)</p>
+                    </div>
+                    <div class="emoji">❗</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-card p-6 rounded-2xl mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">相近单词总结</h2>
+            
+            <div class="bg-white bg-opacity-70 rounded-lg p-4 mb-6">
+                <h3 class="text-xl font-semibold mb-3">含-age的高频词</h3>
+                <p class="mb-2"><span class="font-semibold">记忆技巧：</span>age作为后缀通常表示"状态"或"结果"！</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><span class="font-semibold">shortage</span> - short(短) + age → 短缺</li>
+                    <li><span class="font-semibold">average</span> - aver(财产损失) + age → 平均数</li>
+                    <li><span class="font-semibold">heritage</span> - herit(继承) + age → 遗产</li>
+                    <li><span class="font-semibold">eager</span> - (特殊记忆) → 热切的</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white bg-opacity-70 rounded-lg p-4">
+                <h3 class="text-xl font-semibold mb-3">含-al的高频词</h3>
+                <p class="mb-2"><span class="font-semibold">记忆技巧：</span>al作为后缀通常表示"与...有关的"！</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><span class="font-semibold">vital</span> - vit(生命) + al → 至关重要的</li>
+                    <li><span class="font-semibold">legal</span> - leg(法律) + al → 法律的</li>
+                    <li><span class="font-semibold">moral</span> - mor(道德) + al → 道德的</li>
+                    <li><span class="font-semibold">potential</span> - potent(力量) + ial → 有潜力的</li>
+                    <li><span class="font-semibold">typical</span> - type(类型) + ical → 典型的</li>
+                    <li><span class="font-semibold">federal</span> - feder(联盟) + al → 联邦的</li>
+                    <li><span class="font-semibold">ideal</span> - idea(想法) + al → 理想的</li>
+                    <li><span class="font-semibold">digital</span> - digit(数字) + al → 数字的</li>
+                    <li><span class="font-semibold">total</span> - tot(全部) + al → 全部的</li>
+                    <li><span class="font-semibold">local</span> - loc(地方) + al → 本地的</li>
+                    <li><span class="font-semibold">criminal</span> - crimin(犯罪) + al → 犯罪的</li>
+                    <li><span class="font-semibold">rural</span> - rur(乡村) + al → 乡村的</li>
+                    <li><span class="font-semibold">personal</span> - person(人) + al → 个人的</li>
+                    <li><span class="font-semibold">rival</span> - riv(河岸) + al → 竞争对手</li>
+                    <li><span class="font-semibold">mental</span> - ment(心智) + al → 精神的</li>
+                    <li><span class="font-semibold">original</span> - origin(起源) + al → 原始的</li>
+                    <li><span class="font-semibold">crucial</span> - cruc(十字) + ial → 关键的</li>
+                    <li><span class="font-semibold">rational</span> - ratio(理性) + nal → 理性的</li>
+                    <li><span class="font-semibold">global</span> - globe(地球) + al → 全球的</li>
+                    <li><span class="font-semibold">practical</span> - practic(实践) + al → 实际的</li>
+                    <li><span class="font-semibold">essential</span> - essent(存在) + ial → 必要的</li>
+                </ul>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <div class="emoji">🎉</div>
+                <p class="font-semibold">记住：-age表示"状态"，-al表示"与...有关的"！这样就能轻松记住这些单词啦！</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // 初始化主题
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // 标签页切换
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有active类
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // 给当前按钮添加active类
+                button.classList.add('active');
+                
+                const tab = button.dataset.tab;
+                
+                if (tab === 'all') {
+                    document.getElementById('age-cards').style.display = 'grid';
+                    document.getElementById('al-cards').style.display = 'grid';
+                } else if (tab === 'age') {
+                    document.getElementById('age-cards').style.display = 'grid';
+                    document.getElementById('al-cards').style.display = 'none';
+                } else if (tab === 'al') {
+                    document.getElementById('age-cards').style.display = 'none';
+                    document.getElementById('al-cards').style.display = 'grid';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

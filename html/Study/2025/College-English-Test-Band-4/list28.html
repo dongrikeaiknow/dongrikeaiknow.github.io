@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Flashcards - List28</title>
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .tab-button.active {
+            font-weight: bold;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-bg-1 {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+        
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+        
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        
+        .gradient-bg-4 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        }
+        
+        .gradient-bg-5 {
+            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+        }
+        
+        .dark .gradient-bg-1 {
+            background: linear-gradient(135deg, #d88771 0%, #b36b5a 100%);
+        }
+        
+        .dark .gradient-bg-2 {
+            background: linear-gradient(135deg, #5cb690 0%, #5d9fc5 100%);
+        }
+        
+        .dark .gradient-bg-3 {
+            background: linear-gradient(135deg, #7aa1d8 0%, #96c0d9 100%);
+        }
+        
+        .dark .gradient-bg-4 {
+            background: linear-gradient(135deg, #d87a7d 0%, #d9b0a8 100%);
+        }
+        
+        .dark .gradient-bg-5 {
+            background: linear-gradient(135deg, #d99e84 0%, #d98a97 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700 dark:text-indigo-300">📚 Vocabulary Flashcards</h1>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </header>
+        
+        <div class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+            <h2 class="text-2xl font-bold text-center mb-4 text-indigo-600 dark:text-indigo-300">List28</h2>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="tab-button active px-4 py-2 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-700 dark:text-indigo-200" data-category="category1">含-al的高频词</button>
+                <button class="tab-button px-4 py-2 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-700 dark:text-indigo-200" data-category="category2">增加和减少的词汇</button>
+            </div>
+        </div>
+        
+        <div id="category1" class="category-content fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Category 1 Cards -->
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-1 p-6">
+                    <h3 class="text-xl font-bold text-white">mammal</h3>
+                    <p class="text-white opacity-90">n. 哺乳动物</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>mamm-(乳房) + -al(形容词后缀) → 有乳房的动物 → 哺乳动物</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"Humans are classified as mammals."</p>
+                        <p>人类被归类为哺乳动物。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"妈妈(mama)"哺乳婴儿，哺乳动物都有乳腺。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🐄</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: mammalian(哺乳动物的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-2 p-6">
+                    <h3 class="text-xl font-bold text-white">annual</h3>
+                    <p class="text-white opacity-90">adj. 每年的；n. 年刊</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>ann-(年) + -ual(形容词后缀) → 每年的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The company holds its annual meeting in December."</p>
+                        <p>公司在十二月举行年度会议。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"ann"表示"年"，如anniversary(周年纪念)。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">📅</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: anniversary(周年纪念), annuity(年金)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-3 p-6">
+                    <h3 class="text-xl font-bold text-white">trial</h3>
+                    <p class="text-white opacity-90">n. 审判；试验；adj. 试验的</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>tri-(尝试) + -al(名词后缀) → 尝试的过程 → 试验，审判</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The new drug is undergoing clinical trials."</p>
+                        <p>这种新药正在进行临床试验。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"try"(尝试) + "al" → 尝试的过程就是试验或审判。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">⚖️</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: try(尝试), trial run(试运行)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-4 p-6">
+                    <h3 class="text-xl font-bold text-white">artificial</h3>
+                    <p class="text-white opacity-90">adj. 人造的；假的</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>arti-(技巧) + fic-(做) + -ial(形容词后缀) → 用技巧做出来的 → 人造的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The football field has artificial grass."</p>
+                        <p>这个足球场有人造草皮。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"art"艺术 + "fic"做 → 艺术做出来的 → 人造的。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🤖</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: artifact(人工制品), artificial intelligence(人工智能)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-5 p-6">
+                    <h3 class="text-xl font-bold text-white">classical</h3>
+                    <p class="text-white opacity-90">adj. 古典的；经典的</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>class-(等级) + -ical(形容词后缀) → 最高等级的 → 经典的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"She enjoys listening to classical music."</p>
+                        <p>她喜欢听古典音乐。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"class"班级 + "ical" → 班级里最优秀的 → 经典的。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🎻</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: classic(经典的), classify(分类)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-1 p-6">
+                    <h3 class="text-xl font-bold text-white">journal</h3>
+                    <p class="text-white opacity-90">n. 期刊；日记</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>journ-(日) + -al(名词后缀) → 每日的记录 → 日记，期刊</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"He published his research in a scientific journal."</p>
+                        <p>他在科学期刊上发表了研究。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"journey"(旅程) + "al" → 记录旅程的东西 → 日记。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">📖</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: journalism(新闻业), journalist(记者)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-2 p-6">
+                    <h3 class="text-xl font-bold text-white">generally</h3>
+                    <p class="text-white opacity-90">adv. 通常；普遍地</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>general(一般的) + -ly(副词后缀) → 一般地，通常</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"Generally speaking, exercise is good for health."</p>
+                        <p>一般来说，运动对健康有益。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"general"将军统领全军 → 普遍性的。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🌍</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: general(一般的), generalize(概括)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-3 p-6">
+                    <h3 class="text-xl font-bold text-white">virtually</h3>
+                    <p class="text-white opacity-90">adv. 几乎；实际上；虚拟地</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>virtual(实质的) + -ly(副词后缀) → 实际上，几乎</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The project is virtually complete."</p>
+                        <p>这个项目几乎完成了。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"virtual"虚拟的 + "ly" → 虚拟世界中的事情几乎是真实的。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🖥️</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: virtual(虚拟的), virtue(美德)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-4 p-6">
+                    <h3 class="text-xl font-bold text-white">gradually</h3>
+                    <p class="text-white opacity-90">adv. 逐渐地</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>gradual(逐渐的) + -ly(副词后缀) → 逐渐地</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The days are gradually getting longer in spring."</p>
+                        <p>春天里，白天逐渐变长。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"grade"等级 + "ual" → 一级一级地 → 逐渐地。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🌱</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: gradual(逐渐的), grade(等级)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-5 p-6">
+                    <h3 class="text-xl font-bold text-white">alert</h3>
+                    <p class="text-white opacity-90">adj. 警觉的；n. 警报</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>al-(朝向) + ert-(竖起) → 竖起耳朵朝向 → 警觉的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The guard remained alert throughout the night."</p>
+                        <p>警卫整晚都保持警觉。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"all"(全部) + "ert"(竖起) → 全部感官都竖起来 → 警觉的。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🚨</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: alarm(警报), alertness(警觉性)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-1 p-6">
+                    <h3 class="text-xl font-bold text-white">alarm</h3>
+                    <p class="text-white opacity-90">n. 警报；惊慌；v. 使惊慌</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>al-(朝向) + arm-(武器) → 拿起武器警告 → 警报</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The fire alarm woke everyone in the building."</p>
+                        <p>火警警报惊醒了楼里的所有人。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"al"全部 + "arm"武器 → 全部拿起武器 → 警报。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">⏰</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: alarming(令人担忧的), alarmist(危言耸听者)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-2 p-6">
+                    <h3 class="text-xl font-bold text-white">alter</h3>
+                    <p class="text-white opacity-90">v. 改变；修改</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>alter-(其他) → 变成其他 → 改变</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"She had to alter her dress to make it fit."</p>
+                        <p>她不得不修改裙子使其合身。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"alt"(高) + "er" → 从高处看会有不同的视角 → 改变。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🔄</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: alteration(改变), alternate(交替的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-3 p-6">
+                    <h3 class="text-xl font-bold text-white">alternative</h3>
+                    <p class="text-white opacity-90">n. 替代品；adj. 替代的</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>alter-(其他) + -nativ(性质) + -e → 其他性质的 → 替代的</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"We need to find alternative energy sources."</p>
+                        <p>我们需要找到替代能源。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"alter"改变 + "native"本地的 → 改变原本的选择 → 替代品。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🔄</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: alternately(交替地), alternation(交替)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-4 p-6">
+                    <h3 class="text-xl font-bold text-white">scale</h3>
+                    <p class="text-white opacity-90">n. 规模；刻度；鳞片；v. 攀登</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>scal-(梯子) + -e → 像梯子一样有刻度 → 规模，刻度</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The map has a scale of 1:50,000."</p>
+                        <p>这张地图的比例尺是1:50,000。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"scal"与"ladder"(梯子)相似 → 梯子有刻度 → 规模。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">📊</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: scaling(缩放), scaly(有鳞片的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-5 p-6">
+                    <h3 class="text-xl font-bold text-white">talent</h3>
+                    <p class="text-white opacity-90">n. 天赋；才能</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>tal-(重量) + -ent(名词后缀) → 古代衡量价值的重量 → 有价值的能力 → 才能</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"She has a great talent for music."</p>
+                        <p>她在音乐方面很有天赋。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"tal"与"tell"(讲述)相似 → 能讲述出来的能力 → 才能。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🌟</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: talented(有天赋的), talentless(无才能的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-1 p-6">
+                    <h3 class="text-xl font-bold text-white">male</h3>
+                    <p class="text-white opacity-90">adj. 男性的；n. 男性</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>mal-(强壮的) + -e → 强壮的性别 → 男性</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The male lion has a large mane."</p>
+                        <p>雄狮有浓密的鬃毛。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"man"(男人) + "le" → 男性。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">👨</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: female(女性的), masculine(男子气概的)</span>
+                </div>
+            </div>
+            
+            <!-- Summary Card for Category 1 -->
+            <div class="card col-span-full bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-3 p-6">
+                    <h3 class="text-xl font-bold text-white">含-al的高频词总结</h3>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">共同特点:</p>
+                        <p>这些单词都含有"-al"后缀，表示"与...有关的"或"...的性质"。</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p class="mb-2">1. "-al"通常表示形容词后缀，如"natural"(自然的)、"personal"(个人的)</p>
+                        <p class="mb-2">2. 有时也作名词后缀，如"animal"(动物)、"hospital"(医院)</p>
+                        <p>3. 看到"-al"结尾的词，先判断是形容词还是名词</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">联想记忆:</p>
+                        <p>想象一个"all"(全部)的世界，所有以"-al"结尾的词都有共同特点！</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🧠</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">提示: 多观察单词中"-al"的位置和作用</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="category2" class="category-content hidden fade-in grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Category 2 Cards -->
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-1 p-6">
+                    <h3 class="text-xl font-bold text-white">shrink</h3>
+                    <p class="text-white opacity-90">v. 收缩；退缩</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>shrink(源自古英语"scrincan"收缩) → 收缩，退缩</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"Wool sweaters often shrink in hot water."</p>
+                        <p>羊毛衫在热水中经常会缩水。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"sh"声音像缩小的声音 + "rink"(溜冰场) → 溜冰场缩小 → 收缩。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">👕</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: shrinkage(收缩量), shrinkable(会收缩的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-2 p-6">
+                    <h3 class="text-xl font-bold text-white">boost</h3>
+                    <p class="text-white opacity-90">v. 提高；推动；n. 增加</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>boost(可能源自拟声词，表示向上推的声音) → 提高，推动</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The new advertising campaign boosted sales."</p>
+                        <p>新的广告活动提高了销售额。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"boot"(靴子) + "st"(站) → 用靴子站起来 → 提高。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🚀</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: booster(助推器), boosted(增强的)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-3 p-6">
+                    <h3 class="text-xl font-bold text-white">dump</h3>
+                    <p class="text-white opacity-90">v. 倾倒；抛弃；n. 垃圾场</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>dump(可能源自拟声词，表示重物落下的声音) → 倾倒，抛弃</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"It's illegal to dump waste in the river."</p>
+                        <p>向河里倾倒废物是违法的。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>联想"dumb"(哑的) + "p"(扑通声) → 哑巴扑通一声扔掉东西 → 倾倒。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🗑️</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: dumper(倾倒者), dumping(倾销)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-4 p-6">
+                    <h3 class="text-xl font-bold text-white">decline</h3>
+                    <p class="text-white opacity-90">v. 下降；拒绝；n. 衰退</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>de-(向下) + clin-(倾斜) + -e → 向下倾斜 → 下降</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The number of students has declined in recent years."</p>
+                        <p>近年来学生人数下降了。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"de"向下 + "cline"倾斜 → 向下倾斜 → 下降。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">📉</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: inclination(倾向), recline(斜靠)</span>
+                </div>
+            </div>
+            
+            <div class="card bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-5 p-6">
+                    <h3 class="text-xl font-bold text-white">decrease</h3>
+                    <p class="text-white opacity-90">v. 减少；n. 减少</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">词根词缀:</p>
+                        <p>de-(向下) + creas-(生长) + -e → 生长向下 → 减少</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">例句:</p>
+                        <p class="italic mb-2">"The government wants to decrease pollution."</p>
+                        <p>政府想要减少污染。</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p>"de"向下 + "crease"(与"grow"相反) → 向下生长 → 减少。</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">🔽</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">扩展: increasing(增加的), decrease(减少)</span>
+                </div>
+            </div>
+            
+            <!-- Summary Card for Category 2 -->
+            <div class="card col-span-full bg-white dark:bg-gray-800 shadow-md">
+                <div class="gradient-bg-2 p-6">
+                    <h3 class="text-xl font-bold text-white">表示增加和减少的词汇总结</h3>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">增加类词汇:</p>
+                        <p class="mb-2">1. boost - 推动，提高</p>
+                        <p>2. increase - 增加(未在本列表但相关)</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">减少类词汇:</p>
+                        <p class="mb-2">1. shrink - 收缩</p>
+                        <p class="mb-2">2. dump - 倾倒，抛弃</p>
+                        <p class="mb-2">3. decline - 下降，衰退</p>
+                        <p>4. decrease - 减少</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-600 dark:text-indigo-300">记忆技巧:</p>
+                        <p class="mb-2">1. 增加类词汇通常有"向上"的含义，如"boost"(助推)</p>
+                        <p>2. 减少类词汇通常有"向下"的前缀或含义，如"de-"(向下)、"shrink"(收缩)</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 flex items-center">
+                    <span class="text-4xl mr-2">📈📉</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">提示: 记住"de-"前缀通常表示"向下"或"减少"</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Tab switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const categoryContents = document.querySelectorAll('.category-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all category contents
+                categoryContents.forEach(content => {
+                    content.classList.add('hidden');
+                    content.classList.remove('fade-in');
+                });
+                
+                // Show selected category content
+                const category = button.getAttribute('data-category');
+                const selectedContent = document.getElementById(category);
+                selectedContent.classList.remove('hidden');
+                setTimeout(() => {
+                    selectedContent.classList.add('fade-in');
+                }, 10);
+            });
+        });
+        
+        // Initialize first category as visible
+        document.getElementById('category1').classList.remove('hidden');
+        document.getElementById('category1').classList.add('fade-in');
+    </script>
+</body>
+</html>

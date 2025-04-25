@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List31 - Vocabulary Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .word-header {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4 text-indigo-600 dark:text-indigo-300">List31 高频词汇卡片</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">分类1：含 -ate 的高频词</p>
+        </header>
+        
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+                <button id="lightModeBtn" class="px-4 py-2 rounded-full bg-white dark:bg-gray-600 shadow">
+                    <i class="fas fa-sun mr-2"></i>浅色模式
+                </button>
+                <button id="darkModeBtn" class="px-4 py-2 rounded-full">
+                    <i class="fas fa-moon mr-2"></i>深色模式
+                </button>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1: locate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-blue-400 to-blue-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">locate</h2>
+                    <p class="text-white text-center">/loʊˈkeɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 定位；找到...的位置
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        loc-(地方) + -ate(动词后缀) → 使...在某个地方 → 定位
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"Can you locate the nearest gas station on the map?"</p>
+                        <p>→ 你能在地图上找到最近的加油站吗？</p>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "loc"表示"地方"，想象用GPS"定位"你的位置！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">📍</span>
+                </div>
+            </div>
+            
+            <!-- Card 2: violate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-red-400 to-red-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">violate</h2>
+                    <p class="text-white text-center">/ˈvaɪəleɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 违反；侵犯
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        viol-(力量) + -ate(动词后缀) → 使用强力对待 → 违反
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"The company violated environmental regulations."</p>
+                        <p>→ 这家公司违反了环境法规。</p>
+                    </div>
+                    <div class="bg-red-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "viol"与"violent"(暴力)相关，违反规则就像"暴力"对待规则！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🚫</span>
+                </div>
+            </div>
+            
+            <!-- Card 3: isolate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-purple-400 to-purple-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">isolate</h2>
+                    <p class="text-white text-center">/ˈaɪsəleɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 隔离；孤立
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        isol-(岛屿) + -ate(动词后缀) → 使像岛屿一样 → 隔离
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"Patients with infectious diseases should be isolated."</p>
+                        <p>→ 传染病患者应该被隔离。</p>
+                    </div>
+                    <div class="bg-purple-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "isol"来自"island"(岛屿)，岛屿与大陆隔离！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🏝️</span>
+                </div>
+            </div>
+            
+            <!-- Card 4: graduate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-green-400 to-green-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">graduate</h2>
+                    <p class="text-white text-center">/ˈɡrædʒueɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词) & noun (名词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 毕业；毕业生
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        gradu-(等级) + -ate(动词后缀) → 从一个等级到另一个 → 毕业
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"She graduated from Harvard with honors."</p>
+                        <p>→ 她以优异成绩从哈佛大学毕业。</p>
+                    </div>
+                    <div class="bg-green-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "grad"表示"等级"，毕业就是"升级"到新阶段！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🎓</span>
+                </div>
+            </div>
+            
+            <!-- Card 5: cultivate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-yellow-400 to-yellow-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">cultivate</h2>
+                    <p class="text-white text-center">/ˈkʌltɪveɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 培养；耕作
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        cult-(耕种) + -iv + -ate(动词后缀) → 耕种 → 引申为培养
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"Parents should cultivate good habits in their children."</p>
+                        <p>→ 父母应该培养孩子的好习惯。</p>
+                    </div>
+                    <div class="bg-yellow-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "cult"与"culture"(文化)相关，文化需要"培养"！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🌱</span>
+                </div>
+            </div>
+            
+            <!-- Card 6: investigate -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in">
+                <div class="word-header bg-gradient-to-r from-indigo-400 to-indigo-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">investigate</h2>
+                    <p class="text-white text-center">/ɪnˈvestɪɡeɪt/</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4">
+                        <span class="font-bold">词性:</span> verb (动词)
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">意思:</span> 调查；研究
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">词源解析:</span><br>
+                        in-(进入) + vestig-(追踪) + -ate(动词后缀) → 追踪进入 → 调查
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-bold">例句:</span>
+                        <p class="italic mt-2">"The police are investigating the robbery."</p>
+                        <p>→ 警方正在调查这起抢劫案。</p>
+                    </div>
+                    <div class="bg-indigo-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">记忆技巧:</span> "vestig"与"vestige"(痕迹)相关，调查就是"追踪痕迹"！
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🔍</span>
+                </div>
+            </div>
+            
+            <!-- More cards can be added here following the same pattern -->
+            
+            <!-- Summary Card for similar words -->
+            <div class="card bg-white dark:bg-gray-700 shadow-lg fade-in col-span-1 md:col-span-2 lg:col-span-3">
+                <div class="word-header bg-gradient-to-r from-pink-400 to-pink-600 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center">-ate 动词后缀总结</h2>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-4">-ate 动词后缀规律：</h3>
+                        <p>-ate 是一个常见的动词后缀，通常表示"使...成为"或"做...动作"</p>
+                        <p>很多 -ate 结尾的动词来自拉丁语，通过法语进入英语</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-4">记忆技巧：</h3>
+                        <p>把 -ate 想象成"做"的动作：</p>
+                        <ul class="list-disc pl-6 mt-2 space-y-2">
+                            <li><span class="font-bold">locate</span> - 使在某个地方 → 定位</li>
+                            <li><span class="font-bold">violate</span> - 使用强力对待 → 违反</li>
+                            <li><span class="font-bold">isolate</span> - 使像岛屿 → 隔离</li>
+                            <li><span class="font-bold">graduate</span> - 从一个等级到另一个 → 毕业</li>
+                            <li><span class="font-bold">cultivate</span> - 耕种 → 培养</li>
+                            <li><span class="font-bold">investigate</span> - 追踪进入 → 调查</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-pink-50 dark:bg-gray-600 p-4 rounded-lg">
+                        <span class="font-bold">联想记忆：</span>
+                        <p>想象一个厨师在厨房里做(-ate)各种事情：定位(locate)食材、不违反(violate)食谱、隔离(isolate)生熟食、从烹饪学校毕业(graduate)、培养(cultivate)新口味、调查(investigate)新食谱！</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-4 text-right">
+                    <span class="text-4xl">🧑‍🍳</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark/Light mode toggle
+        const darkModeBtn = document.getElementById('darkModeBtn');
+        const lightModeBtn = document.getElementById('lightModeBtn');
+        
+        function setDarkMode(isDark) {
+            document.documentElement.classList.toggle('dark', isDark);
+            localStorage.setItem('darkMode', isDark);
+            
+            if (isDark) {
+                darkModeBtn.classList.add('bg-gray-600', 'shadow');
+                darkModeBtn.classList.remove('bg-transparent');
+                lightModeBtn.classList.remove('bg-white', 'shadow');
+                lightModeBtn.classList.add('bg-transparent');
+            } else {
+                lightModeBtn.classList.add('bg-white', 'shadow');
+                lightModeBtn.classList.remove('bg-transparent');
+                darkModeBtn.classList.remove('bg-gray-600', 'shadow');
+                darkModeBtn.classList.add('bg-transparent');
+            }
+        }
+        
+        // Check for saved preference or system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedMode = localStorage.getItem('darkMode');
+        
+        if (savedMode === null) {
+            setDarkMode(prefersDark);
+        } else {
+            setDarkMode(savedMode === 'true');
+        }
+        
+        darkModeBtn.addEventListener('click', () => setDarkMode(true));
+        lightModeBtn.addEventListener('click', () => setDarkMode(false));
+        
+        // Tab functionality (if needed)
+        // You can add tab functionality here if you want to categorize words further
+    </script>
+</body>
+</html>
